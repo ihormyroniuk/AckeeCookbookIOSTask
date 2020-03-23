@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3367D6E4242836930053A509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E3242836930053A509 /* AppDelegate.swift */; };
-		3367D6E6242836930053A509 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E5242836930053A509 /* SceneDelegate.swift */; };
 		3367D6E8242836930053A509 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E7242836930053A509 /* ViewController.swift */; };
-		3367D6EB242836930053A509 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6E9242836930053A509 /* Main.storyboard */; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +16,7 @@
 /* Begin PBXFileReference section */
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367D6E3242836930053A509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3367D6E5242836930053A509 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3367D6E7242836930053A509 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3367D6EA242836930053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3367D6F1242836940053A509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				3367D6E3242836930053A509 /* AppDelegate.swift */,
-				3367D6E5242836930053A509 /* SceneDelegate.swift */,
 				3367D6E7242836930053A509 /* ViewController.swift */,
-				3367D6E9242836930053A509 /* Main.storyboard */,
 				3367D6EC242836940053A509 /* Assets.xcassets */,
 				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
 				3367D6F1242836940053A509 /* Info.plist */,
@@ -129,7 +123,6 @@
 			files = (
 				3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */,
 				3367D6ED242836940053A509 /* Assets.xcassets in Resources */,
-				3367D6EB242836930053A509 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,21 +176,12 @@
 			files = (
 				3367D6E8242836930053A509 /* ViewController.swift in Sources */,
 				3367D6E4242836930053A509 /* AppDelegate.swift in Sources */,
-				3367D6E6242836930053A509 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3367D6E9242836930053A509 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3367D6EA242836930053A509 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3367D6EE242836940053A509 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -330,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4U9YFW795;
 				INFOPLIST_FILE = AckeeCookbookIOSTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4U9YFW795;
 				INFOPLIST_FILE = AckeeCookbookIOSTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
