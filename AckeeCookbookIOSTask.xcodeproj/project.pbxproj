@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
 		3367D6E4242836930053A509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E3242836930053A509 /* AppDelegate.swift */; };
 		3367D6E8242836930053A509 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E7242836930053A509 /* ViewController.swift */; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33114E74242B7ABD00B246BB /* AUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AUIKit.framework; path = Carthage/Build/iOS/AUIKit.framework; sourceTree = "<group>"; };
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367D6E3242836930053A509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3367D6E7242836930053A509 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,17 +29,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33114E73242B7ABD00B246BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33114E74242B7ABD00B246BB /* AUIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3367D6D7242836930053A509 = {
 			isa = PBXGroup;
 			children = (
 				3367D6E2242836930053A509 /* AckeeCookbookIOSTask */,
 				3367D6E1242836930053A509 /* Products */,
+				33114E73242B7ABD00B246BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,6 +325,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4U9YFW795;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AckeeCookbookIOSTask/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,6 +348,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4U9YFW795;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AckeeCookbookIOSTask/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
