@@ -7,7 +7,21 @@
 //
 
 import AUIKit
+import AckeeCookbookIOSTaskPresentation
 
 class Application: AUIEmptyApplication {
 
+    // MARK: Presentation
+
+    lazy var presentation: Presentation = {
+        let presentation = IPhonePresentation(window: window)
+        return presentation
+    }()
+
+    // MARK: Launching
+
+    override func didFinishLaunching() {
+        super.didFinishLaunching()
+        presentation.showRecipesList()
+    }
 }
