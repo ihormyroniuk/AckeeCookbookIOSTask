@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
-		3367D6E4242836930053A509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E3242836930053A509 /* AppDelegate.swift */; };
+		33114E79242B7BF400B246BB /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114E78242B7BF400B246BB /* Application.swift */; };
+		33114E7B242B7C5B00B246BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114E7A242B7C5B00B246BB /* main.swift */; };
 		3367D6E8242836930053A509 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3367D6E7242836930053A509 /* ViewController.swift */; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
@@ -16,8 +17,9 @@
 
 /* Begin PBXFileReference section */
 		33114E74242B7ABD00B246BB /* AUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AUIKit.framework; path = Carthage/Build/iOS/AUIKit.framework; sourceTree = "<group>"; };
+		33114E78242B7BF400B246BB /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		33114E7A242B7C5B00B246BB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3367D6E3242836930053A509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3367D6E7242836930053A509 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 		3367D6E2242836930053A509 /* AckeeCookbookIOSTask */ = {
 			isa = PBXGroup;
 			children = (
-				3367D6E3242836930053A509 /* AppDelegate.swift */,
+				33114E7A242B7C5B00B246BB /* main.swift */,
+				33114E78242B7BF400B246BB /* Application.swift */,
 				3367D6E7242836930053A509 /* ViewController.swift */,
 				3367D6EC242836940053A509 /* Assets.xcassets */,
 				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
@@ -186,8 +189,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33114E79242B7BF400B246BB /* Application.swift in Sources */,
 				3367D6E8242836930053A509 /* ViewController.swift in Sources */,
-				3367D6E4242836930053A509 /* AppDelegate.swift in Sources */,
+				33114E7B242B7C5B00B246BB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
