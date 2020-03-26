@@ -21,6 +21,9 @@
 		33114ECE242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; };
 		33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		333F23EC242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h in Headers */ = {isa = PBXBuildFile; fileRef = 333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; };
+		333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -40,6 +43,13 @@
 			remoteGlobalIDString = 33114EC9242BD06700B246BB;
 			remoteInfo = AckeeCookbookIOSTaskWebAPI;
 		};
+		333F23ED242D155C00728DA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3367D6D8242836930053A509 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 333F23E7242D155C00728DA8;
+			remoteInfo = AckeeCookbookIOSTaskBusiness;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +61,7 @@
 			files = (
 				33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
+				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +82,9 @@
 		33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskWebAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskWebAPI.h; sourceTree = "<group>"; };
 		33114ECD242BD06700B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskBusiness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskBusiness.h; sourceTree = "<group>"; };
+		333F23EB242D155C00728DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,10 +107,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		333F23E5242D155C00728DA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3367D6DD242836930053A509 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
 				33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 				33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
 				33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */,
@@ -152,12 +174,22 @@
 			path = AckeeCookbookIOSTaskWebAPI;
 			sourceTree = "<group>";
 		};
+		333F23E9242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */ = {
+			isa = PBXGroup;
+			children = (
+				333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */,
+				333F23EB242D155C00728DA8 /* Info.plist */,
+			);
+			path = AckeeCookbookIOSTaskBusiness;
+			sourceTree = "<group>";
+		};
 		3367D6D7242836930053A509 = {
 			isa = PBXGroup;
 			children = (
 				3367D6E2242836930053A509 /* AckeeCookbookIOSTask */,
 				33114EAC242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation */,
 				33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */,
+				333F23E9242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */,
 				3367D6E1242836930053A509 /* Products */,
 				33114E73242B7ABD00B246BB /* Frameworks */,
 			);
@@ -169,6 +201,7 @@
 				3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */,
 				33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */,
 				33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */,
+				333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,6 +234,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				33114ECE242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		333F23E3242D155C00728DA8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				333F23EC242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +284,24 @@
 			productReference = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 333F23F3242D155C00728DA8 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTaskBusiness" */;
+			buildPhases = (
+				333F23E3242D155C00728DA8 /* Headers */,
+				333F23E4242D155C00728DA8 /* Sources */,
+				333F23E5242D155C00728DA8 /* Frameworks */,
+				333F23E6242D155C00728DA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AckeeCookbookIOSTaskBusiness;
+			productName = AckeeCookbookIOSTaskBusiness;
+			productReference = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3367D6DF242836930053A509 /* AckeeCookbookIOSTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3367D6F4242836940053A509 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTask" */;
@@ -259,6 +318,7 @@
 			dependencies = (
 				33114EB1242B84AB00B246BB /* PBXTargetDependency */,
 				33114ED0242BD06700B246BB /* PBXTargetDependency */,
+				333F23EE242D155C00728DA8 /* PBXTargetDependency */,
 			);
 			name = AckeeCookbookIOSTask;
 			productName = AckeeCookbookIOSTask;
@@ -282,6 +342,9 @@
 					33114EC9242BD06700B246BB = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
+					333F23E7242D155C00728DA8 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
 					3367D6DF242836930053A509 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -303,6 +366,7 @@
 				3367D6DF242836930053A509 /* AckeeCookbookIOSTask */,
 				33114EAA242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation */,
 				33114EC9242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */,
+				333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */,
 			);
 		};
 /* End PBXProject section */
@@ -316,6 +380,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		33114EC8242BD06700B246BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		333F23E6242D155C00728DA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,6 +464,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		333F23E4242D155C00728DA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3367D6DC242836930053A509 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +492,11 @@
 			isa = PBXTargetDependency;
 			target = 33114EC9242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */;
 			targetProxy = 33114ECF242BD06700B246BB /* PBXContainerItemProxy */;
+		};
+		333F23EE242D155C00728DA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
+			targetProxy = 333F23ED242D155C00728DA8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -541,6 +624,62 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskWebAPI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		333F23F1242D155C00728DA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = M4U9YFW795;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AckeeCookbookIOSTaskBusiness/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskBusiness;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		333F23F2242D155C00728DA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = M4U9YFW795;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AckeeCookbookIOSTaskBusiness/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -729,6 +868,15 @@
 			buildConfigurations = (
 				33114ED4242BD06700B246BB /* Debug */,
 				33114ED5242BD06700B246BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		333F23F3242D155C00728DA8 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTaskBusiness" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				333F23F1242D155C00728DA8 /* Debug */,
+				333F23F2242D155C00728DA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
