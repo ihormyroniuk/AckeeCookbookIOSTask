@@ -26,6 +26,8 @@
 		333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		333F23FB242D426100728DA8 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F23FA242D426100728DA8 /* Recipe.swift */; };
 		333F23FD242D45BB00728DA8 /* RecipeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F23FC242D45BB00728DA8 /* RecipeStructure.swift */; };
+		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
+		334D9D3C242EAACE00B92997 /* RecipesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,8 @@
 		333F23EB242D155C00728DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333F23FA242D426100728DA8 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		333F23FC242D45BB00728DA8 /* RecipeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStructure.swift; sourceTree = "<group>"; };
+		334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewWithNavigationBar.swift; sourceTree = "<group>"; };
+		334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreen.swift; sourceTree = "<group>"; };
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		33114EBD242B8A3800B246BB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */,
 				33114EC4242B900800B246BB /* RecipesList */,
 			);
 			path = Screens;
@@ -163,6 +168,7 @@
 		33114EC4242B900800B246BB /* RecipesList */ = {
 			isa = PBXGroup;
 			children = (
+				334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */,
 				33114EC2242B8B3000B246BB /* RecipesListScreenController.swift */,
 				33114EC0242B8AFE00B246BB /* RecipesListScreenView.swift */,
 			);
@@ -467,8 +473,10 @@
 			files = (
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
 				33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */,
+				334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */,
 				33114EB9242B85EF00B246BB /* Presentation.swift in Sources */,
 				33114EC3242B8B3000B246BB /* RecipesListScreenController.swift in Sources */,
+				334D9D3C242EAACE00B92997 /* RecipesListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

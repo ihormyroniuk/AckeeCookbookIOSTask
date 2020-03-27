@@ -8,6 +8,6 @@
 
 import AUIKit
 
-class RecipesListScreenController: AUIDefaultScreenController {
+class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen {
 
 }
