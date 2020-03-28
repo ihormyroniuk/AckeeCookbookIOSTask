@@ -8,6 +8,6 @@
 
 import AUIKit
 
-protocol RecipesListScreen {
+protocol RecipesListScreen: AUIScreen {
 
 }

@@ -10,10 +10,24 @@ import AUIKit
 
 public class IPhonePresentation: AUIWindowPresentation, Presentation {
 
+    // MARK: Main Navigation Controller
+
+    private var mainNavigationController: UINavigationController?
+
+    // MARK: Recipes List Screen
+
+    private var recipesList: RecipesListScreen?
+
+    // MARK: Presentation
+
     public func showRecipesList() {
+        let navigationController = AUIHiddenBarInteractiveNavigationController()
         let screenView = RecipesListScreenView()
         let screenController = RecipesListScreenController(view: screenView)
-        window.rootViewController = screenController
+        navigationController.viewControllers = [screenController]
+        mainNavigationController = navigationController
+        recipesList = screenController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
