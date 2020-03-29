@@ -28,6 +28,8 @@
 		333F23FD242D45BB00728DA8 /* RecipeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F23FC242D45BB00728DA8 /* RecipeStructure.swift */; };
 		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
 		334D9D3C242EAACE00B92997 /* RecipesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */; };
+		335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
+		335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */,
+				335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
 				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
@@ -93,6 +96,7 @@
 		333F23FC242D45BB00728DA8 /* RecipeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStructure.swift; sourceTree = "<group>"; };
 		334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewWithNavigationBar.swift; sourceTree = "<group>"; };
 		334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreen.swift; sourceTree = "<group>"; };
+		335246D72430C8F700E4B6C8 /* AFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFoundation.framework; path = Carthage/Build/iOS/AFoundation.framework; sourceTree = "<group>"; };
 		3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AckeeCookbookIOSTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
+				335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */,
 				33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 				33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
 				33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */,
@@ -139,6 +144,7 @@
 		33114E73242B7ABD00B246BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				335246D72430C8F700E4B6C8 /* AFoundation.framework */,
 				33114E74242B7ABD00B246BB /* AUIKit.framework */,
 			);
 			name = Frameworks;
