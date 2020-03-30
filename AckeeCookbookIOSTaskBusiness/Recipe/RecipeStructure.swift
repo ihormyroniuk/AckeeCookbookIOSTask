@@ -12,4 +12,10 @@ public struct RecipeStructure: Recipe {
     public let identifier: String
     public let name: String
     public let duration: UInt
+
+    public init(identifier: String, name: String, duration: UInt) {
+        self.identifier = identifier
+        self.name = name
+        self.duration = duration
+    }
 }

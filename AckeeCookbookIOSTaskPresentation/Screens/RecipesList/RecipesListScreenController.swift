@@ -17,8 +17,31 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     weak var delegate: RecipesListScreenDelegate?
 
     func takeRecipesList(_ list: [Recipe], offset: UInt, limit: UInt) {
-        
+        guard recipesListOffset == offset else { return }
+        recipesListOffset += limit
+        if offset == 0 {
+            recipesList = []
+            recipesListScreenView.collectionViewRefreshControl.endRefreshing()
+            recipesList.append(contentsOf: list)
+            recipesListScreenView.collectionView.reloadData()
+        } else {
+            recipesList.append(contentsOf: list)
+            var insertIndexPathes: [IndexPath] = []
+            for item in Int(offset)..<(Int(offset) + list.count) {
+                let indexPath = IndexPath(item: item, section: 0)
+                insertIndexPathes.append(indexPath)
+            }
+            recipesListScreenView.collectionView.performBatchUpdates({
+                recipesListScreenView.collectionView.insertItems(at: insertIndexPathes)
+            }, completion: nil)
+        }
     }
+
+    // MARK: Data
+
+    private var recipesListOffset: UInt = 0
+    private let recipesListLimit: UInt = 5
+    private var recipesList: [Recipe] = []
 
     // MARK: Localization
 
@@ -55,14 +78,31 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         recipesListScreenView.collectionViewRefreshControl.addTarget(self, action: #selector(refreshRecipesList), for: .valueChanged)
     }
 
+    // MARK: Events
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshList()
+    }
+
     // MARK: Actions
+
+    private func refreshList() {
+        recipesListOffset = 0
+        recipesListScreenView.collectionViewRefreshControl.beginRefreshing()
+        delegate?.recipesListScreenGetList(offset: recipesListOffset, limit: recipesListLimit)
+    }
+
+    private func loadList() {
+        delegate?.recipesListScreenGetList(offset: recipesListOffset, limit: recipesListLimit)
+    }
 
     @objc private func addReceipe() {
         delegate?.recipesListScreenAddRecepe(self)
     }
 
     @objc private func refreshRecipesList() {
-
+        refreshList()
     }
 
     // MARK: Content
@@ -78,20 +118,27 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return recipesList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let recipe = recipesList[indexPath.item]
         let cell: RecipeListItemCollectionViewCell = recipesListScreenView.recipeListItemViewCollectionViewCell(indexPath)
-        cell.nameLabel.text = "sdfdsfdsfsdf sdf dfsd sdf"
+        cell.nameLabel.text = recipe.name
         cell.scoreProgressView.setValue(0.5)
-        cell.durationLabel.text = "10 min."
+        cell.durationLabel.text = "\(recipe.duration) min."
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = recipesListScreenView.recipeListItemViewCollectionViewCellSize(indexPath)
         return size
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if Int(recipesListOffset) - Int(recipesListLimit) == indexPath.item {
+            loadList()
+        }
     }
 
 }

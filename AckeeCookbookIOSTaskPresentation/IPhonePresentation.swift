@@ -7,8 +7,32 @@
 //
 
 import AUIKit
+import AckeeCookbookIOSTaskBusiness
 
 public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate {
+
+    // MARK: Presentation
+
+    public weak var delegate: PresentationDelegate?
+
+    public func takeRecipesList(_ list: [Recipe], offset: UInt, limit: UInt) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipesList?.takeRecipesList(list, offset: offset, limit: limit)
+        }
+    }
+
+    public func showRecipesList() {
+        let navigationController = AUIHiddenBarInteractiveNavigationController()
+        let screenView = RecipesListScreenView()
+        let screenController = RecipesListScreenController(view: screenView)
+        screenController.delegate = self
+        navigationController.viewControllers = [screenController]
+        mainNavigationController = navigationController
+        recipesList = screenController
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+    }
 
     // MARK: Main Navigation Controller
 
@@ -23,21 +47,7 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     }
 
     func recipesListScreenGetList(offset: UInt, limit: UInt) {
-        
-    }
-
-    // MARK: Presentation
-
-    public func showRecipesList() {
-        let navigationController = AUIHiddenBarInteractiveNavigationController()
-        let screenView = RecipesListScreenView()
-        let screenController = RecipesListScreenController(view: screenView)
-        screenController.delegate = self
-        navigationController.viewControllers = [screenController]
-        mainNavigationController = navigationController
-        recipesList = screenController
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+        delegate?.presentationGetRecipesList(self, offset: offset, limit: limit)
     }
     
 }

@@ -117,10 +117,7 @@ class RecipesListScreenView: ScreenViewWithNavigationBar {
     }
 
     func recipeListItemViewCollectionViewCellSize(_ indexPath: IndexPath) -> CGSize {
-        let availableWidthInt = Int(collectionView.bounds.width)
-        let minimumItemWidthAndSpace: Int = 320 + 12
-        let maximumNumberOfItemsForAvailableWidth = (availableWidthInt - 12) / minimumItemWidthAndSpace
-        let width: CGFloat = collectionView.bounds.width / CGFloat(maximumNumberOfItemsForAvailableWidth) - 12
+        let width: CGFloat = collectionView.bounds.width - 24
         let height: CGFloat = 76
         let size = CGSize(width: width, height: height)
         return size
