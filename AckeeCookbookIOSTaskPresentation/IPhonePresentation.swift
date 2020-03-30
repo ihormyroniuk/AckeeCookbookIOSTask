@@ -8,7 +8,7 @@
 
 import AUIKit
 
-public class IPhonePresentation: AUIWindowPresentation, Presentation {
+public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate {
 
     // MARK: Main Navigation Controller
 
@@ -18,12 +18,21 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation {
 
     private var recipesList: RecipesListScreen?
 
+    func recipesListScreenAddRecepe(_ recipesListScreen: RecipesListScreen) {
+        
+    }
+
+    func recipesListScreenGetList(offset: UInt, limit: UInt) {
+        
+    }
+
     // MARK: Presentation
 
     public func showRecipesList() {
         let navigationController = AUIHiddenBarInteractiveNavigationController()
         let screenView = RecipesListScreenView()
         let screenController = RecipesListScreenController(view: screenView)
+        screenController.delegate = self
         navigationController.viewControllers = [screenController]
         mainNavigationController = navigationController
         recipesList = screenController

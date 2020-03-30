@@ -36,7 +36,7 @@ class ScreenViewWithNavigationBar: AUIScreenViewWithStatusBar {
     func layoutNavigationBarView() {
         let x: CGFloat = 0
         let y: CGFloat = statusBarView.frame.origin.y + statusBarView.frame.size.height
-        let width: CGFloat = statusBarView.frame.size.width
+        let width: CGFloat = bounds.size.width
         let height: CGFloat = 44
         let frame = CGRect(x: x, y: y, width: width, height: height)
         navigationBarView.frame = frame
