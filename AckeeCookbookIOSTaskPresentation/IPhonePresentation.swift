@@ -9,16 +9,23 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate {
+public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate {
 
     // MARK: Presentation
 
     public weak var delegate: PresentationDelegate?
 
-    public func takeRecipesList(_ list: [Recipe], offset: UInt, limit: UInt) {
+    public func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.recipesList?.takeRecipesList(list, offset: offset, limit: limit)
+            self.recipesListScreen?.takeRecipesList(list, offset: offset, limit: limit)
+        }
+    }
+
+    public func takeCreatedRecipe(_ recipe: Recipe) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mainNavigationController?.popToRootViewController(animated: true)
         }
     }
 
@@ -29,7 +36,7 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         screenController.delegate = self
         navigationController.viewControllers = [screenController]
         mainNavigationController = navigationController
-        recipesList = screenController
+        recipesListScreen = screenController
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
@@ -40,14 +47,30 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
 
     // MARK: Recipes List Screen
 
-    private var recipesList: RecipesListScreen?
+    private weak var recipesListScreen: RecipesListScreen?
 
-    func recipesListScreenAddRecepe(_ recipesListScreen: RecipesListScreen) {
-        
+    func recipesListScreenAddRecipe(_ recipesListScreen: RecipesListScreen) {
+        let screenView = AddRecipeScreenView()
+        let screenController = AddRecipeScreenController(view: screenView)
+        screenController.delegate = self
+        addRecipeScreen = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
     func recipesListScreenGetList(offset: UInt, limit: UInt) {
         delegate?.presentationGetRecipesList(self, offset: offset, limit: limit)
+    }
+
+    // MARK: Add Recipe Screen
+
+    private weak var addRecipeScreen: AddRecipeScreen?
+
+    func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreen) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+
+    func addRecipeScreenAddRecipe(_ recipe: CreatingRecipe) {
+        delegate?.presentationCreateRecipe(self, creatingRecipe: recipe)
     }
     
 }

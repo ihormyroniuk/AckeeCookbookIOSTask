@@ -9,6 +9,7 @@
 import AUIKit
 import AckeeCookbookIOSTaskPresentation
 import AckeeCookbookIOSTaskWebAPI
+import AckeeCookbookIOSTaskBusiness
 
 class Application: AUIEmptyApplication, PresentationDelegate {
 
@@ -24,8 +25,21 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         webAPI.getRecipesList(offset: offset, limit: limit) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case let .list(recipes):
+            case let .recipesList(recipes):
                 self.presentation.takeRecipesList(recipes, offset: offset, limit: limit)
+            case let .error(error):
+                print(error)
+                break
+            }
+        }
+    }
+
+    func presentationCreateRecipe(_ presentation: Presentation, creatingRecipe: CreatingRecipe) {
+        webAPI.createRecipe(creatingRecipe) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case let .createdRecipe(recipe):
+                self.presentation.takeCreatedRecipe(recipe)
             case let .error(error):
                 print(error)
                 break

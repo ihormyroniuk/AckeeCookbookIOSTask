@@ -10,10 +10,16 @@ import Foundation
 import AckeeCookbookIOSTaskBusiness
 
 public enum GetRecipesListResult {
-    case list([Recipe])
+    case recipesList([RecipeInList])
+    case error(Error)
+}
+
+public enum CreateRecipeResult {
+    case createdRecipe(Recipe)
     case error(Error)
 }
 
 public protocol WebAPI {
     func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesListResult) -> ())
+    func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (CreateRecipeResult) -> ())
 }

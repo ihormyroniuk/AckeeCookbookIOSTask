@@ -16,5 +16,5 @@ UIApplicationMain(
 )
 
 var application: Application! {
-  return UIApplication.shared as? Application
+    return UIApplication.shared as? Application
 }

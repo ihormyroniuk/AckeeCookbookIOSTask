@@ -16,7 +16,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
 
     weak var delegate: RecipesListScreenDelegate?
 
-    func takeRecipesList(_ list: [Recipe], offset: UInt, limit: UInt) {
+    func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt) {
         guard recipesListOffset == offset else { return }
         recipesListOffset += limit
         if offset == 0 {
@@ -40,8 +40,8 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     // MARK: Data
 
     private var recipesListOffset: UInt = 0
-    private let recipesListLimit: UInt = 5
-    private var recipesList: [Recipe] = []
+    private let recipesListLimit: UInt = 20
+    private var recipesList: [RecipeInList] = []
 
     // MARK: Localization
 
@@ -98,7 +98,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     }
 
     @objc private func addReceipe() {
-        delegate?.recipesListScreenAddRecepe(self)
+        delegate?.recipesListScreenAddRecipe(self)
     }
 
     @objc private func refreshRecipesList() {
@@ -125,7 +125,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         let recipe = recipesList[indexPath.item]
         let cell: RecipeListItemCollectionViewCell = recipesListScreenView.recipeListItemViewCollectionViewCell(indexPath)
         cell.nameLabel.text = recipe.name
-        cell.scoreProgressView.setValue(0.5)
+        cell.scoreProgressView.setValue(recipe.score)
         cell.durationLabel.text = "\(recipe.duration) min."
         return cell
     }

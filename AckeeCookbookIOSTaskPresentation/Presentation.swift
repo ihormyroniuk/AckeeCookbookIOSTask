@@ -11,10 +11,12 @@ import AckeeCookbookIOSTaskBusiness
 
 public protocol PresentationDelegate: class {
     func presentationGetRecipesList(_ presentation: Presentation, offset: UInt, limit: UInt)
+    func presentationCreateRecipe(_ presentation: Presentation, creatingRecipe: CreatingRecipe)
 }
 
 public protocol Presentation: AUIPresentation {
     var delegate: PresentationDelegate? { get set }
-    func takeRecipesList(_ list: [Recipe], offset: UInt, limit: UInt)
+    func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt)
+    func takeCreatedRecipe(_ recipe: Recipe)
     func showRecipesList()
 }
