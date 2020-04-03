@@ -35,6 +35,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     // MARL: Controllers
 
     private let nameTextViewController = AUIEmptyTextViewController()
+    private let infoTextViewController = AUIEmptyTextViewController()
 
     // MARK: Setup
 
@@ -42,8 +43,10 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         super.setup()
         addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
-        nameTextViewController.textView = addRecipeScreenView.nameTextInput.textView
+        nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
         nameTextViewController.addDidChangeTextObserver(self)
+        infoTextViewController.textView = addRecipeScreenView.infoTextInputView.textView
+        infoTextViewController.addDidChangeTextObserver(self)
         setContent()
     }
 
@@ -71,7 +74,8 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         addRecipeScreenView.backButton.setTitle(localizer.localizeText("back"), for: .normal)
         addRecipeScreenView.addButton.setTitle(localizer.localizeText("add"), for: .normal)
         addRecipeScreenView.titleLabel.text = localizer.localizeText("title")
-        addRecipeScreenView.nameTextInput.titleLabel.text = localizer.localizeText("recipeName")
+        addRecipeScreenView.nameTextInputView.titleLabel.text = localizer.localizeText("recipeName")?.uppercased()
+        addRecipeScreenView.infoTextInputView.titleLabel.text = localizer.localizeText("recipeInfo")?.uppercased()
     }
 
 }

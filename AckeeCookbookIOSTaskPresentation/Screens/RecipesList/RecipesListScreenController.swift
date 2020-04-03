@@ -80,9 +80,13 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
 
     // MARK: Events
 
+    private var isFirstViewWillAppear = true
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshList()
+        if isFirstViewWillAppear {
+            refreshList()
+        }
+        isFirstViewWillAppear = false
     }
 
     // MARK: Actions
@@ -111,7 +115,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         recipesListScreenView.titleLabel.text = localizer.localizeText("title")
     }
 
-    // MARK: Ssfdsf
+    // MARK: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -125,7 +129,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         let recipe = recipesList[indexPath.item]
         let cell: RecipeListItemCollectionViewCell = recipesListScreenView.recipeListItemViewCollectionViewCell(indexPath)
         cell.nameLabel.text = recipe.name
-        cell.scoreProgressView.setValue(recipe.score)
+        cell.scoreProgressView.setScore(recipe.score)
         cell.durationLabel.text = "\(recipe.duration) min."
         return cell
     }
