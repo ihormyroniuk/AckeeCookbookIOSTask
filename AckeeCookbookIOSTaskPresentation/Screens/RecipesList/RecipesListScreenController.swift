@@ -129,7 +129,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         let recipe = recipesList[indexPath.item]
         let cell: RecipeListItemCollectionViewCell = recipesListScreenView.recipeListItemViewCollectionViewCell(indexPath)
         cell.nameLabel.text = recipe.name
-        cell.scoreProgressView.setScore(recipe.score)
+        cell.scoreView.setScore(recipe.score)
         cell.durationLabel.text = "\(recipe.duration) min."
         return cell
     }

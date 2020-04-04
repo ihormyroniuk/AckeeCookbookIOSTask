@@ -15,7 +15,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
 
     // MARK: Presentation
 
-    lazy var presentation: Presentation = {
+    private lazy var presentation: Presentation = {
         let presentation = IPhonePresentation(window: window)
         presentation.delegate = self
         return presentation
@@ -49,7 +49,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
 
     // MARK: WebAPI
 
-    lazy var webAPI: WebAPI = {
+    private lazy var webAPI: WebAPI = {
         let webAPI = URLSessionSharedWebAPI()
         return webAPI
     }()

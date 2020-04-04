@@ -10,32 +10,27 @@ import AUIKit
 
 class RecipeListItemCollectionViewCell: AUICollectionViewCell {
 
-    private let horizontalStackView = UIStackView()
+    // MARK: Subviews
+
     private let pictureImageView = AUIImageViewSetIntrinsicContentSize()
-    private let verticalRightStackView = UIStackView()
     let nameLabel = UILabel()
-    private let verticalRightBottomStackView = UIStackView()
-    private let durationHorizontalStackView = UIStackView()
-    let scoreProgressView = ScoreProgressView()
-    private let durationPictureImageView = AUIImageViewSetIntrinsicContentSize()
+    let scoreView = ScoreStarsView()
+    private let durationImageView = AUIImageViewSetIntrinsicContentSize()
     let durationLabel = UILabel()
 
     // MARK: Setup
 
     override func setup() {
         super.setup()
-        contentView.addSubview(horizontalStackView)
-        setupHorizontalStackView()
-    }
-
-    private func setupHorizontalStackView() {
-        horizontalStackView.distribution = .fill
-        horizontalStackView.spacing = 8
-        horizontalStackView.alignment = .fill
-        horizontalStackView.addArrangedSubview(pictureImageView)
+        contentView.addSubview(pictureImageView)
         setupPictureImageView()
-        horizontalStackView.addArrangedSubview(verticalRightStackView)
-        setupVerticalRightStackView()
+        contentView.addSubview(durationImageView)
+        setupDurationImageView()
+        contentView.addSubview(durationLabel)
+        setupDurationLabel()
+        contentView.addSubview(scoreView)
+        contentView.addSubview(nameLabel)
+        setupNameLabel()
     }
 
     private func setupPictureImageView() {
@@ -43,14 +38,13 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
         pictureImageView.image = UIImage(named: "RecipesListItemPicture", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
     }
 
-    private func setupVerticalRightStackView() {
-        verticalRightStackView.axis = .vertical
-        verticalRightStackView.distribution = .equalSpacing
-        verticalRightStackView.alignment = .leading
-        verticalRightStackView.addArrangedSubview(nameLabel)
-        setupNameLabel()
-        verticalRightStackView.addArrangedSubview(verticalRightBottomStackView)
-        setupVerticalRightBottomStackView()
+    private func setupDurationImageView() {
+        durationImageView.contentMode = .scaleAspectFit
+        durationImageView.image = UIImage(named: "Clock", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
+    }
+
+    private func setupDurationLabel() {
+        durationLabel.font = UIFont.systemFont(ofSize: 12)
     }
 
     private func setupNameLabel() {
@@ -61,110 +55,87 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
         nameLabel.textColor = UIColor.systemBlue
     }
 
-    private func setupVerticalRightBottomStackView() {
-        verticalRightBottomStackView.axis = .vertical
-        verticalRightBottomStackView.spacing = 4
-        verticalRightBottomStackView.alignment = .leading
-        verticalRightBottomStackView.addArrangedSubview(scoreProgressView)
-        verticalRightBottomStackView.addArrangedSubview(durationHorizontalStackView)
-        setupDurationHorizontalStackView()
-    }
-
-    private func setupDurationHorizontalStackView() {
-        durationHorizontalStackView.alignment = .center
-        durationHorizontalStackView.spacing = 5
-        durationHorizontalStackView.addArrangedSubview(durationPictureImageView)
-        setupDurationPictureImageView()
-        durationHorizontalStackView.addArrangedSubview(durationLabel)
-        setupDurationLabel()
-    }
-
-    private func setupDurationPictureImageView() {
-        durationPictureImageView.contentMode = .scaleAspectFit
-        durationPictureImageView.image = UIImage(named: "Clock", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
-    }
-
-    private func setupDurationLabel() {
-        durationLabel.font = UIFont.systemFont(ofSize: 12)
-    }
-
     // MARK: Layout
 
-    override func layout() {
-        super.layout()
-        layoutHorizontalStackView()
-        layoutVerticalRightStackView()
-        autoLayoutPictureImageView()
-        autolayoutDurationPictureImageView()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutPictureImageView()
+        layoutDurationImageView()
+        layoutDurationLabel()
+        layoutScoreView()
+        layoutNameLabel()
     }
 
-    private func layoutHorizontalStackView() {
-        let frame = contentView.bounds
-        horizontalStackView.frame = frame
+    private let pictureImageViewWidthHeight: CGFloat = 76
+    private func layoutPictureImageView() {
+        let origin = CGPoint.zero
+        let widthHeight: CGFloat = pictureImageViewWidthHeight
+        let size = CGSize(width: widthHeight, height: widthHeight)
+        let frame = CGRect(origin: origin, size: size)
+        pictureImageView.frame = frame
     }
 
-    private func layoutVerticalRightStackView() {
-        let layoutMargins = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
-        verticalRightStackView.layoutMargins = layoutMargins
-        verticalRightStackView.isLayoutMarginsRelativeArrangement = true
+    private let durationImageVieWwidthHeight: CGFloat = 12
+    private func layoutDurationImageView() {
+        let widthHeight: CGFloat = durationImageVieWwidthHeight
+        let size = CGSize(width: widthHeight, height: widthHeight)
+        let x = pictureImageViewWidthHeight + 8
+        let y = pictureImageViewWidthHeight - 4 - widthHeight
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: size)
+        durationImageView.frame = frame
     }
 
-    func autoLayoutPictureImageView() {
-        let height: CGFloat = bounds.height
-        let width = height
-        let intrinsicContentSize = CGSize(width: width, height: height)
-        pictureImageView.setIntrinsicContentSize = intrinsicContentSize
-    }
-
-    private func autolayoutDurationPictureImageView() {
-        let width: CGFloat = 12
-        let height: CGFloat = width
-        let intrinsicContentSize = CGSize(width: width, height: height)
-        durationPictureImageView.setIntrinsicContentSize = intrinsicContentSize
-    }
-}
-
-class ScoreProgressView: UIStackView {
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: Setup
-
-    func setup() {
-        distribution = .equalSpacing
-        spacing = 0
-    }
-
-    // MARK: Star
-
-    private var starImageView: UIImageView {
-        let imageView = AUIImageViewSetIntrinsicContentSize()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Star", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
-        let width: CGFloat = 14
-        let height: CGFloat = 14
-        let intrinsicContentSize = CGSize(width: width, height: height)
-        imageView.setIntrinsicContentSize = intrinsicContentSize
-        return imageView
-    }
-
-    // MARK: Value
-
-    func setScore(_ score: Float) {
-        let count = Int(score.rounded(.toNearestOrAwayFromZero))
-        var array: [UIImageView] = []
-        for _ in 0..<count {
-            array.append(starImageView)
+    private func layoutDurationLabel() {
+        let x = pictureImageViewWidthHeight + 8 + durationImageVieWwidthHeight + 4
+        let height = durationImageVieWwidthHeight
+        let availableWidth = bounds.width - x
+        let availableSize = CGSize(width: availableWidth, height: height)
+        var sizeThatFits = durationLabel.sizeThatFits(availableSize)
+        if sizeThatFits.height > height {
+            sizeThatFits.height = height
         }
-        removeAllArrangedSubviews()
-        addArrangedSubviews(array)
+        let y = durationImageView.frame.origin.y
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: sizeThatFits)
+        durationLabel.frame = frame
     }
-}
 
+    private func layoutScoreView() {
+        scoreView.starImageViewsWidthHeight = 12
+        scoreView.starImageViewsSpace = 2
+        let x = pictureImageViewWidthHeight + 8
+        let availableHeight = CGFloat.greatestFiniteMagnitude
+        let availableWidth = bounds.width - x
+        let availableSize = CGSize(width: availableWidth, height: availableHeight)
+        let sizeThatFits = scoreView.sizeThatFits(availableSize)
+        let y = pictureImageViewWidthHeight - 4 - durationImageVieWwidthHeight - ((sizeThatFits.height - durationImageVieWwidthHeight) * 0.5) - 4 - sizeThatFits.height
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: sizeThatFits)
+        scoreView.frame = frame
+    }
+
+    private func layoutNameLabel() {
+        let x = pictureImageViewWidthHeight + 8
+        let y: CGFloat = 4
+        let availableWidth = bounds.width - x
+        let availableHeight = scoreView.frame.origin.y - 4 - 4
+        let availableSize = CGSize(width: availableWidth, height: availableHeight)
+        var sizeThatFits = nameLabel.sizeThatFits(availableSize)
+        if sizeThatFits.height > availableHeight {
+            sizeThatFits.height = availableHeight
+        }
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: sizeThatFits)
+        nameLabel.frame = frame
+    }
+
+    // MARK: Events
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+
+}

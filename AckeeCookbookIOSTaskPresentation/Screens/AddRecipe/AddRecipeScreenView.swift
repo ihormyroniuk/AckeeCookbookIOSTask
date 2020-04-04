@@ -18,6 +18,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     let scrollView = UIScrollView()
     let nameTextInputView = TextViewInputView()
     let infoTextInputView = TextViewInputView()
+    let ingredientsInputViews = IngredientsInputView()
 
     // MARK: Setup
 
@@ -66,6 +67,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     private func setupScrollView() {
         scrollView.addSubview(nameTextInputView)
         scrollView.addSubview(infoTextInputView)
+        scrollView.addSubview(ingredientsInputViews)
     }
 
     // MARK: Layout
@@ -78,6 +80,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         layoutScrollView()
         layoutNameTextInput()
         layoutInfoTextInput()
+        layoutIngredientsInputViews()
         setScrollViewContentSize()
     }
 
@@ -163,9 +166,21 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         infoTextInputView.layoutIfNeeded()
     }
 
+    private func layoutIngredientsInputViews() {
+        let x: CGFloat = 24
+        let y: CGFloat = infoTextInputView.frame.origin.y + infoTextInputView.frame.size.height + 30
+        let origin = CGPoint(x: x, y: y)
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width - x * 2
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = ingredientsInputViews.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        ingredientsInputViews.frame = frame
+    }
+
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height = infoTextInputView.frame.origin.y + infoTextInputView.frame.height
+        let height = ingredientsInputViews.frame.origin.y + ingredientsInputViews.frame.height
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
     }
