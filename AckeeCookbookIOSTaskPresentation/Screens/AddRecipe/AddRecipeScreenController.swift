@@ -36,6 +36,8 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
 
     private let nameTextViewController = AUIEmptyTextViewController()
     private let infoTextViewController = AUIEmptyTextViewController()
+    private var ingredientInputViewControllers: [AUIEmptyTextViewController] = []
+    private let descriptionTextViewController = AUIEmptyTextViewController()
 
     // MARK: Setup
 
@@ -47,6 +49,9 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         nameTextViewController.addDidChangeTextObserver(self)
         infoTextViewController.textView = addRecipeScreenView.infoTextInputView.textView
         infoTextViewController.addDidChangeTextObserver(self)
+        descriptionTextViewController.textView = addRecipeScreenView.descriptionTextInputView.textView
+        descriptionTextViewController.addDidChangeTextObserver(self)
+        addRecipeScreenView.addIngredientButton.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
         setContent()
     }
 
@@ -64,8 +69,29 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     }
 
     @objc private func add() {
-        let recipe = StructureCreatingRecipe(name: "Ackee name \(UUID().uuidString)", description: "description", ingredients: ["ingredient1", "ingredient2"], duration: 10, info: "info")
+        guard let name = nameTextViewController.text else {
+
+            return
+        }
+        guard let description = descriptionTextViewController.text else {
+
+            return
+        }
+        let ingredients = ingredientInputViewControllers.map({ $0.text }).compactMap({ $0 })
+        guard let info = infoTextViewController.text else {
+
+            return
+        }
+        let recipe = StructureCreatingRecipe(name: name, description: description, ingredients: ingredients, duration: 100, info: info)
         delegate?.addRecipeScreenAddRecipe(recipe)
+    }
+
+    @objc private func addIngredient() {
+        let ingredientInputView = addRecipeScreenView.addIngredientInputView()
+        let ingredientInputViewController = AUIEmptyTextViewController()
+        ingredientInputViewController.addDidChangeTextObserver(self)
+        ingredientInputViewController.textView = ingredientInputView.textView
+        ingredientInputViewControllers.append(ingredientInputViewController)
     }
 
     // MARK: Content
@@ -76,6 +102,9 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         addRecipeScreenView.titleLabel.text = localizer.localizeText("title")
         addRecipeScreenView.nameTextInputView.titleLabel.text = localizer.localizeText("recipeName")?.uppercased()
         addRecipeScreenView.infoTextInputView.titleLabel.text = localizer.localizeText("recipeInfo")?.uppercased()
+        addRecipeScreenView.ingredientsLabel.text = localizer.localizeText("recipeIngredients")?.uppercased()
+        addRecipeScreenView.addIngredientButton.setTitle(localizer.localizeText("recideAddIngredient")?.uppercased(), for: .normal)
+        addRecipeScreenView.descriptionTextInputView.titleLabel.text = localizer.localizeText("recideDescription")?.uppercased()
     }
 
 }

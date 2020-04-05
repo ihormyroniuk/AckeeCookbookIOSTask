@@ -24,6 +24,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
             recipesListScreenView.collectionViewRefreshControl.endRefreshing()
             recipesList.append(contentsOf: list)
             recipesListScreenView.collectionView.reloadData()
+            recipesListScreenView.collectionView.contentOffset = .zero
         } else {
             recipesList.append(contentsOf: list)
             var insertIndexPathes: [IndexPath] = []
@@ -35,6 +36,10 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
                 recipesListScreenView.collectionView.insertItems(at: insertIndexPathes)
             }, completion: nil)
         }
+    }
+
+    func knowRecipeCreated(_ recipe: Recipe) {
+        refreshList()
     }
 
     // MARK: Data

@@ -17,4 +17,5 @@ protocol RecipesListScreenDelegate: class {
 protocol RecipesListScreen: AUIScreen {
     var delegate: RecipesListScreenDelegate? { get set }
     func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt)
+    func knowRecipeCreated(_ recipe: Recipe)
 }

@@ -18,7 +18,10 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     let scrollView = UIScrollView()
     let nameTextInputView = TextViewInputView()
     let infoTextInputView = TextViewInputView()
-    let ingredientsInputViews = IngredientsInputView()
+    let ingredientsLabel = UILabel()
+    private var ingredientInputViews: [IngredientInputView] = []
+    let addIngredientButton = UIButton()
+    let descriptionTextInputView = TextViewInputView()
 
     // MARK: Setup
 
@@ -67,7 +70,24 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     private func setupScrollView() {
         scrollView.addSubview(nameTextInputView)
         scrollView.addSubview(infoTextInputView)
-        scrollView.addSubview(ingredientsInputViews)
+        scrollView.addSubview(ingredientsLabel)
+        setupIngredientsLabel()
+        scrollView.addSubview(addIngredientButton)
+        setupAddIngredientButton()
+        scrollView.addSubview(descriptionTextInputView)
+    }
+
+    private func setupIngredientsLabel() {
+        ingredientsLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        ingredientsLabel.textColor = UIColor.systemBlue
+    }
+
+    private func setupAddIngredientButton() {
+        addIngredientButton.layer.borderColor = UIColor.systemPink.cgColor
+        addIngredientButton.setTitleColor(.systemPink, for: .normal)
+        addIngredientButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        let image = UIImage(named: "Plus", in: Bundle(for: AddRecipeScreenView.self), compatibleWith: nil)
+        addIngredientButton.setImage(image, for: .normal)
     }
 
     // MARK: Layout
@@ -80,7 +100,10 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         layoutScrollView()
         layoutNameTextInput()
         layoutInfoTextInput()
-        layoutIngredientsInputViews()
+        layoutIngredientsLabel()
+        layoutIngredientInputViews()
+        layoutAddIngredientButton()
+        layoutDescriptionTextInput()
         setScrollViewContentSize()
     }
 
@@ -166,23 +189,82 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         infoTextInputView.layoutIfNeeded()
     }
 
-    private func layoutIngredientsInputViews() {
+    private func layoutIngredientsLabel() {
         let x: CGFloat = 24
         let y: CGFloat = infoTextInputView.frame.origin.y + infoTextInputView.frame.size.height + 30
         let origin = CGPoint(x: x, y: y)
         let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
         let possibleWidth = scrollView.bounds.width - x * 2
         let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
-        let size = ingredientsInputViews.sizeThatFits(possibleSize)
+        let size = ingredientsLabel.sizeThatFits(possibleSize)
         let frame = CGRect(origin: origin, size: size)
-        ingredientsInputViews.frame = frame
+        ingredientsLabel.frame = frame
+    }
+
+    private func layoutIngredientInputViews() {
+        let x: CGFloat = 24
+        var y: CGFloat = ingredientsLabel.frame.origin.y + ingredientsLabel.frame.size.height
+        let width = scrollView.bounds.width - x * 2
+        for ingredientInputView in ingredientInputViews {
+            let origin = CGPoint(x: x, y: y)
+            let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+            let possibleSize = CGSize(width: width, height: possibleHeight)
+            let sizeThatFits = ingredientInputView.sizeThatFits(possibleSize)
+            let frame = CGRect(origin: origin, size: sizeThatFits)
+            ingredientInputView.frame = frame
+            y += sizeThatFits.height
+        }
+    }
+
+    private func layoutAddIngredientButton() {
+        let titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
+        addIngredientButton.titleEdgeInsets = titleEdgeInsets
+        let contentEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 10)
+        addIngredientButton.contentEdgeInsets = contentEdgeInsets
+        addIngredientButton.layer.cornerRadius = 6
+        addIngredientButton.layer.borderWidth = 2
+        let x: CGFloat = 24
+        let upperView = ingredientInputViews.last ?? ingredientsLabel
+        let y: CGFloat = upperView.frame.origin.y + upperView.frame.size.height + 16
+        let origin = CGPoint(x: x, y: y)
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width - x * 2
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = addIngredientButton.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        addIngredientButton.frame = frame
+    }
+
+    private func layoutDescriptionTextInput() {
+        let x: CGFloat = 24
+        let y: CGFloat = addIngredientButton.frame.origin.y + addIngredientButton.frame.size.height + 30
+        let origin = CGPoint(x: x, y: y)
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width - x * 2
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = descriptionTextInputView.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        descriptionTextInputView.frame = frame
+        descriptionTextInputView.setNeedsLayout()
+        descriptionTextInputView.layoutIfNeeded()
     }
 
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height = ingredientsInputViews.frame.origin.y + ingredientsInputViews.frame.height
+        let height = descriptionTextInputView.frame.origin.y + descriptionTextInputView.frame.height
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
+    }
+
+    // MARK:
+
+    func addIngredientInputView() -> IngredientInputView {
+        let ingredientInputView = IngredientInputView()
+        ingredientInputViews.append(ingredientInputView)
+        scrollView.addSubview(ingredientInputView)
+        setNeedsLayout()
+        layoutIfNeeded()
+        return ingredientInputView
     }
 
 }

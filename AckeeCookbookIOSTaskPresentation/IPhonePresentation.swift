@@ -25,7 +25,8 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     public func takeCreatedRecipe(_ recipe: Recipe) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.mainNavigationController?.popToRootViewController(animated: true)
+            self.mainNavigationController?.popViewController(animated: true)
+            self.recipesListScreen?.knowRecipeCreated(recipe)
         }
     }
 

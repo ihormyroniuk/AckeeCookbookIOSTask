@@ -98,99 +98,6 @@ class TextViewInputView: AUIView {
 
 }
 
-class IngredientsInputView: AUIView {
-
-    let titleLabel = UILabel()
-    let inputViews: [IngredientInputView] = [IngredientInputView(), IngredientInputView()]
-    let addButton = UIButton()
-
-    override func setup() {
-        super.setup()
-        addSubview(titleLabel)
-        setupTitleLabel()
-        addSubview(addButton)
-        setupAddButton()
-        for inputView in inputViews {
-            addSubview(inputView)
-        }
-    }
-
-    private func setupTitleLabel() {
-        
-    }
-
-    private func setupAddButton() {
-
-    }
-
-    override func layout() {
-        super.layout()
-        layoutTitleLabel()
-        layoutInputViews()
-        layoutAddButton()
-    }
-
-    private func layoutTitleLabel() {
-        let origin = CGPoint.zero
-        let possibleWidth: CGFloat = bounds.width
-        let possibleHeight = bounds.height
-        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
-        let size = titleLabel.sizeThatFits(possibleSize)
-        let frame = CGRect(origin: origin, size: size)
-        titleLabel.frame = frame
-    }
-
-    private func layoutInputViews() {
-        let x: CGFloat = 0
-        var y: CGFloat = titleLabel.frame.height + 12
-        for inputView in inputViews {
-            let availableWidth = bounds.width
-            let availableHeight = bounds.height - titleLabel.frame.height
-            let availableSize = CGSize(width: availableWidth, height: availableHeight)
-            let sizeThatFits = inputView.sizeThatFits(availableSize)
-            let origin = CGPoint(x: x, y: y)
-            let frame = CGRect(origin: origin, size: sizeThatFits)
-            inputView.frame = frame
-            y += sizeThatFits.height + 4
-        }
-    }
-
-    private func layoutAddButton() {
-        let x: CGFloat = 0
-        let y: CGFloat
-        if let lastInputView = inputViews.last {
-            y = lastInputView.frame.origin.y + lastInputView.frame.size.height + 4
-        } else {
-            y = titleLabel.frame.height + 4
-        }
-        let availableWidth = bounds.width
-        let availableHeight = bounds.height
-        let availableSize = CGSize(width: availableWidth, height: availableHeight)
-        let sizeThatFits = addButton.sizeThatFits(availableSize)
-        let origin = CGPoint(x: x, y: y)
-        let frame = CGRect(origin: origin, size: sizeThatFits)
-        addButton.frame = frame
-    }
-
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var height: CGFloat = 0
-        height += titleLabel.sizeThatFits(size).height
-        height += 4
-        for inputView in inputViews {
-            let sizeThatFits = inputView.sizeThatFits(size)
-            height += sizeThatFits.height
-            height += 4
-        }
-        if !inputViews.isEmpty {
-            height -= 4
-        }
-        height += 4
-        height += addButton.sizeThatFits(size).height
-        let sizeThatFits = CGSize(width: size.width, height: height)
-        return sizeThatFits
-    }
-}
-
 class IngredientInputView: AUIView {
 
     // MARK: Elements
@@ -210,7 +117,12 @@ class IngredientInputView: AUIView {
     }
 
     private func setupTextView() {
+        textView.isScrollEnabled = false
+        textView.alwaysBounceVertical = false
+        textView.bounces = false
+        textView.font = UIFont.systemFont(ofSize: 16)
         textView.tintColor = UIColor.systemBlue
+        textView.textContainer.lineFragmentPadding = 0
     }
 
     private func setupUnderlineLayer() {

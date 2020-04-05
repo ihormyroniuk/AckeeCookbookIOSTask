@@ -11,3 +11,6 @@
 "back" = "Back";
 "recipeName" = "Name";
 "recipeInfo" = "Info";
+"recipeIngredients" = "Ingredients";
+"recideAddIngredient" = "Add";
+"recideDescription" = "Description";
