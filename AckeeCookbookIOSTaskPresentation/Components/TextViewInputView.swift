@@ -98,7 +98,7 @@ class TextViewInputView: AUIView {
 
 }
 
-class IngredientInputView: AUIView {
+class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextInputView {
 
     // MARK: Elements
 
@@ -114,6 +114,8 @@ class IngredientInputView: AUIView {
         setupTextView()
         layer.addSublayer(underlineLayer)
         setupUnderlineLayer()
+        layer.addSublayer(placeholderTextLayer)
+        setupPlaceholderTextLayer()
     }
 
     private func setupTextView() {
@@ -129,12 +131,18 @@ class IngredientInputView: AUIView {
         underlineLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
     }
 
+    private func setupPlaceholderTextLayer() {
+        placeholderTextLayer.foregroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        placeholderTextLayer.fontSize = 16
+    }
+
     // MARK: Layout
 
     override func layout() {
         super.layout()
         layoutTextView()
         layoutUnderlineLayer()
+        layoutPlaceholderTextLayer()
     }
 
     private func layoutTextView() {
@@ -156,6 +164,11 @@ class IngredientInputView: AUIView {
         underlineLayer.frame = frame
     }
 
+    private func layoutPlaceholderTextLayer() {
+        let frame = textView.frame
+        placeholderTextLayer.frame = frame
+    }
+
     // MARK: Size
 
     private let underlineLayerHeight: CGFloat = 1
@@ -165,6 +178,34 @@ class IngredientInputView: AUIView {
         let height: CGFloat = textViewSize.height + underlineLayerHeight
         let sizeThatFits = CGSize(width: width, height: height)
         return sizeThatFits
+    }
+
+    // MARK: AUIResponsiveTextInputView
+
+    var textField: UITextField = UITextField()
+
+    func responsiveTextInputViewDidBeginEditingEmpty(animated: Bool) {
+        placeholderTextLayer.isHidden = true
+    }
+
+    func responsiveTextInputViewDidBeginEditingNonempty(animated: Bool) {
+        placeholderTextLayer.isHidden = false
+    }
+
+    func responsiveTextInputViewDidBecomeEmpty(animated: Bool) {
+
+    }
+
+    func responsiveTextInputViewDidBecomeNonEmpty(animated: Bool) {
+        placeholderTextLayer.isHidden = true
+    }
+
+    func responsiveTextInputViewDidEndEditingEmpty(animated: Bool) {
+        placeholderTextLayer.isHidden = false
+    }
+
+    func responsiveTextInputViewDidEndEditingNonempty(animated: Bool) {
+        placeholderTextLayer.isHidden = true
     }
 
 }
