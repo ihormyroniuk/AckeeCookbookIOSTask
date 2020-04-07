@@ -23,6 +23,8 @@
 		33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3318C35D2434D8F8009201E7 /* WebAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35C2434D8F8009201E7 /* WebAPIError.swift */; };
 		3318C35F2434D924009201E7 /* StructureWebAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35E2434D924009201E7 /* StructureWebAPIError.swift */; };
+		3318F118243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */; };
+		3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */; };
 		331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */; };
 		331A5E5A2432A095008AFDE0 /* AddRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */; };
 		331A5E5C2432A0A0008AFDE0 /* AddRecipeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */; };
@@ -51,6 +53,7 @@
 		335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D14D42438F98000BAB922 /* ScoreStarsView.swift */; };
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
+		33E6B61B243A30AA006200F1 /* RecipeInDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6B61A243A30AA006200F1 /* RecipeInDetailsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,8 @@
 		33114ECD242BD06700B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3318C35C2434D8F8009201E7 /* WebAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIError.swift; sourceTree = "<group>"; };
 		3318C35E2434D924009201E7 /* StructureWebAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureWebAPIError.swift; sourceTree = "<group>"; };
+		3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenController.swift; sourceTree = "<group>"; };
+		3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenView.swift; sourceTree = "<group>"; };
 		331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreen.swift; sourceTree = "<group>"; };
 		331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreenController.swift; sourceTree = "<group>"; };
 		331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreenView.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		3367D6EC242836940053A509 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3367D6EF242836940053A509 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3367D6F1242836940053A509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33E6B61A243A30AA006200F1 /* RecipeInDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,7 @@
 				334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */,
 				33114EC4242B900800B246BB /* RecipesList */,
 				331A5E562432A026008AFDE0 /* AddRecipe */,
+				33E6B619243A3043006200F1 /* RecipeInDetails */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -253,6 +260,7 @@
 				331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */,
 				331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */,
 				331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */,
+				333A42052436501900170AA2 /* TextViewInputView.swift */,
 				331A5E5D2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings */,
 			);
 			path = AddRecipe;
@@ -300,7 +308,6 @@
 		335D14D22438F90800BAB922 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				333A42052436501900170AA2 /* TextViewInputView.swift */,
 				335D14D32438F94E00BAB922 /* Score */,
 			);
 			path = Components;
@@ -347,6 +354,16 @@
 				3367D6F1242836940053A509 /* Info.plist */,
 			);
 			path = AckeeCookbookIOSTask;
+			sourceTree = "<group>";
+		};
+		33E6B619243A3043006200F1 /* RecipeInDetails */ = {
+			isa = PBXGroup;
+			children = (
+				33E6B61A243A30AA006200F1 /* RecipeInDetailsScreen.swift */,
+				3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */,
+				3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */,
+			);
+			path = RecipeInDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,10 +605,13 @@
 			files = (
 				333A42062436501900170AA2 /* TextViewInputView.swift in Sources */,
 				331A5E5C2432A0A0008AFDE0 /* AddRecipeScreenView.swift in Sources */,
+				33E6B61B243A30AA006200F1 /* RecipeInDetailsScreen.swift in Sources */,
+				3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */,
 				331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */,
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
 				33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */,
 				335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */,
+				3318F118243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift in Sources */,
 				334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */,
 				33114EB9242B85EF00B246BB /* Presentation.swift in Sources */,
 				33114EC3242B8B3000B246BB /* RecipesListScreenController.swift in Sources */,

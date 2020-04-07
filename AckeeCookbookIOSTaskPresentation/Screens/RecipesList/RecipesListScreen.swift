@@ -11,7 +11,8 @@ import AckeeCookbookIOSTaskBusiness
 
 protocol RecipesListScreenDelegate: class {
     func recipesListScreenAddRecipe(_ recipesListScreen: RecipesListScreen)
-    func recipesListScreenGetList(offset: UInt, limit: UInt)
+    func recipesListScreenGetList(_ recipesListScreen: RecipesListScreen, offset: UInt, limit: UInt)
+    func recipesListScreenShowRecipeInDetails(_ recipesListScreen: RecipesListScreen, recipeInList: RecipeInList)
 }
 
 protocol RecipesListScreen: AUIScreen {

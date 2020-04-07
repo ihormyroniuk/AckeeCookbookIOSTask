@@ -99,11 +99,11 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     private func refreshList() {
         recipesListOffset = 0
         recipesListScreenView.collectionViewRefreshControl.beginRefreshing()
-        delegate?.recipesListScreenGetList(offset: recipesListOffset, limit: recipesListLimit)
+        delegate?.recipesListScreenGetList(self, offset: recipesListOffset, limit: recipesListLimit)
     }
 
     private func loadList() {
-        delegate?.recipesListScreenGetList(offset: recipesListOffset, limit: recipesListLimit)
+        delegate?.recipesListScreenGetList(self, offset: recipesListOffset, limit: recipesListLimit)
     }
 
     @objc private func addReceipe() {
@@ -148,6 +148,11 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         if Int(recipesListOffset) - Int(recipesListLimit) == indexPath.item {
             loadList()
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recipe = recipesList[indexPath.item]
+        delegate?.recipesListScreenShowRecipeInDetails(self, recipeInList: recipe)
     }
 
 }

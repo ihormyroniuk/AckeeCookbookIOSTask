@@ -36,7 +36,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
 
     private let nameTextViewController = AUIEmptyTextViewController()
     private let infoTextViewController = AUIEmptyTextViewController()
-    private var ingredientInputViewControllers: [AUIEmptyTextViewController] = []
+    private var ingredientInputViewControllers: [AUIResponsiveTextViewTextInputViewController] = []
     private let descriptionTextViewController = AUIEmptyTextViewController()
 
     // MARK: Setup
@@ -77,7 +77,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
 
             return
         }
-        let ingredients = ingredientInputViewControllers.map({ $0.text }).compactMap({ $0 })
+        let ingredients = ingredientInputViewControllers.map({ $0.textViewController?.text }).compactMap({ $0 })
         guard let info = infoTextViewController.text else {
 
             return
@@ -88,10 +88,13 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
 
     @objc private func addIngredient() {
         let ingredientInputView = addRecipeScreenView.addIngredientInputView()
-        let ingredientInputViewController = AUIEmptyTextViewController()
-        ingredientInputViewController.addDidChangeTextObserver(self)
-        ingredientInputViewController.textView = ingredientInputView.textView
-        ingredientInputViewControllers.append(ingredientInputViewController)
+        ingredientInputView.placeholderTextLayer.string = "sdfdsfsdf"
+        let textViewController = AUIEmptyTextViewController()
+        textViewController.addDidChangeTextObserver(self)
+        let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()
+        textViewTextInputController.textViewController = textViewController
+        textViewTextInputController.responsiveSubtextInputView = ingredientInputView
+        ingredientInputViewControllers.append(textViewTextInputController)
     }
 
     // MARK: Content

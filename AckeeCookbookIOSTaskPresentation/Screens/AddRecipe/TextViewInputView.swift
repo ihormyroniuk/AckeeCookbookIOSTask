@@ -181,9 +181,7 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
     }
 
     // MARK: AUIResponsiveTextInputView
-
-    var textField: UITextField = UITextField()
-
+    
     func responsiveTextInputViewDidBeginEditingEmpty(animated: Bool) {
         placeholderTextLayer.isHidden = true
     }

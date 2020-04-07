@@ -58,8 +58,15 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesListScreenGetList(offset: UInt, limit: UInt) {
+    func recipesListScreenGetList(_ recipesListScreen: RecipesListScreen, offset: UInt, limit: UInt) {
         delegate?.presentationGetRecipesList(self, offset: offset, limit: limit)
+    }
+
+    func recipesListScreenShowRecipeInDetails(_ recipesListScreen: RecipesListScreen, recipeInList: RecipeInList) {
+        let screenView = RecipeInDetailsScreenView()
+        let screenController = RecipeInDetailsScreenController(view: screenView)
+        recipeInDetailsScreen = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
     // MARK: Add Recipe Screen
@@ -73,5 +80,11 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     func addRecipeScreenAddRecipe(_ recipe: CreatingRecipe) {
         delegate?.presentationCreateRecipe(self, creatingRecipe: recipe)
     }
+
+    // MARK: Recipe In Details Screen
+
+    private weak var recipeInDetailsScreen: RecipeInDetailsScreen?
+
+
     
 }
