@@ -28,8 +28,8 @@ class ScreenViewWithNavigationBar: AUIScreenViewWithStatusBar {
 
     // MARK: Layout
 
-    override func layout() {
-        super.layout()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutNavigationBarView()
     }
 

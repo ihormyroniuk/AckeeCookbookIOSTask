@@ -93,7 +93,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         textViewController.addDidChangeTextObserver(self)
         let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()
         textViewTextInputController.textViewController = textViewController
-        textViewTextInputController.responsiveSubtextInputView = ingredientInputView
+        textViewTextInputController.responsiveTextInputView = ingredientInputView
         ingredientInputViewControllers.append(textViewTextInputController)
     }
 

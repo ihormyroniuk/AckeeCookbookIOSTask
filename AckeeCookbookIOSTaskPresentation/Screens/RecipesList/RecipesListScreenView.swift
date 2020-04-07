@@ -67,8 +67,8 @@ class RecipesListScreenView: ScreenViewWithNavigationBar {
 
     // Layout
 
-    override func layout() {
-        super.layout()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutAddRecipeButton()
         layoutTitleLabel()
         layoutCollectionView()

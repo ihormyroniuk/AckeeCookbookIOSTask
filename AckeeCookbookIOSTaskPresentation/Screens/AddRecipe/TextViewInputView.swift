@@ -48,8 +48,8 @@ class TextViewInputView: AUIView {
 
     // MARK: Layout
 
-    override func layout() {
-        super.layout()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutTitleLabel()
         layoutTextView()
         layoutUnderlineLayer()
@@ -138,8 +138,8 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
 
     // MARK: Layout
 
-    override func layout() {
-        super.layout()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutTextView()
         layoutUnderlineLayer()
         layoutPlaceholderTextLayer()

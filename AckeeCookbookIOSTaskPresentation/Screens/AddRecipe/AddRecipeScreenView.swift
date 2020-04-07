@@ -92,8 +92,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
 
     // MARK: Layout
 
-    override func layout() {
-        super.layout()
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layoutBackButton()
         layoutAddButton()
         layoutTitleLabel()
