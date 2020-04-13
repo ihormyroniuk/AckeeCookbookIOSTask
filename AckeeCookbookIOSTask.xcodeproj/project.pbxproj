@@ -54,6 +54,8 @@
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 		33E6B61B243A30AA006200F1 /* RecipeInDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6B61A243A30AA006200F1 /* RecipeInDetailsScreen.swift */; };
+		C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; };
+		C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,13 @@
 			remoteGlobalIDString = 333F23E7242D155C00728DA8;
 			remoteInfo = AckeeCookbookIOSTaskBusiness;
 		};
+		C5145B2424450055007968D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3367D6D8242836930053A509 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 333F23E7242D155C00728DA8;
+			remoteInfo = AckeeCookbookIOSTaskBusiness;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +100,17 @@
 				335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
 				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5145B2624450055007968D3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,10 +443,12 @@
 				33114EC6242BD06700B246BB /* Sources */,
 				33114EC7242BD06700B246BB /* Frameworks */,
 				33114EC8242BD06700B246BB /* Resources */,
+				C5145B2624450055007968D3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C5145B2524450055007968D3 /* PBXTargetDependency */,
 			);
 			name = AckeeCookbookIOSTaskWebAPI;
 			productName = AckeeCookbookIOSTaskWebAPI;
@@ -673,6 +696,11 @@
 			isa = PBXTargetDependency;
 			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
 			targetProxy = 333F23ED242D155C00728DA8 /* PBXContainerItemProxy */;
+		};
+		C5145B2524450055007968D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
+			targetProxy = C5145B2424450055007968D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
