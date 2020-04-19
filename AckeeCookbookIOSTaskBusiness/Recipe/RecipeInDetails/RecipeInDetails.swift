@@ -1,5 +1,5 @@
 //
-//  Recipe.swift
+//  RecipeInDetails.swift
 //  AckeeCookbookIOSTaskBusiness
 //
 //  Created by Ihor Myroniuk on 3/31/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Recipe {
+public protocol RecipeInDetails: RecipeInList {
     var id: String { get }
     var name: String { get }
     var duration: UInt { get }

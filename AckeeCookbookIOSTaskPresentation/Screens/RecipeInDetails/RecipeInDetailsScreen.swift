@@ -10,11 +10,12 @@ import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
 protocol RecipesInDetailsScreenDelegate: class {
-    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipesListScreen)
-    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipesListScreen, recipeInList: RecipeInList)
+    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeInDetailsScreen)
+    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInList: RecipeInList)
+    func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails)
 }
 
 protocol RecipeInDetailsScreen: AUIScreen {
     var delegate: RecipesInDetailsScreenDelegate? { get set }
-    func takeRecipeInDetails(_ recipeInDetails: Recipe, recipeInList: RecipeInList)
+    func takeRecipeInDetails(_ recipeInDetails: RecipeInDetails, recipeInList: RecipeInList)
 }

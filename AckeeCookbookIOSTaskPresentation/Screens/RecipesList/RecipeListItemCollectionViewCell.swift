@@ -35,7 +35,7 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
 
     private func setupPictureImageView() {
         pictureImageView.contentMode = .scaleAspectFit
-        pictureImageView.image = UIImage(named: "RecipesListItemPicture", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
+        pictureImageView.image = UIImage(named: "RecipeInListPicture", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
     }
 
     private func setupDurationImageView() {

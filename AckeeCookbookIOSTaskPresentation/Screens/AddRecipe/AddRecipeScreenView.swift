@@ -10,7 +10,7 @@ import AUIKit
 
 class AddRecipeScreenView: ScreenViewWithNavigationBar {
 
-    // MARK: Elements
+    // MARK: Subview
 
     let titleLabel = UILabel()
     let addButton = UIButton(type: .system)

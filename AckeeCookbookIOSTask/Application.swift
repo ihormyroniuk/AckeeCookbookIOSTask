@@ -12,6 +12,13 @@ import AckeeCookbookIOSTaskWebAPI
 import AckeeCookbookIOSTaskBusiness
 
 class Application: AUIEmptyApplication, PresentationDelegate {
+    
+    // MARK: Launching
+
+    override func didFinishLaunching() {
+        super.didFinishLaunching()
+        presentation.showRecipesList()
+    }
 
     // MARK: Presentation
 
@@ -46,6 +53,32 @@ class Application: AUIEmptyApplication, PresentationDelegate {
             }
         }
     }
+    
+    func presentationGetRecipeInDetails(_ presentation: Presentation, recipeInList: RecipeInList) {
+        let recipeId = recipeInList.id
+        webAPI.getRecipeInDetails(recipeId) { (result) in
+            switch result {
+            case let .recipeInDetails(recipe):
+                self.presentation.takeRecipeInDetails(recipe, recipeInList: recipeInList)
+            case let .error(error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    func presentationDeleteRecipeInDetails(_ presentation: Presentation, recipeInDetails: RecipeInDetails) {
+        let recipeId = recipeInDetails.id
+        webAPI.deleteRecipe(recipeId) { (result) in
+            switch result {
+            case .deleted:
+                self.presentation.deleteRecipeInDetails(recipeInDetails)
+            case let .error(error):
+                print(error)
+                break
+            }
+        }
+    }
 
     // MARK: WebAPI
 
@@ -53,11 +86,4 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         let webAPI = URLSessionSharedWebAPI()
         return webAPI
     }()
-
-    // MARK: Launching
-
-    override func didFinishLaunching() {
-        super.didFinishLaunching()
-        presentation.showRecipesList()
-    }
 }

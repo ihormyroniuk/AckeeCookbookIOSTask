@@ -1,5 +1,5 @@
 //
-//  RecipeStructure.swift
+//  RecipeInDetailsStructure.swift
 //  AckeeCookbookIOSTaskBusiness
 //
 //  Created by Ihor Myroniuk on 3/31/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct RecipeStructure: Recipe {
+public struct RecipeInDetailsStructure: RecipeInDetails {
     public let id: String
     public let name: String
     public let duration: UInt

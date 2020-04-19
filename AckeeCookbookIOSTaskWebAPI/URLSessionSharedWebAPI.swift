@@ -126,11 +126,62 @@ public class URLSessionSharedWebAPI: WebAPI {
                     guard let ingredients = json["ingredients"] as? [String] else { return }
                     guard let duration = json["duration"] as? UInt else { return }
                     guard let score = (json["score"] as? NSNumber)?.floatValue else { return }
-                    let recipe = RecipeStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
+                    let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
                     completionHandler(.createdRecipe(recipe))
                 } catch {
                     completionHandler(.error(error))
                 }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    private let getRecipeInDetailsPath = "/api/v1/recipes/%@"
+    public func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (GetRecipeInDetailsResult) -> ()) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        let path = String(format: getRecipeInDetailsPath, recipeId)
+        urlComponents.path = path
+        let url = urlComponents.url!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                        return
+                    }
+                    guard let id = json["id"] as? String else { return }
+                    guard let name = json["name"] as? String else { return }
+                    guard let description = json["description"] as? String else { return }
+                    guard let info = json["info"] as? String else { return }
+                    let ingredients = json["ingredients"] as? [String] ?? []
+                    guard let duration = json["duration"] as? UInt else { return }
+                    guard let score = (json["score"] as? NSNumber)?.floatValue else { return }
+                    let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
+                    completionHandler(.recipeInDetails(recipe))
+                } catch {
+                    completionHandler(.error(error))
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    private let deleteRecipePath = "/api/v1/recipes/%@"
+    public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (DeleteRecipeResult) -> ()) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        let path = String(format: getRecipeInDetailsPath, recipeId)
+        urlComponents.path = path
+        let url = urlComponents.url!
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if (response as? HTTPURLResponse)?.statusCode == 204 {
+                completionHandler(.deleted)
             }
         }
         dataTask.resume()

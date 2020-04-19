@@ -38,8 +38,19 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         }
     }
 
-    func knowRecipeCreated(_ recipe: Recipe) {
+    func knowRecipeCreated(_ recipe: RecipeInDetails) {
         refreshList()
+    }
+    
+    func deleteRecipe(_ recipe: RecipeInList) {
+        let id = recipe.id
+        guard let item = recipesList.firstIndex(where: { $0.id == id }) else { return }
+        recipesList.remove(at: item)
+        recipesListOffset -= 1
+        let indexPath = IndexPath(item: item, section: 0)
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.deleteItems(at: [indexPath])
+        }, completion: nil)
     }
 
     // MARK: Data

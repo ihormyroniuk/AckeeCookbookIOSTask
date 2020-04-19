@@ -9,7 +9,7 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate {
+public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate {
 
     // MARK: Presentation
 
@@ -22,11 +22,18 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         }
     }
 
-    public func takeCreatedRecipe(_ recipe: Recipe) {
+    public func takeCreatedRecipe(_ recipe: RecipeInDetails) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.mainNavigationController?.popViewController(animated: true)
             self.recipesListScreen?.knowRecipeCreated(recipe)
+        }
+    }
+    
+    public func takeRecipeInDetails(_ recipeInDetails: RecipeInDetails, recipeInList: RecipeInList) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipeInDetailsScreen?.takeRecipeInDetails(recipeInDetails, recipeInList: recipeInList)
         }
     }
 
@@ -40,6 +47,15 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         recipesListScreen = screenController
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    public func deleteRecipeInDetails(_ recipeInDetails: RecipeInDetails) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipesListScreen?.deleteRecipe(recipeInDetails)
+            guard let recipesListScreen = self.recipesListScreen else { return }
+            self.mainNavigationController?.popToViewController(recipesListScreen, animated: true)
+        }
     }
 
     // MARK: Main Navigation Controller
@@ -64,7 +80,8 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
 
     func recipesListScreenShowRecipeInDetails(_ recipesListScreen: RecipesListScreen, recipeInList: RecipeInList) {
         let screenView = RecipeInDetailsScreenView()
-        let screenController = RecipeInDetailsScreenController(view: screenView)
+        let screenController = RecipeInDetailsScreenController(view: screenView, recipeInList: recipeInList)
+        screenController.delegate = self
         recipeInDetailsScreen = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
@@ -85,6 +102,16 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
 
     private weak var recipeInDetailsScreen: RecipeInDetailsScreen?
 
+    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeInDetailsScreen) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInList: RecipeInList) {
+        delegate?.presentationGetRecipeInDetails(self, recipeInList: recipeInList)
+    }
 
+    func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
+        delegate?.presentationDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
+    }
     
 }

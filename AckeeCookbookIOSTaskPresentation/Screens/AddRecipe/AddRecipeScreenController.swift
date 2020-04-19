@@ -44,7 +44,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     override func setup() {
         super.setup()
         addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
+        addRecipeScreenView.addButton.addTarget(self, action: #selector(delete), for: .touchUpInside)
         nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
         nameTextViewController.addDidChangeTextObserver(self)
         infoTextViewController.textView = addRecipeScreenView.infoTextInputView.textView
