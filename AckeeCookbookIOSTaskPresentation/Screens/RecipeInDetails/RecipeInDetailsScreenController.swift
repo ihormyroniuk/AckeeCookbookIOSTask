@@ -94,5 +94,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         recipeInDetailsScreenView.setIngredients(recipe.ingredients)
         recipeInDetailsScreenView.descriptionTitleLabel.text = localizer.localizeText("description")
         recipeInDetailsScreenView.descriptionLabel.text = recipe.description
+        recipeInDetailsScreenView.setScore(recipe.score)
+        recipeInDetailsScreenView.setDuration(localizer.localizeText("durationInMinutes", "\(recipe.duration)"))
     }
 }

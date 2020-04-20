@@ -13,7 +13,7 @@ class RecipesListScreenView: ScreenViewWithNavigationBar {
     // MARK: Elements
 
     let titleLabel = UILabel()
-    let addRecipeButton = UIButton(type: .contactAdd)
+    let addRecipeButton = UIButton()
     let collectionViewLayout = UICollectionViewFlowLayout()
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -54,7 +54,9 @@ class RecipesListScreenView: ScreenViewWithNavigationBar {
     }
 
     private func setupAddRecipeButton() {
-
+        let image = Images.plusInCircle
+        addRecipeButton.setImage(image.withTintColor(Colors.blue), for: .normal)
+        addRecipeButton.setImage(image.withTintColor(Colors.blue), for: .highlighted)
     }
 
     private let recipeListItemViewCollectionViewCellIdentifier = "recipeListItemViewCollectionViewCellIdentifier"

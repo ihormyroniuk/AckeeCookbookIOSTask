@@ -146,7 +146,7 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
         let cell: RecipeListItemCollectionViewCell = recipesListScreenView.recipeListItemViewCollectionViewCell(indexPath)
         cell.nameLabel.text = recipe.name
         cell.scoreView.setScore(recipe.score)
-        cell.durationLabel.text = "\(recipe.duration) min."
+        cell.durationLabel.text = localizer.localizeText("durationInMinutes", "\(recipe.duration)")
         return cell
     }
 

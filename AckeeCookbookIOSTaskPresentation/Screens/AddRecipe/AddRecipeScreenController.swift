@@ -44,7 +44,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     override func setup() {
         super.setup()
         addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        addRecipeScreenView.addButton.addTarget(self, action: #selector(delete), for: .touchUpInside)
+        addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
         nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
         nameTextViewController.addDidChangeTextObserver(self)
         infoTextViewController.textView = addRecipeScreenView.infoTextInputView.textView
@@ -70,16 +70,13 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
 
     @objc private func add() {
         guard let name = nameTextViewController.text else {
-
             return
         }
         guard let description = descriptionTextViewController.text else {
-
             return
         }
         let ingredients = ingredientInputViewControllers.map({ $0.textViewController?.text }).compactMap({ $0 })
         guard let info = infoTextViewController.text else {
-
             return
         }
         let recipe = StructureCreatingRecipe(name: name, description: description, ingredients: ingredients, duration: 100, info: info)

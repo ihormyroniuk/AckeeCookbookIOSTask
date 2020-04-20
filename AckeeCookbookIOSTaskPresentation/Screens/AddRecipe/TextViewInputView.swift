@@ -30,7 +30,7 @@ class TextViewInputView: AUIView {
 
     private func setupTitleLabel() {
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        titleLabel.textColor = UIColor.systemBlue
+        titleLabel.textColor = Colors.blue
     }
 
     private func setupTextView() {
@@ -38,7 +38,7 @@ class TextViewInputView: AUIView {
         textView.alwaysBounceVertical = false
         textView.bounces = false
         textView.font = UIFont.systemFont(ofSize: 16)
-        textView.tintColor = UIColor.systemBlue
+        textView.tintColor = Colors.blue
         textView.textContainer.lineFragmentPadding = 0
     }
 
@@ -123,7 +123,7 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
         textView.alwaysBounceVertical = false
         textView.bounces = false
         textView.font = UIFont.systemFont(ofSize: 16)
-        textView.tintColor = UIColor.systemBlue
+        textView.tintColor = Colors.blue
         textView.textContainer.lineFragmentPadding = 0
     }
 

@@ -35,12 +35,12 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
 
     private func setupPictureImageView() {
         pictureImageView.contentMode = .scaleAspectFit
-        pictureImageView.image = UIImage(named: "RecipeInListPicture", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
+        pictureImageView.image = Images.ackeeRecipe
     }
 
     private func setupDurationImageView() {
         durationImageView.contentMode = .scaleAspectFit
-        durationImageView.image = UIImage(named: "Clock", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
+        durationImageView.image = Images.clock
     }
 
     private func setupDurationLabel() {
@@ -52,7 +52,7 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
         nameLabel.numberOfLines = 0
         nameLabel.lineBreakMode = .byTruncatingTail
         nameLabel.minimumScaleFactor = 0.5
-        nameLabel.textColor = UIColor.systemBlue
+        nameLabel.textColor = Colors.blue
     }
 
     // MARK: Layout

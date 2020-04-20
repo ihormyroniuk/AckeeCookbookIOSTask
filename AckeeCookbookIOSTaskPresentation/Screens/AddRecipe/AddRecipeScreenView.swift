@@ -13,8 +13,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     // MARK: Subview
 
     let titleLabel = UILabel()
-    let addButton = UIButton(type: .system)
-    let backButton = UIButton(type: .system)
+    let addButton = UIButton()
+    let backButton = UIButton()
     let scrollView = UIScrollView()
     let nameTextInputView = TextViewInputView()
     let infoTextInputView = TextViewInputView()
@@ -50,12 +50,15 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
 
     private func setupBackButton() {
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        let image = UIImage(named: "Back", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
-        backButton.setImage(image, for: .normal)
+        backButton.setTitleColor(Colors.blue, for: .normal)
+        let image = Images.back
+        backButton.setImage(image.withTintColor(Colors.blue), for: .normal)
+        backButton.setImage(image.withTintColor(Colors.blue), for: .highlighted)
     }
 
     private func setupAddButton() {
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        addButton.setTitleColor(Colors.blue, for: .normal)
     }
 
     private func setupTitleLabel() {
@@ -79,15 +82,16 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
 
     private func setupIngredientsLabel() {
         ingredientsLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        ingredientsLabel.textColor = UIColor.systemBlue
+        ingredientsLabel.textColor = Colors.blue
     }
 
     private func setupAddIngredientButton() {
-        addIngredientButton.layer.borderColor = UIColor.systemPink.cgColor
-        addIngredientButton.setTitleColor(.systemPink, for: .normal)
-        addIngredientButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        let image = UIImage(named: "Plus", in: Bundle(for: AddRecipeScreenView.self), compatibleWith: nil)
-        addIngredientButton.setImage(image, for: .normal)
+        addIngredientButton.layer.borderColor = Colors.red.cgColor
+        addIngredientButton.setTitleColor(Colors.red, for: .normal)
+        addIngredientButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        let image = Images.plus
+        addIngredientButton.setImage(image.withTintColor(Colors.red), for: .normal)
+        addIngredientButton.setImage(image.withTintColor(Colors.red), for: .highlighted)
     }
 
     // MARK: Layout

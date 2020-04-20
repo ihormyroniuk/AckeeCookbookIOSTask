@@ -47,7 +47,7 @@
 		335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
 		335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */ = {isa = PBXBuildFile; fileRef = 335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */; };
-		335246DD2431082700E4B6C8 /* Pictures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335246DC2431082700E4B6C8 /* Pictures.xcassets */; };
+		335246DD2431082700E4B6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335246DC2431082700E4B6C8 /* Assets.xcassets */; };
 		3356139D2433AB2A008337AA /* RecipeInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356139C2433AB2A008337AA /* RecipeInDetails.swift */; };
 		3356139F2433B025008337AA /* RecipeInDetailsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356139E2433B025008337AA /* RecipeInDetailsStructure.swift */; };
 		335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D14D42438F98000BAB922 /* ScoreStarsView.swift */; };
@@ -57,6 +57,8 @@
 		C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; };
 		C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C568F9322448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */; };
+		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
+		C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB19C244E07CC00BA3753 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +159,7 @@
 		334EE48B24326D5B00833180 /* URLSessionSharedWebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionSharedWebAPI.swift; sourceTree = "<group>"; };
 		335246D72430C8F700E4B6C8 /* AFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFoundation.framework; path = Carthage/Build/iOS/AFoundation.framework; sourceTree = "<group>"; };
 		335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipesListScreenStrins.strings; sourceTree = "<group>"; };
-		335246DC2431082700E4B6C8 /* Pictures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pictures.xcassets; sourceTree = "<group>"; };
+		335246DC2431082700E4B6C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3356139C2433AB2A008337AA /* RecipeInDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetails.swift; sourceTree = "<group>"; };
 		3356139E2433B025008337AA /* RecipeInDetailsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsStructure.swift; sourceTree = "<group>"; };
 		335D14D42438F98000BAB922 /* ScoreStarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStarsView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,8 @@
 		3367D6F1242836940053A509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33E6B61A243A30AA006200F1 /* RecipeInDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreen.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeInDetailsScreenStrings.strings; sourceTree = "<group>"; };
+		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		C5FEB19C244E07CC00BA3753 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +228,9 @@
 				33114EBE242B8A6C00B246BB /* IPhonePresentation.swift */,
 				33114EBD242B8A3800B246BB /* Screens */,
 				335D14D22438F90800BAB922 /* Components */,
-				335246DC2431082700E4B6C8 /* Pictures.xcassets */,
+				C5FEB19B244E078600BA3753 /* Colors */,
+				C5FEB198244DF36A00BA3753 /* Images */,
+				335246DC2431082700E4B6C8 /* Assets.xcassets */,
 				33114EAD242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h */,
 				33114EAE242B84AB00B246BB /* Info.plist */,
 			);
@@ -398,6 +404,22 @@
 			path = Recipe;
 			sourceTree = "<group>";
 		};
+		C5FEB198244DF36A00BA3753 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C5FEB199244DF74F00BA3753 /* Images.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C5FEB19B244E078600BA3753 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				C5FEB19C244E07CC00BA3753 /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -561,7 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				331A5E5E2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings in Resources */,
-				335246DD2431082700E4B6C8 /* Pictures.xcassets in Resources */,
+				335246DD2431082700E4B6C8 /* Assets.xcassets in Resources */,
 				335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */,
 				C568F9322448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings in Resources */,
 			);
@@ -641,6 +663,7 @@
 				333A42062436501900170AA2 /* TextViewInputView.swift in Sources */,
 				331A5E5C2432A0A0008AFDE0 /* AddRecipeScreenView.swift in Sources */,
 				33E6B61B243A30AA006200F1 /* RecipeInDetailsScreen.swift in Sources */,
+				C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */,
 				3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */,
 				331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */,
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
@@ -651,6 +674,7 @@
 				33114EB9242B85EF00B246BB /* Presentation.swift in Sources */,
 				33114EC3242B8B3000B246BB /* RecipesListScreenController.swift in Sources */,
 				333A4204243649E500170AA2 /* RecipeListItemCollectionViewCell.swift in Sources */,
+				C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */,
 				334D9D3C242EAACE00B92997 /* RecipesListScreen.swift in Sources */,
 				331A5E5A2432A095008AFDE0 /* AddRecipeScreenController.swift in Sources */,
 			);

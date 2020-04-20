@@ -16,10 +16,11 @@ class ScoreStarsView: UIView {
 
     // MARK: Star
 
+    var starImageTintColor: UIColor = Colors.red
     private var starImageView: UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Star", in: Bundle(for: RecipeListItemCollectionViewCell.self), compatibleWith: nil)
+        imageView.image = Images.star.withTintColor(starImageTintColor)
         return imageView
     }
 

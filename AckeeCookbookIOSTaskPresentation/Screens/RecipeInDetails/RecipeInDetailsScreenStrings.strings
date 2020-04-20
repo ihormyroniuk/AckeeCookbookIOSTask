@@ -10,3 +10,4 @@
 "back" = "Back";
 "ingredients" = "Ingredients";
 "description" = "Description";
+"durationInMinutes" = "%@ min.";
