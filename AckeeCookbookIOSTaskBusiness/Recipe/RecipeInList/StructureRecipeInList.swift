@@ -12,7 +12,7 @@ public struct StructureRecipeInList: RecipeInList {
     public let id: String
     public let name: String
     public let duration: UInt
-    public let score: Float
+    public var score: Float
 
     public init(id: String, name: String, duration: UInt, score: Float) {
         self.id = id

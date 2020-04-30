@@ -30,10 +30,10 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         }
     }
     
-    public func takeRecipeInDetails(_ recipeInDetails: RecipeInDetails, recipeInList: RecipeInList) {
+    public func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.recipeInDetailsScreen?.takeRecipeInDetails(recipeInDetails, recipeInList: recipeInList)
+            self.recipeInDetailsScreen?.takeRecipeInDetails(recipe, recipeInList: recipeInList)
         }
     }
 
@@ -49,12 +49,20 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         window.makeKeyAndVisible()
     }
     
-    public func deleteRecipeInDetails(_ recipeInDetails: RecipeInDetails) {
+    public func deleteRecipeInDetails(_ recipe: RecipeInDetails) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.recipesListScreen?.deleteRecipe(recipeInDetails)
+            self.recipesListScreen?.deleteRecipe(recipe)
             guard let recipesListScreen = self.recipesListScreen else { return }
             self.mainNavigationController?.popToViewController(recipesListScreen, animated: true)
+        }
+    }
+    
+    public func changeRecipeScore(_ recipe: RecipeInDetails, score: Float) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipesListScreen?.changeRecipeScore(recipe, score: score)
+            self.recipeInDetailsScreen?.changeRecipeScore(recipe, score: score)
         }
     }
 
@@ -112,6 +120,10 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
         delegate?.presentationDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
+    }
+    
+    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipe: RecipeInDetails, score: Float) {
+        delegate?.presentationSetRecipeScore(self, recipe: recipe, score: score)
     }
     
 }

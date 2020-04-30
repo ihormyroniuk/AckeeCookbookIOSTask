@@ -52,6 +52,16 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
             self.recipesListScreenView.collectionView.deleteItems(at: [indexPath])
         }, completion: nil)
     }
+    
+    func changeRecipeScore(_ recipe: RecipeInList, score: Float) {
+        let recipeId = recipe.id
+        guard let index = recipesList.firstIndex(where: { $0.id == recipeId }) else { return }
+        recipesList[index].score = score
+        let indexPath = IndexPath(item: index, section: 0)
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
+    }
 
     // MARK: Data
 

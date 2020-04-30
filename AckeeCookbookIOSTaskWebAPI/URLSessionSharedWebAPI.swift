@@ -186,5 +186,84 @@ public class URLSessionSharedWebAPI: WebAPI {
         }
         dataTask.resume()
     }
+    
+    
+    private let updateRecipePath = "/api/v1/recipes/%@"
+    public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (UpdateRecipeResult) -> ()) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        let recipeId = recipe.id
+        let path = String(format: updateRecipePath, recipeId)
+        urlComponents.path = path
+        let url = urlComponents.url!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        var bodyJSON: [String: Any] = [:]
+        bodyJSON["name"] = recipe.name
+        bodyJSON["description"] = recipe.description
+        bodyJSON["ingredients"] = recipe.ingredients
+        bodyJSON["duration"] = recipe.duration
+        bodyJSON["info"] = recipe.info
+        let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
+        request.httpBody = body
+        var headers: [String: String] = [:]
+        headers["Content-Type"] = "application/json"
+        request.allHTTPHeaderFields = headers
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                        return
+                    }
+                    guard let id = json["id"] as? String else { return }
+                    guard let name = json["name"] as? String else { return }
+                    guard let description = json["description"] as? String else { return }
+                    guard let info = json["info"] as? String else { return }
+                    let ingredients = json["ingredients"] as? [String] ?? []
+                    guard let duration = json["duration"] as? UInt else { return }
+                    guard let score = (json["score"] as? NSNumber)?.floatValue else { return }
+                    let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
+                    completionHandler(.updatedRecipe(recipe))
+                } catch {
+                    completionHandler(.error(error))
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    private let setRecipeScorePath = "/api/v1/recipes/%@/ratings"
+    public func setRecipeScore(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ()) {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        let path = String(format: setRecipeScorePath, recipeId)
+        urlComponents.path = path
+        let url = urlComponents.url!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        var bodyJSON: [String: Any] = [:]
+        bodyJSON["score"] = score
+        let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
+        request.httpBody = body
+        var headers: [String: String] = [:]
+        headers["Content-Type"] = "application/json"
+        request.allHTTPHeaderFields = headers
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                        return
+                    }
+                    guard let score = (json["score"] as? NSNumber)?.floatValue else { return }
+                    completionHandler(.recipeScore(score))
+                } catch {
+                    completionHandler(.error(error))
+                }
+            }
+        }
+        dataTask.resume()
+    }
 
 }

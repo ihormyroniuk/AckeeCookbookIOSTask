@@ -20,4 +20,5 @@ protocol RecipesListScreen: AUIScreen {
     func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt)
     func knowRecipeCreated(_ recipe: RecipeInDetails)
     func deleteRecipe(_ recipe: RecipeInList)
+    func changeRecipeScore(_ recipe: RecipeInList, score: Float)
 }

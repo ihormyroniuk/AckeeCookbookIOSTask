@@ -14,3 +14,5 @@
 "recipeIngredients" = "Ingredients";
 "recideAddIngredient" = "Add";
 "recideDescription" = "Description";
+"recideDuration" = "Duration";
+"durationInMinutes" = "%@ min.";

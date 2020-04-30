@@ -16,12 +16,20 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     
     var delegate: RecipesInDetailsScreenDelegate?
 
-    func takeRecipeInDetails(_ recipeInDetails: RecipeInDetails, recipeInList: RecipeInList) {
-        self.recipeInDetails = recipeInDetails
-        setRecipeInDetailsContent(recipeInDetails)
+    func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
+        guard recipeInList.id == recipe.id else { return }
+        self.recipeInDetails = recipe
+        setRecipeInDetailsContent(recipe)
         recipeInDetailsScreenView.setNeedsLayout()
         recipeInDetailsScreenView.layoutIfNeeded()
         recipeInDetailsScreenView.scrollViewRefreshControl.endRefreshing()
+    }
+    
+    func changeRecipeScore(_ recipe: RecipeInDetails, score: Float) {
+        guard recipeInList.id == recipe.id else { return }
+        recipeInList.score = score
+        recipeInDetails?.score = score
+        recipeInDetailsScreenView.setScore(score)
     }
     
     // MARK: Localization
@@ -36,7 +44,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     
     // MARK: Data
     
-    private let recipeInList: RecipeInList
+    private var recipeInList: RecipeInList
     private var recipeInDetails: RecipeInDetails?
     
     init(view: UIView, recipeInList: RecipeInList) {
@@ -45,6 +53,9 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         recipeInDetailsScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         recipeInDetailsScreenView.deleteButton.addTarget(self, action: #selector(delete2), for: .touchUpInside)
         recipeInDetailsScreenView.scrollViewRefreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        for button in recipeInDetailsScreenView.setScoreButtons {
+            button.addTarget(self, action: #selector(setScore), for: .touchUpInside)
+        }
         setContent()
     }
     
@@ -79,6 +90,13 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     private func loadDetails() {
         recipeInDetailsScreenView.scrollViewRefreshControl.beginRefreshing()
         delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
+    }
+    
+    @objc private func setScore(_ button: UIButton) {
+        guard let index = recipeInDetailsScreenView.setScoreButtons.firstIndex(of: button) else { return }
+        let score: Float = Float(index + 1)
+        guard let recipe = self.recipeInDetails else { return }
+        delegate?.recipeInDetailsScreenSetScore(self, recipe: recipe, score: score)
     }
     
     // MARK: Content

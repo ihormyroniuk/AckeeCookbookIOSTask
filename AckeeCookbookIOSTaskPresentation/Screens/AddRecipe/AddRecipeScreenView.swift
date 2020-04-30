@@ -21,7 +21,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     let ingredientsLabel = UILabel()
     private var ingredientInputViews: [IngredientInputView] = []
     let addIngredientButton = UIButton()
-    let descriptionTextInputView = TextViewInputView()
+    let descriptionInputView = TextViewInputView()
+    let durationInputView = DurationInputView()
 
     // MARK: Setup
 
@@ -77,7 +78,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         setupIngredientsLabel()
         scrollView.addSubview(addIngredientButton)
         setupAddIngredientButton()
-        scrollView.addSubview(descriptionTextInputView)
+        scrollView.addSubview(descriptionInputView)
+        scrollView.addSubview(durationInputView)
     }
 
     private func setupIngredientsLabel() {
@@ -108,6 +110,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         layoutIngredientInputViews()
         layoutAddIngredientButton()
         layoutDescriptionTextInput()
+        layoutDurationInputView()
         setScrollViewContentSize()
     }
 
@@ -246,16 +249,28 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
         let possibleWidth = scrollView.bounds.width - x * 2
         let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
-        let size = descriptionTextInputView.sizeThatFits(possibleSize)
+        let size = descriptionInputView.sizeThatFits(possibleSize)
         let frame = CGRect(origin: origin, size: size)
-        descriptionTextInputView.frame = frame
-        descriptionTextInputView.setNeedsLayout()
-        descriptionTextInputView.layoutIfNeeded()
+        descriptionInputView.frame = frame
+        descriptionInputView.setNeedsLayout()
+        descriptionInputView.layoutIfNeeded()
+    }
+    
+    private func layoutDurationInputView() {
+        let x: CGFloat = 24
+        let y: CGFloat = descriptionInputView.frame.origin.y + descriptionInputView.frame.size.height + 30
+        let origin = CGPoint(x: x, y: y)
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width - x * 2
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = durationInputView.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        durationInputView.frame = frame
     }
 
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height = descriptionTextInputView.frame.origin.y + descriptionTextInputView.frame.height
+        let height = durationInputView.frame.origin.y + durationInputView.frame.height
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
     }
@@ -271,4 +286,92 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         return ingredientInputView
     }
 
+}
+
+class DurationInputView: AUIView {
+    
+    // MARK: Subviews
+
+    let titleLabel = UILabel()
+    let textField = UITextField()
+    private let dataPicker = UIDatePicker();
+    private let underlineLayer = CALayer()
+
+    // MARK: Setup
+
+    override func setup() {
+        super.setup()
+        addSubview(titleLabel)
+        setupTitleLabel()
+        addSubview(textField)
+        setupTextView()
+        layer.addSublayer(underlineLayer)
+        setupUnderlineLayer()
+    }
+
+    private func setupTitleLabel() {
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+    }
+
+    private func setupTextView() {
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.tintColor = UIColor.clear
+        textField.textColor = Colors.gray
+        textField.textAlignment = .right
+        textField.inputView = dataPicker
+    }
+
+    private func setupUnderlineLayer() {
+        underlineLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+    }
+
+    // MARK: Layout
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutTitleLabel()
+        layoutTextView()
+        layoutUnderlineLayer()
+    }
+
+    private func layoutTitleLabel() {
+        let origin = CGPoint.zero
+        let possibleWidth: CGFloat = bounds.width
+        let possibleHeight = CGFloat.greatestFiniteMagnitude
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = titleLabel.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        titleLabel.frame = frame
+    }
+
+    private func layoutTextView() {
+        let x: CGFloat = titleLabel.frame.size.width + 8
+        let y: CGFloat = 0
+        let origin = CGPoint(x: x, y: y)
+        let possibleWidth: CGFloat = bounds.width - titleLabel.bounds.width - 8
+        let possibleHeight = CGFloat.greatestFiniteMagnitude
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        var size = textField.sizeThatFits(possibleSize)
+        size.width = possibleWidth
+        let frame = CGRect(origin: origin, size: size)
+        textField.frame = frame
+    }
+
+    private func layoutUnderlineLayer() {
+        let x: CGFloat = 0
+        let y: CGFloat = textField.frame.origin.y + textField.frame.size.height
+        let width = bounds.width
+        let height: CGFloat = 1
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        underlineLayer.frame = frame
+    }
+
+    // MARK: Size
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let textViewSize = textField.sizeThatFits(size)
+        let sizeThatFits = CGSize(width: size.width, height: textViewSize.height + 1)
+        return sizeThatFits
+    }
+    
 }

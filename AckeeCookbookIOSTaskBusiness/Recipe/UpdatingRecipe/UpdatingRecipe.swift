@@ -1,16 +1,18 @@
 //
-//  ReceipeInList.swift
+//  UpdatingRecipe.swift
 //  AckeeCookbookIOSTaskBusiness
 //
-//  Created by Ihor Myroniuk on 3/26/20.
+//  Created by Ihor Myroniuk on 26.04.2020.
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
 import Foundation
 
-public protocol RecipeInList {
+public protocol UpdatingRecipe {
     var id: String { get }
     var name: String { get }
     var duration: UInt { get }
-    var score: Float { get set }
+    var description: String { get }
+    var info: String { get }
+    var ingredients: [String] { get }
 }

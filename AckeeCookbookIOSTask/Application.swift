@@ -79,6 +79,19 @@ class Application: AUIEmptyApplication, PresentationDelegate {
             }
         }
     }
+    
+    func presentationSetRecipeScore(_ presentation: Presentation, recipe: RecipeInDetails, score: Float) {
+        let recipeId = recipe.id
+        webAPI.setRecipeScore(recipeId, score: score) { (result) in
+            switch result {
+            case let .recipeScore(score):
+                self.presentation.changeRecipeScore(recipe, score: score)
+            case let .error(error):
+                print(error)
+                break
+            }
+        }
+    }
 
     // MARK: WebAPI
 

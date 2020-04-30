@@ -24,6 +24,10 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     private var ingredientsViews: [IngredientListItemView] = []
     let descriptionTitleLabel = UILabel()
     let descriptionLabel = UILabel()
+    private let setScoreView = SetScoreView()
+    var setScoreButtons: [UIButton] {
+        return setScoreView.scoreView.starButtons
+    }
     
     // MARK: Setup
     
@@ -74,6 +78,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
 
     private func setupScrollView() {
         scrollView.delegate = self
+        scrollView.alwaysBounceVertical = true
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         }
@@ -83,11 +88,13 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         scrollView.addSubview(infoLabel)
         setupInfoLabel()
         scrollView.addSubview(ingredientsLabel)
+        setupSectionTitleLabel(ingredientsLabel)
         scrollView.addSubview(descriptionTitleLabel)
+        setupSectionTitleLabel(descriptionTitleLabel)
         scrollView.addSubview(descriptionLabel)
         setupDescriptionLabel()
         scrollView.addSubview(scrollViewRefreshControl)
-        scrollView.alwaysBounceVertical = true
+        scrollView.addSubview(setScoreView)
     }
     
     private func setupPictureImageView() {
@@ -100,13 +107,16 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         infoLabel.numberOfLines = 0
     }
     
-    private func setupDescriptionTitleLabel() {
-        
-    }
-    
     private func setupDescriptionLabel() {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping
+    }
+    
+    private func setupSectionTitleLabel(_ label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = Colors.blue
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
     }
     
     // MARK: Layout
@@ -134,6 +144,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         layoutIngredientsViews()
         layoutDescriptionTitleLabel()
         layoutDescriptionLabel()
+        layoutSetScoreView()
         setScrollViewContentSize()
     }
 
@@ -239,8 +250,8 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     }
     
     private func layoutIngredientsViews() {
-        let x: CGFloat = 36
-        var y: CGFloat = ingredientsLabel.frame.origin.y + ingredientsLabel.frame.size.height
+        let x: CGFloat = 32
+        var y: CGFloat = ingredientsLabel.frame.origin.y + ingredientsLabel.frame.size.height + 15
         let width = scrollView.bounds.width - 36 - 24
         for ingredientInputView in ingredientsViews {
             let origin = CGPoint(x: x, y: y)
@@ -268,7 +279,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     
     private func layoutDescriptionLabel() {
         let x: CGFloat = 24
-        let y: CGFloat = descriptionTitleLabel.frame.origin.y + descriptionTitleLabel.frame.size.height
+        let y: CGFloat = descriptionTitleLabel.frame.origin.y + descriptionTitleLabel.frame.size.height + 15
         let origin = CGPoint(x: x, y: y)
         let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
         let possibleWidth = scrollView.bounds.width - x * 2
@@ -278,9 +289,23 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         descriptionLabel.frame = frame
     }
     
+    private func layoutSetScoreView() {
+        setScoreView.scoreView.starImageViewsWidthHeight = (bounds.width - 96) / 5
+        setScoreView.scoreView.starImageViewsSpace = 0
+        let x: CGFloat = 0
+        let y: CGFloat = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + 30
+        let origin = CGPoint(x: x, y: y)
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = setScoreView.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        setScoreView.frame = frame
+    }
+    
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height: CGFloat = descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height + 10
+        let height: CGFloat = setScoreView.frame.origin.y + setScoreView.frame.size.height + 30
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
     }
@@ -300,6 +325,8 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     
     func setScore(_ score: Float) {
         scoreDurationView.scoreView.setScore(score)
+        layoutScoreDurationView()
+        setScoreView.scoreView.setSelectedScore(score)
     }
     
     func setDuration(_ duration: String?) {
@@ -360,7 +387,7 @@ private class IngredientListItemView: AUIView {
     }
     
     private func layoutLabel() {
-        let x: CGFloat = 20
+        let x: CGFloat = 30
         let y: CGFloat = 0
         let origin = CGPoint(x: x, y: y)
         let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
@@ -372,7 +399,7 @@ private class IngredientListItemView: AUIView {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let x: CGFloat = 20
+        let x: CGFloat = 30
         let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
         let possibleWidth = size.width - x
         let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
@@ -400,6 +427,7 @@ private class ScoreDurationView: AUIView {
         addSubview(durationImageView)
         setupDurationImageView()
         addSubview(durationLabel)
+        durationLabel.textColor = .white
     }
     
     private func setupDurationImageView() {
@@ -431,18 +459,18 @@ private class ScoreDurationView: AUIView {
     private func layoutDurationImageView() {
         let width: CGFloat = 16
         let height = width
-        let x = durationLabel.frame.origin.x - 4 - width
+        let x = durationLabel.frame.origin.x - width - 6
         let y = (bounds.height - height) / 2
         let frame = CGRect(x: x, y: y, width: width, height: height)
         durationImageView.frame = frame
     }
     
     private func layoutScoreView() {
-        scoreView.starImageViewsWidthHeight = bounds.height / 3
+        scoreView.starImageViewsWidthHeight = bounds.height * 0.4
         scoreView.starImageViewsSpace = 6
         let x: CGFloat = 24
-        let y = bounds.height / 3
-        let availableHeight = bounds.height / 3
+        let y = (bounds.height - scoreView.starImageViewsWidthHeight) / 2
+        let availableHeight = bounds.height * 0.4
         let availableWidth = bounds.width - x
         let availableSize = CGSize(width: availableWidth, height: availableHeight)
         let sizeThatFits = scoreView.sizeThatFits(availableSize)
@@ -458,12 +486,61 @@ private class SetScoreView: AUIView {
     // MARK: Subviews
     
     let label = UILabel()
+    let scoreView = InteractiveScoreFiveStarsView()
     
     // MARK: Setup
     
     override func setup() {
         super.setup()
+        backgroundColor = Colors.blue
         addSubview(label)
+        label.text = "sdfdsfsdf sd dsf"
+        addSubview(scoreView)
+    }
+    
+    // MARK: Layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutLabel()
+        layoutScoreView()
+    }
+    
+    private func layoutLabel() {
+        let possibleWidth: CGFloat = bounds.width - 2 * 24
+        let possibleHeight: CGFloat = bounds.height
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        var size = label.sizeThatFits(possibleSize)
+        if size.height > possibleHeight {
+            size.height = possibleHeight
+        }
+        let x: CGFloat = (bounds.width - size.width) / 2
+        let y: CGFloat = 24
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: size)
+        label.frame = frame
+    }
+    
+    private func layoutScoreView() {
+        let possibleWidth: CGFloat = bounds.width - 2 * 24
+        let possibleHeight: CGFloat = bounds.height
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        var size = scoreView.sizeThatFits(possibleSize)
+        if size.height > possibleHeight {
+            size.height = possibleHeight
+        }
+        let x: CGFloat = (bounds.width - size.width) / 2
+        let y: CGFloat = label.frame.origin.y + label.frame.height
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: size)
+        scoreView.frame = frame
+    }
+    
+    // MARK: Size
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let size = CGSize(width: size.width, height: 200)
+        return size
     }
 
 }

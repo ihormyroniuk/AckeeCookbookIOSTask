@@ -8,9 +8,9 @@
 
 import AUIKit
 
-class TextViewInputView: AUIView {
+class TextViewInputView: AUIView, AUITextViewTextInputView {
 
-    // MARK: Elements
+    // MARK: Subviews
 
     let titleLabel = UILabel()
     let textView = UITextView()
@@ -102,7 +102,7 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
 
     // MARK: Elements
 
-    let placeholderTextLayer = CATextLayer()
+    let placeholderLabel = UILabel()
     let textView = UITextView()
     let underlineLayer = CALayer()
 
@@ -114,8 +114,8 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
         setupTextView()
         layer.addSublayer(underlineLayer)
         setupUnderlineLayer()
-        layer.addSublayer(placeholderTextLayer)
-        setupPlaceholderTextLayer()
+        addSubview(placeholderLabel)
+        setupPlaceholderLabel()
     }
 
     private func setupTextView() {
@@ -131,9 +131,9 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
         underlineLayer.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
     }
 
-    private func setupPlaceholderTextLayer() {
-        placeholderTextLayer.foregroundColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        placeholderTextLayer.fontSize = 16
+    private func setupPlaceholderLabel() {
+        placeholderLabel.textColor = UIColor.lightGray.withAlphaComponent(0.5)
+        placeholderLabel.font = UIFont.systemFont(ofSize: 16)
     }
 
     // MARK: Layout
@@ -142,7 +142,7 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
         super.layoutSubviews()
         layoutTextView()
         layoutUnderlineLayer()
-        layoutPlaceholderTextLayer()
+        layoutPlaceholderLabel()
     }
 
     private func layoutTextView() {
@@ -164,9 +164,9 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
         underlineLayer.frame = frame
     }
 
-    private func layoutPlaceholderTextLayer() {
+    private func layoutPlaceholderLabel() {
         let frame = textView.frame
-        placeholderTextLayer.frame = frame
+        placeholderLabel.frame = frame
     }
 
     // MARK: Size
@@ -183,11 +183,11 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
     // MARK: AUIResponsiveTextInputView
     
     func responsiveTextInputViewDidBeginEditingEmpty(animated: Bool) {
-        placeholderTextLayer.isHidden = true
+        placeholderLabel.isHidden = true
     }
 
     func responsiveTextInputViewDidBeginEditingNonempty(animated: Bool) {
-        placeholderTextLayer.isHidden = false
+        placeholderLabel.isHidden = false
     }
 
     func responsiveTextInputViewDidBecomeEmpty(animated: Bool) {
@@ -195,15 +195,15 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
     }
 
     func responsiveTextInputViewDidBecomeNonEmpty(animated: Bool) {
-        placeholderTextLayer.isHidden = true
+        placeholderLabel.isHidden = true
     }
 
     func responsiveTextInputViewDidEndEditingEmpty(animated: Bool) {
-        placeholderTextLayer.isHidden = false
+        placeholderLabel.isHidden = false
     }
 
     func responsiveTextInputViewDidEndEditingNonempty(animated: Bool) {
-        placeholderTextLayer.isHidden = true
+        placeholderLabel.isHidden = true
     }
 
 }

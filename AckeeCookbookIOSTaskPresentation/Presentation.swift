@@ -14,13 +14,15 @@ public protocol PresentationDelegate: class {
     func presentationCreateRecipe(_ presentation: Presentation, creatingRecipe: CreatingRecipe)
     func presentationGetRecipeInDetails(_ presentation: Presentation, recipeInList: RecipeInList)
     func presentationDeleteRecipeInDetails(_ presentation: Presentation, recipeInDetails: RecipeInDetails)
+    func presentationSetRecipeScore(_ presentation: Presentation, recipe: RecipeInDetails, score: Float)
 }
 
 public protocol Presentation: AUIPresentation {
     var delegate: PresentationDelegate? { get set }
     func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt)
     func takeCreatedRecipe(_ recipe: RecipeInDetails)
-    func takeRecipeInDetails(_ recipeInDetails: RecipeInDetails, recipeInList: RecipeInList)
-    func deleteRecipeInDetails(_ recipeInDetails: RecipeInDetails)
+    func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList)
+    func deleteRecipeInDetails(_ recipe: RecipeInDetails)
+    func changeRecipeScore(_ recipe: RecipeInDetails, score: Float)
     func showRecipesList()
 }

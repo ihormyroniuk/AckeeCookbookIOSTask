@@ -29,9 +29,21 @@ public enum DeleteRecipeResult {
     case error(Error)
 }
 
+public enum UpdateRecipeResult {
+    case updatedRecipe(RecipeInDetails)
+    case error(Error)
+}
+
+public enum SetRecipeScoreResult {
+    case recipeScore(Float)
+    case error(Error)
+}
+
 public protocol WebAPI {
     func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesListResult) -> ())
     func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (CreateRecipeResult) -> ())
     func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (GetRecipeInDetailsResult) -> ())
     func deleteRecipe(_ recipeId: String, completionHandler: @escaping (DeleteRecipeResult) -> ())
+    func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (UpdateRecipeResult) -> ())
+    func setRecipeScore(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ())
 }

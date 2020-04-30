@@ -15,5 +15,5 @@ public protocol RecipeInDetails: RecipeInList {
     var description: String { get }
     var info: String { get }
     var ingredients: [String] { get }
-    var score: Float { get }
+    var score: Float { get set }
 }

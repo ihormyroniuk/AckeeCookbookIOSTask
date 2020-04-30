@@ -22,4 +22,7 @@ enum Colors {
         return UIColor(red: 0 / 255, green: 30 / 255 , blue: 245 / 255, alpha: 1)
     }
     
+    static var gray: UIColor {
+        return UIColor(red: 212 / 255, green: 212 / 255 , blue: 212 / 255, alpha: 1)
+    }
 }
