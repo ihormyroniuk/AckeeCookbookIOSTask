@@ -81,7 +81,13 @@ class InteractiveScoreFiveStarsView: AUIView {
 
     // MARK: Star
 
-    var starImageTintColor: UIColor = Colors.red
+    var starImageTintColor: UIColor = Colors.red {
+        didSet {
+            for button in starButtons {
+                button.setImage(Images.star.withTintColor(starImageTintColor), for: .normal)
+            }
+        }
+    }
     private var starButton: UIButton {
         let button = UIButton()
         button.contentMode = .scaleAspectFit

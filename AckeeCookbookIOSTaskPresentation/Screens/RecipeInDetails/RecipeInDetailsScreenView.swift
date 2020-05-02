@@ -17,7 +17,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     let backButton = UIButton()
     private let scrollView = UIScrollView()
     let scrollViewRefreshControl = UIRefreshControl()
-    let pictureImageView = UIImageView()
+    let pictureImageView = DarkenImageView()
     private let scoreDurationView = ScoreDurationView()
     let infoLabel = UILabel()
     let ingredientsLabel = UILabel()
@@ -56,15 +56,15 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
 
     private func setupBackButton() {
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        backButton.setTitleColor(Colors.blue, for: .normal)
+        backButton.setTitleColor(Colors.white, for: .normal)
         let image = Images.back
-        backButton.setImage(image.withTintColor(Colors.blue), for: .normal)
-        backButton.setImage(image.withTintColor(Colors.blue), for: .highlighted)
+        backButton.setImage(image.withTintColor(Colors.white), for: .normal)
+        backButton.setImage(image.withTintColor(Colors.white), for: .highlighted)
     }
 
     private func setupDeleteButton() {
         deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        deleteButton.setTitleColor(Colors.blue, for: .normal)
+        deleteButton.setTitleColor(Colors.white, for: .normal)
     }
 
     private func setupTitleLabel() {
@@ -100,6 +100,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     private func setupPictureImageView() {
         pictureImageView.contentMode = .scaleAspectFill
         pictureImageView.image = Images.ackeeRecipe
+        pictureImageView.darkenAmount = 0.3
     }
     
     private func setupInfoLabel() {
@@ -201,6 +202,8 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         let height = width - (scrollViewContentOffsetY < 0 ? scrollViewContentOffsetY : 0)
         let frame = CGRect(x: x, y: y, width: width, height: height)
         pictureImageView.frame = frame
+        //pictureImageView.setNeedsLayout()
+        pictureImageView.layoutIfNeeded()
     }
     
     private func layoutScoreDurationView() {
@@ -496,6 +499,7 @@ private class SetScoreView: AUIView {
         addSubview(label)
         label.text = "sdfdsfsdf sd dsf"
         addSubview(scoreView)
+        scoreView.starImageTintColor = .white
     }
     
     // MARK: Layout
@@ -510,10 +514,7 @@ private class SetScoreView: AUIView {
         let possibleWidth: CGFloat = bounds.width - 2 * 24
         let possibleHeight: CGFloat = bounds.height
         let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
-        var size = label.sizeThatFits(possibleSize)
-        if size.height > possibleHeight {
-            size.height = possibleHeight
-        }
+        let size = label.sizeThatFits(possibleSize)
         let x: CGFloat = (bounds.width - size.width) / 2
         let y: CGFloat = 24
         let origin = CGPoint(x: x, y: y)
@@ -525,12 +526,9 @@ private class SetScoreView: AUIView {
         let possibleWidth: CGFloat = bounds.width - 2 * 24
         let possibleHeight: CGFloat = bounds.height
         let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
-        var size = scoreView.sizeThatFits(possibleSize)
-        if size.height > possibleHeight {
-            size.height = possibleHeight
-        }
+        let size = scoreView.sizeThatFits(possibleSize)
         let x: CGFloat = (bounds.width - size.width) / 2
-        let y: CGFloat = label.frame.origin.y + label.frame.height
+        let y: CGFloat = label.frame.origin.y + label.frame.height + 8
         let origin = CGPoint(x: x, y: y)
         let frame = CGRect(origin: origin, size: size)
         scoreView.frame = frame
@@ -539,7 +537,12 @@ private class SetScoreView: AUIView {
     // MARK: Size
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let size = CGSize(width: size.width, height: 200)
+        let possibleWidth: CGFloat = bounds.width - 2 * 24
+        let possibleHeight: CGFloat = bounds.height
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let labelSize = label.sizeThatFits(possibleSize)
+        let scoreViewSize = scoreView.sizeThatFits(possibleSize)
+        let size = CGSize(width: size.width, height: labelSize.height + scoreViewSize.height + 24 + 24 + 8)
         return size
     }
 
