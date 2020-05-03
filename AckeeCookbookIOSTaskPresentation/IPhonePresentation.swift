@@ -9,7 +9,7 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate {
+public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
 
     // MARK: Presentation
 
@@ -38,15 +38,18 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     }
 
     public func showRecipesList() {
-        let navigationController = AUIHiddenBarInteractiveNavigationController()
-        let screenView = RecipesListScreenView()
-        let screenController = RecipesListScreenController(view: screenView)
-        screenController.delegate = self
-        navigationController.viewControllers = [screenController]
-        mainNavigationController = navigationController
-        recipesListScreen = screenController
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let navigationController = AUIHiddenBarInteractiveNavigationController()
+            let screenView = RecipesListScreenView()
+            let screenController = RecipesListScreenController(view: screenView)
+            screenController.delegate = self
+            navigationController.viewControllers = [screenController]
+            self.mainNavigationController = navigationController
+            self.recipesListScreen = screenController
+            self.window.rootViewController = navigationController
+            self.window.makeKeyAndVisible()
+        }
     }
     
     public func deleteRecipeInDetails(_ recipe: RecipeInDetails) {
@@ -65,10 +68,19 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
             self.recipeInDetailsScreen?.changeRecipeScore(recipe, score: score)
         }
     }
+    
+    public func updateRecipe(_ recipe: RecipeInDetails) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipeInDetailsScreen?.updateRecipe(recipe)
+            self.recipesListScreen?.updateRecipe(recipe)
+            self.mainNavigationController?.popViewController(animated: true)
+        }
+    }
 
     // MARK: Main Navigation Controller
 
-    private var mainNavigationController: UINavigationController?
+    private weak var mainNavigationController: UINavigationController?
 
     // MARK: Recipes List Screen
 
@@ -103,7 +115,7 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     }
 
     func addRecipeScreenAddRecipe(_ recipe: CreatingRecipe) {
-        delegate?.presentationCreateRecipe(self, creatingRecipe: recipe)
+        delegate?.presentationCreateRecipe(self, recipe: recipe)
     }
 
     // MARK: Recipe In Details Screen
@@ -119,11 +131,31 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     }
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
-        delegate?.presentationDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
+        delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails)
+    }
+    
+    func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
+        let screenView = AddRecipeScreenView()
+        let screenController = UpdateRecipeScreenController(view: screenView, recipe: recipeInDetails)
+        screenController.delegate = self
+        updateRecipeScreen = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipe: RecipeInDetails, score: Float) {
-        delegate?.presentationSetRecipeScore(self, recipe: recipe, score: score)
+        delegate?.presentationScoreRecipe(self, recipe: recipe, score: score)
+    }
+    
+    // MARK: Update Recipe Screen
+
+    private weak var updateRecipeScreen: UpdateRecipeScreen?
+    
+    func updateRecipeScreenBack(_ updateRecipeScreen: UpdateRecipeScreen) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    func updateRecipeScreenUpdateRecipe(_ recipe: UpdatingRecipe) {
+        delegate?.presentationUpdateRecipe(self, recipe: recipe)
     }
     
 }

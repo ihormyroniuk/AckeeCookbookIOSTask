@@ -41,8 +41,8 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         }
     }
 
-    func presentationCreateRecipe(_ presentation: Presentation, creatingRecipe: CreatingRecipe) {
-        webAPI.createRecipe(creatingRecipe) { [weak self] (result) in
+    func presentationCreateRecipe(_ presentation: Presentation, recipe: CreatingRecipe) {
+        webAPI.createRecipe(recipe) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case let .createdRecipe(recipe):
@@ -67,12 +67,12 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         }
     }
     
-    func presentationDeleteRecipeInDetails(_ presentation: Presentation, recipeInDetails: RecipeInDetails) {
-        let recipeId = recipeInDetails.id
+    func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails) {
+        let recipeId = recipe.id
         webAPI.deleteRecipe(recipeId) { (result) in
             switch result {
             case .deleted:
-                self.presentation.deleteRecipeInDetails(recipeInDetails)
+                self.presentation.deleteRecipeInDetails(recipe)
             case let .error(error):
                 print(error)
                 break
@@ -80,12 +80,24 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         }
     }
     
-    func presentationSetRecipeScore(_ presentation: Presentation, recipe: RecipeInDetails, score: Float) {
+    func presentationScoreRecipe(_ presentation: Presentation, recipe: RecipeInDetails, score: Float) {
         let recipeId = recipe.id
         webAPI.setRecipeScore(recipeId, score: score) { (result) in
             switch result {
             case let .recipeScore(score):
                 self.presentation.changeRecipeScore(recipe, score: score)
+            case let .error(error):
+                print(error)
+                break
+            }
+        }
+    }
+    
+    func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe) {
+        webAPI.updateRecipe(recipe) { (result) in
+            switch result {
+            case let .updatedRecipe(recipe):
+                self.presentation.updateRecipe(recipe)
             case let .error(error):
                 print(error)
                 break

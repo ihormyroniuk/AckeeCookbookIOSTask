@@ -11,10 +11,11 @@ import AckeeCookbookIOSTaskBusiness
 
 public protocol PresentationDelegate: class {
     func presentationGetRecipesList(_ presentation: Presentation, offset: UInt, limit: UInt)
-    func presentationCreateRecipe(_ presentation: Presentation, creatingRecipe: CreatingRecipe)
+    func presentationCreateRecipe(_ presentation: Presentation, recipe: CreatingRecipe)
     func presentationGetRecipeInDetails(_ presentation: Presentation, recipeInList: RecipeInList)
-    func presentationDeleteRecipeInDetails(_ presentation: Presentation, recipeInDetails: RecipeInDetails)
-    func presentationSetRecipeScore(_ presentation: Presentation, recipe: RecipeInDetails, score: Float)
+    func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails)
+    func presentationScoreRecipe(_ presentation: Presentation, recipe: RecipeInDetails, score: Float)
+    func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe)
 }
 
 public protocol Presentation: AUIPresentation {
@@ -24,5 +25,6 @@ public protocol Presentation: AUIPresentation {
     func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList)
     func deleteRecipeInDetails(_ recipe: RecipeInDetails)
     func changeRecipeScore(_ recipe: RecipeInDetails, score: Float)
+    func updateRecipe(_ recipe: RecipeInDetails)
     func showRecipesList()
 }

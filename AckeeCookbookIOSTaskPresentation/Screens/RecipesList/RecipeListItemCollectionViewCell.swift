@@ -36,6 +36,8 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
     private func setupPictureImageView() {
         pictureImageView.contentMode = .scaleAspectFit
         pictureImageView.image = Images.ackeeRecipe
+        pictureImageView.clipsToBounds = true
+        pictureImageView.layer.cornerRadius = 4
     }
 
     private func setupDurationImageView() {

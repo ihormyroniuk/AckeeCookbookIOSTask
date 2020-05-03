@@ -18,7 +18,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
 
     func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
         guard recipeInList.id == recipe.id else { return }
-        self.recipeInDetails = recipe
+        recipeInDetails = recipe
         setRecipeInDetailsContent(recipe)
         recipeInDetailsScreenView.setNeedsLayout()
         recipeInDetailsScreenView.layoutIfNeeded()
@@ -30,6 +30,14 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         recipeInList.score = score
         recipeInDetails?.score = score
         recipeInDetailsScreenView.setScore(score)
+    }
+    
+    func updateRecipe(_ recipe: RecipeInDetails) {
+        guard recipeInList.id == recipe.id else { return }
+        recipeInList = recipe
+        setRecipeInDetailsContent(recipe)
+        recipeInDetailsScreenView.setNeedsLayout()
+        recipeInDetailsScreenView.layoutIfNeeded()
     }
     
     // MARK: Localization
@@ -80,7 +88,8 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
 
     @objc private func delete2() {
         guard let recipeInDetails = recipeInDetails else { return }
-        delegate?.recipeInDetailsScreenDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
+        delegate?.recipeInDetailsScreenUpdateRecipeInDetails(self, recipeInDetails: recipeInDetails)
+        //delegate?.recipeInDetailsScreenDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
     }
     
     @objc private func refresh() {
@@ -88,8 +97,10 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     }
     
     private func loadDetails() {
-        recipeInDetailsScreenView.scrollViewRefreshControl.beginRefreshing()
-        delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
+        if recipeInDetails == nil {
+            recipeInDetailsScreenView.scrollViewRefreshControl.beginRefreshing()
+            delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
+        }
     }
     
     @objc private func setScore(_ button: UIButton) {

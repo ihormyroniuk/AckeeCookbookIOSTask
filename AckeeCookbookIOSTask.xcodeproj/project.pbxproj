@@ -60,6 +60,7 @@
 		C529FF892455D8A70087B2A7 /* UpdatingRecipeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF882455D8A70087B2A7 /* UpdatingRecipeStructure.swift */; };
 		C529FF8C2455DCD70087B2A7 /* UpdateRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF8B2455DCD70087B2A7 /* UpdateRecipeScreen.swift */; };
 		C53E4A59245D59DC0026D427 /* DarkenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E4A58245D59DC0026D427 /* DarkenImageView.swift */; };
+		C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */; };
 		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
 		C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB19C244E07CC00BA3753 /* Colors.swift */; };
@@ -176,6 +177,7 @@
 		C529FF882455D8A70087B2A7 /* UpdatingRecipeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingRecipeStructure.swift; sourceTree = "<group>"; };
 		C529FF8B2455DCD70087B2A7 /* UpdateRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreen.swift; sourceTree = "<group>"; };
 		C53E4A58245D59DC0026D427 /* DarkenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkenImageView.swift; sourceTree = "<group>"; };
+		C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreenController.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeInDetailsScreenStrings.strings; sourceTree = "<group>"; };
 		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C5FEB19C244E07CC00BA3753 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */,
+				C5ECD030245E103600ECEE14 /* Launch */,
 				33114EC4242B900800B246BB /* RecipesList */,
 				331A5E562432A026008AFDE0 /* AddRecipe */,
 				33E6B619243A3043006200F1 /* RecipeInDetails */,
@@ -386,9 +389,8 @@
 			children = (
 				33114E7A242B7C5B00B246BB /* main.swift */,
 				33114E78242B7BF400B246BB /* Application.swift */,
-				3367D6EC242836940053A509 /* Assets.xcassets */,
-				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
 				3367D6F1242836940053A509 /* Info.plist */,
+				3367D6EC242836940053A509 /* Assets.xcassets */,
 			);
 			path = AckeeCookbookIOSTask;
 			sourceTree = "<group>";
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				C529FF8B2455DCD70087B2A7 /* UpdateRecipeScreen.swift */,
+				C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */,
 			);
 			path = UpdateRecipe;
 			sourceTree = "<group>";
@@ -438,6 +441,14 @@
 				3356139B2433AA8A008337AA /* RecipeInDetails */,
 			);
 			path = Recipe;
+			sourceTree = "<group>";
+		};
+		C5ECD030245E103600ECEE14 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		C5FEB198244DF36A00BA3753 /* Images */ = {
@@ -704,6 +715,7 @@
 				3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */,
 				331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */,
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
+				C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */,
 				33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */,
 				335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */,
 				3318F118243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift in Sources */,

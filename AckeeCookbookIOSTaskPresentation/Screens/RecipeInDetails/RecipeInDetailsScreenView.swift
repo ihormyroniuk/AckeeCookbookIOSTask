@@ -34,7 +34,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     override func setup() {
         super.setup()
         backgroundColor = .white
-        insertSubview(scrollView, belowSubview: navigationBarView)
+        insertSubview(scrollView, belowSubview: statusBarView)
         setupScrollView()
     }
 
@@ -94,6 +94,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         scrollView.addSubview(descriptionLabel)
         setupDescriptionLabel()
         scrollView.addSubview(scrollViewRefreshControl)
+        scrollViewRefreshControl.tintColor = .white
         scrollView.addSubview(setScoreView)
     }
     
@@ -308,7 +309,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height: CGFloat = setScoreView.frame.origin.y + setScoreView.frame.size.height + 30
+        let height: CGFloat = setScoreView.frame.origin.y + setScoreView.frame.size.height
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
     }
@@ -340,6 +341,26 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         layoutPictureImageView()
+        let p = pictureImageView.bounds.height
+        let n = navigationBarView.frame.origin.y + navigationBarView.bounds.height
+        let r = scoreDurationView.bounds.height
+        let s = scrollView.contentOffset.y
+        var c = s / (p - r - n)
+        if c < 0 {
+            c = 0
+        } else if c > 1 {
+            c = 1
+        }
+        let _c = 1 - c
+        let color = UIColor.white.withAlphaComponent(c)
+        statusBarView.backgroundColor = color
+        navigationBarView.backgroundColor = color
+        let _color = UIColor(red: (0 + 255 * _c) / 255, green: (30 + 255 * _c) / 255, blue: (245 + 255 * _c) / 255, alpha: 1)
+        backButton.setTitleColor(_color, for: .normal)
+        let image = Images.back
+        backButton.setImage(image.withTintColor(_color), for: .normal)
+        backButton.setImage(image.withTintColor(_color), for: .highlighted)
+        deleteButton.setTitleColor(_color, for: .normal)
     }
     
 }
