@@ -28,15 +28,14 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         return presentation
     }()
 
-    func presentationGetRecipesList(_ presentation: Presentation, offset: UInt, limit: UInt) {
+    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt) {
         webAPI.getRecipesList(offset: offset, limit: limit) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case let .recipesList(recipes):
-                self.presentation.takeRecipesList(recipes, offset: offset, limit: limit)
+                self.presentation.takeRecipes(recipes, offset: offset, limit: limit)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorGetRecipes(error, offset: offset, limit: limit)
             }
         }
     }
@@ -48,21 +47,19 @@ class Application: AUIEmptyApplication, PresentationDelegate {
             case let .createdRecipe(recipe):
                 self.presentation.takeCreatedRecipe(recipe)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorCreatedRecipe(error, recipe: recipe)
             }
         }
     }
     
-    func presentationGetRecipeInDetails(_ presentation: Presentation, recipeInList: RecipeInList) {
-        let recipeId = recipeInList.id
+    func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList) {
+        let recipeId = recipe.id
         webAPI.getRecipeInDetails(recipeId) { (result) in
             switch result {
             case let .recipeInDetails(recipe):
-                self.presentation.takeRecipeInDetails(recipe, recipeInList: recipeInList)
+                self.presentation.takeRecipeInDetails(recipe, recipeInList: recipe)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorGetRecipeInDetails(error, recipeInList: recipe)
             }
         }
     }
@@ -74,8 +71,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
             case .deleted:
                 self.presentation.deleteRecipeInDetails(recipe)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorDeleteRecipe(error, recipe: recipe)
             }
         }
     }
@@ -85,10 +81,9 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         webAPI.setRecipeScore(recipeId, score: score) { (result) in
             switch result {
             case let .recipeScore(score):
-                self.presentation.changeRecipeScore(recipe, score: score)
+                self.presentation.scoreRecipe(recipe, score: score)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorScoreRecipe(error, recipe: recipe, score: score)
             }
         }
     }
@@ -99,8 +94,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
             case let .updatedRecipe(recipe):
                 self.presentation.updateRecipe(recipe)
             case let .error(error):
-                print(error)
-                break
+                self.presentation.errorUpdateRecipe(error, recipe: recipe)
             }
         }
     }

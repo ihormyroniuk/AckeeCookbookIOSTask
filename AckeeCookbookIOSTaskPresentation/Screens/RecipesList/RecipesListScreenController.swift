@@ -37,6 +37,10 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
             }, completion: nil)
         }
     }
+    
+    func errorGetRecipesList(_ error: Error, offset: UInt, limit: UInt) {
+        
+    }
 
     func knowRecipeCreated(_ recipe: RecipeInDetails) {
         refreshList()
@@ -130,11 +134,11 @@ class RecipesListScreenController: AUIDefaultScreenController, RecipesListScreen
     private func refreshList() {
         recipesListOffset = 0
         recipesListScreenView.collectionViewRefreshControl.beginRefreshing()
-        delegate?.recipesListScreenGetList(self, offset: recipesListOffset, limit: recipesListLimit)
+        delegate?.recipesListScreenGetRecipesList(self, offset: recipesListOffset, limit: recipesListLimit)
     }
 
     private func loadList() {
-        delegate?.recipesListScreenGetList(self, offset: recipesListOffset, limit: recipesListLimit)
+        delegate?.recipesListScreenGetRecipesList(self, offset: recipesListOffset, limit: recipesListLimit)
     }
 
     @objc private func addReceipe() {

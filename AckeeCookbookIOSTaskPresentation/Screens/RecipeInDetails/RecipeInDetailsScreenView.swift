@@ -13,8 +13,8 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     // MARK: Subview
 
     let titleLabel = UILabel()
-    let deleteButton = UIButton()
-    let backButton = UIButton()
+    let deleteButton = AlphaHighlightButton()
+    let backButton = AlphaHighlightButton()
     private let scrollView = UIScrollView()
     let scrollViewRefreshControl = UIRefreshControl()
     let pictureImageView = DarkenImageView()
@@ -518,7 +518,11 @@ private class SetScoreView: AUIView {
         super.setup()
         backgroundColor = Colors.blue
         addSubview(label)
-        label.text = "sdfdsfsdf sd dsf"
+        label.text = "sdfdsfsdf sd dsf sfjhds jfds jf djs fjhsdfhjsdh kfdhfhsdakf kjdsfjk sdjk f"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textColor = Colors.white
+        label.textAlignment = .center
         addSubview(scoreView)
         scoreView.starImageTintColor = .white
     }

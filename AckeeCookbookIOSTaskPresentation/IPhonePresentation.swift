@@ -12,31 +12,7 @@ import AckeeCookbookIOSTaskBusiness
 public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
 
     // MARK: Presentation
-
-    public weak var delegate: PresentationDelegate?
-
-    public func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipesListScreen?.takeRecipesList(list, offset: offset, limit: limit)
-        }
-    }
-
-    public func takeCreatedRecipe(_ recipe: RecipeInDetails) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.mainNavigationController?.popViewController(animated: true)
-            self.recipesListScreen?.knowRecipeCreated(recipe)
-        }
-    }
     
-    public func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipeInDetailsScreen?.takeRecipeInDetails(recipe, recipeInList: recipeInList)
-        }
-    }
-
     public func showRecipesList() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -51,6 +27,51 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
             self.window.makeKeyAndVisible()
         }
     }
+
+    public weak var delegate: PresentationDelegate?
+
+    public func takeRecipes(_ list: [RecipeInList], offset: UInt, limit: UInt) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipesListScreen?.takeRecipesList(list, offset: offset, limit: limit)
+        }
+    }
+    
+    public func errorGetRecipes(_ error: Error, offset: UInt, limit: UInt) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipesListScreen?.errorGetRecipesList(error, offset: offset, limit: limit)
+        }
+    }
+
+    public func takeCreatedRecipe(_ recipe: RecipeInDetails) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.mainNavigationController?.popViewController(animated: true)
+            self.recipesListScreen?.knowRecipeCreated(recipe)
+        }
+    }
+    
+    public func errorCreatedRecipe(_ error: Error, recipe: CreatingRecipe) {
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//
+//        }
+    }
+    
+    public func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recipeInDetailsScreen?.takeRecipeInDetails(recipe, recipeInList: recipeInList)
+        }
+    }
+    
+    public func errorGetRecipeInDetails(_ error: Error, recipeInList: RecipeInList) {
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//
+//        }
+    }
     
     public func deleteRecipeInDetails(_ recipe: RecipeInDetails) {
         DispatchQueue.main.async { [weak self] in
@@ -61,12 +82,26 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         }
     }
     
-    public func changeRecipeScore(_ recipe: RecipeInDetails, score: Float) {
+    public func errorDeleteRecipe(_ error: Error, recipe: RecipeInDetails) {
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//
+//        }
+    }
+    
+    public func scoreRecipe(_ recipe: RecipeInDetails, score: Float) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.recipesListScreen?.changeRecipeScore(recipe, score: score)
             self.recipeInDetailsScreen?.changeRecipeScore(recipe, score: score)
         }
+    }
+    
+    public func errorScoreRecipe(_ error: Error, recipe: RecipeInDetails, score: Float) {
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//
+//        }
     }
     
     public func updateRecipe(_ recipe: RecipeInDetails) {
@@ -76,6 +111,13 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
             self.recipesListScreen?.updateRecipe(recipe)
             self.mainNavigationController?.popViewController(animated: true)
         }
+    }
+    
+    public func errorUpdateRecipe(_ error: Error, recipe: UpdatingRecipe) {
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//
+//        }
     }
 
     // MARK: Main Navigation Controller
@@ -94,8 +136,8 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesListScreenGetList(_ recipesListScreen: RecipesListScreen, offset: UInt, limit: UInt) {
-        delegate?.presentationGetRecipesList(self, offset: offset, limit: limit)
+    func recipesListScreenGetRecipesList(_ recipesListScreen: RecipesListScreen, offset: UInt, limit: UInt) {
+        delegate?.presentationGetRecipes(self, offset: offset, limit: limit)
     }
 
     func recipesListScreenShowRecipeInDetails(_ recipesListScreen: RecipesListScreen, recipeInList: RecipeInList) {
@@ -127,7 +169,7 @@ public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesLis
     }
     
     func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInList: RecipeInList) {
-        delegate?.presentationGetRecipeInDetails(self, recipeInList: recipeInList)
+        delegate?.presentationGetRecipe(self, recipe: recipeInList)
     }
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {

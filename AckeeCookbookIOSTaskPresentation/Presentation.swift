@@ -10,21 +10,27 @@ import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
 public protocol PresentationDelegate: class {
-    func presentationGetRecipesList(_ presentation: Presentation, offset: UInt, limit: UInt)
+    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt)
     func presentationCreateRecipe(_ presentation: Presentation, recipe: CreatingRecipe)
-    func presentationGetRecipeInDetails(_ presentation: Presentation, recipeInList: RecipeInList)
+    func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList)
     func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails)
     func presentationScoreRecipe(_ presentation: Presentation, recipe: RecipeInDetails, score: Float)
     func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe)
 }
 
 public protocol Presentation: AUIPresentation {
-    var delegate: PresentationDelegate? { get set }
-    func takeRecipesList(_ list: [RecipeInList], offset: UInt, limit: UInt)
-    func takeCreatedRecipe(_ recipe: RecipeInDetails)
-    func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList)
-    func deleteRecipeInDetails(_ recipe: RecipeInDetails)
-    func changeRecipeScore(_ recipe: RecipeInDetails, score: Float)
-    func updateRecipe(_ recipe: RecipeInDetails)
     func showRecipesList()
+    var delegate: PresentationDelegate? { get set }
+    func takeRecipes(_ list: [RecipeInList], offset: UInt, limit: UInt)
+    func errorGetRecipes(_ error: Error, offset: UInt, limit: UInt)
+    func takeCreatedRecipe(_ recipe: RecipeInDetails)
+    func errorCreatedRecipe(_ error: Error, recipe: CreatingRecipe)
+    func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList)
+    func errorGetRecipeInDetails(_ error: Error, recipeInList: RecipeInList)
+    func deleteRecipeInDetails(_ recipe: RecipeInDetails)
+    func errorDeleteRecipe(_ error: Error, recipe: RecipeInDetails)
+    func scoreRecipe(_ recipe: RecipeInDetails, score: Float)
+    func errorScoreRecipe(_ error: Error, recipe: RecipeInDetails, score: Float)
+    func updateRecipe(_ recipe: RecipeInDetails)
+    func errorUpdateRecipe(_ error: Error, recipe: UpdatingRecipe)
 }

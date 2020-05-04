@@ -60,6 +60,7 @@
 		C529FF892455D8A70087B2A7 /* UpdatingRecipeStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF882455D8A70087B2A7 /* UpdatingRecipeStructure.swift */; };
 		C529FF8C2455DCD70087B2A7 /* UpdateRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF8B2455DCD70087B2A7 /* UpdateRecipeScreen.swift */; };
 		C53E4A59245D59DC0026D427 /* DarkenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E4A58245D59DC0026D427 /* DarkenImageView.swift */; };
+		C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */; };
 		C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */; };
 		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
@@ -177,6 +178,7 @@
 		C529FF882455D8A70087B2A7 /* UpdatingRecipeStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingRecipeStructure.swift; sourceTree = "<group>"; };
 		C529FF8B2455DCD70087B2A7 /* UpdateRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreen.swift; sourceTree = "<group>"; };
 		C53E4A58245D59DC0026D427 /* DarkenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkenImageView.swift; sourceTree = "<group>"; };
+		C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaHighlightButton.swift; sourceTree = "<group>"; };
 		C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreenController.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeInDetailsScreenStrings.strings; sourceTree = "<group>"; };
 		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				C53E4A58245D59DC0026D427 /* DarkenImageView.swift */,
+				C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 			files = (
 				333A42062436501900170AA2 /* TextViewInputView.swift in Sources */,
 				331A5E5C2432A0A0008AFDE0 /* AddRecipeScreenView.swift in Sources */,
+				C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */,
 				33E6B61B243A30AA006200F1 /* RecipeInDetailsScreen.swift in Sources */,
 				C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */,
 				C529FF8C2455DCD70087B2A7 /* UpdateRecipeScreen.swift in Sources */,

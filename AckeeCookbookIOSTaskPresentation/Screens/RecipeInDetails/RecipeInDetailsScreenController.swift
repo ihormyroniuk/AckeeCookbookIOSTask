@@ -64,6 +64,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         for button in recipeInDetailsScreenView.setScoreButtons {
             button.addTarget(self, action: #selector(setScore), for: .touchUpInside)
         }
+        statusBarStyle = .lightContent
         setContent()
     }
     
@@ -88,8 +89,8 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
 
     @objc private func delete2() {
         guard let recipeInDetails = recipeInDetails else { return }
-        delegate?.recipeInDetailsScreenUpdateRecipeInDetails(self, recipeInDetails: recipeInDetails)
-        //delegate?.recipeInDetailsScreenDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
+        //delegate?.recipeInDetailsScreenUpdateRecipeInDetails(self, recipeInDetails: recipeInDetails)
+        delegate?.recipeInDetailsScreenDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
     }
     
     @objc private func refresh() {

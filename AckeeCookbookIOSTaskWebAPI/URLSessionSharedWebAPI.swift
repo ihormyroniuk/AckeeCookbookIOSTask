@@ -19,12 +19,11 @@ public class URLSessionSharedWebAPI: WebAPI {
         
     }
 
-    private let getRecipesListPath = "/api/v1/recipes"
     public func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesListResult) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = getRecipesListPath
+        urlComponents.path = "/api/v1/recipes"
         let offsetQueryItem = URLQueryItem(name: "offset", value: "\(offset)")
         let limitQueryItem = URLQueryItem(name: "limit", value: "\(limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
@@ -93,12 +92,11 @@ public class URLSessionSharedWebAPI: WebAPI {
         dataTask.resume()
     }
 
-    private let createRecipePath = "/api/v1/recipes"
     public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (CreateRecipeResult) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = createRecipePath
+        urlComponents.path = "/api/v1/recipes"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -136,13 +134,11 @@ public class URLSessionSharedWebAPI: WebAPI {
         dataTask.resume()
     }
     
-    private let getRecipeInDetailsPath = "/api/v1/recipes/%@"
     public func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (GetRecipeInDetailsResult) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = String(format: getRecipeInDetailsPath, recipeId)
-        urlComponents.path = path
+        urlComponents.path = "/api/v1/recipes/\(recipeId)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -169,13 +165,11 @@ public class URLSessionSharedWebAPI: WebAPI {
         dataTask.resume()
     }
     
-    private let deleteRecipePath = "/api/v1/recipes/%@"
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (DeleteRecipeResult) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = String(format: getRecipeInDetailsPath, recipeId)
-        urlComponents.path = path
+        urlComponents.path = "/api/v1/recipes/\(recipeId)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -194,8 +188,7 @@ public class URLSessionSharedWebAPI: WebAPI {
         urlComponents.scheme = scheme
         urlComponents.host = host
         let recipeId = recipe.id
-        let path = String(format: updateRecipePath, recipeId)
-        urlComponents.path = path
+        urlComponents.path = "/api/v1/recipes/\(recipeId)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -233,12 +226,11 @@ public class URLSessionSharedWebAPI: WebAPI {
         dataTask.resume()
     }
     
-    private let setRecipeScorePath = "/api/v1/recipes/%@/ratings"
     public func setRecipeScore(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = String(format: setRecipeScorePath, recipeId)
+        let path = "/api/v1/recipes/\(recipeId)/ratings"
         urlComponents.path = path
         let url = urlComponents.url!
         var request = URLRequest(url: url)

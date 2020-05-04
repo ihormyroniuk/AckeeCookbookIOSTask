@@ -13,8 +13,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     // MARK: Subview
 
     let titleLabel = UILabel()
-    let addButton = UIButton()
-    let backButton = UIButton()
+    let addButton = AlphaHighlightButton()
+    let backButton = AlphaHighlightButton()
     let scrollView = UIScrollView()
     let nameTextInputView = TextViewInputView()
     let infoTextInputView = TextViewInputView()

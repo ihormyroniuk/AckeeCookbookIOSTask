@@ -13,7 +13,7 @@ class RecipesListScreenView: ScreenViewWithNavigationBar {
     // MARK: Elements
 
     let titleLabel = UILabel()
-    let addRecipeButton = UIButton()
+    let addRecipeButton = AlphaHighlightButton()
     let collectionViewLayout = UICollectionViewFlowLayout()
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
