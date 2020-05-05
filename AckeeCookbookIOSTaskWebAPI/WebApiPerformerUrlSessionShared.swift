@@ -9,7 +9,7 @@
 import Foundation
 import AckeeCookbookIOSTaskBusiness
 
-public class WebApiExecutorURLSessionShared: WebApiExecutor {
+public class WebApiPerformerUrlSessionShared: WebApiPerformer {
 
     private let session = URLSession.shared
     
@@ -21,7 +21,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         self.version1 = WebApiVersion1SchemeHost(scheme: version1Scheme, host: version1Host)
     }
 
-    public func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiGetRecipesListResult) -> ()) {
+    public func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiPerformerGetRecipesListResult) -> ()) {
         let request = version1.getRecipesRequest(limit: limit, offset: offset)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -43,7 +43,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         dataTask.resume()
     }
 
-    public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (WebApiCreateRecipeResult) -> ()) {
+    public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (WebApiPerformerCreateRecipeResult) -> ()) {
         let request = version1.createNewRecipeRequest(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -65,7 +65,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         dataTask.resume()
     }
     
-    public func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (WebApiGetRecipeInDetailsResult) -> ()) {
+    public func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (WebApiPerformerGetRecipeInDetailsResult) -> ()) {
         let request = version1.getRecipeRequest(id: recipeId)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -87,7 +87,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         dataTask.resume()
     }
     
-    public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (UpdateRecipeResult) -> ()) {
+    public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (WebApiPerformerUpdateRecipeResult) -> ()) {
         let request = version1.updateRecipeRequest(id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -109,7 +109,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         dataTask.resume()
     }
     
-    public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (DeleteRecipeResult) -> ()) {
+    public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (WebApiPerformerDeleteRecipeResult) -> ()) {
         let request = version1.deleteRecipeRequest(id: recipeId)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -131,7 +131,7 @@ public class WebApiExecutorURLSessionShared: WebApiExecutor {
         dataTask.resume()
     }
     
-    public func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ()) {
+    public func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (WebApiPerformerScoreRecipeResult) -> ()) {
         let request = version1.addNewRatingRequest(id: recipeId, score: score)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }

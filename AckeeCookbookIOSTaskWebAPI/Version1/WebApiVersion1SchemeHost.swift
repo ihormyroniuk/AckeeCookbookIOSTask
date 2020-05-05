@@ -14,6 +14,9 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         
     private let scheme: String
     private let host: String
+    private let basePath: String = "/api/v1"
+    private let contentTypeHeaderKey = "Content-Type"
+    private let contentTypeHeaderValueJson = "application/json"
     
     init(scheme: String, host: String) {
         self.scheme = scheme
@@ -26,7 +29,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = "/api/v1/recipes"
+        urlComponents.path = basePath + "/recipes"
         let offsetQueryItem = URLQueryItem(name: "offset", value: "\(offset)")
         let limitQueryItem = URLQueryItem(name: "limit", value: "\(limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
@@ -36,18 +39,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         return request
     }
     
-    func getRecipesResponse(response: URLResponse, data: Data) -> GetRecipesResponse {
+    func getRecipesResponse(response: URLResponse, data: Data) -> WebApiVersion1GetRecipesResponse {
         do {
             let array = try JSONSerialization.objectsArray(with: data, options: [])
             var recipes: [RecipeInList] = []
             for object in array {
-                let id = try object.stringForKey("id")
-                let name = try object.stringForKey("name")
-                let duration = try object.numberForKey("duration").uintValue
-                let score = try object.numberForKey("score").floatValue
-                let recipe = StructureRecipeInList(id: id, name: name, duration: duration, score: score)
+                let recipe = try recipeInList(jsonObject: object)
                 recipes.append(recipe)
-             }
+            }
             return .recipes(recipes)
         } catch {
             return .error(error)
@@ -60,7 +59,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = "/api/v1/recipes"
+        urlComponents.path = basePath + "/recipes"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -71,14 +70,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         bodyJson["duration"] = duration
         bodyJson["info"] = info
         var headers: [String: String] = [:]
-        headers["Content-Type"] = "application/json"
+        headers[contentTypeHeaderKey] = contentTypeHeaderValueJson
         let body = try! JSONSerialization.data(withJSONObject: bodyJson, options: [])
         request.httpBody = body
         request.allHTTPHeaderFields = headers
         return request
     }
     
-    func createNewRecipeResponse(response: URLResponse, data: Data) -> CreateNewRecipeResponse {
+    func createNewRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1CreateNewRecipeResponse {
         do {
             let object = try JSONSerialization.object(with: data, options: [])
             let recipe = try recipeInDetails(jsonObject: object)
@@ -94,14 +93,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = "/api/v1/recipes/\(id)"
+        urlComponents.path = basePath + "/recipes/\(id)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         return request
     }
     
-    func getRecipeResponse(response: URLResponse, data: Data) -> GetRecipeResponse {
+    func getRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1GetRecipeResponse {
         do {
             let object = try JSONSerialization.object(with: data, options: [])
             let recipe = try recipeInDetails(jsonObject: object)
@@ -118,7 +117,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         urlComponents.scheme = scheme
         urlComponents.host = host
         let recipeId = id
-        urlComponents.path = "/api/v1/recipes/\(recipeId)"
+        urlComponents.path = basePath + "/recipes/\(recipeId)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -131,12 +130,12 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
         request.httpBody = body
         var headers: [String: String] = [:]
-        headers["Content-Type"] = "application/json"
+        headers[contentTypeHeaderKey] = contentTypeHeaderValueJson
         request.allHTTPHeaderFields = headers
         return request
     }
     
-    func updateRecipeResponse(response: URLResponse, data: Data) -> UpdateRecipeResponse {
+    func updateRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1UpdateRecipeResponse {
         do {
             let object = try JSONSerialization.object(with: data, options: [])
             let recipe = try recipeInDetails(jsonObject: object)
@@ -152,14 +151,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = "/api/v1/recipes/\(id)"
+        urlComponents.path = basePath + "/recipes/\(id)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         return request
     }
     
-    func deleteRecipeResponse(response: URLResponse, data: Data) -> DeleteRecipeResponse {
+    func deleteRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1DeleteRecipeResponse {
         if (response as? HTTPURLResponse)?.statusCode == 204 {
             return .deleted
         } else {
@@ -174,7 +173,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = "/api/v1/recipes/\(id)/ratings"
+        let path = basePath + "/recipes/\(id)/ratings"
         urlComponents.path = path
         let url = urlComponents.url!
         var request = URLRequest(url: url)
@@ -184,12 +183,12 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
         request.httpBody = body
         var headers: [String: String] = [:]
-        headers["Content-Type"] = "application/json"
+        headers[contentTypeHeaderKey] = contentTypeHeaderValueJson
         request.allHTTPHeaderFields = headers
         return request
     }
     
-    func addNewRatingResponse(response: URLResponse, data: Data) -> AddNewRatingResponse {
+    func addNewRatingResponse(response: URLResponse, data: Data) -> WebApiVersion1AddNewRatingResponse {
         do {
             let object = try JSONSerialization.object(with: data, options: [])
             let score = try object.numberForKey("score").floatValue
@@ -199,7 +198,16 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         }
     }
     
-    /// MARK: Parsing
+    // MARK: JSON Parsing
+    
+    private func recipeInList(jsonObject: JsonObject) throws -> RecipeInList {
+        let id = try jsonObject.stringForKey("id")
+        let name = try jsonObject.stringForKey("name")
+        let duration = try jsonObject.numberForKey("duration").uintValue
+        let score = try jsonObject.numberForKey("score").floatValue
+        let recipe = StructureRecipeInList(id: id, name: name, duration: duration, score: score)
+        return recipe
+    }
     
     private func recipeInDetails(jsonObject: JsonObject) throws -> RecipeInDetails {
         let id = try jsonObject.stringForKey("id")

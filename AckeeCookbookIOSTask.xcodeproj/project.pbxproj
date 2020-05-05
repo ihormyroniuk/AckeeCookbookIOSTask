@@ -21,8 +21,7 @@
 		33114ECE242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; };
 		33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3318C35D2434D8F8009201E7 /* WebAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35C2434D8F8009201E7 /* WebAPIError.swift */; };
-		3318C35F2434D924009201E7 /* StructureWebAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35E2434D924009201E7 /* StructureWebAPIError.swift */; };
+		3318C35F2434D924009201E7 /* WebApiVersion1ErrorStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */; };
 		3318F118243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */; };
 		3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */; };
 		331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */; };
@@ -32,7 +31,6 @@
 		331E368E24337E640085B08D /* CreatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E368D24337E640085B08D /* CreatingRecipe.swift */; };
 		331E369024337FCE0085B08D /* StructureCreatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E368F24337FCE0085B08D /* StructureCreatingRecipe.swift */; };
 		33296F9B2435052000A6948D /* UnknownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33296F9A2435052000A6948D /* UnknownError.swift */; };
-		33296F9D2435055F00A6948D /* JSONParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33296F9C2435055F00A6948D /* JSONParsingError.swift */; };
 		333A4204243649E500170AA2 /* RecipeListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333A4203243649E500170AA2 /* RecipeListItemCollectionViewCell.swift */; };
 		333A42062436501900170AA2 /* TextViewInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333A42052436501900170AA2 /* TextViewInputView.swift */; };
 		333F23EC242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h in Headers */ = {isa = PBXBuildFile; fileRef = 333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,8 +40,8 @@
 		333F23FD242D45BB00728DA8 /* StructureRecipeInList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F23FC242D45BB00728DA8 /* StructureRecipeInList.swift */; };
 		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
 		334D9D3C242EAACE00B92997 /* RecipesListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */; };
-		334EE48A24326CDB00833180 /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* WebAPI.swift */; };
-		334EE48C24326D5B00833180 /* URLSessionSharedWebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* URLSessionSharedWebAPI.swift */; };
+		334EE48A24326CDB00833180 /* WebApiPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* WebApiPerformer.swift */; };
+		334EE48C24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift */; };
 		335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
 		335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */ = {isa = PBXBuildFile; fileRef = 335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */; };
@@ -62,9 +60,11 @@
 		C53E4A59245D59DC0026D427 /* DarkenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E4A58245D59DC0026D427 /* DarkenImageView.swift */; };
 		C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */; };
 		C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */; };
+		C552E404246153E80031D531 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
+		C552E405246153E80031D531 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C568F9322448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */; };
-		C5C08D4A2460497C00B320BD /* Version1SchemeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D492460497C00B320BD /* Version1SchemeHost.swift */; };
-		C5C08D4C246060F000B320BD /* Version1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D4B246060F000B320BD /* Version1.swift */; };
+		C5C08D4A2460497C00B320BD /* WebApiVersion1SchemeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */; };
+		C5C08D4C246060F000B320BD /* WebApiVersion1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D4B246060F000B320BD /* WebApiVersion1.swift */; };
 		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
 		C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB19C244E07CC00BA3753 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +122,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
+				C552E405246153E80031D531 /* AFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,8 +143,7 @@
 		33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskWebAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskWebAPI.h; sourceTree = "<group>"; };
 		33114ECD242BD06700B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3318C35C2434D8F8009201E7 /* WebAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIError.swift; sourceTree = "<group>"; };
-		3318C35E2434D924009201E7 /* StructureWebAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureWebAPIError.swift; sourceTree = "<group>"; };
+		3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1ErrorStructure.swift; sourceTree = "<group>"; };
 		3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenController.swift; sourceTree = "<group>"; };
 		3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenView.swift; sourceTree = "<group>"; };
 		331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreen.swift; sourceTree = "<group>"; };
@@ -153,7 +153,6 @@
 		331E368D24337E640085B08D /* CreatingRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRecipe.swift; sourceTree = "<group>"; };
 		331E368F24337FCE0085B08D /* StructureCreatingRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureCreatingRecipe.swift; sourceTree = "<group>"; };
 		33296F9A2435052000A6948D /* UnknownError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownError.swift; sourceTree = "<group>"; };
-		33296F9C2435055F00A6948D /* JSONParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingError.swift; sourceTree = "<group>"; };
 		333A4203243649E500170AA2 /* RecipeListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		333A42052436501900170AA2 /* TextViewInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputView.swift; sourceTree = "<group>"; };
 		333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskBusiness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,8 +162,8 @@
 		333F23FC242D45BB00728DA8 /* StructureRecipeInList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructureRecipeInList.swift; sourceTree = "<group>"; };
 		334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewWithNavigationBar.swift; sourceTree = "<group>"; };
 		334D9D3B242EAACE00B92997 /* RecipesListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreen.swift; sourceTree = "<group>"; };
-		334EE48924326CDB00833180 /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
-		334EE48B24326D5B00833180 /* URLSessionSharedWebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionSharedWebAPI.swift; sourceTree = "<group>"; };
+		334EE48924326CDB00833180 /* WebApiPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiPerformer.swift; sourceTree = "<group>"; };
+		334EE48B24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiPerformerUrlSessionShared.swift; sourceTree = "<group>"; };
 		335246D72430C8F700E4B6C8 /* AFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFoundation.framework; path = Carthage/Build/iOS/AFoundation.framework; sourceTree = "<group>"; };
 		335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipesListScreenStrins.strings; sourceTree = "<group>"; };
 		335246DC2431082700E4B6C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,8 +182,8 @@
 		C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaHighlightButton.swift; sourceTree = "<group>"; };
 		C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreenController.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeInDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeInDetailsScreenStrings.strings; sourceTree = "<group>"; };
-		C5C08D492460497C00B320BD /* Version1SchemeHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version1SchemeHost.swift; sourceTree = "<group>"; };
-		C5C08D4B246060F000B320BD /* Version1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version1.swift; sourceTree = "<group>"; };
+		C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1SchemeHost.swift; sourceTree = "<group>"; };
+		C5C08D4B246060F000B320BD /* WebApiVersion1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1.swift; sourceTree = "<group>"; };
 		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C5FEB19C244E07CC00BA3753 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
+				C552E404246153E80031D531 /* AFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +282,8 @@
 		33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */ = {
 			isa = PBXGroup;
 			children = (
-				334EE48924326CDB00833180 /* WebAPI.swift */,
-				334EE48B24326D5B00833180 /* URLSessionSharedWebAPI.swift */,
+				334EE48924326CDB00833180 /* WebApiPerformer.swift */,
+				334EE48B24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift */,
 				C5C08D46246044E200B320BD /* Version1 */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
 				33114ECD242BD06700B246BB /* Info.plist */,
@@ -442,12 +442,10 @@
 		C5C08D46246044E200B320BD /* Version1 */ = {
 			isa = PBXGroup;
 			children = (
-				C5C08D4B246060F000B320BD /* Version1.swift */,
-				C5C08D492460497C00B320BD /* Version1SchemeHost.swift */,
-				3318C35C2434D8F8009201E7 /* WebAPIError.swift */,
-				3318C35E2434D924009201E7 /* StructureWebAPIError.swift */,
+				C5C08D4B246060F000B320BD /* WebApiVersion1.swift */,
+				C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */,
+				3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */,
 				33296F9A2435052000A6948D /* UnknownError.swift */,
-				33296F9C2435055F00A6948D /* JSONParsingError.swift */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -744,14 +742,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C08D4C246060F000B320BD /* Version1.swift in Sources */,
+				C5C08D4C246060F000B320BD /* WebApiVersion1.swift in Sources */,
 				33296F9B2435052000A6948D /* UnknownError.swift in Sources */,
-				3318C35F2434D924009201E7 /* StructureWebAPIError.swift in Sources */,
-				3318C35D2434D8F8009201E7 /* WebAPIError.swift in Sources */,
-				33296F9D2435055F00A6948D /* JSONParsingError.swift in Sources */,
-				C5C08D4A2460497C00B320BD /* Version1SchemeHost.swift in Sources */,
-				334EE48A24326CDB00833180 /* WebAPI.swift in Sources */,
-				334EE48C24326D5B00833180 /* URLSessionSharedWebAPI.swift in Sources */,
+				3318C35F2434D924009201E7 /* WebApiVersion1ErrorStructure.swift in Sources */,
+				C5C08D4A2460497C00B320BD /* WebApiVersion1SchemeHost.swift in Sources */,
+				334EE48A24326CDB00833180 /* WebApiPerformer.swift in Sources */,
+				334EE48C24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +890,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AckeeCookbookIOSTaskWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -924,6 +924,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AckeeCookbookIOSTaskWebAPI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

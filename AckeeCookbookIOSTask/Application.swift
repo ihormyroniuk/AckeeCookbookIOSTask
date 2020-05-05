@@ -29,7 +29,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     }()
 
     func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt) {
-        webAPI.getRecipesList(offset: offset, limit: limit) { [weak self] (result) in
+        webApi.getRecipesList(offset: offset, limit: limit) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case let .recipesList(recipes):
@@ -41,7 +41,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     }
 
     func presentationCreateRecipe(_ presentation: Presentation, recipe: CreatingRecipe) {
-        webAPI.createRecipe(recipe) { [weak self] (result) in
+        webApi.createRecipe(recipe) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case let .createdRecipe(recipe):
@@ -54,7 +54,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     
     func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList) {
         let recipeId = recipe.id
-        webAPI.getRecipeInDetails(recipeId) { (result) in
+        webApi.getRecipeInDetails(recipeId) { (result) in
             switch result {
             case let .recipeInDetails(recipe):
                 self.presentation.takeRecipeInDetails(recipe, recipeInList: recipe)
@@ -66,7 +66,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     
     func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails) {
         let recipeId = recipe.id
-        webAPI.deleteRecipe(recipeId) { (result) in
+        webApi.deleteRecipe(recipeId) { (result) in
             switch result {
             case .deleted:
                 self.presentation.deleteRecipeInDetails(recipe)
@@ -78,7 +78,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     
     func presentationScoreRecipe(_ presentation: Presentation, recipe: RecipeInDetails, score: Float) {
         let recipeId = recipe.id
-        webAPI.scoreRecipe(recipeId, score: score) { (result) in
+        webApi.scoreRecipe(recipeId, score: score) { (result) in
             switch result {
             case let .recipeScore(score):
                 self.presentation.scoreRecipe(recipe, score: score)
@@ -89,7 +89,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     }
     
     func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe) {
-        webAPI.updateRecipe(recipe) { (result) in
+        webApi.updateRecipe(recipe) { (result) in
             switch result {
             case let .updatedRecipe(recipe):
                 self.presentation.updateRecipe(recipe)
@@ -101,8 +101,8 @@ class Application: AUIEmptyApplication, PresentationDelegate {
 
     // MARK: WebAPI
 
-    private lazy var webAPI: WebAPI = {
-        let webAPI = URLSessionSharedWebAPI()
+    private lazy var webApi: WebApiPerformer = {
+        let webAPI = WebApiPerformerUrlSessionShared()
         return webAPI
     }()
 }
