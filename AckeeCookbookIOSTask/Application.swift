@@ -78,7 +78,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     
     func presentationScoreRecipe(_ presentation: Presentation, recipe: RecipeInDetails, score: Float) {
         let recipeId = recipe.id
-        webAPI.setRecipeScore(recipeId, score: score) { (result) in
+        webAPI.scoreRecipe(recipeId, score: score) { (result) in
             switch result {
             case let .recipeScore(score):
                 self.presentation.scoreRecipe(recipe, score: score)

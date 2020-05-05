@@ -45,5 +45,5 @@ public protocol WebAPI {
     func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (GetRecipeInDetailsResult) -> ())
     func deleteRecipe(_ recipeId: String, completionHandler: @escaping (DeleteRecipeResult) -> ())
     func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (UpdateRecipeResult) -> ())
-    func setRecipeScore(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ())
+    func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (SetRecipeScoreResult) -> ())
 }
