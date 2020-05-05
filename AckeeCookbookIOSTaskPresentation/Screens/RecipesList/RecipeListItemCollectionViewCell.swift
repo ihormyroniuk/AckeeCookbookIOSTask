@@ -169,7 +169,7 @@ class RecipeListItemCollectionViewCell: AUICollectionViewCell {
     func highlighted() {
         UIView.animate(withDuration: 0.2) { [weak self] in
             guard let self = self else { return }
-            self.contentView.backgroundColor = Colors.gray
+            self.contentView.backgroundColor = Colors.highlightGray
         }
     }
     

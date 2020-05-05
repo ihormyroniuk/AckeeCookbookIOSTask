@@ -200,6 +200,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     
     // MARK: JSON Parsing
     
+    private func error(jsonObject: JsonObject) throws -> WebApiVersion1Error {
+        let code = try jsonObject.numberForKey("errorCode").intValue
+        let status = try jsonObject.numberForKey("status").intValue
+        let name = try jsonObject.stringForKey("name")
+        let error = WebApiVersion1ErrorStructure(code: code, status: status, name: name)
+        return error
+    }
+    
     private func recipeInList(jsonObject: JsonObject) throws -> RecipeInList {
         let id = try jsonObject.stringForKey("id")
         let name = try jsonObject.stringForKey("name")

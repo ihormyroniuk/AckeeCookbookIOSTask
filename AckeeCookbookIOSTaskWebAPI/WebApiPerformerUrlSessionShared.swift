@@ -21,7 +21,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         self.version1 = WebApiVersion1SchemeHost(scheme: version1Scheme, host: version1Host)
     }
 
-    public func getRecipesList(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiPerformerGetRecipesListResult) -> ()) {
+    public func getRecipes(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ()) {
         let request = version1.getRecipesRequest(limit: limit, offset: offset)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -31,7 +31,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                 let response = self.version1.getRecipesResponse(response: response, data: data)
                 switch response {
                 case .recipes(let recipes):
-                    completionHandler(.recipesList(recipes))
+                    completionHandler(.recipes(recipes))
                 case .error(let error):
                     completionHandler(.error(error))
                 }
@@ -53,7 +53,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                 let response = self.version1.createNewRecipeResponse(response: response, data: data)
                 switch response {
                 case .recipe(let recipe):
-                    completionHandler(.createdRecipe(recipe))
+                    completionHandler(.recipe(recipe))
                 case .error(let error):
                     completionHandler(.error(error))
                 }
@@ -65,7 +65,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         dataTask.resume()
     }
     
-    public func getRecipeInDetails(_ recipeId: String, completionHandler: @escaping (WebApiPerformerGetRecipeInDetailsResult) -> ()) {
+    public func getRecipe(_ recipeId: String, completionHandler: @escaping (WebApiPerformerGetRecipeResult) -> ()) {
         let request = version1.getRecipeRequest(id: recipeId)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -75,7 +75,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                 let response = self.version1.getRecipeResponse(response: response, data: data)
                 switch response {
                 case .recipe(let recipe):
-                    completionHandler(.recipeInDetails(recipe))
+                    completionHandler(.recipe(recipe))
                 case .error(let error):
                     completionHandler(.error(error))
                 }
@@ -97,7 +97,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                 let response = self.version1.updateRecipeResponse(response: response, data: data)
                 switch response {
                 case .recipe(let recipe):
-                    completionHandler(.updatedRecipe(recipe))
+                    completionHandler(.recipe(recipe))
                 case .error(let error):
                     completionHandler(.error(error))
                 }
@@ -141,7 +141,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                 let response = self.version1.addNewRatingResponse(response: response, data: data)
                 switch response {
                 case .score(let score):
-                    completionHandler(.recipeScore(score))
+                    completionHandler(.score(score))
                 case .error(let error):
                     completionHandler(.error(error))
                 }

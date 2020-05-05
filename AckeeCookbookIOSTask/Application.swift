@@ -18,6 +18,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     override func didFinishLaunching() {
         super.didFinishLaunching()
         presentation.showRecipesList()
+        sleep(4)
     }
 
     // MARK: Presentation
@@ -29,10 +30,10 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     }()
 
     func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt) {
-        webApi.getRecipesList(offset: offset, limit: limit) { [weak self] (result) in
+        webApi.getRecipes(offset: offset, limit: limit) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case let .recipesList(recipes):
+            case let .recipes(recipes):
                 self.presentation.takeRecipes(recipes, offset: offset, limit: limit)
             case let .error(error):
                 self.presentation.errorGetRecipes(error, offset: offset, limit: limit)
@@ -44,7 +45,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         webApi.createRecipe(recipe) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case let .createdRecipe(recipe):
+            case let .recipe(recipe):
                 self.presentation.takeCreatedRecipe(recipe)
             case let .error(error):
                 self.presentation.errorCreatedRecipe(error, recipe: recipe)
@@ -54,9 +55,9 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     
     func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList) {
         let recipeId = recipe.id
-        webApi.getRecipeInDetails(recipeId) { (result) in
+        webApi.getRecipe(recipeId) { (result) in
             switch result {
-            case let .recipeInDetails(recipe):
+            case let .recipe(recipe):
                 self.presentation.takeRecipeInDetails(recipe, recipeInList: recipe)
             case let .error(error):
                 self.presentation.errorGetRecipeInDetails(error, recipeInList: recipe)
@@ -80,7 +81,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         let recipeId = recipe.id
         webApi.scoreRecipe(recipeId, score: score) { (result) in
             switch result {
-            case let .recipeScore(score):
+            case let .score(score):
                 self.presentation.scoreRecipe(recipe, score: score)
             case let .error(error):
                 self.presentation.errorScoreRecipe(error, recipe: recipe, score: score)
@@ -91,7 +92,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe) {
         webApi.updateRecipe(recipe) { (result) in
             switch result {
-            case let .updatedRecipe(recipe):
+            case let .recipe(recipe):
                 self.presentation.updateRecipe(recipe)
             case let .error(error):
                 self.presentation.errorUpdateRecipe(error, recipe: recipe)
