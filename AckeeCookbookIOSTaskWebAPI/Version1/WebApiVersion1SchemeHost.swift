@@ -190,9 +190,9 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     
     func addNewRatingResponse(response: URLResponse, data: Data) -> WebApiVersion1AddNewRatingResponse {
         do {
-            let object = try JSONSerialization.object(with: data, options: [])
-            let score = try object.numberForKey("score").floatValue
-            return .score(score)
+            let jsonObject = try JSONSerialization.object(with: data, options: [])
+            let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
+            return .rating(addedNewRating)
         } catch {
             return .error(error)
         }
@@ -213,7 +213,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         let name = try jsonObject.stringForKey("name")
         let duration = try jsonObject.numberForKey("duration").uintValue
         let score = try jsonObject.numberForKey("score").floatValue
-        let recipe = StructureRecipeInList(id: id, name: name, duration: duration, score: score)
+        let recipe = RecipeInListStructure(id: id, name: name, duration: duration, score: score)
         return recipe
     }
     
@@ -227,5 +227,13 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         let score = try jsonObject.numberForKey("score").floatValue
         let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
         return recipe
+    }
+    
+    private func addedNewRating(jsonObject: JsonObject) throws -> AddedNewRating {
+        let id = try jsonObject.stringForKey("id")
+        let recipeId = try jsonObject.stringForKey("recipe")
+        let score = try jsonObject.numberForKey("score").floatValue
+        let addedNewRating = AddedNewRatingStructure(id: id, recipeId: recipeId, score: score)
+        return addedNewRating
     }
 }

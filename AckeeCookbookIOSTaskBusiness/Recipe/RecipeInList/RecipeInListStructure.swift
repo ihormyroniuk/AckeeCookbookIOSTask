@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct StructureRecipeInList: RecipeInList {
+public struct RecipeInListStructure: RecipeInList {
     public let id: String
     public let name: String
     public let duration: UInt

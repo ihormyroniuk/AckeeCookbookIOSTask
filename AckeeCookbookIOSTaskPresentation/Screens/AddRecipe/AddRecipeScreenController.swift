@@ -93,7 +93,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         guard let info = infoTextViewController.text else {
             return
         }
-        let recipe = StructureCreatingRecipe(name: name, description: description, ingredients: ingredients, duration: 100, info: info)
+        let recipe = CreatingRecipeStructure(name: name, description: description, ingredients: ingredients, duration: 100, info: info)
         delegate?.addRecipeScreenAddRecipe(recipe)
     }
 

@@ -18,7 +18,6 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     override func didFinishLaunching() {
         super.didFinishLaunching()
         presentation.showRecipesList()
-        sleep(4)
     }
 
     // MARK: Presentation
@@ -103,7 +102,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     // MARK: WebAPI
 
     private lazy var webApi: WebApiPerformer = {
-        let webAPI = WebApiPerformerUrlSessionShared()
-        return webAPI
+        let webApi = WebApiPerformerUrlSessionShared()
+        return webApi
     }()
 }

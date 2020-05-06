@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct StructureCreatingRecipe: CreatingRecipe {
+public struct CreatingRecipeStructure: CreatingRecipe {
     public let name: String
     public let description: String
     public let ingredients: [String]

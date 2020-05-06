@@ -140,8 +140,8 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             } else if let data = data, let response  = response {
                 let response = self.version1.addNewRatingResponse(response: response, data: data)
                 switch response {
-                case .score(let score):
-                    completionHandler(.score(score))
+                case .rating(let rating):
+                    completionHandler(.score(rating.score))
                 case .error(let error):
                     completionHandler(.error(error))
                 }

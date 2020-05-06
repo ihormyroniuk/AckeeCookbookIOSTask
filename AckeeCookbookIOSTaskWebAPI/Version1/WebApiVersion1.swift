@@ -35,7 +35,7 @@ enum WebApiVersion1DeleteRecipeResponse {
 }
 
 enum WebApiVersion1AddNewRatingResponse {
-    case score(Float)
+    case rating(AddedNewRating)
     case error(Error)
 }
 
