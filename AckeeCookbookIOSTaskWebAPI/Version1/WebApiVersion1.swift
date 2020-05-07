@@ -11,32 +11,32 @@ import AckeeCookbookIOSTaskBusiness
 
 enum WebApiVersion1GetRecipesResponse {
     case recipes([RecipeInList])
-    case error(Error)
+    case error(WebApiVersion1Error)
 }
 
 enum WebApiVersion1CreateNewRecipeResponse {
     case recipe(RecipeInDetails)
-    case error(Error)
+    case error(WebApiVersion1Error)
 }
 
 enum WebApiVersion1GetRecipeResponse {
     case recipe(RecipeInDetails)
-    case error(Error)
+    case error(WebApiVersion1Error)
 }
 
 enum WebApiVersion1UpdateRecipeResponse {
     case recipe(RecipeInDetails)
-    case error(Error)
+    case error(WebApiVersion1Error)
 }
 
 enum WebApiVersion1DeleteRecipeResponse {
-    case deleted
-    case error(Error)
+    case success
+    case error(WebApiVersion1Error)
 }
 
 enum WebApiVersion1AddNewRatingResponse {
     case rating(AddedNewRating)
-    case error(Error)
+    case error(WebApiVersion1Error)
 }
 
 protocol WebApiVersion1Error: Error {
@@ -47,33 +47,36 @@ protocol WebApiVersion1Error: Error {
 
 protocol WebApiVersion1 {
     
+    var scheme: String { get }
+    var host: String { get }
+    
     // MARK: Recipes
     
     func getRecipesRequest(limit: UInt, offset: UInt) -> URLRequest
-    func getRecipesResponse(response: URLResponse, data: Data) -> WebApiVersion1GetRecipesResponse
+    func getRecipesResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipesResponse
     
     // MARK: Create new recipe
     
     func createNewRecipeRequest(name: String, description: String, ingredients: [String]?, duration: UInt?, info: String?) -> URLRequest
-    func createNewRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1CreateNewRecipeResponse
+    func createNewRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1CreateNewRecipeResponse
     
     // MARK: Get recipe
     
     func getRecipeRequest(id: String) -> URLRequest
-    func getRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1GetRecipeResponse
+    func getRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipeResponse
     
     // MARK: Update recipe
     
     func updateRecipeRequest(id: String, name: String?, description: String?, ingredients: [String]?, duration: UInt?, info: String?) -> URLRequest
-    func updateRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1UpdateRecipeResponse
+    func updateRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1UpdateRecipeResponse
     
     // MARK: Delete recipe
     
     func deleteRecipeRequest(id: String) -> URLRequest
-    func deleteRecipeResponse(response: URLResponse, data: Data) -> WebApiVersion1DeleteRecipeResponse
+    func deleteRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1DeleteRecipeResponse
     
     // MARK: Add new rating
     
     func addNewRatingRequest(id: String, score: Float) -> URLRequest
-    func addNewRatingResponse(response: URLResponse, data: Data) -> WebApiVersion1AddNewRatingResponse
+    func addNewRatingResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1AddNewRatingResponse
 }

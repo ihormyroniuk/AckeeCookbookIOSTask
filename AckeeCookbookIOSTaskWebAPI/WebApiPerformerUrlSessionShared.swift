@@ -27,12 +27,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.getRecipesResponse(response: response, data: data)
-                switch response {
-                case .recipes(let recipes):
-                    completionHandler(.recipes(recipes))
-                case .error(let error):
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.getRecipesResponse(response: response, data: data)
+                    switch version1Response {
+                    case .recipes(let recipes):
+                        completionHandler(.recipes(recipes))
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {
@@ -49,12 +53,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.createNewRecipeResponse(response: response, data: data)
-                switch response {
-                case .recipe(let recipe):
-                    completionHandler(.recipe(recipe))
-                case .error(let error):
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.createNewRecipeResponse(response: response, data: data)
+                    switch version1Response {
+                    case .recipe(let recipe):
+                        completionHandler(.recipe(recipe))
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {
@@ -71,12 +79,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.getRecipeResponse(response: response, data: data)
-                switch response {
-                case .recipe(let recipe):
-                    completionHandler(.recipe(recipe))
-                case .error(let error):
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.getRecipeResponse(response: response, data: data)
+                    switch version1Response {
+                    case .recipe(let recipe):
+                        completionHandler(.recipe(recipe))
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {
@@ -93,12 +105,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.updateRecipeResponse(response: response, data: data)
-                switch response {
-                case .recipe(let recipe):
-                    completionHandler(.recipe(recipe))
-                case .error(let error):
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.updateRecipeResponse(response: response, data: data)
+                    switch version1Response {
+                    case .recipe(let recipe):
+                        completionHandler(.recipe(recipe))
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {
@@ -115,12 +131,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.deleteRecipeResponse(response: response, data: data)
-                switch response {
-                case .deleted:
-                    completionHandler(.deleted)
-                case .error(let error):
+            } else if let data = data, let response  = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.deleteRecipeResponse(response: response, data: data)
+                    switch version1Response {
+                    case .success:
+                        completionHandler(.deleted)
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {
@@ -137,12 +157,16 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
-            } else if let data = data, let response  = response {
-                let response = self.version1.addNewRatingResponse(response: response, data: data)
-                switch response {
-                case .rating(let rating):
-                    completionHandler(.score(rating.score))
-                case .error(let error):
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                do {
+                    let version1Response = try self.version1.addNewRatingResponse(response: response, data: data)
+                    switch version1Response {
+                    case .rating(let rating):
+                        completionHandler(.score(rating.score))
+                    case .error(let error):
+                        completionHandler(.error(error))
+                    }
+                } catch {
                     completionHandler(.error(error))
                 }
             } else {

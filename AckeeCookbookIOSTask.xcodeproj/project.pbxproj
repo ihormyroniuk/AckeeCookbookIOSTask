@@ -21,7 +21,6 @@
 		33114ECE242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; };
 		33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3318C35F2434D924009201E7 /* WebApiVersion1ErrorStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */; };
 		3318F118243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */; };
 		3318F11A243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */; };
 		331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */; };
@@ -145,7 +144,6 @@
 		33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskWebAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskWebAPI.h; sourceTree = "<group>"; };
 		33114ECD242BD06700B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1ErrorStructure.swift; sourceTree = "<group>"; };
 		3318F117243B2D6300F86FA1 /* RecipeInDetailsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenController.swift; sourceTree = "<group>"; };
 		3318F119243B2D6B00F86FA1 /* RecipeInDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetailsScreenView.swift; sourceTree = "<group>"; };
 		331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreen.swift; sourceTree = "<group>"; };
@@ -288,6 +286,7 @@
 			children = (
 				334EE48924326CDB00833180 /* WebApiPerformer.swift */,
 				334EE48B24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift */,
+				33296F9A2435052000A6948D /* UnknownError.swift */,
 				C5C08D46246044E200B320BD /* Version1 */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
 				33114ECD242BD06700B246BB /* Info.plist */,
@@ -466,8 +465,6 @@
 			children = (
 				C5C08D4B246060F000B320BD /* WebApiVersion1.swift */,
 				C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */,
-				3318C35E2434D924009201E7 /* WebApiVersion1ErrorStructure.swift */,
-				33296F9A2435052000A6948D /* UnknownError.swift */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -766,7 +763,6 @@
 			files = (
 				C5C08D4C246060F000B320BD /* WebApiVersion1.swift in Sources */,
 				33296F9B2435052000A6948D /* UnknownError.swift in Sources */,
-				3318C35F2434D924009201E7 /* WebApiVersion1ErrorStructure.swift in Sources */,
 				C5C08D4A2460497C00B320BD /* WebApiVersion1SchemeHost.swift in Sources */,
 				334EE48A24326CDB00833180 /* WebApiPerformer.swift in Sources */,
 				334EE48C24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift in Sources */,
