@@ -28,6 +28,9 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
     var setScoreButtons: [UIButton] {
         return setScoreView.scoreView.starButtons
     }
+    var setScoreLabel: UILabel {
+        return setScoreView.label
+    }
     
     // MARK: Setup
     
@@ -518,7 +521,6 @@ private class SetScoreView: AUIView {
         super.setup()
         backgroundColor = Colors.blue
         addSubview(label)
-        label.text = "sdfdsfsdf sd dsf sfjhds jfds jf djs fjhsdfhjsdh kfdhfhsdakf kjdsfjk sdjk f"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textColor = Colors.white

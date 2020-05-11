@@ -8,7 +8,7 @@
 
 import AUIKit
 
-class RecipeListItemCollectionViewCell: AUICollectionViewCell {
+class RecipesInListScreenRecipeCollectionViewCell: AUICollectionViewCell {
 
     // MARK: Subviews
 

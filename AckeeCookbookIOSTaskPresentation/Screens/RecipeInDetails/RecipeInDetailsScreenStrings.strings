@@ -11,3 +11,4 @@
 "ingredients" = "Ingredients";
 "description" = "Description";
 "durationInMinutes" = "%@ min.";
+"score" = "Score this recipe";

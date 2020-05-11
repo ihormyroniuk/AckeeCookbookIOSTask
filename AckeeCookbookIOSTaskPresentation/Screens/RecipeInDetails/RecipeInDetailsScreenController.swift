@@ -43,7 +43,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     // MARK: Localization
 
     private let localizer: ALocalizer = {
-        let bundle = Bundle(for: RecipesListScreenController.self)
+        let bundle = Bundle(for: RecipesInListScreenController.self)
         let tableName = "RecipeInDetailsScreenStrings"
         let textLocalizer = ATableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
         let localizator = ACompositeLocalizer(textLocalization: textLocalizer)
@@ -116,6 +116,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     private func setContent() {
         recipeInDetailsScreenView.backButton.setTitle(localizer.localizeText("back"), for: .normal)
         recipeInDetailsScreenView.deleteButton.setTitle(localizer.localizeText("delete"), for: .normal)
+        recipeInDetailsScreenView.setScoreLabel.text = localizer.localizeText("score")
     }
     
     private func setRecipeInDetailsContent(_ recipe: RecipeInDetails) {

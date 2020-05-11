@@ -19,7 +19,7 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         return collectionView
     }()
-    let collectionViewRefreshControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
 
     // MARK: Setup
 
@@ -47,7 +47,7 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
     private func setupTitleLabel() {
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textColor = .black
-        titleLabel.numberOfLines = 3
+        titleLabel.numberOfLines = 0
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
@@ -60,14 +60,16 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
     }
 
     private let recipeListItemViewCollectionViewCellIdentifier = "recipeListItemViewCollectionViewCellIdentifier"
+    private let recipesInListScreenLoadCollectionViewCellIdentifier = "RecipesInListScreenLoadCollectionViewCellIdentifier"
     private func setupCollectionView() {
         collectionView.alwaysBounceVertical = true
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         }
         collectionView.backgroundColor = .white
-        collectionView.register(RecipeListItemCollectionViewCell.self, forCellWithReuseIdentifier: recipeListItemViewCollectionViewCellIdentifier)
-        collectionView.addSubview(collectionViewRefreshControl)
+        collectionView.register(RecipesInListScreenRecipeCollectionViewCell.self, forCellWithReuseIdentifier: recipeListItemViewCollectionViewCellIdentifier)
+        collectionView.register(RecipesInListScreenLoadCollectionViewCell.self, forCellWithReuseIdentifier: recipesInListScreenLoadCollectionViewCellIdentifier)
+        collectionView.addSubview(refreshControl)
     }
 
     // Layout
@@ -114,14 +116,17 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
 
     // MARK: Cells
 
-    func recipeListItemViewCollectionViewCell(_ indexPath: IndexPath) -> RecipeListItemCollectionViewCell! {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeListItemViewCollectionViewCellIdentifier, for: indexPath) as? RecipeListItemCollectionViewCell
+    func recipeListItemViewCollectionViewCell(_ indexPath: IndexPath) -> RecipesInListScreenRecipeCollectionViewCell! {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipeListItemViewCollectionViewCellIdentifier, for: indexPath) as? RecipesInListScreenRecipeCollectionViewCell
+        return cell
+    }
+    
+    func recipesInListScreenLoadCollectionViewCell(_ indexPath: IndexPath) -> RecipesInListScreenLoadCollectionViewCell! {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recipesInListScreenLoadCollectionViewCellIdentifier, for: indexPath) as? RecipesInListScreenLoadCollectionViewCell
         return cell
     }
 
 }
-
-private let decoratorIdentifier: String = "tyu"
 
 final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
     
@@ -130,27 +135,40 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
         self.register(FeedSeparatorView.self, forDecorationViewOfKind: decoratorIdentifier)
     }
     
+    private let decoratorIdentifier: String = "tyu"
+    private class FeedSeparatorView: UICollectionReusableView {
+
+        override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+            super.apply(layoutAttributes)
+            backgroundColor = Colors.highlightGray
+        }
+    }
+    
     required init?(coder: NSCoder) { return nil }
     
+    private var y = 0
     override func prepare() {
         super.prepare()
-        prepareRecipes()
+        y = 0
+        prepareRecipesInList()
+        prepareRecipesInListLoad()
     }
     
     private var recipesLayoutAttributes: [UICollectionViewLayoutAttributes] = []
     private var recipesSeparatorsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
-    private func prepareRecipes() {
+    private func prepareRecipesInList() {
         recipesLayoutAttributes = []
         recipesSeparatorsLayoutAttributes = []
         guard let collectionView = collectionView else { return }
-        let section = 0
+        let section = RecipesInListScreenController.recipesInListSection
         let numberOfItems = collectionView.numberOfItems(inSection: section)
+        guard numberOfItems > 0 else { return }
         let bounds = collectionView.bounds
         let boundsWidth = Int(bounds.width)
         let x = 24
         let width = boundsWidth - x * 2
         let spacing = 16
-        var y = spacing
+        y += spacing
         let height = 76
         for item in 0..<numberOfItems {
             let indexPath = IndexPath(item: item, section: section)
@@ -159,7 +177,7 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
             recipesLayoutAttributes.append(recipeLayoutAttribute)
             y += height + spacing
             if item != numberOfItems - 1 {
-                let recipeSeparatorLayoutAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: "tyu", with: indexPath)
+                let recipeSeparatorLayoutAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: decoratorIdentifier, with: indexPath)
                 recipeSeparatorLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: 1)
                 recipesSeparatorsLayoutAttributes.append(recipeSeparatorLayoutAttribute)
                 y += spacing
@@ -167,8 +185,29 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
         }
     }
     
+    private var recipesInListLoadLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private func prepareRecipesInListLoad() {
+        recipesInListLoadLayoutAttributes = []
+        guard let collectionView = collectionView else { return }
+        let section = RecipesInListScreenController.recipesInListLoadSection
+        let numberOfItems = collectionView.numberOfItems(inSection: section)
+        let bounds = collectionView.bounds
+        let boundsWidth = Int(bounds.width)
+        if numberOfItems == 1 {
+            let item = 0
+            let x = 24
+            let width = boundsWidth - x * 2
+            let height = 76
+            let indexPath = IndexPath(item: item, section: section)
+            let recipesInListLoadLayoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            recipesInListLoadLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: height)
+            y += height + 16
+            recipesInListLoadLayoutAttributes.append(recipesInListLoadLayoutAttribute)
+        }
+    }
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let layoutAttributes = recipesLayoutAttributes + recipesSeparatorsLayoutAttributes
+        let layoutAttributes = recipesLayoutAttributes + recipesSeparatorsLayoutAttributes + recipesInListLoadLayoutAttributes
         let layoutAttributesInRect = layoutAttributes.filter({ $0.frame.intersects(rect) })
         return layoutAttributesInRect
     }
@@ -176,15 +215,18 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let section = indexPath.section
         let item = indexPath.item
-        if section == 0 {
+        if section == RecipesInListScreenController.recipesInListSection {
             return recipesLayoutAttributes[item]
+        }
+        if section == RecipesInListScreenController.recipesInListLoadSection {
+            return recipesInListLoadLayoutAttributes.first
         }
         return nil
     }
     
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath)
         -> UICollectionViewLayoutAttributes? {
-        if elementKind == "tyu" {
+        if elementKind == decoratorIdentifier {
             return recipesSeparatorsLayoutAttributes[indexPath.item]
         }
         return nil
@@ -192,12 +234,10 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
     
     override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return .zero }
-        if let last = recipesLayoutAttributes.last {
-            let width = collectionView.bounds.width
-            let height = last.frame.origin.y + last.frame.size.height + 16
-            return CGSize(width: width, height: height)
-        }
-        return .zero
+        let width = Int(collectionView.bounds.size.width)
+        let height = y
+        let size = CGSize(width: width, height: height)
+        return size
     }
     
     private var deletedIndexPaths: [IndexPath] = []
@@ -215,7 +255,7 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
                 guard var indexPath = updateItem.indexPathBeforeUpdate else { return }
                 let section = indexPath.section
                 let item = indexPath.item
-                if section == 0 {
+                if section == RecipesInListScreenController.recipesInListSection {
                     let numberOfItems = collectionView.numberOfItems(inSection: section)
                     if item == numberOfItems {
                         indexPath.item -= 1
@@ -229,26 +269,23 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
             }
         }
     }
-    
+
     override func indexPathsToDeleteForDecorationView(ofKind elementKind: String) -> [IndexPath] {
-        var indexPathsToDeleteForDecorationView = super.indexPathsToDeleteForDecorationView(ofKind: elementKind)
-        indexPathsToDeleteForDecorationView.append(contentsOf: deletedIndexPaths)
-        deletedIndexPaths = []
-        return indexPathsToDeleteForDecorationView
+        return deletedIndexPaths
     }
 
     override func indexPathsToInsertForDecorationView(ofKind elementKind: String) -> [IndexPath] {
-        var indexPathsToInsertForDecorationView = super.indexPathsToInsertForDecorationView(ofKind: elementKind)
-        indexPathsToInsertForDecorationView.append(contentsOf: insertedIndexPaths)
+        return insertedIndexPaths
+    }
+    
+    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return nil
+    }
+
+    override func finalizeCollectionViewUpdates() {
+        super.finalizeCollectionViewUpdates()
+        deletedIndexPaths = []
         insertedIndexPaths = []
-        return indexPathsToInsertForDecorationView
     }
-}
-
-private class FeedSeparatorView: UICollectionReusableView {
-
-    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.apply(layoutAttributes)
-        backgroundColor = Colors.highlightGray
-    }
+    
 }

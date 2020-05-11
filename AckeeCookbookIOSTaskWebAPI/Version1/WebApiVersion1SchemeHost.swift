@@ -40,23 +40,19 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func getRecipesResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipesResponse {
-        do {
-            let statusCode = response.statusCode
-            if statusCode == 200 {
-                let jsonArray = try JSONSerialization.objectsArray(with: data, options: [])
-                var recipes: [RecipeInList] = []
-                for jsonObject in jsonArray {
-                    let recipe = try recipeInList(jsonObject: jsonObject)
-                    recipes.append(recipe)
-                }
-                return .recipes(recipes)
-            } else {
-                let jsonObject = try JSONSerialization.object(with: data, options: [])
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
+        let statusCode = response.statusCode
+        if statusCode == 200 {
+            let jsonArray = try JSONSerialization.objectsArray(with: data, options: [])
+            var recipes: [RecipeInList] = []
+            for jsonObject in jsonArray {
+                let recipe = try recipeInList(jsonObject: jsonObject)
+                recipes.append(recipe)
             }
-        } catch {
-            fatalError()
+            return .recipes(recipes)
+        } else {
+            let jsonObject = try JSONSerialization.object(with: data, options: [])
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
@@ -85,18 +81,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func createNewRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1CreateNewRecipeResponse {
-        do {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
-            let statusCode = response.statusCode
-            if statusCode == 200 {
-                let recipe = try recipeInDetails(jsonObject: jsonObject)
-                return .recipe(recipe)
-            } else {
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
-            }
-        } catch {
-            fatalError()
+        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let statusCode = response.statusCode
+        if statusCode == 200 {
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
+            return .recipe(recipe)
+        } else {
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
@@ -114,18 +106,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func getRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipeResponse {
-        do {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
-            let statusCode = response.statusCode
-            if statusCode == 200 {
-                let recipe = try recipeInDetails(jsonObject: jsonObject)
-                return .recipe(recipe)
-            } else {
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
-            }
-        } catch {
-            fatalError()
+        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let statusCode = response.statusCode
+        if statusCode == 200 {
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
+            return .recipe(recipe)
+        } else {
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
@@ -155,18 +143,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func updateRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1UpdateRecipeResponse {
-        do {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
-            let statusCode = response.statusCode
-            if statusCode == 200 {
-                let recipe = try recipeInDetails(jsonObject: jsonObject)
-                return .recipe(recipe)
-            } else {
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
-            }
-        } catch {
-            fatalError()
+        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let statusCode = response.statusCode
+        if statusCode == 200 {
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
+            return .recipe(recipe)
+        } else {
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
@@ -184,17 +168,13 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func deleteRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1DeleteRecipeResponse {
-        do {
+        let statusCode = response.statusCode
+        if statusCode == 204 {
+            return .success
+        } else {
             let jsonObject = try JSONSerialization.object(with: data, options: [])
-            let statusCode = response.statusCode
-            if statusCode == 204 {
-                return .success
-            } else {
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
-            }
-        } catch {
-            fatalError()
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
@@ -220,18 +200,14 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     }
     
     func addNewRatingResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1AddNewRatingResponse {
-        do {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
-            let statusCode = response.statusCode
-            if statusCode == 200 {
-                let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
-                return .rating(addedNewRating)
-            } else {
-                let error = try self.error(jsonObject: jsonObject)
-                return .error(error)
-            }
-        } catch {
-            fatalError()
+        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let statusCode = response.statusCode
+        if statusCode == 200 {
+            let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
+            return .rating(addedNewRating)
+        } else {
+            let error = try self.error(jsonObject: jsonObject)
+            return .error(error)
         }
     }
     
