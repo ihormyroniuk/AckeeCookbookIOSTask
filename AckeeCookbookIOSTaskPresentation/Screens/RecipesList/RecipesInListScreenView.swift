@@ -277,10 +277,6 @@ final class FeedCollectionViewFlowLayout: UICollectionViewLayout {
     override func indexPathsToInsertForDecorationView(ofKind elementKind: String) -> [IndexPath] {
         return insertedIndexPaths
     }
-    
-    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return nil
-    }
 
     override func finalizeCollectionViewUpdates() {
         super.finalizeCollectionViewUpdates()

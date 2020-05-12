@@ -44,10 +44,11 @@ class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListSc
             deletedIndexPaths.append(indexPath)
             recipesInListLoad = false
             recipesInList.append(contentsOf: recipes)
-            recipesListScreenView.collectionView.performBatchUpdates({
-                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
-                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
-            }, completion: nil)
+//            recipesListScreenView.collectionView.performBatchUpdates({
+//                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+//                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+//            }, completion: nil)
+            recipesListScreenView.collectionView.reloadData()
         }
     }
     
