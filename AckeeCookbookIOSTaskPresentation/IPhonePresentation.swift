@@ -10,6 +10,20 @@ import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
 public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesInListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+    
+    public override func setup() {
+        super.setup()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
+    }
+    
+    @objc private func keyboardWillChangeFrame(notification: NSNotification) {
+        print(notification)
+        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
+        //UIView.animate(withDuration: 0.25) {
+            self.mainNavigationController?.view.frame.size.height = height
+            //self.mainNavigationController?.view.layoutIfNeeded()
+        //}
+    }
 
     // MARK: Presentation
     

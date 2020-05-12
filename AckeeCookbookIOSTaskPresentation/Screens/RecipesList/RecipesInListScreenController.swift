@@ -44,11 +44,10 @@ class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListSc
             deletedIndexPaths.append(indexPath)
             recipesInListLoad = false
             recipesInList.append(contentsOf: recipes)
-//            recipesListScreenView.collectionView.performBatchUpdates({
-//                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
-//                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
-//            }, completion: nil)
-            recipesListScreenView.collectionView.reloadData()
+            recipesListScreenView.collectionView.performBatchUpdates({
+                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+            }, completion: nil)
         }
     }
     
@@ -97,7 +96,7 @@ class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListSc
     // MARK: Data
 
     private var recipesInListLoadOffset: UInt = 0
-    private let recipesInListLoadlimit: UInt = 10
+    private let recipesInListLoadlimit: UInt = 20
     private var recipesInList: [RecipeInList] = []
     private var lastDisplayedRecipeInListIndex: Int?
     private var recipesInListLoad = false

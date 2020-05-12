@@ -45,7 +45,7 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
     private let infoTextViewController = AUIEmptyTextViewController()
     private var ingredientInputViewControllers: [AUIResponsiveTextViewTextInputViewController] = []
     private let descriptionTextViewController = AUIEmptyTextViewController()
-    private let durationTextViewController = AUIEmptyTextFieldController()
+    private let durationTextViewController = AUIEmptyTextViewController()
     private let durationDatePickerControler = AUIDefaultDatePickerController()
 
     // MARK: Setup
@@ -61,7 +61,7 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
         descriptionTextViewController.textView = addRecipeScreenView.descriptionInputView.textView
         descriptionTextViewController.addDidChangeTextObserver(self)
         addRecipeScreenView.addIngredientButton.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
-        durationTextViewController.textField = addRecipeScreenView.durationInputView.textField
+        durationTextViewController.textView = addRecipeScreenView.durationInputView.textField
         durationTextViewController.inputViewController = durationDatePickerControler
         durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.minuteInterval = 10

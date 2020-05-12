@@ -72,6 +72,10 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     }
 
     private func setupScrollView() {
+        scrollView.alwaysBounceVertical = true
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
         scrollView.addSubview(nameTextInputView)
         scrollView.addSubview(infoTextInputView)
         scrollView.addSubview(ingredientsLabel)
@@ -266,6 +270,8 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
         let size = durationInputView.sizeThatFits(possibleSize)
         let frame = CGRect(origin: origin, size: size)
         durationInputView.frame = frame
+        durationInputView.setNeedsLayout()
+        durationInputView.layoutIfNeeded()
     }
 
     private func setScrollViewContentSize() {
@@ -293,7 +299,7 @@ class DurationInputView: AUIView {
     // MARK: Subviews
 
     let titleLabel = UILabel()
-    let textField = UITextField()
+    let textField = UITextView()
     private let dataPicker = UIDatePicker();
     private let underlineLayer = CALayer()
 
@@ -319,6 +325,10 @@ class DurationInputView: AUIView {
         textField.textColor = Colors.gray
         textField.textAlignment = .right
         textField.inputView = dataPicker
+        textField.isScrollEnabled = false
+        textField.alwaysBounceVertical = false
+        textField.bounces = false
+        textField.textContainer.lineFragmentPadding = 0
     }
 
     private func setupUnderlineLayer() {
@@ -355,6 +365,7 @@ class DurationInputView: AUIView {
         size.width = possibleWidth
         let frame = CGRect(origin: origin, size: size)
         textField.frame = frame
+        titleLabel.frame.origin.y = (size.height - titleLabel.bounds.height) / 2
     }
 
     private func layoutUnderlineLayer() {

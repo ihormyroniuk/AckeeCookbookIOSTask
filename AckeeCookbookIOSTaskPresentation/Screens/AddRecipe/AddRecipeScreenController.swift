@@ -38,13 +38,16 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     private let infoTextViewController = AUIEmptyTextViewController()
     private var ingredientInputViewControllers: [AUIResponsiveTextViewTextInputViewController] = []
     private let descriptionTextViewController = AUIEmptyTextViewController()
-    private let durationTextViewController = AUIEmptyTextFieldController()
+    private let durationTextViewController = AUIEmptyTextViewController()
     private let durationDatePickerControler = AUIDefaultDatePickerController()
+    private let tapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: Setup
 
     override func setup() {
         super.setup()
+        addRecipeScreenView.addGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer.addTarget(self, action: #selector(sf))
         addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
         nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
@@ -54,13 +57,18 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
         descriptionTextViewController.textView = addRecipeScreenView.descriptionInputView.textView
         descriptionTextViewController.addDidChangeTextObserver(self)
         addRecipeScreenView.addIngredientButton.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
-        durationTextViewController.textField = addRecipeScreenView.durationInputView.textField
+        durationTextViewController.textView = addRecipeScreenView.durationInputView.textField
         durationTextViewController.inputViewController = durationDatePickerControler
+        durationTextViewController.addDidChangeTextObserver(self)
         durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.minuteInterval = 10
         durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.addDidValueChangedObserver(self)
         setContent()
+    }
+    
+    @objc func sf() {
+        view.endEditing(true)
     }
 
     // MARK: Events
