@@ -16,7 +16,6 @@ class Application: UIApplication, UIApplicationDelegate, PresentationDelegate {
     // MARK: Launching
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        sleep(5)
         if launchOptions == nil {
             didFinishLaunching()
             return true
@@ -31,6 +30,7 @@ class Application: UIApplication, UIApplicationDelegate, PresentationDelegate {
     // MARK: Presentation
 
     var window: UIWindow?
+    
     private lazy var presentation: Presentation = {
         let presentation = IPhonePresentation(window: window)
         presentation.delegate = self

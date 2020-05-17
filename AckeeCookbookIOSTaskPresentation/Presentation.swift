@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import AUIKit
+import UIKit
 import AckeeCookbookIOSTaskBusiness
 
 public protocol PresentationDelegate: class {
@@ -18,7 +18,7 @@ public protocol PresentationDelegate: class {
     func presentationUpdateRecipe(_ presentation: Presentation, recipe: UpdatingRecipe)
 }
 
-public protocol Presentation: AUIPresentation {
+public protocol Presentation {
     func showRecipesList()
     var delegate: PresentationDelegate? { get set }
     func takeRecipes(_ list: [RecipeInList], offset: UInt, limit: UInt)

@@ -9,10 +9,16 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: AUIWindowPresentation, Presentation, RecipesInListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
     
-    public override func setup() {
-        super.setup()
+    // MARK: Elements
+    
+    public let window: UIWindow
+    
+    // MARK: Initializer
+    
+    public init(window: UIWindow? = nil) {
+        self.window = window ?? UIWindow()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
     }
     
