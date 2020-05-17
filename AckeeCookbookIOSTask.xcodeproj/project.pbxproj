@@ -262,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */,
-				C5ECD030245E103600ECEE14 /* Launch */,
 				33114EC4242B900800B246BB /* RecipesList */,
 				33E6B619243A3043006200F1 /* RecipeInDetails */,
 				331A5E562432A026008AFDE0 /* AddRecipe */,
@@ -392,6 +391,7 @@
 				33114E7A242B7C5B00B246BB /* main.swift */,
 				33114E78242B7BF400B246BB /* Application.swift */,
 				3367D6F1242836940053A509 /* Info.plist */,
+				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
 				3367D6EC242836940053A509 /* Assets.xcassets */,
 			);
 			path = AckeeCookbookIOSTask;
@@ -470,14 +470,6 @@
 				C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */,
 			);
 			path = Version1;
-			sourceTree = "<group>";
-		};
-		C5ECD030245E103600ECEE14 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				3367D6EE242836940053A509 /* LaunchScreen.storyboard */,
-			);
-			path = Launch;
 			sourceTree = "<group>";
 		};
 		C5FEB198244DF36A00BA3753 /* Images */ = {
