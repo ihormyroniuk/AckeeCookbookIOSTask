@@ -67,6 +67,17 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
         durationDatePickerControler.minuteInterval = 10
         durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.addDidValueChangedObserver(self)
+        for ingredient in recipe.ingredients {
+            let ingredientInputView = addRecipeScreenView.addIngredientInputView()
+            ingredientInputView.placeholderLabel.text = "sdfdsfsdf"
+            let textViewController = AUIEmptyTextViewController()
+            textViewController.addDidChangeTextObserver(self)
+            let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()
+            textViewTextInputController.textViewController = textViewController
+            textViewTextInputController.responsiveTextInputView = ingredientInputView
+            ingredientInputViewControllers.append(textViewTextInputController)
+            textViewController.text = ingredient
+        }
         setContent()
     }
 

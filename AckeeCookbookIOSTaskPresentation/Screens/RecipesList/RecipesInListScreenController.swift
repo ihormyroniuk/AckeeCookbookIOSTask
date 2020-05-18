@@ -10,7 +10,7 @@ import AUIKit
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListScreen, UICollectionViewDataSource, UICollectionViewDelegate {
+class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: RecipesListScreen
 
@@ -116,28 +116,22 @@ class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListSc
     private var recipesListScreenView: RecipesInListScreenView! {
         return view as? RecipesInListScreenView
     }
-
-    // MARK: Setup
-
-    override func setup() {
-        super.setup()
-        recipesListScreenView.collectionView.dataSource = self
-        recipesListScreenView.collectionView.delegate = self
-        setupAddRecipeButton()
-        setupCollectionViewRefreshControl()
-        setContent()
-    }
-
-    private func setupAddRecipeButton() {
-        recipesListScreenView.addRecipeButton.addTarget(self, action: #selector(addReceipe), for: .touchUpInside)
-    }
-
-    private func setupCollectionViewRefreshControl() {
-        recipesListScreenView.refreshControl.addTarget(self, action: #selector(refreshRecipesList), for: .valueChanged)
+    
+    override func loadView() {
+        view = RecipesInListScreenView()
     }
 
     // MARK: Events
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        recipesListScreenView.collectionView.dataSource = self
+        recipesListScreenView.collectionView.delegate = self
+        recipesListScreenView.addRecipeButton.addTarget(self, action: #selector(addReceipe), for: .touchUpInside)
+        recipesListScreenView.refreshControl.addTarget(self, action: #selector(refreshRecipesList), for: .valueChanged)
+        setContent()
+    }
+    
     private var isFirstViewWillAppear = true
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -249,8 +243,14 @@ class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListSc
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recipe = recipesInList[indexPath.item]
-        delegate?.recipesInListScreenShowRecipeInDetails(self, recipeInList: recipe)
+        let section = indexPath.section
+        switch section {
+        case RecipesInListScreenController.recipesInListSection:
+            let recipe = recipesInList[indexPath.item]
+            delegate?.recipesInListScreenShowRecipeInDetails(self, recipeInList: recipe)
+        default:
+            break
+        }
     }
 
 }

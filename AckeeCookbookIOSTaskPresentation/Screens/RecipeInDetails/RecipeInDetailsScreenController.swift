@@ -60,6 +60,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         super.init(view: view)
         recipeInDetailsScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         recipeInDetailsScreenView.deleteButton.addTarget(self, action: #selector(delete2), for: .touchUpInside)
+        recipeInDetailsScreenView.updateButton.addTarget(self, action: #selector(update), for: .touchUpInside)
         recipeInDetailsScreenView.scrollViewRefreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         for button in recipeInDetailsScreenView.setScoreButtons {
             button.addTarget(self, action: #selector(setScore), for: .touchUpInside)
@@ -93,6 +94,11 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
         delegate?.recipeInDetailsScreenDeleteRecipeInDetails(self, recipeInDetails: recipeInDetails)
     }
     
+    @objc private func update() {
+        guard let recipeInDetails = recipeInDetails else { return }
+        delegate?.recipeInDetailsScreenUpdateRecipeInDetails(self, recipeInDetails: recipeInDetails)
+    }
+    
     @objc private func refresh() {
         delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
     }
@@ -116,6 +122,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     private func setContent() {
         recipeInDetailsScreenView.backButton.setTitle(localizer.localizeText("back"), for: .normal)
         recipeInDetailsScreenView.deleteButton.setTitle(localizer.localizeText("delete"), for: .normal)
+        recipeInDetailsScreenView.updateButton.setTitle(localizer.localizeText("update"), for: .normal)
         recipeInDetailsScreenView.setScoreLabel.text = localizer.localizeText("score")
     }
     

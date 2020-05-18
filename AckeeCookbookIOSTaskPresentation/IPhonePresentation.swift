@@ -19,7 +19,7 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
     
     public init(window: UIWindow? = nil) {
         self.window = window ?? UIWindow()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
     }
     
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {
@@ -35,8 +35,7 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
     
     public func showRecipesList() {
         let navigationController = AUIHiddenBarInteractiveNavigationController()
-        let screenView = RecipesInListScreenView()
-        let screenController = RecipesInListScreenController(view: screenView)
+        let screenController = RecipesInListScreenController()
         screenController.delegate = self
         navigationController.viewControllers = [screenController]
         self.mainNavigationController = navigationController
@@ -193,7 +192,14 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
     }
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
-        delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails)
+        let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
+        let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
+            self.delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails)
+        }
+        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(deleteAlertAction)
+        alertController.addAction(cancelAlertAction)
+        mainNavigationController?.present(alertController, animated: true, completion: nil)
     }
     
     func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {

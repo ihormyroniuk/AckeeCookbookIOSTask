@@ -22,7 +22,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ubB-or-8z1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ubB-or-8z1">
                                 <rect key="frame" x="146" y="201" width="83.5" height="83.5"/>
                             </imageView>
                         </subviews>
@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="83.5" height="83.5"/>
+        <image name="LaunchLogo" width="83.5" height="83.5"/>
     </resources>
 </document>

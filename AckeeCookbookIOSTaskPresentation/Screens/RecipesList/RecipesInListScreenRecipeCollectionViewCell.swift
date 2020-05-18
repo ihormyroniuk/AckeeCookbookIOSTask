@@ -8,7 +8,7 @@
 
 import AUIKit
 
-class RecipesInListScreenRecipeCollectionViewCell: AUICollectionViewCell {
+class RecipesInListScreenRecipeCollectionViewCell: UICollectionViewCell {
 
     // MARK: Subviews
 
@@ -19,23 +19,29 @@ class RecipesInListScreenRecipeCollectionViewCell: AUICollectionViewCell {
     let durationLabel = UILabel()
 
     // MARK: Setup
-
-    override func setup() {
-        super.setup()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    private func setup() {
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 4
-        contentView.addSubview(pictureImageView)
         setupPictureImageView()
-        contentView.addSubview(durationImageView)
         setupDurationImageView()
-        contentView.addSubview(durationLabel)
         setupDurationLabel()
         contentView.addSubview(scoreView)
-        contentView.addSubview(nameLabel)
         setupNameLabel()
     }
-
+    
     private func setupPictureImageView() {
+        contentView.addSubview(pictureImageView)
         pictureImageView.contentMode = .scaleAspectFit
         pictureImageView.image = Images.ackeeRecipe
         pictureImageView.clipsToBounds = true
@@ -43,15 +49,18 @@ class RecipesInListScreenRecipeCollectionViewCell: AUICollectionViewCell {
     }
 
     private func setupDurationImageView() {
+        contentView.addSubview(durationImageView)
         durationImageView.contentMode = .scaleAspectFit
         durationImageView.image = Images.clock
     }
 
     private func setupDurationLabel() {
+        contentView.addSubview(durationLabel)
         durationLabel.font = UIFont.systemFont(ofSize: 12)
     }
 
     private func setupNameLabel() {
+        contentView.addSubview(nameLabel)
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         nameLabel.numberOfLines = 0
         nameLabel.lineBreakMode = .byTruncatingTail

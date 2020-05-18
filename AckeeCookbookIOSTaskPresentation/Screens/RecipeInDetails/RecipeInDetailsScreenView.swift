@@ -14,6 +14,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
 
     let titleLabel = UILabel()
     let deleteButton = AlphaHighlightButton()
+    let updateButton = AlphaHighlightButton()
     let backButton = AlphaHighlightButton()
     private let scrollView = UIScrollView()
     let scrollViewRefreshControl = UIRefreshControl()
@@ -53,6 +54,8 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         setupBackButton()
         navigationBarView.addSubview(deleteButton)
         setupDeleteButton()
+        navigationBarView.addSubview(updateButton)
+        setupUpdateButton()
         navigationBarView.addSubview(titleLabel)
         setupTitleLabel()
     }
@@ -69,6 +72,11 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         deleteButton.setTitleColor(Colors.white, for: .normal)
     }
+    
+    private func setupUpdateButton() {
+           updateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+           updateButton.setTitleColor(Colors.white, for: .normal)
+       }
 
     private func setupTitleLabel() {
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -140,6 +148,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         super.layoutSubviews()
         layoutBackButton()
         layoutDeleteButton()
+        layoutUpdateButton()
         layoutTitleLabel()
         layoutScrollView()
         layoutScoreDurationView()
@@ -181,6 +190,19 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         let y: CGFloat = (navigationBarView.bounds.height - height) / 2
         let frame = CGRect(x: x, y: y, width: width, height: height)
         deleteButton.frame = frame
+    }
+    
+    private func layoutUpdateButton() {
+        let possibleHeight = navigationBarView.bounds.height
+        let possibleWidth = navigationBarView.bounds.width / 4
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = updateButton.sizeThatFits(possibleSize)
+        let width: CGFloat = size.width
+        let height: CGFloat = size.height
+        let x: CGFloat = deleteButton.frame.origin.x - 8 - width
+        let y: CGFloat = (navigationBarView.bounds.height - height) / 2
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        updateButton.frame = frame
     }
 
     private func layoutTitleLabel() {
@@ -364,6 +386,7 @@ class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelega
         backButton.setImage(image.withTintColor(_color), for: .normal)
         backButton.setImage(image.withTintColor(_color), for: .highlighted)
         deleteButton.setTitleColor(_color, for: .normal)
+        updateButton.setTitleColor(_color, for: .normal)
     }
     
 }

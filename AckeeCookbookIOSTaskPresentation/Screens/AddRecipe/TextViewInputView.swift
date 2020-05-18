@@ -183,15 +183,15 @@ class IngredientInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextI
     // MARK: AUIResponsiveTextInputView
     
     func responsiveTextInputViewDidBeginEditingEmpty(animated: Bool) {
-        placeholderLabel.isHidden = true
-    }
-
-    func responsiveTextInputViewDidBeginEditingNonempty(animated: Bool) {
         placeholderLabel.isHidden = false
     }
 
-    func responsiveTextInputViewDidBecomeEmpty(animated: Bool) {
+    func responsiveTextInputViewDidBeginEditingNonempty(animated: Bool) {
+        placeholderLabel.isHidden = true
+    }
 
+    func responsiveTextInputViewDidBecomeEmpty(animated: Bool) {
+        placeholderLabel.isHidden = false
     }
 
     func responsiveTextInputViewDidBecomeNonEmpty(animated: Bool) {
