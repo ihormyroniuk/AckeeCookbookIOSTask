@@ -61,7 +61,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
                 let recipeSeparatorLayoutAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: decoratorIdentifier, with: indexPath)
                 recipeSeparatorLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: 1)
                 recipesSeparatorsLayoutAttributes.append(recipeSeparatorLayoutAttribute)
-                y += spacing
+                y += spacing + 1
             }
         }
     }
@@ -74,6 +74,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         let numberOfItems = collectionView.numberOfItems(inSection: section)
         let bounds = collectionView.bounds
         let boundsWidth = Int(bounds.width)
+        y += 1
         if numberOfItems == 1 {
             let item = 0
             let x = 24
@@ -88,7 +89,6 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        print(rect)
         let layoutAttributes = recipesLayoutAttributes + recipesSeparatorsLayoutAttributes + recipesInListLoadLayoutAttributes
         let layoutAttributesInRect = layoutAttributes.filter({ $0.frame.intersects(rect) })
         return layoutAttributesInRect
@@ -122,14 +122,10 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         return size
     }
     
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
-    
     // MARK: Updates
     
-    private var deletedIndexPaths: [IndexPath] = []
-    private var insertedIndexPaths: [IndexPath] = []
+    private var deletedIndexPathsForDecorationView: [IndexPath] = []
+    private var insertedIndexPathsForDecorationView: [IndexPath] = []
     override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
         super.prepare(forCollectionViewUpdates: updateItems)
         guard let collectionView = collectionView else { return }
@@ -138,7 +134,10 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
             switch updateAction {
             case .insert:
                 guard let indexPath = updateItem.indexPathAfterUpdate else { return }
-                insertedIndexPaths.append(indexPath)
+                let section = indexPath.section
+                if section == RecipesInListScreenController.recipesInListSection {
+                    insertedIndexPathsForDecorationView.append(indexPath)
+                }
             case .delete:
                 guard var indexPath = updateItem.indexPathBeforeUpdate else { return }
                 let section = indexPath.section
@@ -147,9 +146,9 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
                     let numberOfItems = collectionView.numberOfItems(inSection: section)
                     if item == numberOfItems {
                         indexPath.item -= 1
-                        deletedIndexPaths.append(indexPath)
+                        deletedIndexPathsForDecorationView.append(indexPath)
                     } else {
-                        deletedIndexPaths.append(indexPath)
+                        deletedIndexPathsForDecorationView.append(indexPath)
                     }
                 }
             default:
@@ -159,17 +158,17 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
     }
 
     override func indexPathsToDeleteForDecorationView(ofKind elementKind: String) -> [IndexPath] {
-        return deletedIndexPaths
+        return deletedIndexPathsForDecorationView
     }
 
     override func indexPathsToInsertForDecorationView(ofKind elementKind: String) -> [IndexPath] {
-        return insertedIndexPaths
+        return insertedIndexPathsForDecorationView
     }
 
     override func finalizeCollectionViewUpdates() {
         super.finalizeCollectionViewUpdates()
-        deletedIndexPaths = []
-        insertedIndexPaths = []
+        deletedIndexPathsForDecorationView = []
+        insertedIndexPathsForDecorationView = []
     }
     
 }

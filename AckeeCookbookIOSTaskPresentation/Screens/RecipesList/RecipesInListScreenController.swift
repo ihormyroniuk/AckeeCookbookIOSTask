@@ -34,22 +34,20 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
             recipesInList = recipes
             recipesListScreenView.collectionView.contentOffset = .zero
             recipesListScreenView.refreshControl.endRefreshing()
-//            recipesListScreenView.collectionView.performBatchUpdates({
-//                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
-//                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
-//            }, completion: nil)
-            recipesListScreenView.collectionView.reloadData()
+            recipesListScreenView.collectionView.performBatchUpdates({
+                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+            }, completion: nil)
         } else {
             let item = 0
             let indexPath = IndexPath(item: item, section: RecipesInListScreenController.recipesInListLoadSection)
             deletedIndexPaths.append(indexPath)
             recipesInListLoad = false
             recipesInList.append(contentsOf: recipes)
-//            recipesListScreenView.collectionView.performBatchUpdates({
-//                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
-//                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
-//            }, completion: nil)
-            recipesListScreenView.collectionView.reloadData()
+            recipesListScreenView.collectionView.performBatchUpdates({
+                recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+            }, completion: nil)
         }
     }
     
@@ -68,10 +66,9 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         recipesInList.remove(at: item)
         recipesInListLoadOffset -= 1
         let indexPath = IndexPath(item: item, section: section)
-//        recipesListScreenView.collectionView.performBatchUpdates({
-//            self.recipesListScreenView.collectionView.deleteItems(at: [indexPath])
-//        }, completion: nil)
-        recipesListScreenView.collectionView.reloadData()
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.deleteItems(at: [indexPath])
+        }, completion: nil)
     }
     
     func knowRecipeScoreWasChanged(_ recipe: RecipeInList, score: Float) {
@@ -80,10 +77,9 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         let section = RecipesInListScreenController.recipesInListSection
         recipesInList[item].score = score
         let indexPath = IndexPath(item: item, section: section)
-//        recipesListScreenView.collectionView.performBatchUpdates({
-//            self.recipesListScreenView.collectionView.reloadItems(at: [indexPath])
-//        }, completion: nil)
-        recipesListScreenView.collectionView.reloadData()
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
     }
     
     func knowRecipeWasUpdated(_ recipe: RecipeInList) {
@@ -92,16 +88,15 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         recipesInList[index] = recipe
         let section = RecipesInListScreenController.recipesInListSection
         let indexPath = IndexPath(item: index, section: section)
-//        recipesListScreenView.collectionView.performBatchUpdates({
-//            self.recipesListScreenView.collectionView.reloadItems(at: [indexPath])
-//        }, completion: nil)
-        recipesListScreenView.collectionView.reloadData()
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.reloadItems(at: [indexPath])
+        }, completion: nil)
     }
 
     // MARK: Data
 
     private var recipesInListLoadOffset: UInt = 0
-    private let recipesInListLoadlimit: UInt = 20
+    private let recipesInListLoadlimit: UInt = 10
     private var recipesInList: [RecipeInList] = []
     private var lastDisplayedRecipeInListIndex: Int?
     private var recipesInListLoad = false
@@ -163,10 +158,9 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         let section = RecipesInListScreenController.recipesInListLoadSection
         let item = 0
         let indexPath = IndexPath(item: item, section: section)
-//        recipesListScreenView.collectionView.performBatchUpdates({
-//            self.recipesListScreenView.collectionView.insertItems(at: [indexPath])
-//        }, completion: nil)
-        recipesListScreenView.collectionView.reloadData()
+        recipesListScreenView.collectionView.performBatchUpdates({
+            self.recipesListScreenView.collectionView.insertItems(at: [indexPath])
+        }, completion: nil)
         delegate?.recipesInListScreenGetRecipes(self, offset: recipesInListLoadOffset, limit: recipesInListLoadlimit)
     }
 
@@ -179,15 +173,22 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
     }
     
     private func willDisplayRecipeInListAtIndex(_ index: Int) {
-        if Int(recipesInListLoadOffset) - Int(recipesInListLoadlimit) == index {
-            if let lastDisplayedRecipeInListIndex = lastDisplayedRecipeInListIndex {
+        func loadListAsync() {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.loadList()
+            }
+        }
+        guard recipesInListLoadOffset % recipesInListLoadlimit == 0 else { return }
+        if Int(recipesInListLoadOffset) - (Int(recipesInListLoadlimit) / 2) == index {
+            if let lastDisplayedRecipeInListIndex = self.lastDisplayedRecipeInListIndex {
                 if index > lastDisplayedRecipeInListIndex {
-                    loadList()
                     self.lastDisplayedRecipeInListIndex  = index
+                    loadListAsync()
                 }
             } else {
-                loadList()
                 lastDisplayedRecipeInListIndex  = index
+                loadListAsync()
             }
         }
     }

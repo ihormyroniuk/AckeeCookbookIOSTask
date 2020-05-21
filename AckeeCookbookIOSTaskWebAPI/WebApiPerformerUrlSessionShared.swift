@@ -32,7 +32,6 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                     let version1Response = try self.version1.getRecipesResponse(response: response, data: data)
                     switch version1Response {
                     case .recipes(let recipes):
-                        sleep(5)
                         completionHandler(.recipes(recipes))
                     case .error(let error):
                         completionHandler(.error(error))
