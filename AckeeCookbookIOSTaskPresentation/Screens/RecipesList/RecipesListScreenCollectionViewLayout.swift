@@ -54,6 +54,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: section)
             let recipeLayoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             recipeLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: height)
+            recipeLayoutAttribute.isHidden = false
             recipesLayoutAttributes.append(recipeLayoutAttribute)
             y += height + spacing
             if item != numberOfItems - 1 {
@@ -119,6 +120,10 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         let height = y
         let size = CGSize(width: width, height: height)
         return size
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
     }
     
     // MARK: Updates
