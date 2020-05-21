@@ -6,30 +6,21 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import UIKit
+import AUIKit
 import AckeeCookbookIOSTaskPresentation
 import AckeeCookbookIOSTaskWebAPI
 import AckeeCookbookIOSTaskBusiness
 
-class Application: UIApplication, UIApplicationDelegate, PresentationDelegate {
+class Application: AUIEmptyApplication, PresentationDelegate {
     
     // MARK: Launching
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        if launchOptions == nil {
-            didFinishLaunching()
-            return true
-        }
-        return false
-    }
-
-    func didFinishLaunching() {
+    override func didFinishLaunching() {
+        super.didFinishLaunching()
         presentation.showRecipesList()
     }
 
     // MARK: Presentation
-
-    var window: UIWindow?
     
     private lazy var presentation: Presentation = {
         let presentation = IPhonePresentation(window: window)

@@ -14,11 +14,7 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
 
     let titleLabel = UILabel()
     let addRecipeButton = AlphaHighlightButton()
-    let collectionViewLayout = RecipesListScreenCollectionViewLayout()
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        return collectionView
-    }()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: RecipesListScreenCollectionViewLayout())
     let refreshControl = UIRefreshControl()
 
     // MARK: Setup
@@ -60,7 +56,7 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
     }
 
     private let recipeListItemViewCollectionViewCellIdentifier = "recipeListItemViewCollectionViewCellIdentifier"
-    private let recipesInListScreenLoadCollectionViewCellIdentifier = "RecipesInListScreenLoadCollectionViewCellIdentifier"
+    private let recipesInListScreenLoadCollectionViewCellIdentifier = "recipesInListScreenLoadCollectionViewCellIdentifier"
     private func setupCollectionView() {
         collectionView.alwaysBounceVertical = true
         if #available(iOS 11.0, *) {
@@ -72,7 +68,7 @@ class RecipesInListScreenView: ScreenViewWithNavigationBar {
         collectionView.addSubview(refreshControl)
     }
 
-    // Layout
+    // MARK: Layout
 
     override func layoutSubviews() {
         super.layoutSubviews()

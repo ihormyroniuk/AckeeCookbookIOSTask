@@ -6,6 +6,6 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import UIKit
+import AUIKit
 
-UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, NSStringFromClass(Application.self), NSStringFromClass(Application.self))
+AUIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, Application.self)
