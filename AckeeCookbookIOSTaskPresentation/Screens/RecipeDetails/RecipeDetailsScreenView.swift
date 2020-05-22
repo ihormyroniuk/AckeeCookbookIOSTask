@@ -8,7 +8,7 @@
 
 import AUIKit
 
-class RecipeInDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate {
+class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate {
     
     // MARK: Subview
 

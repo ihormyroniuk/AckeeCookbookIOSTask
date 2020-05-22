@@ -9,7 +9,7 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesDetailsScreenDelegate, UpdateRecipeScreenDelegate {
     
     // MARK: Elements
     
@@ -64,36 +64,6 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         }
     }
     
-    public func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipeInDetailsScreen?.takeRecipeInDetails(recipe, recipeInList: recipeInList)
-        }
-    }
-    
-    public func errorGetRecipeInDetails(_ error: Error, recipeInList: RecipeInList) {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//
-//        }
-    }
-    
-    public func deleteRecipeInDetails(_ recipe: RecipeInDetails) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipesListScreen?.knowRecipeWasDeleted(recipe)
-            guard let recipesListScreen = self.recipesListScreen else { return }
-            self.mainNavigationController?.popToViewController(recipesListScreen, animated: true)
-        }
-    }
-    
-    public func errorDeleteRecipe(_ error: Error, recipe: RecipeInDetails) {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//
-//        }
-    }
-    
     public func scoreRecipe(_ recipe: RecipeInDetails, score: Float) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -141,7 +111,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
+    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
         delegate?.presentationGetRecipes(self, offset: offset, limit: limit, completionHandler: { (result) in
             DispatchQueue.main.async {
                 completionHandler(result)
@@ -150,8 +120,8 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
     }
 
     func recipesListScreenShowRecipeDetails(_ recipesListScreen: RecipesListScreenController, recipeInList: RecipeInList) {
-        let screenView = RecipeInDetailsScreenView()
-        let screenController = RecipeInDetailsScreenController(view: screenView, recipeInList: recipeInList)
+        let screenView = RecipeDetailsScreenView()
+        let screenController = RecipeDetailsScreenController(view: screenView, recipeInList: recipeInList)
         screenController.delegate = self
         recipeInDetailsScreen = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
@@ -171,20 +141,31 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
 
     // MARK: Recipe In Details Screen
 
-    private weak var recipeInDetailsScreen: RecipeInDetailsScreen?
+    private weak var recipeInDetailsScreen: RecipeDetailsScreenController?
 
-    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeInDetailsScreen) {
+    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeDetailsScreenController) {
         mainNavigationController?.popViewController(animated: true)
     }
     
-    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInList: RecipeInList) {
-        delegate?.presentationGetRecipe(self, recipe: recipeInList)
+    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInList: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
+        delegate?.presentationGetRecipe(self, recipe: recipeInList, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                completionHandler(result)
+            }
+        })
     }
 
-    func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
+    func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
         let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
         let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
-            self.delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails)
+            self.delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.recipesListScreen?.knowRecipeWasDeleted(recipeInDetails)
+                    guard let recipesListScreen = self.recipesListScreen else { return }
+                    self.mainNavigationController?.popToViewController(recipesListScreen, animated: true)
+                }
+            })
         }
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(deleteAlertAction)
@@ -192,7 +173,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         mainNavigationController?.present(alertController, animated: true, completion: nil)
     }
     
-    func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipeInDetails: RecipeInDetails) {
+    func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
         let screenView = AddRecipeScreenView()
         let screenController = UpdateRecipeScreenController(view: screenView, recipe: recipeInDetails)
         screenController.delegate = self
@@ -200,7 +181,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
-    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeInDetailsScreen, recipe: RecipeInDetails, score: Float) {
+    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float) {
         delegate?.presentationScoreRecipe(self, recipe: recipe, score: score)
     }
     

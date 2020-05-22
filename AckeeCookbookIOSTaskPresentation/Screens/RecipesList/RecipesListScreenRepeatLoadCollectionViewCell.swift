@@ -8,17 +8,24 @@
 
 import AUIKit
 
-class RecipesListScreenRepeatLoadCollectionViewCell: AUICollectionViewCell {
+protocol RecipesListScreenRepeatLoadCollectionViewCellDelegate: class {
+    func recipesListScreenRepeatLoadCollectionViewCellRepeatLoad(_ recipesListScreenRepeatLoadCollectionViewCell: RecipesListScreenRepeatLoadCollectionViewCell)
+}
 
+class RecipesListScreenRepeatLoadCollectionViewCell: AUICollectionViewCell {
+    
+    // MARK: Delegates
+    
+    weak var delegate: RecipesListScreenRepeatLoadCollectionViewCellDelegate?
+    
     // MARK: Subviews
 
-    private let repeatLoadButton = AlphaHighlightButton()
+    let repeatLoadButton = AlphaHighlightButton()
     
     // MARK: Setup
     
     override func setup() {
         super.setup()
-        repeatLoadButton.setTitle("sdfdsf", for: .normal)
         contentView.addSubview(repeatLoadButton)
         setupRepeatLoadButton()
     }
@@ -26,6 +33,7 @@ class RecipesListScreenRepeatLoadCollectionViewCell: AUICollectionViewCell {
     private func setupRepeatLoadButton() {
         repeatLoadButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         repeatLoadButton.setTitleColor(Colors.blue, for: .normal)
+        repeatLoadButton.addTarget(self, action: #selector(repeatLoad), for: .touchUpInside)
     }
     
     // MARK: Layout Subviews
@@ -46,6 +54,12 @@ class RecipesListScreenRepeatLoadCollectionViewCell: AUICollectionViewCell {
         let y: CGFloat = (bounds.height - height) / 2
         let frame = CGRect(x: x, y: y, width: width, height: height)
         repeatLoadButton.frame = frame
+    }
+    
+    // MARK: Actions
+    
+    @objc private func repeatLoad() {
+        delegate?.recipesListScreenRepeatLoadCollectionViewCellRepeatLoad(self)
     }
     
 }

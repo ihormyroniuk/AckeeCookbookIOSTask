@@ -42,7 +42,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         recipesSeparatorsLayoutAttributes = []
         guard let collectionView = collectionView else { return }
         let section = RecipesListScreenController.recipesSection
-        let numberOfItems = collectionView.numberOfItems(inSection: section)
+        guard let numberOfItems = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: section) else { return }
         guard numberOfItems > 0 else { return }
         let bounds = collectionView.bounds
         let boundsWidth = Int(bounds.width)

@@ -12,11 +12,11 @@ import AckeeCookbookIOSTaskBusiness
 
 protocol RecipesListScreenDelegate: class {
     func recipesListScreenAddRecipe(_ recipesListScreen: RecipesListScreenController)
-    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ())
+    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ())
     func recipesListScreenShowRecipeDetails(_ recipesListScreen: RecipesListScreenController, recipeInList: RecipeInList)
 }
 
-class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewDataSource, UICollectionViewDelegate {
+class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewDataSource, UICollectionViewDelegate, RecipesListScreenRepeatLoadCollectionViewCellDelegate {
 
     // MARK: RecipesListScreen
 
@@ -123,7 +123,7 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
         delegate?.recipesListScreenGetRecipes(self, offset: offset, limit: limit, completionHandler: { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case .recipes(let recipes):
+            case .success(let recipes):
                 self.recipesInListLoadOffset += limit
                 var insertedIndexPaths: [IndexPath] = []
                 for item in Int(offset)..<(Int(offset) + recipes.count) {
@@ -148,8 +148,29 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
                     self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
                     self.recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
                 }, completion: nil)
-            case .error(let error):
-                break
+            case .failure:
+                var deletedIndexPaths: [IndexPath] = []
+                let section = RecipesListScreenController.recipesSection
+                for item in 0..<self.recipesInList.count {
+                    let indexPath = IndexPath(item: item, section: section)
+                    deletedIndexPaths.append(indexPath)
+                }
+                if self.isLoading {
+                    self.isLoading = false
+                    let indexPath = IndexPath(item: 0, section: RecipesListScreenController.loadingSection)
+                    deletedIndexPaths.append(indexPath)
+                }
+                if self.isRepeatLoad {
+                    self.isRepeatLoad = false
+                    let indexPath = IndexPath(item: 0, section: RecipesListScreenController.repeatLoadSection)
+                    deletedIndexPaths.append(indexPath)
+                }
+                self.recipesInList = []
+                self.recipesListScreenView.collectionView.contentOffset = .zero
+                self.recipesListScreenView.refreshControl.endRefreshing()
+                self.recipesListScreenView.collectionView.performBatchUpdates({
+                    self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                }, completion: nil)
             }
         })
     }
@@ -159,15 +180,22 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
         let section = RecipesListScreenController.loadingSection
         let item = 0
         let indexPath = IndexPath(item: item, section: section)
+        var deletedIndexPaths: [IndexPath] = []
+        if isRepeatLoad {
+            isRepeatLoad = false
+            let indexPath = IndexPath(item: 0, section: RecipesListScreenController.repeatLoadSection)
+            deletedIndexPaths.append(indexPath)
+        }
         recipesListScreenView.collectionView.performBatchUpdates({
             self.recipesListScreenView.collectionView.insertItems(at: [indexPath])
+            self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
         }, completion: nil)
         let offset = recipesInListLoadOffset
         let limit = recipesInListLoadlimit
         delegate?.recipesListScreenGetRecipes(self, offset: offset, limit: limit, completionHandler: { [weak self] (result) in
             guard let self = self else { return }
             switch result {
-            case .recipes(let recipes):
+            case .success(let recipes):
                 self.recipesInListLoadOffset += limit
                 var insertedIndexPaths: [IndexPath] = []
                 for item in Int(offset)..<(Int(offset) + recipes.count) {
@@ -183,7 +211,7 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
                     self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
                     self.recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
                 }, completion: nil)
-            case .error:
+            case .failure:
                 var deletedIndexPaths: [IndexPath] = []
                 let loadingIndexPath = IndexPath(item: 0, section: RecipesListScreenController.loadingSection)
                 deletedIndexPaths.append(loadingIndexPath)
@@ -198,6 +226,10 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
                 }, completion: nil)
             }
         })
+    }
+
+    func recipesListScreenRepeatLoadCollectionViewCellRepeatLoad(_ recipesListScreenRepeatLoadCollectionViewCell: RecipesListScreenRepeatLoadCollectionViewCell) {
+        loadList()
     }
 
     @objc private func addReceipe() {
@@ -273,6 +305,8 @@ class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewD
             return cell
         case RecipesListScreenController.repeatLoadSection:
             let cell: RecipesListScreenRepeatLoadCollectionViewCell = recipesListScreenView.repeatLoadCollectionViewCell(indexPath)
+            cell.delegate = self
+            cell.repeatLoadButton.setTitle(localizer.localizeText("repeatLoad"), for: .normal)
             return cell
         default:
             return UICollectionViewCell()

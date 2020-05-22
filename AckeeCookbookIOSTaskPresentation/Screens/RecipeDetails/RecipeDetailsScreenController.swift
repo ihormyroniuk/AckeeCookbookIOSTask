@@ -10,20 +10,19 @@ import AUIKit
 import AckeeCookbookIOSTaskBusiness
 import AFoundation
 
-class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetailsScreen {
+protocol RecipesDetailsScreenDelegate: class {
+    func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeDetailsScreenController)
+    func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInList: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
+    func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails)
+    func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails)
+    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float)
+}
+
+class RecipeDetailsScreenController: AUIDefaultScreenController {
     
     // MARK: RecipeInDetailsScreen
     
-    var delegate: RecipesInDetailsScreenDelegate?
-
-    func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList) {
-        guard recipeInList.id == recipe.id else { return }
-        recipeInDetails = recipe
-        setRecipeInDetailsContent(recipe)
-        recipeInDetailsScreenView.setNeedsLayout()
-        recipeInDetailsScreenView.layoutIfNeeded()
-        recipeInDetailsScreenView.scrollViewRefreshControl.endRefreshing()
-    }
+    var delegate: RecipesDetailsScreenDelegate?
     
     func changeRecipeScore(_ recipe: RecipeInDetails, score: Float) {
         guard recipeInList.id == recipe.id else { return }
@@ -44,7 +43,7 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
 
     private let localizer: ALocalizer = {
         let bundle = Bundle(for: RecipesListScreenController.self)
-        let tableName = "RecipeInDetailsScreenStrings"
+        let tableName = "RecipeDetailsScreenStrings"
         let textLocalizer = ATableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
         let localizator = ACompositeLocalizer(textLocalization: textLocalizer)
         return localizator
@@ -71,8 +70,8 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     
     // MARK: AddRecipeScreenView
 
-    private var recipeInDetailsScreenView: RecipeInDetailsScreenView! {
-        return view as? RecipeInDetailsScreenView
+    private var recipeInDetailsScreenView: RecipeDetailsScreenView! {
+        return view as? RecipeDetailsScreenView
     }
 
     // MARK: Events
@@ -100,13 +99,26 @@ class RecipeInDetailsScreenController: AUIDefaultScreenController, RecipeInDetai
     }
     
     @objc private func refresh() {
-        delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
+        delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList, completionHandler: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let recipe):
+                self.recipeInDetails = recipe
+                self.setRecipeInDetailsContent(recipe)
+                self.recipeInDetailsScreenView.setNeedsLayout()
+                self.recipeInDetailsScreenView.layoutIfNeeded()
+                self.recipeInDetailsScreenView.scrollViewRefreshControl.endRefreshing()
+            case .failure(let error):
+                print(error)
+                break
+            }
+        })
     }
     
     private func loadDetails() {
         if recipeInDetails == nil {
             recipeInDetailsScreenView.scrollViewRefreshControl.beginRefreshing()
-            delegate?.recipeInDetailsScreenGetRecipeInDetails(self, recipeInList: recipeInList)
+            refresh()
         }
     }
     

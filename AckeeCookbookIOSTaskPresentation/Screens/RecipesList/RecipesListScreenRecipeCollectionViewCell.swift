@@ -141,43 +141,5 @@ class RecipesListScreenRecipeCollectionViewCell: AUICollectionViewCell {
         setNeedsLayout()
         layoutIfNeeded()
     }
-    
-    // MARK: Events
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        highlighted()
-        super.touchesBegan(touches, with: event)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        highlighted()
-        super.touchesMoved(touches, with: event)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        unhighlighted()
-        super.touchesEnded(touches, with: event)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        unhighlighted()
-        super.touchesCancelled(touches, with: event)
-    }
-
-    // MARK: Actions
-    
-    func highlighted() {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            guard let self = self else { return }
-            self.contentView.backgroundColor = Colors.highlightGray
-        }
-    }
-    
-    func unhighlighted() {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            guard let self = self else { return }
-            self.contentView.backgroundColor = .white
-        }
-    }
 
 }

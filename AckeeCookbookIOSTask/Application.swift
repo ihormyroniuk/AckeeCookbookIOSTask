@@ -29,18 +29,14 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         return presentation
     }()
 
-    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
+    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
         webApi.getRecipes(offset: offset, limit: limit) { (result) in
-            if offset == 20 {
-                completionHandler(.error(NSError(domain: "df", code: 1, userInfo: [:])))
-                return
-            }
-            let presentationResult: GetRecipesResult
+            let presentationResult: Result<[RecipeInList], Error>
             switch result {
             case .recipes(let recipes):
-                presentationResult = .recipes(recipes)
+                presentationResult = .success(recipes)
             case .error(let error):
-                presentationResult = .error(error)
+                presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
         }
@@ -58,26 +54,28 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         }
     }
     
-    func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList) {
+    func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
         let recipeId = recipe.id
         webApi.getRecipe(recipeId) { (result) in
+            let presentationResult: Result<RecipeInDetails, Error>
             switch result {
-            case let .recipe(recipe):
-                self.presentation.takeRecipeInDetails(recipe, recipeInList: recipe)
-            case let .error(error):
-                self.presentation.errorGetRecipeInDetails(error, recipeInList: recipe)
+            case .recipe(let recipe):
+                presentationResult = .success(recipe)
+            case .error(let error):
+                presentationResult = .failure(error)
             }
+            completionHandler(presentationResult)
         }
     }
     
-    func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails) {
+    func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails, completionHandler: @escaping (Error?) -> ()) {
         let recipeId = recipe.id
         webApi.deleteRecipe(recipeId) { (result) in
             switch result {
             case .deleted:
-                self.presentation.deleteRecipeInDetails(recipe)
+                completionHandler(nil)
             case let .error(error):
-                self.presentation.errorDeleteRecipe(error, recipe: recipe)
+                completionHandler(error)
             }
         }
     }
