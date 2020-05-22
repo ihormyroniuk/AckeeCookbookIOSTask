@@ -9,7 +9,7 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesInDetailsScreenDelegate, UpdateRecipeScreenDelegate {
     
     // MARK: Elements
     
@@ -35,8 +35,8 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
     
     public func showRecipesList() {
         let navigationController = AUIHiddenBarInteractiveNavigationController()
-        let screenView = RecipesInListScreenView()
-        let screenController = RecipesInListScreenController(view: screenView)
+        let screenView = RecipesListScreenView()
+        let screenController = RecipesListScreenController(view: screenView)
         screenController.delegate = self
         navigationController.viewControllers = [screenController]
         self.mainNavigationController = navigationController
@@ -131,9 +131,9 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
 
     // MARK: Recipes List Screen
 
-    private weak var recipesListScreen: RecipesInListScreen?
+    private weak var recipesListScreen: RecipesListScreenController?
 
-    func recipesInListScreenAddRecipe(_ recipesListScreen: RecipesInListScreen) {
+    func recipesListScreenAddRecipe(_ recipesListScreen: RecipesListScreenController) {
         let screenView = AddRecipeScreenView()
         let screenController = AddRecipeScreenController(view: screenView)
         screenController.delegate = self
@@ -141,7 +141,7 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesInListScreenGetRecipes(_ recipesListScreen: RecipesInListScreen, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
+    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
         delegate?.presentationGetRecipes(self, offset: offset, limit: limit, completionHandler: { (result) in
             DispatchQueue.main.async {
                 completionHandler(result)
@@ -149,7 +149,7 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
         })
     }
 
-    func recipesInListScreenShowRecipeInDetails(_ recipesListScreen: RecipesInListScreen, recipeInList: RecipeInList) {
+    func recipesListScreenShowRecipeDetails(_ recipesListScreen: RecipesListScreenController, recipeInList: RecipeInList) {
         let screenView = RecipeInDetailsScreenView()
         let screenController = RecipeInDetailsScreenController(view: screenView, recipeInList: recipeInList)
         screenController.delegate = self

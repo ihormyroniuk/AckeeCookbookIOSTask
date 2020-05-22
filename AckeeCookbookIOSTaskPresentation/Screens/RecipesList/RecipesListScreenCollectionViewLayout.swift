@@ -31,7 +31,8 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         super.prepare()
         y = 0
         prepareRecipesInList()
-        prepareRecipesInListLoad()
+        prepareLoading()
+        prepareRepeatLoad()
     }
     
     private var recipesLayoutAttributes: [UICollectionViewLayoutAttributes] = []
@@ -40,7 +41,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         recipesLayoutAttributes = []
         recipesSeparatorsLayoutAttributes = []
         guard let collectionView = collectionView else { return }
-        let section = RecipesInListScreenController.recipesInListSection
+        let section = RecipesListScreenController.recipesSection
         let numberOfItems = collectionView.numberOfItems(inSection: section)
         guard numberOfItems > 0 else { return }
         let bounds = collectionView.bounds
@@ -66,30 +67,52 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    private var recipesInListLoadLayoutAttributes: [UICollectionViewLayoutAttributes] = []
-    private func prepareRecipesInListLoad() {
-        recipesInListLoadLayoutAttributes = []
+    private var loadingLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private func prepareLoading() {
+        loadingLayoutAttributes = []
         guard let collectionView = collectionView else { return }
-        let section = RecipesInListScreenController.recipesInListLoadSection
+        let section = RecipesListScreenController.loadingSection
         let numberOfItems = collectionView.numberOfItems(inSection: section)
         let bounds = collectionView.bounds
         let boundsWidth = Int(bounds.width)
-        y += 1
         if numberOfItems == 1 {
+            y += 1
             let item = 0
             let x = 24
             let width = boundsWidth - x * 2
-            let height = 76
+            let height = 38
             let indexPath = IndexPath(item: item, section: section)
             let recipesInListLoadLayoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             recipesInListLoadLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: height)
             y += height + 16
-            recipesInListLoadLayoutAttributes.append(recipesInListLoadLayoutAttribute)
+            loadingLayoutAttributes.append(recipesInListLoadLayoutAttribute)
+        }
+    }
+    
+    private var repeatLoadLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+    private func prepareRepeatLoad() {
+        repeatLoadLayoutAttributes = []
+        guard let collectionView = collectionView else { return }
+        let section = RecipesListScreenController.repeatLoadSection
+        let numberOfItems = collectionView.numberOfItems(inSection: section)
+        let bounds = collectionView.bounds
+        let boundsWidth = Int(bounds.width)
+        if numberOfItems == 1 {
+            y += 1
+            let item = 0
+            let x = 24
+            let width = boundsWidth - x * 2
+            let height = 38
+            let indexPath = IndexPath(item: item, section: section)
+            let recipesInListLoadLayoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            recipesInListLoadLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: height)
+            y += height + 16
+            repeatLoadLayoutAttributes.append(recipesInListLoadLayoutAttribute)
         }
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let layoutAttributes = recipesLayoutAttributes + recipesSeparatorsLayoutAttributes + recipesInListLoadLayoutAttributes
+        let layoutAttributes = recipesLayoutAttributes + recipesSeparatorsLayoutAttributes + loadingLayoutAttributes + repeatLoadLayoutAttributes
         let layoutAttributesInRect = layoutAttributes.filter({ $0.frame.intersects(rect) })
         return layoutAttributesInRect
     }
@@ -97,11 +120,14 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         let section = indexPath.section
         let item = indexPath.item
-        if section == RecipesInListScreenController.recipesInListSection {
+        if section == RecipesListScreenController.recipesSection {
             return recipesLayoutAttributes[item]
         }
-        if section == RecipesInListScreenController.recipesInListLoadSection {
-            return recipesInListLoadLayoutAttributes.first
+        if section == RecipesListScreenController.loadingSection {
+            return loadingLayoutAttributes.first
+        }
+        if section == RecipesListScreenController.repeatLoadSection {
+            return repeatLoadLayoutAttributes.first
         }
         return nil
     }
@@ -135,14 +161,14 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
             case .insert:
                 guard let indexPath = updateItem.indexPathAfterUpdate else { return }
                 let section = indexPath.section
-                if section == RecipesInListScreenController.recipesInListSection {
+                if section == RecipesListScreenController.recipesSection {
                     insertedIndexPathsForDecorationView.append(indexPath)
                 }
             case .delete:
                 guard var indexPath = updateItem.indexPathBeforeUpdate else { return }
                 let section = indexPath.section
                 let item = indexPath.item
-                if section == RecipesInListScreenController.recipesInListSection {
+                if section == RecipesListScreenController.recipesSection {
                     let numberOfItems = collectionView.numberOfItems(inSection: section)
                     if item == numberOfItems {
                         indexPath.item -= 1

@@ -19,7 +19,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     // MARK: Localization
 
     private let localizer: ALocalizer = {
-        let bundle = Bundle(for: RecipesInListScreenController.self)
+        let bundle = Bundle(for: RecipesListScreenController.self)
         let tableName = "AddRecipeScreenStrings"
         let textLocalizer = ATableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
         let localizator = ACompositeLocalizer(textLocalization: textLocalizer)

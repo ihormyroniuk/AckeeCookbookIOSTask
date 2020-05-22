@@ -8,7 +8,7 @@
 
 import AUIKit
 
-class RecipesInListScreenLoadCollectionViewCell: AUICollectionViewCell {
+class RecipesListScreenLoadingCollectionViewCell: AUICollectionViewCell {
 
     // MARK: Subviews
 
@@ -31,6 +31,10 @@ class RecipesInListScreenLoadCollectionViewCell: AUICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        layoutActivityIndicatorView()
+    }
+    
+    private func layoutActivityIndicatorView() {
         activityIndicatorView.frame = bounds
     }
     

@@ -8,7 +8,7 @@
 
 import AUIKit
 
-class RecipesInListScreenRecipeCollectionViewCell: UICollectionViewCell {
+class RecipesListScreenRecipeCollectionViewCell: AUICollectionViewCell {
 
     // MARK: Subviews
 
@@ -20,17 +20,8 @@ class RecipesInListScreenRecipeCollectionViewCell: UICollectionViewCell {
 
     // MARK: Setup
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    private func setup() {
+    override func setup() {
+        super.setup()
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 4
         contentView.addSubview(pictureImageView)

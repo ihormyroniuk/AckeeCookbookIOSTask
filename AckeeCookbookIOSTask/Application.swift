@@ -31,6 +31,10 @@ class Application: AUIEmptyApplication, PresentationDelegate {
 
     func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
         webApi.getRecipes(offset: offset, limit: limit) { (result) in
+            if offset == 20 {
+                completionHandler(.error(NSError(domain: "df", code: 1, userInfo: [:])))
+                return
+            }
             let presentationResult: GetRecipesResult
             switch result {
             case .recipes(let recipes):
