@@ -9,8 +9,13 @@
 import UIKit
 import AckeeCookbookIOSTaskBusiness
 
+public enum GetRecipesResult {
+    case recipes([RecipeInList])
+    case error(Error)
+}
+
 public protocol PresentationDelegate: class {
-    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt)
+    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ())
     func presentationCreateRecipe(_ presentation: Presentation, recipe: CreatingRecipe)
     func presentationGetRecipe(_ presentation: Presentation, recipe: RecipeInList)
     func presentationDeleteRecipe(_ presentation: Presentation, recipe: RecipeInDetails)
@@ -21,8 +26,6 @@ public protocol PresentationDelegate: class {
 public protocol Presentation {
     func showRecipesList()
     var delegate: PresentationDelegate? { get set }
-    func takeRecipes(_ list: [RecipeInList], offset: UInt, limit: UInt)
-    func errorGetRecipes(_ error: Error, offset: UInt, limit: UInt)
     func takeCreatedRecipe(_ recipe: RecipeInDetails)
     func errorCreatedRecipe(_ error: Error, recipe: CreatingRecipe)
     func takeRecipeInDetails(_ recipe: RecipeInDetails, recipeInList: RecipeInList)

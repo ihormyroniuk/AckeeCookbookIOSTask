@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import UIKit
+import AUIKit
 
 enum Colors {
     
@@ -15,18 +15,19 @@ enum Colors {
     }
     
     static var red: UIColor {
-        return UIColor(red: 234 / 255, green: 61 / 255 , blue: 247 / 255, alpha: 1)
+        return UIColor(red: 0.9176, green: 0.2392, blue: 0.9686)
     }
     
     static var blue: UIColor {
-        return UIColor(red: 0 / 255, green: 30 / 255 , blue: 245 / 255, alpha: 1)
+        return UIColor(red: 0, green: 0.1176, blue: 0.9607)
     }
     
     static var gray: UIColor {
-        return UIColor(red: 212 / 255, green: 212 / 255 , blue: 212 / 255, alpha: 1)
+        return UIColor(red: 0.8313, green: 0.8313, blue: 0.8313)
     }
     
     static var highlightGray: UIColor {
-        return UIColor(red: 232 / 255, green: 232 / 255 , blue: 232 / 255, alpha: 1)
+        return UIColor(red: 0.9098, green: 0.9098, blue: 0.9098)
     }
+    
 }

@@ -35,30 +35,16 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
     
     public func showRecipesList() {
         let navigationController = AUIHiddenBarInteractiveNavigationController()
-        let screenController = RecipesInListScreenController()
+        let screenView = RecipesInListScreenView()
+        let screenController = RecipesInListScreenController(view: screenView)
         screenController.delegate = self
         navigationController.viewControllers = [screenController]
         self.mainNavigationController = navigationController
         self.recipesListScreen = screenController
         self.window.rootViewController = navigationController
-        self.window.makeKeyAndVisible()
     }
 
     public weak var delegate: PresentationDelegate?
-
-    public func takeRecipes(_ list: [RecipeInList], offset: UInt, limit: UInt) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipesListScreen?.takeRecipesInList(list, offset: offset, limit: limit)
-        }
-    }
-    
-    public func errorGetRecipes(_ error: Error, offset: UInt, limit: UInt) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipesListScreen?.takeErrorGetRecipesInList(error, offset: offset, limit: limit)
-        }
-    }
 
     public func takeCreatedRecipe(_ recipe: RecipeInDetails) {
         DispatchQueue.main.async { [weak self] in
@@ -155,8 +141,12 @@ public class IPhonePresentation: Presentation, RecipesInListScreenDelegate, AddR
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesInListScreenGetRecipes(_ recipesListScreen: RecipesInListScreen, offset: UInt, limit: UInt) {
-        delegate?.presentationGetRecipes(self, offset: offset, limit: limit)
+    func recipesInListScreenGetRecipes(_ recipesListScreen: RecipesInListScreen, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
+        delegate?.presentationGetRecipes(self, offset: offset, limit: limit, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                completionHandler(result)
+            }
+        })
     }
 
     func recipesInListScreenShowRecipeInDetails(_ recipesListScreen: RecipesInListScreen, recipeInList: RecipeInList) {

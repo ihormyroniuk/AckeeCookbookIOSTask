@@ -18,6 +18,7 @@ class Application: AUIEmptyApplication, PresentationDelegate {
     override func didFinishLaunching() {
         super.didFinishLaunching()
         presentation.showRecipesList()
+        window?.makeKeyAndVisible()
     }
 
     // MARK: Presentation
@@ -28,15 +29,16 @@ class Application: AUIEmptyApplication, PresentationDelegate {
         return presentation
     }()
 
-    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt) {
-        webApi.getRecipes(offset: offset, limit: limit) { [weak self] (result) in
-            guard let self = self else { return }
+    func presentationGetRecipes(_ presentation: Presentation, offset: UInt, limit: UInt, completionHandler: @escaping (GetRecipesResult) -> ()) {
+        webApi.getRecipes(offset: offset, limit: limit) { (result) in
+            let presentationResult: GetRecipesResult
             switch result {
-            case let .recipes(recipes):
-                self.presentation.takeRecipes(recipes, offset: offset, limit: limit)
-            case let .error(error):
-                self.presentation.errorGetRecipes(error, offset: offset, limit: limit)
+            case .recipes(let recipes):
+                presentationResult = .recipes(recipes)
+            case .error(let error):
+                presentationResult = .error(error)
             }
+            completionHandler(presentationResult)
         }
     }
 

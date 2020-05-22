@@ -10,7 +10,7 @@ import AUIKit
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICollectionViewDataSource, UICollectionViewDelegate {
+class RecipesInListScreenController: AUIDefaultScreenController, RecipesInListScreen, UICollectionViewDataSource, UICollectionViewDelegate {
 
     // MARK: RecipesListScreen
 
@@ -150,7 +150,35 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         lastDisplayedRecipeInListIndex = nil
         recipesInListLoadOffset = 0
         recipesListScreenView.refreshControl.beginRefreshing()
-        delegate?.recipesInListScreenGetRecipes(self, offset: recipesInListLoadOffset, limit: 2 * recipesInListLoadlimit)
+        let offset = recipesInListLoadOffset
+        let limit = 2 * recipesInListLoadlimit
+        delegate?.recipesInListScreenGetRecipes(self, offset: offset, limit: limit, completionHandler: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .recipes(let recipes):
+                self.recipesInListLoadOffset += limit
+                var insertedIndexPaths: [IndexPath] = []
+                for item in Int(offset)..<(Int(offset) + recipes.count) {
+                    let indexPath = IndexPath(item: item, section: RecipesInListScreenController.recipesInListSection)
+                    insertedIndexPaths.append(indexPath)
+                }
+                var deletedIndexPaths: [IndexPath] = []
+                let section = RecipesInListScreenController.recipesInListSection
+                for item in 0..<self.recipesInList.count {
+                    let indexPath = IndexPath(item: item, section: section)
+                    deletedIndexPaths.append(indexPath)
+                }
+                self.recipesInList = recipes
+                self.recipesListScreenView.collectionView.contentOffset = .zero
+                self.recipesListScreenView.refreshControl.endRefreshing()
+                self.recipesListScreenView.collectionView.performBatchUpdates({
+                    self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                    self.recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+                }, completion: nil)
+            case .error(let error):
+                break
+            }
+        })
     }
 
     private func loadList() {
@@ -161,7 +189,32 @@ class RecipesInListScreenController: UIViewController, RecipesInListScreen, UICo
         recipesListScreenView.collectionView.performBatchUpdates({
             self.recipesListScreenView.collectionView.insertItems(at: [indexPath])
         }, completion: nil)
-        delegate?.recipesInListScreenGetRecipes(self, offset: recipesInListLoadOffset, limit: recipesInListLoadlimit)
+        let offset = recipesInListLoadOffset
+        let limit = recipesInListLoadlimit
+        delegate?.recipesInListScreenGetRecipes(self, offset: offset, limit: limit, completionHandler: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .recipes(let recipes):
+                self.recipesInListLoadOffset += limit
+                var insertedIndexPaths: [IndexPath] = []
+                for item in Int(offset)..<(Int(offset) + recipes.count) {
+                    let indexPath = IndexPath(item: item, section: RecipesInListScreenController.recipesInListSection)
+                    insertedIndexPaths.append(indexPath)
+                }
+                var deletedIndexPaths: [IndexPath] = []
+                let item = 0
+                let indexPath = IndexPath(item: item, section: RecipesInListScreenController.recipesInListLoadSection)
+                deletedIndexPaths.append(indexPath)
+                self.recipesInListLoad = false
+                self.recipesInList.append(contentsOf: recipes)
+                self.recipesListScreenView.collectionView.performBatchUpdates({
+                    self.recipesListScreenView.collectionView.deleteItems(at: deletedIndexPaths)
+                    self.recipesListScreenView.collectionView.insertItems(at: insertedIndexPaths)
+                }, completion: nil)
+            case .error(let error):
+                break
+            }
+        })
     }
 
     @objc private func addReceipe() {
