@@ -63,8 +63,13 @@
 		C552E405246153E80031D531 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C55640D42477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */; };
-		C5C08D4A2460497C00B320BD /* WebApiVersion1SchemeHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */; };
-		C5C08D4C246060F000B320BD /* WebApiVersion1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C08D4B246060F000B320BD /* WebApiVersion1.swift */; };
+		C5E01379247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */; };
+		C5E0137B247BD11700A09B7D /* ApiVersion1Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */; };
+		C5E0137D247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */; };
+		C5E0137F247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */; };
+		C5E01381247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */; };
+		C5E01383247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */; };
+		C5E01385247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */; };
 		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
 		C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB19C244E07CC00BA3753 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -182,8 +187,13 @@
 		C54EFDA12465644A0012050D /* RecipesListScreenLoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenLoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenRepeatLoadCollectionViewCell.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeDetailsScreenStrings.strings; sourceTree = "<group>"; };
-		C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1SchemeHost.swift; sourceTree = "<group>"; };
-		C5C08D4B246060F000B320BD /* WebApiVersion1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApiVersion1.swift; sourceTree = "<group>"; };
+		C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointGetRecipes.swift; sourceTree = "<group>"; };
+		C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1Endpoint.swift; sourceTree = "<group>"; };
+		C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointCreateNewRecipe.swift; sourceTree = "<group>"; };
+		C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointGetRecipe.swift; sourceTree = "<group>"; };
+		C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointUpdateRecipe.swift; sourceTree = "<group>"; };
+		C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointDeleteRecipe.swift; sourceTree = "<group>"; };
+		C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointAddNewRating.swift; sourceTree = "<group>"; };
 		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C5FEB19C244E07CC00BA3753 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -460,8 +470,13 @@
 		C5C08D46246044E200B320BD /* Version1 */ = {
 			isa = PBXGroup;
 			children = (
-				C5C08D4B246060F000B320BD /* WebApiVersion1.swift */,
-				C5C08D492460497C00B320BD /* WebApiVersion1SchemeHost.swift */,
+				C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */,
+				C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */,
+				C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */,
+				C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */,
+				C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */,
+				C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */,
+				C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -749,10 +764,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C08D4C246060F000B320BD /* WebApiVersion1.swift in Sources */,
+				C5E0137B247BD11700A09B7D /* ApiVersion1Endpoint.swift in Sources */,
 				33296F9B2435052000A6948D /* UnknownError.swift in Sources */,
-				C5C08D4A2460497C00B320BD /* WebApiVersion1SchemeHost.swift in Sources */,
+				C5E01381247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift in Sources */,
+				C5E01379247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift in Sources */,
+				C5E01385247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift in Sources */,
+				C5E01383247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift in Sources */,
 				334EE48A24326CDB00833180 /* WebApiPerformer.swift in Sources */,
+				C5E0137D247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift in Sources */,
+				C5E0137F247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift in Sources */,
 				334EE48C24326D5B00833180 /* WebApiPerformerUrlSessionShared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

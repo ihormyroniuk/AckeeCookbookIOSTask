@@ -10,26 +10,25 @@ import Foundation
 import AckeeCookbookIOSTaskBusiness
 
 public class WebApiPerformerUrlSessionShared: WebApiPerformer {
-
+    
+    public init() { }
+    
     private let session = URLSession.shared
     
-    private let version1: WebApiVersion1
-
-    public init() {
-        let version1Scheme = "https"
-        let version1Host = "cookbook.ack.ee"
-        self.version1 = WebApiVersion1SchemeHost(scheme: version1Scheme, host: version1Host)
-    }
-
+    let version1Scheme = "https"
+    let version1Host = "cookbook.ack.ee"
+    
+    private lazy var version1GetRecipes = ApiVersion1EndpointGetRecipes(scheme: version1Scheme, host: version1Host)
+    
     public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ()) {
-        let request = version1.getRecipesRequest(limit: limit, offset: offset)
+        let request = version1GetRecipes.request(limit: limit, offset: offset)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.getRecipesResponse(response: response, data: data)
+                    let version1Response = try self.version1GetRecipes.response(response: response, data: data)
                     switch version1Response {
                     case .recipes(let recipes):
                         completionHandler(.recipes(recipes))
@@ -46,16 +45,18 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         }
         dataTask.resume()
     }
+    
+    private lazy var version1CreateNewRecipe = ApiVersion1EndpointCreateNewRecipe(scheme: version1Scheme, host: version1Host)
 
     public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (WebApiPerformerCreateRecipeResult) -> ()) {
-        let request = version1.createNewRecipeRequest(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let request = version1CreateNewRecipe.request(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.createNewRecipeResponse(response: response, data: data)
+                    let version1Response = try self.version1CreateNewRecipe.response(response: response, data: data)
                     switch version1Response {
                     case .recipe(let recipe):
                         completionHandler(.recipe(recipe))
@@ -72,16 +73,18 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         }
         dataTask.resume()
     }
+    
+    private lazy var version1GetRecipe = ApiVersion1EndpointGetRecipe(scheme: version1Scheme, host: version1Host)
     
     public func getRecipe(_ recipeId: String, completionHandler: @escaping (WebApiPerformerGetRecipeResult) -> ()) {
-        let request = version1.getRecipeRequest(id: recipeId)
+        let request = version1GetRecipe.request(id: recipeId)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.getRecipeResponse(response: response, data: data)
+                    let version1Response = try self.version1GetRecipe.response(response: response, data: data)
                     switch version1Response {
                     case .recipe(let recipe):
                         completionHandler(.recipe(recipe))
@@ -98,16 +101,18 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         }
         dataTask.resume()
     }
+    
+    private lazy var version1UpdateRecipe = ApiVersion1EndpointUpdateRecipe(scheme: version1Scheme, host: version1Host)
     
     public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (WebApiPerformerUpdateRecipeResult) -> ()) {
-        let request = version1.updateRecipeRequest(id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let request = version1UpdateRecipe.request(id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.updateRecipeResponse(response: response, data: data)
+                    let version1Response = try self.version1UpdateRecipe.response(response: response, data: data)
                     switch version1Response {
                     case .recipe(let recipe):
                         completionHandler(.recipe(recipe))
@@ -125,15 +130,17 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         dataTask.resume()
     }
     
+    private lazy var version1DeleteRecipe = ApiVersion1EndpointDeleteRecipe(scheme: version1Scheme, host: version1Host)
+    
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (WebApiPerformerDeleteRecipeResult) -> ()) {
-        let request = version1.deleteRecipeRequest(id: recipeId)
+        let request = version1DeleteRecipe.request(id: recipeId)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response  = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.deleteRecipeResponse(response: response, data: data)
+                    let version1Response = try self.version1DeleteRecipe.response(response: response, data: data)
                     switch version1Response {
                     case .success:
                         completionHandler(.deleted)
@@ -151,15 +158,17 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         dataTask.resume()
     }
     
+    private lazy var version1AddNewRating = ApiVersion1EndpointAddNewRating(scheme: version1Scheme, host: version1Host)
+    
     public func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (WebApiPerformerScoreRecipeResult) -> ()) {
-        let request = version1.addNewRatingRequest(id: recipeId, score: score)
+        let request = version1AddNewRating.request(id: recipeId, score: score)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
             if let error = error {
                 completionHandler(.error(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try self.version1.addNewRatingResponse(response: response, data: data)
+                    let version1Response = try self.version1AddNewRating.response(response: response, data: data)
                     switch version1Response {
                     case .rating(let rating):
                         sleep(3)

@@ -113,7 +113,7 @@ class RecipesListScreenRecipeCollectionViewCell: AUICollectionViewCell {
         let availableWidth = bounds.width - x
         let availableSize = CGSize(width: availableWidth, height: availableHeight)
         let sizeThatFits = scoreView.sizeThatFits(availableSize)
-        let y = pictureImageViewWidthHeight - 4 - durationImageVieWwidthHeight - ((sizeThatFits.height - durationImageVieWwidthHeight) * 0.5) - 4 - sizeThatFits.height
+        let y = pictureImageViewWidthHeight - 4 - durationImageVieWwidthHeight - ((sizeThatFits.height - durationImageVieWwidthHeight) / 2) - 4 - sizeThatFits.height
         let origin = CGPoint(x: x, y: y)
         let frame = CGRect(origin: origin, size: sizeThatFits)
         scoreView.frame = frame

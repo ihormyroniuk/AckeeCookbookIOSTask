@@ -16,11 +16,11 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
     let deleteButton = AlphaHighlightButton()
     let updateButton = AlphaHighlightButton()
     let backButton = AlphaHighlightButton()
-    private let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
     let refreshControl = UIRefreshControl()
     let pictureImageView = DarkenImageView()
     let nameLabel = UILabel()
-    private let scoreDurationView = ScoreDurationView()
+    let scoreDurationView = ScoreDurationView()
     let infoLabel = UILabel()
     let ingredientsLabel = UILabel()
     private var ingredientsViews: [IngredientListItemView] = []
@@ -75,9 +75,9 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
     }
     
     private func setupUpdateButton() {
-           updateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-           updateButton.setTitleColor(Colors.white, for: .normal)
-       }
+        updateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        updateButton.setTitleColor(Colors.white, for: .normal)
+    }
 
     private func setupTitleLabel() {
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -89,7 +89,6 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
     }
 
     private func setupScrollView() {
-        scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
@@ -231,7 +230,7 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         titleLabel.frame = frame
     }
     
-    private func layoutPictureImageView() {
+    func layoutPictureImageView() {
         let x: CGFloat = 0
         let scrollViewContentOffsetY = scrollView.contentOffset.y
         let y: CGFloat = scrollViewContentOffsetY < 0 ? scrollViewContentOffsetY : 0
@@ -392,33 +391,6 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         setScoreView.activityIndicatorView.stopAnimating()
     }
     
-    // MARK: UIScrollViewDelegate
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        layoutPictureImageView()
-        let p = pictureImageView.bounds.height
-        let n = navigationBarView.frame.origin.y + navigationBarView.bounds.height
-        let r = scoreDurationView.bounds.height
-        let s = scrollView.contentOffset.y
-        var c = s / (p - r - n)
-        if c < 0 {
-            c = 0
-        } else if c > 1 {
-            c = 1
-        }
-        let _c = 1 - c
-        let color = UIColor.white.withAlphaComponent(c)
-        statusBarView.backgroundColor = color
-        navigationBarView.backgroundColor = color
-        let _color = UIColor(red: (0 + 255 * _c) / 255, green: (30 + 255 * _c) / 255, blue: (245 + 255 * _c) / 255, alpha: 1)
-        backButton.setTitleColor(_color, for: .normal)
-        let image = Images.back
-        backButton.setImage(image.withTintColor(_color), for: .normal)
-        backButton.setImage(image.withTintColor(_color), for: .highlighted)
-        deleteButton.setTitleColor(_color, for: .normal)
-        updateButton.setTitleColor(_color, for: .normal)
-    }
-    
 }
 
 private class IngredientListItemView: AUIView {
@@ -489,7 +461,7 @@ private class IngredientListItemView: AUIView {
     }
 }
 
-private class ScoreDurationView: AUIView {
+class ScoreDurationView: AUIView {
     
     // MARK: Subviews
     
@@ -561,7 +533,7 @@ private class ScoreDurationView: AUIView {
     
 }
 
-private class SetScoreView: AUIView {
+class SetScoreView: AUIView {
     
     // MARK: Subviews
     
@@ -636,3 +608,84 @@ private class SetScoreView: AUIView {
     }
 
 }
+
+class InteractiveScoreFiveStarsView: AUIView {
+
+    // MARK: Subviews
+
+    var starButtons: [UIButton] = []
+
+    // MARK: Star
+
+    var starImageTintColor: UIColor = Colors.red {
+        didSet {
+            for button in starButtons {
+                button.setImage(Images.star.withTintColor(starImageTintColor), for: .normal)
+            }
+        }
+    }
+    private var starButton: UIButton {
+        let button = UIButton()
+        button.contentMode = .scaleAspectFit
+        button.setImage(Images.star.withTintColor(starImageTintColor), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        return button
+    }
+    
+    override func setup() {
+        super.setup()
+        for _ in 1...5 {
+            let button = starButton
+            addSubview(button)
+            starButtons.append(button)
+        }
+    }
+
+    // MARK: Value
+
+    func setSelectedScore(_ score: Float) {
+        let count = Int(score.rounded(.toNearestOrAwayFromZero))
+        for i in 0..<starButtons.count {
+            if i < count {
+                starButtons[i].alpha = 1
+            } else {
+                starButtons[i].alpha = 0.4
+            }
+        }
+    }
+
+    // MARK: Layout Subviews
+
+    var starImageViewsSpace: CGFloat = 2
+    var starImageViewsWidthHeight: CGFloat = 12
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutStarImageViews()
+    }
+
+    private func layoutStarImageViews() {
+        var x: CGFloat = 0
+        let y: CGFloat = 0
+        let widthHeight = starImageViewsWidthHeight
+        let size = CGSize(width: widthHeight, height: widthHeight)
+        for starImageView in starButtons {
+            let origin = CGPoint(x: x, y: y)
+            let frame = CGRect(origin: origin, size: size)
+            starImageView.frame = frame
+            x += widthHeight + starImageViewsSpace
+        }
+    }
+
+    // MARK: Size
+
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let height = starImageViewsWidthHeight
+        var width = ((starImageViewsWidthHeight + starImageViewsSpace) * CGFloat(starButtons.count)) - starImageViewsSpace
+        if width < 0 { width = 0 }
+        let sizeThatFits = CGSize(width: width, height: height)
+        return sizeThatFits
+    }
+}
+
