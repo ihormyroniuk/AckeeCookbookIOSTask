@@ -21,7 +21,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
         self.version1 = WebApiVersion1SchemeHost(scheme: version1Scheme, host: version1Host)
     }
 
-    public func getRecipes(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ()) {
+    public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ()) {
         let request = version1.getRecipesRequest(limit: limit, offset: offset)
         let dataTask = session.dataTask(with: request) { [weak self] (data, response, error) in
             guard let self = self else { return }
@@ -162,6 +162,7 @@ public class WebApiPerformerUrlSessionShared: WebApiPerformer {
                     let version1Response = try self.version1.addNewRatingResponse(response: response, data: data)
                     switch version1Response {
                     case .rating(let rating):
+                        sleep(3)
                         completionHandler(.score(rating.score))
                     case .error(let error):
                         completionHandler(.error(error))

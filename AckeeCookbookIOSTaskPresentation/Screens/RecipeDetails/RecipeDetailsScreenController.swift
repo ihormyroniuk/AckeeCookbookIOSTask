@@ -15,7 +15,7 @@ protocol RecipesDetailsScreenDelegate: class {
     func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInList: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails)
     func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails)
-    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float)
+    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ())
 }
 
 class RecipeDetailsScreenController: AUIDefaultScreenController {
@@ -23,13 +23,6 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
     // MARK: RecipeInDetailsScreen
     
     var delegate: RecipesDetailsScreenDelegate?
-    
-    func changeRecipeScore(_ recipe: RecipeInDetails, score: Float) {
-        guard recipeInList.id == recipe.id else { return }
-        recipeInList.score = score
-        recipeInDetails?.score = score
-        recipeInDetailsScreenView.setScore(score)
-    }
     
     func updateRecipe(_ recipe: RecipeInDetails) {
         guard recipeInList.id == recipe.id else { return }
@@ -60,7 +53,7 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
         recipeInDetailsScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         recipeInDetailsScreenView.deleteButton.addTarget(self, action: #selector(delete2), for: .touchUpInside)
         recipeInDetailsScreenView.updateButton.addTarget(self, action: #selector(update), for: .touchUpInside)
-        recipeInDetailsScreenView.scrollViewRefreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        recipeInDetailsScreenView.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         for button in recipeInDetailsScreenView.setScoreButtons {
             button.addTarget(self, action: #selector(setScore), for: .touchUpInside)
         }
@@ -78,7 +71,7 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadDetails()
+        loadDetailsIfNeeded()
     }
     
     // MARK: Actions
@@ -107,7 +100,7 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
                 self.setRecipeInDetailsContent(recipe)
                 self.recipeInDetailsScreenView.setNeedsLayout()
                 self.recipeInDetailsScreenView.layoutIfNeeded()
-                self.recipeInDetailsScreenView.scrollViewRefreshControl.endRefreshing()
+                self.recipeInDetailsScreenView.refreshControl.endRefreshing()
             case .failure(let error):
                 print(error)
                 break
@@ -115,18 +108,30 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
         })
     }
     
-    private func loadDetails() {
+    private func loadDetailsIfNeeded() {
         if recipeInDetails == nil {
-            recipeInDetailsScreenView.scrollViewRefreshControl.beginRefreshing()
+            recipeInDetailsScreenView.refreshControl.beginRefreshing()
             refresh()
         }
     }
     
     @objc private func setScore(_ button: UIButton) {
+        guard let recipe = self.recipeInDetails else { return }
         guard let index = recipeInDetailsScreenView.setScoreButtons.firstIndex(of: button) else { return }
         let score: Float = Float(index + 1)
-        guard let recipe = self.recipeInDetails else { return }
-        delegate?.recipeInDetailsScreenSetScore(self, recipe: recipe, score: score)
+        recipeInDetailsScreenView.beginSetScoreActivity()
+        delegate?.recipeInDetailsScreenSetScore(self, recipe: recipe, score: score, completionHandler: { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let score):
+                self.recipeInList.score = score
+                self.recipeInDetails?.score = score
+                self.recipeInDetailsScreenView.setScore(score)
+                self.recipeInDetailsScreenView.endSetScoreActivity()
+            case .failure:
+                self.recipeInDetailsScreenView.endSetScoreActivity()
+            }
+        })
     }
     
     // MARK: Content
@@ -139,6 +144,7 @@ class RecipeDetailsScreenController: AUIDefaultScreenController {
     }
     
     private func setRecipeInDetailsContent(_ recipe: RecipeInDetails) {
+        recipeInDetailsScreenView.nameLabel.text = recipe.name
         recipeInDetailsScreenView.infoLabel.text = recipe.info
         recipeInDetailsScreenView.ingredientsLabel.text = localizer.localizeText("ingredients")
         recipeInDetailsScreenView.setIngredients(recipe.ingredients)

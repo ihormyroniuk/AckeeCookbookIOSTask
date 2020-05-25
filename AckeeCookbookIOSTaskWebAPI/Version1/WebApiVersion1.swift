@@ -52,12 +52,12 @@ protocol WebApiVersion1 {
     
     // MARK: Recipes
     
-    func getRecipesRequest(limit: UInt, offset: UInt) -> URLRequest
+    func getRecipesRequest(limit: Int, offset: Int) -> URLRequest
     func getRecipesResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipesResponse
     
     // MARK: Create new recipe
     
-    func createNewRecipeRequest(name: String, description: String, ingredients: [String]?, duration: UInt?, info: String?) -> URLRequest
+    func createNewRecipeRequest(name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) -> URLRequest
     func createNewRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1CreateNewRecipeResponse
     
     // MARK: Get recipe
@@ -67,7 +67,7 @@ protocol WebApiVersion1 {
     
     // MARK: Update recipe
     
-    func updateRecipeRequest(id: String, name: String?, description: String?, ingredients: [String]?, duration: UInt?, info: String?) -> URLRequest
+    func updateRecipeRequest(id: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> URLRequest
     func updateRecipeResponse(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1UpdateRecipeResponse
     
     // MARK: Delete recipe

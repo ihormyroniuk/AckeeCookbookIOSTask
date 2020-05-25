@@ -12,6 +12,6 @@ public protocol CreatingRecipe {
     var name: String { get }
     var description: String { get }
     var ingredients: [String] { get }
-    var duration: UInt { get }
+    var duration: Int { get }
     var info: String { get }
 }

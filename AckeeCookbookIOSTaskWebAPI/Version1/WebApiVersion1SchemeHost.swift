@@ -25,7 +25,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     
     // MARK: Get recipes
     
-    func getRecipesRequest(limit: UInt, offset: UInt) -> URLRequest {
+    func getRecipesRequest(limit: Int, offset: Int) -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
@@ -58,7 +58,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     
     // MARK: Create new recipe
     
-    func createNewRecipeRequest(name: String, description: String, ingredients: [String]?, duration: UInt?, info: String?) -> URLRequest {
+    func createNewRecipeRequest(name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
@@ -119,7 +119,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     
     // MARK: Update recipe
     
-    func updateRecipeRequest(id: String, name: String? = nil, description: String? = nil, ingredients: [String]? = nil, duration: UInt?, info: String? = nil) -> URLRequest {
+    func updateRecipeRequest(id: String, name: String? = nil, description: String? = nil, ingredients: [String]? = nil, duration: Int?, info: String? = nil) -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
@@ -224,7 +224,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
     private func recipeInList(jsonObject: JsonObject) throws -> RecipeInList {
         let id = try jsonObject.stringForKey("id")
         let name = try jsonObject.stringForKey("name")
-        let duration = try jsonObject.numberForKey("duration").uintValue
+        let duration = try jsonObject.numberForKey("duration").intValue
         let score = try jsonObject.numberForKey("score").floatValue
         let recipe = RecipeInListStructure(id: id, name: name, duration: duration, score: score)
         return recipe
@@ -236,7 +236,7 @@ class WebApiVersion1SchemeHost: WebApiVersion1 {
         let description = try jsonObject.stringForKey("description")
         let info = try jsonObject.stringForKey("info")
         let ingredients = try jsonObject.stringsArrayForKey("ingredients")
-        let duration = try jsonObject.numberForKey("duration").uintValue
+        let duration = try jsonObject.numberForKey("duration").intValue
         let score = try jsonObject.numberForKey("score").floatValue
         let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
         return recipe

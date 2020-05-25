@@ -11,10 +11,10 @@ import Foundation
 public struct RecipeInListStructure: RecipeInList {
     public let id: String
     public let name: String
-    public let duration: UInt
+    public let duration: Int
     public var score: Float
 
-    public init(id: String, name: String, duration: UInt, score: Float) {
+    public init(id: String, name: String, duration: Int, score: Float) {
         self.id = id
         self.name = name
         self.duration = duration

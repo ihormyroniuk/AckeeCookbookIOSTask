@@ -11,6 +11,6 @@ import Foundation
 public protocol RecipeInList {
     var id: String { get }
     var name: String { get }
-    var duration: UInt { get }
+    var duration: Int { get }
     var score: Float { get set }
 }

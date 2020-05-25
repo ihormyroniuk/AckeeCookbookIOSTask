@@ -40,7 +40,7 @@ public enum WebApiPerformerScoreRecipeResult {
 }
 
 public protocol WebApiPerformer {
-    func getRecipes(offset: UInt, limit: UInt, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ())
+    func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (WebApiPerformerGetRecipesResult) -> ())
     func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (WebApiPerformerCreateRecipeResult) -> ())
     func getRecipe(_ recipeId: String, completionHandler: @escaping (WebApiPerformerGetRecipeResult) -> ())
     func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (WebApiPerformerUpdateRecipeResult) -> ())

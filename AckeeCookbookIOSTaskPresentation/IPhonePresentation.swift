@@ -9,26 +9,30 @@
 import AUIKit
 import AckeeCookbookIOSTaskBusiness
 
-public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+public protocol IPhonePresentationDelegate: class {
+    func iPhonePresentationGetRecipes(_ iPhonePresentation: IPhonePresentation, offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ())
+    func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
+    func iPhonePresentationGetRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
+    func iPhonePresentationDeleteRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, completionHandler: @escaping (Error?) -> ())
+    func iPhonePresentationScoreRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ())
+    func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
+}
+
+public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+
+    // MARK: Setup
     
-    // MARK: Elements
-    
-    public let window: UIWindow
-    
-    // MARK: Initializer
-    
-    public init(window: UIWindow? = nil) {
-        self.window = window ?? UIWindow()
+    public override func setup() {
+        super.setup()
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
     }
     
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-        print(notification)
         let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
-        //UIView.animate(withDuration: 0.25) {
-            self.mainNavigationController?.view.frame.size.height = height
-            //self.mainNavigationController?.view.layoutIfNeeded()
-        //}
+        print(height)
+        self.window.frame.size.height = height
+        self.window.setNeedsLayout()
+        self.window.layoutIfNeeded()
     }
 
     // MARK: Presentation
@@ -44,56 +48,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         self.window.rootViewController = navigationController
     }
 
-    public weak var delegate: PresentationDelegate?
-
-    public func takeCreatedRecipe(_ recipe: RecipeInDetails) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.mainNavigationController?.popViewController(animated: true)
-            self.recipesListScreen?.knowRecipeWasAdded(recipe)
-        }
-    }
-    
-    public func errorCreatedRecipe(_ error: Error, recipe: CreatingRecipe) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .destructive)
-            alert.addAction(okAction)
-            self.mainNavigationController?.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    public func scoreRecipe(_ recipe: RecipeInDetails, score: Float) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipesListScreen?.knowRecipeScoreWasChanged(recipe, score: score)
-            self.recipeInDetailsScreen?.changeRecipeScore(recipe, score: score)
-        }
-    }
-    
-    public func errorScoreRecipe(_ error: Error, recipe: RecipeInDetails, score: Float) {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//
-//        }
-    }
-    
-    public func updateRecipe(_ recipe: RecipeInDetails) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.recipeInDetailsScreen?.updateRecipe(recipe)
-            self.recipesListScreen?.knowRecipeWasUpdated(recipe)
-            self.mainNavigationController?.popViewController(animated: true)
-        }
-    }
-    
-    public func errorUpdateRecipe(_ error: Error, recipe: UpdatingRecipe) {
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//
-//        }
-    }
+    public weak var delegate: IPhonePresentationDelegate?
 
     // MARK: Main Navigation Controller
 
@@ -111,8 +66,8 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
 
-    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: UInt, limit: UInt, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
-        delegate?.presentationGetRecipes(self, offset: offset, limit: limit, completionHandler: { (result) in
+    func recipesListScreenGetRecipes(_ recipesListScreen: RecipesListScreenController, offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
+        delegate?.iPhonePresentationGetRecipes(self, offset: offset, limit: limit, completionHandler: { (result) in
             DispatchQueue.main.async {
                 completionHandler(result)
             }
@@ -129,14 +84,29 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
 
     // MARK: Add Recipe Screen
 
-    private weak var addRecipeScreen: AddRecipeScreen?
+    private weak var addRecipeScreen: AddRecipeScreenController?
 
-    func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreen) {
+    func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreenController) {
         mainNavigationController?.popViewController(animated: true)
     }
 
-    func addRecipeScreenAddRecipe(_ recipe: CreatingRecipe) {
-        delegate?.presentationCreateRecipe(self, recipe: recipe)
+    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe) {
+        delegate?.iPhonePresentationCreateRecipe(self, recipe: recipe, completionHandler: { (result) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case .success(let recipe):
+                    self.mainNavigationController?.popViewController(animated: true)
+                    self.recipesListScreen?.knowRecipeWasAdded(recipe)
+                    break
+                case .failure(let error):
+                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
+                    alert.addAction(okAction)
+                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                }
+            }
+        })
     }
 
     // MARK: Recipe In Details Screen
@@ -148,7 +118,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
     }
     
     func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInList: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        delegate?.presentationGetRecipe(self, recipe: recipeInList, completionHandler: { (result) in
+        delegate?.iPhonePresentationGetRecipe(self, recipe: recipeInList, completionHandler: { (result) in
             DispatchQueue.main.async {
                 completionHandler(result)
             }
@@ -158,7 +128,7 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
         let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
         let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
-            self.delegate?.presentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
+            self.delegate?.iPhonePresentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.recipesListScreen?.knowRecipeWasDeleted(recipeInDetails)
@@ -181,8 +151,23 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
-    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float) {
-        delegate?.presentationScoreRecipe(self, recipe: recipe, score: score)
+    func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
+        delegate?.iPhonePresentationScoreRecipe(self, recipe: recipe, score: score, completionHandler: { (result) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case .success(let score):
+                    completionHandler(result)
+                    self.recipesListScreen?.knowRecipeScoreWasChanged(recipe, score: score)
+                case .failure(let error):
+                    completionHandler(result)
+                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
+                    alert.addAction(okAction)
+                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                }
+            }
+        })
     }
     
     // MARK: Update Recipe Screen
@@ -194,7 +179,22 @@ public class IPhonePresentation: Presentation, RecipesListScreenDelegate, AddRec
     }
     
     func updateRecipeScreenUpdateRecipe(_ recipe: UpdatingRecipe) {
-        delegate?.presentationUpdateRecipe(self, recipe: recipe)
+        delegate?.iPhonePresentationUpdateRecipe(self, recipe: recipe, completionHandler: { (result) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case .success(let recipe):
+                    self.recipeInDetailsScreen?.updateRecipe(recipe)
+                    self.recipesListScreen?.knowRecipeWasUpdated(recipe)
+                    self.mainNavigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
+                    alert.addAction(okAction)
+                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                }
+            }
+        })
     }
     
 }

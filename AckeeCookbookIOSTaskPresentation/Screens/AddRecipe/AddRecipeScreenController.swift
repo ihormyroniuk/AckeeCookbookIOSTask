@@ -10,7 +10,12 @@ import AUIKit
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
+protocol AddRecipeScreenDelegate: class {
+    func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreenController)
+    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe)
+}
+
+class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
 
     // MARK: AddRecipeScreen
 
@@ -91,23 +96,18 @@ class AddRecipeScreenController: AUIDefaultScreenController, AddRecipeScreen, AU
     }
 
     @objc private func add() {
-        guard let name = nameTextViewController.text else {
-            return
-        }
-        guard let description = descriptionTextViewController.text else {
-            return
-        }
+        guard let name = nameTextViewController.text else { return }
+        guard let description = descriptionTextViewController.text else { return }
         let ingredients = ingredientInputViewControllers.map({ $0.textViewController?.text }).compactMap({ $0 })
-        guard let info = infoTextViewController.text else {
-            return
-        }
-        let recipe = CreatingRecipeStructure(name: name, description: description, ingredients: ingredients, duration: 100, info: info)
-        delegate?.addRecipeScreenAddRecipe(recipe)
+        guard let info = infoTextViewController.text else { return }
+        let duration = Int(durationDatePickerControler.countDownDuration)
+        let recipe = CreatingRecipeStructure(name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+        delegate?.addRecipeScreenAddRecipe(self, recipe)
     }
 
     @objc private func addIngredient() {
         let ingredientInputView = addRecipeScreenView.addIngredientInputView()
-        ingredientInputView.placeholderLabel.text = "sdfdsfsdf"
+        ingredientInputView.placeholderLabel.text = localizer.localizeText("Ingredient")
         let textViewController = AUIEmptyTextViewController()
         textViewController.addDidChangeTextObserver(self)
         let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()

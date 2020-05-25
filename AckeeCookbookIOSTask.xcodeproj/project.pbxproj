@@ -13,7 +13,6 @@
 		33114EAF242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114EAD242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */; };
 		33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		33114EB9242B85EF00B246BB /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EB8242B85EF00B246BB /* Presentation.swift */; };
 		33114EBA242B860F00B246BB /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
 		33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EBE242B8A6C00B246BB /* IPhonePresentation.swift */; };
 		33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EC0242B8AFE00B246BB /* RecipesListScreenView.swift */; };
@@ -23,7 +22,6 @@
 		33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3318F118243B2D6300F86FA1 /* RecipeDetailsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F117243B2D6300F86FA1 /* RecipeDetailsScreenController.swift */; };
 		3318F11A243B2D6B00F86FA1 /* RecipeDetailsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318F119243B2D6B00F86FA1 /* RecipeDetailsScreenView.swift */; };
-		331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */; };
 		331A5E5A2432A095008AFDE0 /* AddRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */; };
 		331A5E5C2432A0A0008AFDE0 /* AddRecipeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */; };
 		331A5E5E2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 331A5E5D2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings */; };
@@ -138,7 +136,6 @@
 		33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskPresentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33114EAD242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskPresentation.h; sourceTree = "<group>"; };
 		33114EAE242B84AB00B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33114EB8242B85EF00B246BB /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		33114EBE242B8A6C00B246BB /* IPhonePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhonePresentation.swift; sourceTree = "<group>"; };
 		33114EC0242B8AFE00B246BB /* RecipesListScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenView.swift; sourceTree = "<group>"; };
 		33114EC2242B8B3000B246BB /* RecipesListScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenController.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		33114ECD242BD06700B246BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3318F117243B2D6300F86FA1 /* RecipeDetailsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsScreenController.swift; sourceTree = "<group>"; };
 		3318F119243B2D6B00F86FA1 /* RecipeDetailsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsScreenView.swift; sourceTree = "<group>"; };
-		331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreen.swift; sourceTree = "<group>"; };
 		331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreenController.swift; sourceTree = "<group>"; };
 		331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeScreenView.swift; sourceTree = "<group>"; };
 		331A5E5D2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AddRecipeScreenStrings.strings; sourceTree = "<group>"; };
@@ -244,7 +240,6 @@
 		33114EAC242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation */ = {
 			isa = PBXGroup;
 			children = (
-				33114EB8242B85EF00B246BB /* Presentation.swift */,
 				33114EBE242B8A6C00B246BB /* IPhonePresentation.swift */,
 				33114EBD242B8A3800B246BB /* Screens */,
 				C53E4A57245D59C80026D427 /* Elements */,
@@ -263,8 +258,8 @@
 			children = (
 				334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */,
 				33114EC4242B900800B246BB /* RecipesList */,
-				33E6B619243A3043006200F1 /* RecipeDetails */,
 				331A5E562432A026008AFDE0 /* AddRecipe */,
+				33E6B619243A3043006200F1 /* RecipeDetails */,
 				C529FF8A2455DC280087B2A7 /* UpdateRecipe */,
 			);
 			path = Screens;
@@ -300,10 +295,8 @@
 		331A5E562432A026008AFDE0 /* AddRecipe */ = {
 			isa = PBXGroup;
 			children = (
-				331A5E572432A077008AFDE0 /* AddRecipeScreen.swift */,
 				331A5E592432A095008AFDE0 /* AddRecipeScreenController.swift */,
 				331A5E5B2432A0A0008AFDE0 /* AddRecipeScreenView.swift */,
-				333A42052436501900170AA2 /* TextViewInputView.swift */,
 				331A5E5D2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings */,
 			);
 			path = AddRecipe;
@@ -350,6 +343,7 @@
 		335D14D22438F90800BAB922 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				333A42052436501900170AA2 /* TextViewInputView.swift */,
 				335D14D32438F94E00BAB922 /* Score */,
 			);
 			path = Components;
@@ -735,14 +729,12 @@
 				C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */,
 				C529FF8C2455DCD70087B2A7 /* UpdateRecipeScreen.swift in Sources */,
 				3318F11A243B2D6B00F86FA1 /* RecipeDetailsScreenView.swift in Sources */,
-				331A5E582432A077008AFDE0 /* AddRecipeScreen.swift in Sources */,
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
 				C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */,
 				33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */,
 				335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */,
 				3318F118243B2D6300F86FA1 /* RecipeDetailsScreenController.swift in Sources */,
 				334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */,
-				33114EB9242B85EF00B246BB /* Presentation.swift in Sources */,
 				33114EC3242B8B3000B246BB /* RecipesListScreenController.swift in Sources */,
 				333A4204243649E500170AA2 /* RecipesListScreenRecipeCollectionViewCell.swift in Sources */,
 				C540B6772471DA6800918899 /* RecipesListScreenCollectionViewLayout.swift in Sources */,

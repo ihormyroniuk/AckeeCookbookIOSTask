@@ -276,7 +276,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
 
     private func setScrollViewContentSize() {
         let width = scrollView.frame.size.width
-        let height = durationInputView.frame.origin.y + durationInputView.frame.height
+        let height = durationInputView.frame.origin.y + durationInputView.frame.height + 30
         let size = CGSize(width: width, height: height)
         scrollView.contentSize = size
     }

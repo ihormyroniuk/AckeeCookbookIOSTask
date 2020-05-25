@@ -12,6 +12,7 @@
 "recipeName" = "Name";
 "recipeInfo" = "Info";
 "recipeIngredients" = "Ingredients";
+"Ingredient" = "Ingredient";
 "recideAddIngredient" = "Add";
 "recideDescription" = "Description";
 "recideDuration" = "Duration";

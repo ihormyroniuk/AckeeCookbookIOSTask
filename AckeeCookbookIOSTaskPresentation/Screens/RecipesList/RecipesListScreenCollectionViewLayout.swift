@@ -8,23 +8,15 @@
 
 import AUIKit
 
-final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
-    
-    override init() {
-        super.init()
-        self.register(SeparatorView.self, forDecorationViewOfKind: decoratorIdentifier)
-    }
-    
-    private let decoratorIdentifier: String = "tyu"
-    private class SeparatorView: UICollectionReusableView {
+final class RecipesListScreenCollectionViewLayout: AUICollectionViewLayout {
 
-        override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-            super.apply(layoutAttributes)
-            backgroundColor = Colors.highlightGray
-        }
+    // MARK: Setup
+
+    private let separatorCollectionReusableViewIdentifier = "separatorCollectionReusableViewIdentifier"
+    override func setup() {
+        super.setup()
+        self.register(SeparatorCollectionReusableView.self, forDecorationViewOfKind: separatorCollectionReusableViewIdentifier)
     }
-    
-    required init?(coder: NSCoder) { return nil }
     
     private var y = 0
     override func prepare() {
@@ -42,7 +34,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         recipesSeparatorsLayoutAttributes = []
         guard let collectionView = collectionView else { return }
         let section = RecipesListScreenController.recipesSection
-        guard let numberOfItems = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: section) else { return }
+        let numberOfItems = collectionView.numberOfItems(inSection: section)
         guard numberOfItems > 0 else { return }
         let bounds = collectionView.bounds
         let boundsWidth = Int(bounds.width)
@@ -55,11 +47,10 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
             let indexPath = IndexPath(item: item, section: section)
             let recipeLayoutAttribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             recipeLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: height)
-            recipeLayoutAttribute.isHidden = false
             recipesLayoutAttributes.append(recipeLayoutAttribute)
             y += height + spacing
             if item != numberOfItems - 1 {
-                let recipeSeparatorLayoutAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: decoratorIdentifier, with: indexPath)
+                let recipeSeparatorLayoutAttribute = UICollectionViewLayoutAttributes(forDecorationViewOfKind: separatorCollectionReusableViewIdentifier, with: indexPath)
                 recipeSeparatorLayoutAttribute.frame = CGRect(x: x, y: y, width: width, height: 1)
                 recipesSeparatorsLayoutAttributes.append(recipeSeparatorLayoutAttribute)
                 y += spacing + 1
@@ -134,7 +125,7 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
     
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath)
         -> UICollectionViewLayoutAttributes? {
-        if elementKind == decoratorIdentifier {
+        if elementKind == separatorCollectionReusableViewIdentifier {
             return recipesSeparatorsLayoutAttributes[indexPath.item]
         }
         return nil
@@ -195,6 +186,15 @@ final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
         super.finalizeCollectionViewUpdates()
         deletedIndexPathsForDecorationView = []
         insertedIndexPathsForDecorationView = []
+    }
+    
+}
+
+private class SeparatorCollectionReusableView: AUICollectionReusableView {
+    
+    override func setup() {
+        super.setup()
+        backgroundColor = Colors.lightGray
     }
     
 }

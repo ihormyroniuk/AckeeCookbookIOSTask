@@ -10,15 +10,16 @@ import AUIKit
 
 class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate {
     
-    // MARK: Subview
+    // MARK: Subviews
 
     let titleLabel = UILabel()
     let deleteButton = AlphaHighlightButton()
     let updateButton = AlphaHighlightButton()
     let backButton = AlphaHighlightButton()
     private let scrollView = UIScrollView()
-    let scrollViewRefreshControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
     let pictureImageView = DarkenImageView()
+    let nameLabel = UILabel()
     private let scoreDurationView = ScoreDurationView()
     let infoLabel = UILabel()
     let ingredientsLabel = UILabel()
@@ -96,6 +97,8 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         scrollView.addSubview(pictureImageView)
         setupPictureImageView()
         scrollView.addSubview(scoreDurationView)
+        scrollView.addSubview(nameLabel)
+        setupNameLabel()
         scrollView.addSubview(infoLabel)
         setupInfoLabel()
         scrollView.addSubview(ingredientsLabel)
@@ -104,15 +107,22 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         setupSectionTitleLabel(descriptionTitleLabel)
         scrollView.addSubview(descriptionLabel)
         setupDescriptionLabel()
-        scrollView.addSubview(scrollViewRefreshControl)
-        scrollViewRefreshControl.tintColor = .white
+        scrollView.addSubview(refreshControl)
+        refreshControl.tintColor = .white
         scrollView.addSubview(setScoreView)
     }
     
     private func setupPictureImageView() {
         pictureImageView.contentMode = .scaleAspectFill
         pictureImageView.image = Images.ackeeRecipe
-        pictureImageView.darkenAmount = 0.3
+        pictureImageView.darkenAmount = 0.4
+    }
+    
+    private func setupNameLabel() {
+        nameLabel.textColor = Colors.white
+        nameLabel.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
+        nameLabel.lineBreakMode = .byWordWrapping
+        nameLabel.numberOfLines = 2
     }
     
     private func setupInfoLabel() {
@@ -152,6 +162,7 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         layoutTitleLabel()
         layoutScrollView()
         layoutScoreDurationView()
+        layoutNameLabel()
         layoutPictureImageView()
         layoutInfoLabel()
         layoutIngredientsLabel()
@@ -240,6 +251,18 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         let frame = CGRect(x: x, y: y, width: width, height: height)
         scoreDurationView.frame = frame
     }
+    
+    private func layoutNameLabel() {
+        let x: CGFloat = 24
+        let possibleHeight: CGFloat = CGFloat.greatestFiniteMagnitude
+        let possibleWidth = scrollView.bounds.width - x * 2
+        let possibleSize = CGSize(width: possibleWidth, height: possibleHeight)
+        let size = nameLabel.sizeThatFits(possibleSize)
+        let y: CGFloat = scoreDurationView.frame.origin.y - size.height - 24
+        let origin = CGPoint(x: x, y: y)
+        let frame = CGRect(origin: origin, size: size)
+        nameLabel.frame = frame
+    }
 
     private func layoutScrollView() {
         let x: CGFloat = 0
@@ -249,9 +272,8 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         let frame = CGRect(x: x, y: y, width: width, height: height)
         scrollView.frame = frame
         let df = navigationBarView.bounds.height + statusBarView.bounds.height
-        //scrollView.contentInset = UIEdgeInsets(top: df, left: 0, bottom: 0, right: 0)
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: navigationBarView.bounds.height, left: 0, bottom: 0, right: 0)
-        scrollViewRefreshControl.bounds.origin.y = -df
+        refreshControl.bounds.origin.y = -df
     }
     
     private func layoutInfoLabel() {
@@ -360,6 +382,14 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
     
     func setDuration(_ duration: String?) {
         scoreDurationView.durationLabel.text = duration
+    }
+    
+    func beginSetScoreActivity() {
+        setScoreView.activityIndicatorView.startAnimating()
+    }
+    
+    func endSetScoreActivity() {
+        setScoreView.activityIndicatorView.stopAnimating()
     }
     
     // MARK: UIScrollViewDelegate
@@ -537,6 +567,7 @@ private class SetScoreView: AUIView {
     
     let label = UILabel()
     let scoreView = InteractiveScoreFiveStarsView()
+    let activityIndicatorView = UIActivityIndicatorView()
     
     // MARK: Setup
     
@@ -550,6 +581,9 @@ private class SetScoreView: AUIView {
         label.textAlignment = .center
         addSubview(scoreView)
         scoreView.starImageTintColor = .white
+        addSubview(activityIndicatorView)
+        activityIndicatorView.color = Colors.white
+        activityIndicatorView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     // MARK: Layout
@@ -558,6 +592,7 @@ private class SetScoreView: AUIView {
         super.layoutSubviews()
         layoutLabel()
         layoutScoreView()
+        layoutActivityIndicatorView()
     }
     
     private func layoutLabel() {
@@ -582,6 +617,10 @@ private class SetScoreView: AUIView {
         let origin = CGPoint(x: x, y: y)
         let frame = CGRect(origin: origin, size: size)
         scoreView.frame = frame
+    }
+    
+    private func layoutActivityIndicatorView() {
+        activityIndicatorView.frame = bounds
     }
     
     // MARK: Size

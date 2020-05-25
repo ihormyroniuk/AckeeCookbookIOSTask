@@ -9,17 +9,14 @@
 import UIKit
 import os
 
-private class Class {
-    
-}
-
 enum Images {
     
+    private class Class { }
     private static let bundle = Bundle(for: Class.self)
     private static let emptyImage = UIImage()
     private static func image(named name: String) -> UIImage {
         guard let image = UIImage(named: name, in: bundle, compatibleWith: nil) else {
-            os_log("This is a log message.", type: .fault)
+            os_log("Image %@ is not found", type: .info, name)
             return emptyImage
         }
         return image
