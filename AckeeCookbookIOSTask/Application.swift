@@ -30,12 +30,12 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }()
 
     func iPhonePresentationGetRecipes(_ iPhonePresentation: IPhonePresentation, offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
-        webApi.getRecipes(offset: offset, limit: limit) { (result) in
+        api.getRecipes(offset: offset, limit: limit) { (result) in
             let presentationResult: Result<[RecipeInList], Error>
             switch result {
-            case .recipes(let recipes):
+            case .success(let recipes):
                 presentationResult = .success(recipes)
-            case .error(let error):
+            case .failure(let error):
                 presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
@@ -43,12 +43,12 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
 
     func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: CreatingRecipe,  completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        webApi.createRecipe(recipe) { (result) in
+        api.createRecipe(recipe) { (result) in
             let presentationResult: Result<RecipeInDetails, Error>
             switch result {
-            case .recipe(let recipe):
+            case .success(let recipe):
                 presentationResult = .success(recipe)
-            case .error(let error):
+            case .failure(let error):
                 presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
@@ -56,12 +56,12 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationGetRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        webApi.getRecipe(recipe.id) { (result) in
+        api.getRecipe(recipe.id) { (result) in
             let presentationResult: Result<RecipeInDetails, Error>
             switch result {
-            case .recipe(let recipe):
+            case .success(let recipe):
                 presentationResult = .success(recipe)
-            case .error(let error):
+            case .failure(let error):
                 presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
@@ -69,23 +69,22 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationDeleteRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, completionHandler: @escaping (Error?) -> ()) {
-        webApi.deleteRecipe(recipe.id) { (result) in
-            switch result {
-            case .deleted:
-                completionHandler(nil)
-            case let .error(error):
+        api.deleteRecipe(recipe.id) { (error) in
+            if let error = error {
                 completionHandler(error)
+            } else {
+                completionHandler(nil)
             }
         }
     }
     
     func iPhonePresentationScoreRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        webApi.scoreRecipe(recipe.id, score: score) { (result) in
+        api.scoreRecipe(recipe.id, score: score) { (result) in
             let presentationResult: Result<Float, Error>
             switch result {
-            case let .score(score):
+            case let .success(score):
                 presentationResult = .success(score)
-            case let .error(error):
+            case let .failure(error):
                 presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
@@ -93,12 +92,12 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        webApi.updateRecipe(recipe) { (result) in
+        api.updateRecipe(recipe) { (result) in
             let presentationResult: Result<RecipeInDetails, Error>
             switch result {
-            case .recipe(let recipe):
+            case .success(let recipe):
                 presentationResult = .success(recipe)
-            case .error(let error):
+            case .failure(let error):
                 presentationResult = .failure(error)
             }
             completionHandler(presentationResult)
@@ -107,8 +106,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
 
     // MARK: WebAPI
 
-    private lazy var webApi: WebApiPerformer = {
-        let webApi = WebApiPerformerUrlSessionShared()
+    private lazy var api: ApiPerformer = {
+        let webApi = ApiPerformerFactory.mockServerApiPerformer
         return webApi
     }()
 }

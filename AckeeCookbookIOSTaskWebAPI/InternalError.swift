@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct UnknownError: Error {
+struct InternalError: Error {
     
 }

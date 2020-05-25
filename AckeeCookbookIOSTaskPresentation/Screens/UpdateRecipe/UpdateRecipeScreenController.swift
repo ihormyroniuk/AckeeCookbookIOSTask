@@ -112,7 +112,7 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
             return
         }
         let id = recipe.id
-        let updatingRecipe = UpdatingRecipeStructure(id: id, name: name, duration: 100, description: description, info: info, ingredients: ingredients)
+        let updatingRecipe = UpdatingRecipe(id: id, name: name, duration: 100, description: description, info: info, ingredients: ingredients)
         delegate?.updateRecipeScreenUpdateRecipe(updatingRecipe)
     }
 

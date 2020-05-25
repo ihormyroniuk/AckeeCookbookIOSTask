@@ -28,11 +28,11 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     }
     
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
-        print(height)
-        self.window.frame.size.height = height
-        self.window.setNeedsLayout()
-        self.window.layoutIfNeeded()
+//        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
+//        print(height)
+//        self.window.frame.size.height = height
+//        self.window.setNeedsLayout()
+//        self.window.layoutIfNeeded()
     }
 
     // MARK: Presentation

@@ -9,11 +9,6 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-enum WebApiVersion1DeleteRecipeResponse {
-    case success
-    case error(WebApiVersion1Error)
-}
-
 class ApiVersion1EndpointDeleteRecipe: ApiVersion1Endpoint {
     
     func request(id: String) -> URLRequest {
@@ -23,18 +18,18 @@ class ApiVersion1EndpointDeleteRecipe: ApiVersion1Endpoint {
         urlComponents.path = basePath + "/recipes/\(id)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
+        request.httpMethod = ApiVersion1.Method.delete
         return request
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1DeleteRecipeResponse {
+    func response(response: HTTPURLResponse, data: Data) throws -> ApiVersion1Error? {
         let statusCode = response.statusCode
-        if statusCode == 204 {
-            return .success
+        if statusCode == ApiVersion1.StatusCode.noContent {
+            return nil
         } else {
             let jsonObject = try JSONSerialization.object(with: data, options: [])
             let error = try self.error(jsonObject: jsonObject)
-            return .error(error)
+            return error
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  AddedNewRatingStructure.swift
+//  AddedNewRating.swift
 //  AckeeCookbookIOSTaskBusiness
 //
 //  Created by Ihor Myroniuk on 06.05.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AddedNewRatingStructure: AddedNewRating {
+public struct AddedNewRating {
     public let id: String
     public let recipeId: String
     public let score: Float

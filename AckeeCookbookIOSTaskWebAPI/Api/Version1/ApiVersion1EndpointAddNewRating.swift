@@ -9,11 +9,6 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-enum WebApiVersion1AddNewRatingResponse {
-    case rating(AddedNewRating)
-    case error(WebApiVersion1Error)
-}
-
 class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     
     func request(id: String, score: Float) -> URLRequest {
@@ -24,7 +19,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
         urlComponents.path = path
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = ApiVersion1.Method.post
         var bodyJSON: [String: Any] = [:]
         bodyJSON["score"] = score
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
@@ -35,15 +30,15 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
         return request
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1AddNewRatingResponse {
+    func response(response: HTTPURLResponse, data: Data) throws -> Result<AddedNewRating, ApiVersion1Error> {
         let jsonObject = try JSONSerialization.object(with: data, options: [])
         let statusCode = response.statusCode
-        if statusCode == 200 {
+        if statusCode == ApiVersion1.StatusCode.ok {
             let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
-            return .rating(addedNewRating)
+            return .success(addedNewRating)
         } else {
             let error = try self.error(jsonObject: jsonObject)
-            return .error(error)
+            return .failure(error)
         }
     }
     
@@ -51,7 +46,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
         let id = try jsonObject.stringForKey("id")
         let recipeId = try jsonObject.stringForKey("recipe")
         let score = try jsonObject.numberForKey("score").floatValue
-        let addedNewRating = AddedNewRatingStructure(id: id, recipeId: recipeId, score: score)
+        let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
         return addedNewRating
     }
     

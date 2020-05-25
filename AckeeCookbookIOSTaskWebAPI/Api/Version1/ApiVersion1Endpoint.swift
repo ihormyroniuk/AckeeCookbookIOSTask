@@ -9,7 +9,7 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-struct WebApiVersion1Error: Error {
+struct ApiVersion1Error: Error {
     let code: Int
     let status: Int
     let name: String
@@ -28,11 +28,11 @@ class ApiVersion1Endpoint {
         self.host = host
     }
     
-    func error(jsonObject: JsonObject) throws -> WebApiVersion1Error {
+    func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
         let code = try jsonObject.numberForKey("errorCode").intValue
         let status = try jsonObject.numberForKey("status").intValue
         let name = try jsonObject.stringForKey("name")
-        let error = WebApiVersion1Error(code: code, status: status, name: name)
+        let error = ApiVersion1Error(code: code, status: status, name: name)
         return error
     }
     

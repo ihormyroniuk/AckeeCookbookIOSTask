@@ -1,5 +1,5 @@
 //
-//  UpdatingRecipeStructure.swift
+//  UpdatingRecipe.swift
 //  AckeeCookbookIOSTaskBusiness
 //
 //  Created by Ihor Myroniuk on 26.04.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UpdatingRecipeStructure: UpdatingRecipe {
+public struct UpdatingRecipe {
     public let id: String
     public let name: String
     public let duration: Int

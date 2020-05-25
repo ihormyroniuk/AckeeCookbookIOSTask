@@ -9,11 +9,6 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-enum WebApiVersion1GetRecipeResponse {
-    case recipe(RecipeInDetails)
-    case error(WebApiVersion1Error)
-}
-
 class ApiVersion1EndpointGetRecipe: ApiVersion1Endpoint {
     
     func request(id: String) -> URLRequest {
@@ -23,19 +18,19 @@ class ApiVersion1EndpointGetRecipe: ApiVersion1Endpoint {
         urlComponents.path = basePath + "/recipes/\(id)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.httpMethod = ApiVersion1.Method.get
         return request
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipeResponse {
+    func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
         let jsonObject = try JSONSerialization.object(with: data, options: [])
         let statusCode = response.statusCode
-        if statusCode == 200 {
+        if statusCode == ApiVersion1.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
-            return .recipe(recipe)
+            return .success(recipe)
         } else {
             let error = try self.error(jsonObject: jsonObject)
-            return .error(error)
+            return .failure(error)
         }
     }
     

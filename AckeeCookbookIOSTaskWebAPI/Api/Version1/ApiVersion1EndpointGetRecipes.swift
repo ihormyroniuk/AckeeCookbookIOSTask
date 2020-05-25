@@ -9,11 +9,6 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-enum WebApiVersion1GetRecipesResponse {
-    case recipes([RecipeInList])
-    case error(WebApiVersion1Error)
-}
-
 class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
     
     func request(limit: Int, offset: Int) -> URLRequest {
@@ -26,24 +21,25 @@ class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
         let url = urlComponents.url!
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = ApiVersion1.Method.get
         return request
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> WebApiVersion1GetRecipesResponse {
+    func response(response: HTTPURLResponse, data: Data) throws -> Result<[RecipeInList], ApiVersion1Error> {
         let statusCode = response.statusCode
-        if statusCode == 200 {
+        if statusCode == ApiVersion1.StatusCode.ok {
             let jsonArray = try JSONSerialization.objectsArray(with: data, options: [])
             var recipes: [RecipeInList] = []
             for jsonObject in jsonArray {
                 let recipe = try recipeInList(jsonObject: jsonObject)
                 recipes.append(recipe)
             }
-            return .recipes(recipes)
+            return .success(recipes)
         } else {
             let jsonObject = try JSONSerialization.object(with: data, options: [])
             let error = try self.error(jsonObject: jsonObject)
-            return .error(error)
+            return .failure(error)
         }
     }
     
