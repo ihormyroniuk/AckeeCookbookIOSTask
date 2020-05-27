@@ -20,7 +20,7 @@ class AddRecipeScreenView: ScreenViewWithNavigationBar {
     let infoTextInputView = TextViewInputView()
     let ingredientsLabel = UILabel()
     private var ingredientInputViews: [IngredientInputView] = []
-    let addIngredientButton = UIButton()
+    let addIngredientButton = AlphaHighlightButton()
     let descriptionInputView = TextViewInputView()
     let durationInputView = DurationInputView()
 

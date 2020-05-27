@@ -1,5 +1,5 @@
 //
-//  StructureCreatingRecipe.swift
+//  CreatingRecipe.swift
 //  AckeeCookbookIOSTaskBusiness
 //
 //  Created by Ihor Myroniuk on 3/31/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CreatingRecipeStructure: CreatingRecipe {
+public struct CreatingRecipe {
     public let name: String
     public let description: String
     public let ingredients: [String]

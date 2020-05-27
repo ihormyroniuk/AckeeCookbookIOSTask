@@ -10,7 +10,7 @@ import AUIKit
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-protocol AddRecipeScreenDelegate: class {
+protocol AddRecipeScreenControllerDelegate: class {
     func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreenController)
     func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe)
 }
@@ -19,7 +19,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
 
     // MARK: AddRecipeScreen
 
-    weak var delegate: AddRecipeScreenDelegate?
+    weak var delegate: AddRecipeScreenControllerDelegate?
 
     // MARK: Localization
 
@@ -96,12 +96,12 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
     }
 
     @objc private func add() {
-        guard let name = nameTextViewController.text else { return }
-        guard let description = descriptionTextViewController.text else { return }
+        let name = nameTextViewController.text ?? ""
+        let description = descriptionTextViewController.text ?? ""
         let ingredients = ingredientInputViewControllers.map({ $0.textViewController?.text }).compactMap({ $0 })
-        guard let info = infoTextViewController.text else { return }
+        let info = infoTextViewController.text ?? ""
         let duration = Int(durationDatePickerControler.countDownDuration)
-        let recipe = CreatingRecipeStructure(name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+        let recipe = CreatingRecipe(name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         delegate?.addRecipeScreenAddRecipe(self, recipe)
     }
 

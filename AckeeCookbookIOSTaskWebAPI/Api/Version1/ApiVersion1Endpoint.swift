@@ -9,10 +9,19 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-struct ApiVersion1Error: Error {
+struct ApiVersion1Error: Error, LocalizedError {
     let code: Int
     let status: Int
     let name: String
+    let message: String
+    
+    var errorDescription: String? {
+        return message
+    }
+    
+    var localizedDescription: String {
+        return message
+    }
 }
 
 class ApiVersion1Endpoint {
@@ -29,10 +38,12 @@ class ApiVersion1Endpoint {
     }
     
     func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
-        let code = try jsonObject.numberForKey("errorCode").intValue
-        let status = try jsonObject.numberForKey("status").intValue
-        let name = try jsonObject.stringForKey("name")
-        let error = ApiVersion1Error(code: code, status: status, name: name)
+        let message = try jsonObject.stringForKey("message")
+        let errorObject = try jsonObject.objectForKey("err")
+        let code = try errorObject.numberForKey("errorCode").intValue
+        let status = try errorObject.numberForKey("status").intValue
+        let name = try errorObject.stringForKey("name")
+        let error = ApiVersion1Error(code: code, status: status, name: name, message: message)
         return error
     }
     
@@ -44,7 +55,7 @@ class ApiVersion1Endpoint {
         let ingredients = try jsonObject.stringsArrayForKey("ingredients")
         let duration = try jsonObject.numberForKey("duration").intValue
         let score = try jsonObject.numberForKey("score").floatValue
-        let recipe = RecipeInDetailsStructure(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
+        let recipe = RecipeInDetails(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
         return recipe
     }
     

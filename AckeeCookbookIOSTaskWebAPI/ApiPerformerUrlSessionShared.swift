@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import Foundation
+import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
 class ApiPerformerUrlSessionShared: ApiPerformer {

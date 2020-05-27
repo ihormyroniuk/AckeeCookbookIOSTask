@@ -48,7 +48,7 @@ class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
         let name = try jsonObject.stringForKey("name")
         let duration = try jsonObject.numberForKey("duration").intValue
         let score = try jsonObject.numberForKey("score").floatValue
-        let recipe = RecipeInListStructure(id: id, name: name, duration: duration, score: score)
+        let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
         return recipe
     }
     

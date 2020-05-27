@@ -15,7 +15,7 @@ enum ApiVersion1 {
     }
     
     enum Host {
-        static let mockServer = "private-anon-819a83e00e-cookbook3.apiary-mock.com"
+        static let mockServer = "private-anon-819a83e00e-cookbook3.apiary-mockh.com"
         static let debuggingProxy = "private-anon-819a83e00e-cookbook3.apiary-proxy.com"
         static let production = "cookbook.ack.ee"
     }

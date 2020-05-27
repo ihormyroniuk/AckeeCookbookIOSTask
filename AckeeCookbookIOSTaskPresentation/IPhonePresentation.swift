@@ -18,7 +18,7 @@ public protocol IPhonePresentationDelegate: class {
     func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
 }
 
-public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegate, AddRecipeScreenDelegate, RecipesDetailsScreenDelegate, UpdateRecipeScreenDelegate {
+public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegate, AddRecipeScreenControllerDelegate, RecipesDetailsScreenControllerDelegate, UpdateRecipeScreenDelegate {
 
     // MARK: Setup
     
@@ -97,7 +97,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                 switch result {
                 case .success(let recipe):
                     self.mainNavigationController?.popViewController(animated: true)
-                    self.recipesListScreen?.knowRecipeWasAdded(recipe)
+                    self.recipesListScreen?.knowRecipeWasAdded(recipe.recipeInList)
                     break
                 case .failure(let error):
                     let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
@@ -131,7 +131,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
             self.delegate?.iPhonePresentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.recipesListScreen?.knowRecipeWasDeleted(recipeInDetails)
+                    self.recipesListScreen?.knowRecipeWasDeleted(recipeInDetails.recipeInList)
                     guard let recipesListScreen = self.recipesListScreen else { return }
                     self.mainNavigationController?.popToViewController(recipesListScreen, animated: true)
                 }
@@ -158,7 +158,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                 switch result {
                 case .success(let score):
                     completionHandler(result)
-                    self.recipesListScreen?.knowRecipeScoreWasChanged(recipe, score: score)
+                    self.recipesListScreen?.knowRecipeScoreWasChanged(recipe.recipeInList, score: score)
                 case .failure(let error):
                     completionHandler(result)
                     let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
@@ -185,7 +185,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                 switch result {
                 case .success(let recipe):
                     self.recipeInDetailsScreen?.updateRecipe(recipe)
-                    self.recipesListScreen?.knowRecipeWasUpdated(recipe)
+                    self.recipesListScreen?.knowRecipeWasUpdated(recipe.recipeInList)
                     self.mainNavigationController?.popViewController(animated: true)
                 case .failure(let error):
                     let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)

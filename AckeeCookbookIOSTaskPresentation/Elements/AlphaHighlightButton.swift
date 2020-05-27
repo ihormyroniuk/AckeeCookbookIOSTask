@@ -12,8 +12,8 @@ import AUIKit
 class AlphaHighlightButton: AUIButton {
     
     override var isHighlighted: Bool {
-        didSet {
-            if isHighlighted {
+        willSet {
+            if newValue {
                 highlight()
             } else {
                 unhighlight()

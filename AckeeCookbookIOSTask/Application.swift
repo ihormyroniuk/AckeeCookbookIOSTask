@@ -17,14 +17,18 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     
     override func didFinishLaunching() {
         super.didFinishLaunching()
+        presentationWindow.makeKeyAndVisible()
         iPhonePresentation.showRecipesList()
-        window?.makeKeyAndVisible()
     }
 
     // MARK: Presentation
     
+    private lazy var presentationWindow: UIWindow = {
+        return window ?? UIWindow()
+    }()
+    
     private lazy var iPhonePresentation: IPhonePresentation = {
-        let iPhonePresentation = IPhonePresentation(window: window!)
+        let iPhonePresentation = IPhonePresentation(window: presentationWindow)
         iPhonePresentation.delegate = self
         return iPhonePresentation
     }()
@@ -107,7 +111,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     // MARK: WebAPI
 
     private lazy var api: ApiPerformer = {
-        let webApi = ApiPerformerFactory.mockServerApiPerformer
+        let webApi = ApiPerformerFactory.productionApiPerformer
         return webApi
     }()
 }

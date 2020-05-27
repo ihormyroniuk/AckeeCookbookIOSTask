@@ -10,7 +10,7 @@ import AUIKit
 import AckeeCookbookIOSTaskBusiness
 import AFoundation
 
-protocol RecipesDetailsScreenDelegate: class {
+protocol RecipesDetailsScreenControllerDelegate: class {
     func recipeInDetailsScreenBack(_ recipeInDetailsScreen: RecipeDetailsScreenController)
     func recipeInDetailsScreenGetRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInList: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails)
@@ -22,11 +22,11 @@ class RecipeDetailsScreenController: AUIDefaultScreenController, UIScrollViewDel
     
     // MARK: RecipeInDetailsScreen
     
-    var delegate: RecipesDetailsScreenDelegate?
+    var delegate: RecipesDetailsScreenControllerDelegate?
     
     func updateRecipe(_ recipe: RecipeInDetails) {
         guard recipeInList.id == recipe.id else { return }
-        recipeInList = recipe
+        recipeInList = recipe.recipeInList
         setRecipeInDetailsContent(recipe)
         recipeInDetailsScreenView.setNeedsLayout()
         recipeInDetailsScreenView.layoutIfNeeded()

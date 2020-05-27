@@ -7,6 +7,7 @@
 //
 
 import AUIKit
+import AckeeCookbookIOSTaskBusiness
 
 class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate {
     
@@ -93,6 +94,8 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         }
+        scrollView.addSubview(refreshControl)
+        setupRefreshControl()
         scrollView.addSubview(pictureImageView)
         setupPictureImageView()
         scrollView.addSubview(scoreDurationView)
@@ -106,9 +109,11 @@ class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate
         setupSectionTitleLabel(descriptionTitleLabel)
         scrollView.addSubview(descriptionLabel)
         setupDescriptionLabel()
-        scrollView.addSubview(refreshControl)
-        refreshControl.tintColor = .white
         scrollView.addSubview(setScoreView)
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.tintColor = .white
     }
     
     private func setupPictureImageView() {
@@ -533,7 +538,7 @@ class ScoreDurationView: AUIView {
     
 }
 
-class SetScoreView: AUIView {
+private class SetScoreView: AUIView {
     
     // MARK: Subviews
     
@@ -609,7 +614,7 @@ class SetScoreView: AUIView {
 
 }
 
-class InteractiveScoreFiveStarsView: AUIView {
+private class InteractiveScoreFiveStarsView: AUIView {
 
     // MARK: Subviews
 
@@ -636,7 +641,7 @@ class InteractiveScoreFiveStarsView: AUIView {
     
     override func setup() {
         super.setup()
-        for _ in 1...5 {
+        for _ in RatingScale.Star.from...RatingScale.Star.to {
             let button = starButton
             addSubview(button)
             starButtons.append(button)
