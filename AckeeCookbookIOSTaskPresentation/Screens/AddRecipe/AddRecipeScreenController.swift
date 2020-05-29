@@ -52,7 +52,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
     override func setup() {
         super.setup()
         addRecipeScreenView.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.addTarget(self, action: #selector(sf))
+        tapGestureRecognizer.addTarget(self, action: #selector(hideKeyboard))
         addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
         nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
@@ -65,17 +65,13 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
         durationTextViewController.textView = addRecipeScreenView.durationInputView.textField
         durationTextViewController.inputViewController = durationDatePickerControler
         durationTextViewController.addDidChangeTextObserver(self)
-        durationDatePickerControler.countDownDuration = 50
-        durationDatePickerControler.minuteInterval = 10
-        durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.addDidValueChangedObserver(self)
+        durationDatePickerControler.mode = .countDownTimer
+        durationDatePickerControler.minuteInterval = Recipe.durationPickerStep
+        durationDatePickerControler.countDownDuration = TimeInterval(Recipe.defaultDuration * 60)
         setContent()
     }
     
-    @objc func sf() {
-        view.endEditing(true)
-    }
-
     // MARK: Events
 
     func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
@@ -90,6 +86,10 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
     }
 
     // MARK: Actions
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
 
     @objc private func back() {
         delegate?.addRecipeScreenBack(self)
@@ -107,7 +107,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
 
     @objc private func addIngredient() {
         let ingredientInputView = addRecipeScreenView.addIngredientInputView()
-        ingredientInputView.placeholderLabel.text = localizer.localizeText("Ingredient")
+        ingredientInputView.placeholderLabel.text = localizer.localizeText("ingredient")
         let textViewController = AUIEmptyTextViewController()
         textViewController.addDidChangeTextObserver(self)
         let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()

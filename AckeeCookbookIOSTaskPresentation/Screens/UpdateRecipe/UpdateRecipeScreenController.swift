@@ -10,9 +10,18 @@ import AUIKit
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScreen, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
+protocol UpdateRecipeScreenDelegate: class {
+    func updateRecipeScreenBack(_ updateRecipeScreen: UpdateRecipeScreenController)
+    func updateRecipeScreenUpdateRecipe(_ recipe: UpdatingRecipe)
+}
+
+class UpdateRecipeScreenController: AUIDefaultScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
+    
+    // MARK: Data
     
     private var recipe: RecipeInDetails
+    
+    // MARK: Initializer
     
     init(view: UIView, recipe: RecipeInDetails) {
         self.recipe = recipe
@@ -27,7 +36,7 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
 
     private let localizer: ALocalizer = {
         let bundle = Bundle(for: RecipesListScreenController.self)
-        let tableName = "AddRecipeScreenStrings"
+        let tableName = "UpdateRecipeScreenStrings"
         let textLocalizer = ATableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
         let localizator = ACompositeLocalizer(textLocalization: textLocalizer)
         return localizator
@@ -35,8 +44,8 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
 
     // MARK: AddRecipeScreenView
 
-    private var addRecipeScreenView: AddRecipeScreenView! {
-        return view as? AddRecipeScreenView
+    private var updateRecipeScreenView: UpdateRecipeScreenView! {
+        return view as? UpdateRecipeScreenView
     }
 
     // MARL: Controllers
@@ -52,24 +61,25 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
 
     override func setup() {
         super.setup()
-        addRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
-        addRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
-        nameTextViewController.textView = addRecipeScreenView.nameTextInputView.textView
+        updateRecipeScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        updateRecipeScreenView.addButton.addTarget(self, action: #selector(add), for: .touchUpInside)
+        nameTextViewController.textView = updateRecipeScreenView.nameTextInputView.textView
         nameTextViewController.addDidChangeTextObserver(self)
-        infoTextViewController.textView = addRecipeScreenView.infoTextInputView.textView
+        infoTextViewController.textView = updateRecipeScreenView.infoTextInputView.textView
         infoTextViewController.addDidChangeTextObserver(self)
-        descriptionTextViewController.textView = addRecipeScreenView.descriptionInputView.textView
+        descriptionTextViewController.textView = updateRecipeScreenView.descriptionInputView.textView
         descriptionTextViewController.addDidChangeTextObserver(self)
-        addRecipeScreenView.addIngredientButton.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
-        durationTextViewController.textView = addRecipeScreenView.durationInputView.textField
+        updateRecipeScreenView.addIngredientButton.addTarget(self, action: #selector(addIngredient), for: .touchUpInside)
+        durationTextViewController.textView = updateRecipeScreenView.durationInputView.textField
         durationTextViewController.inputViewController = durationDatePickerControler
+        durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.minuteInterval = 10
         durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.addDidValueChangedObserver(self)
         for ingredient in recipe.ingredients {
-            let ingredientInputView = addRecipeScreenView.addIngredientInputView()
-            ingredientInputView.placeholderLabel.text = "sdfdsfsdf"
+            let ingredientInputView = updateRecipeScreenView.addIngredientInputView()
+            ingredientInputView.placeholderLabel.text = "ingredient"
             let textViewController = AUIEmptyTextViewController()
             textViewController.addDidChangeTextObserver(self)
             let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()
@@ -84,8 +94,8 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
     // MARK: Events
 
     func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
-        addRecipeScreenView.setNeedsLayout()
-        addRecipeScreenView.layoutIfNeeded()
+        updateRecipeScreenView.setNeedsLayout()
+        updateRecipeScreenView.layoutIfNeeded()
     }
     
     func controlControllerDidValueChanged(_ controlController: AUIControlController) {
@@ -117,8 +127,8 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
     }
 
     @objc private func addIngredient() {
-        let ingredientInputView = addRecipeScreenView.addIngredientInputView()
-        ingredientInputView.placeholderLabel.text = "sdfdsfsdf"
+        let ingredientInputView = updateRecipeScreenView.addIngredientInputView()
+        ingredientInputView.placeholderLabel.text = "ingredient"
         let textViewController = AUIEmptyTextViewController()
         textViewController.addDidChangeTextObserver(self)
         let textViewTextInputController = AUIResponsiveTextViewTextInputViewController()
@@ -130,21 +140,21 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, UpdateRecipeScre
     private func pickDuration() {
         let durationInSeconds = durationDatePickerControler.countDownDuration
         let durationInMinutes = Int(durationInSeconds / 60)
-        addRecipeScreenView.durationInputView.textField.text = localizer.localizeText("durationInMinutes", "\(durationInMinutes)")
+        updateRecipeScreenView.durationInputView.textField.text = localizer.localizeText("durationInMinutes", "\(durationInMinutes)")
     }
 
     // MARK: Content
 
     private func setContent() {
-        addRecipeScreenView.backButton.setTitle(localizer.localizeText("back"), for: .normal)
-        addRecipeScreenView.addButton.setTitle(localizer.localizeText("add"), for: .normal)
-        addRecipeScreenView.titleLabel.text = localizer.localizeText("title")
-        addRecipeScreenView.nameTextInputView.titleLabel.text = localizer.localizeText("recipeName")?.uppercased()
-        addRecipeScreenView.infoTextInputView.titleLabel.text = localizer.localizeText("recipeInfo")?.uppercased()
-        addRecipeScreenView.ingredientsLabel.text = localizer.localizeText("recipeIngredients")?.uppercased()
-        addRecipeScreenView.addIngredientButton.setTitle(localizer.localizeText("recideAddIngredient")?.uppercased(), for: .normal)
-        addRecipeScreenView.descriptionInputView.titleLabel.text = localizer.localizeText("recideDescription")?.uppercased()
-        addRecipeScreenView.durationInputView.titleLabel.text = localizer.localizeText("recideDuration")
+        updateRecipeScreenView.backButton.setTitle(localizer.localizeText("back"), for: .normal)
+        updateRecipeScreenView.addButton.setTitle(localizer.localizeText("update"), for: .normal)
+        updateRecipeScreenView.titleLabel.text = localizer.localizeText("title")
+        updateRecipeScreenView.nameTextInputView.titleLabel.text = localizer.localizeText("recipeName")?.uppercased()
+        updateRecipeScreenView.infoTextInputView.titleLabel.text = localizer.localizeText("recipeInfo")?.uppercased()
+        updateRecipeScreenView.ingredientsLabel.text = localizer.localizeText("recipeIngredients")?.uppercased()
+        updateRecipeScreenView.addIngredientButton.setTitle(localizer.localizeText("recideAddIngredient")?.uppercased(), for: .normal)
+        updateRecipeScreenView.descriptionInputView.titleLabel.text = localizer.localizeText("recideDescription")?.uppercased()
+        updateRecipeScreenView.durationInputView.titleLabel.text = localizer.localizeText("recideDuration")
         setRecipeContent()
     }
     

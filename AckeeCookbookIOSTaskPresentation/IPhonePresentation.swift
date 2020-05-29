@@ -144,7 +144,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     }
     
     func recipeInDetailsScreenUpdateRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
-        let screenView = AddRecipeScreenView()
+        let screenView = UpdateRecipeScreenView()
         let screenController = UpdateRecipeScreenController(view: screenView, recipe: recipeInDetails)
         screenController.delegate = self
         updateRecipeScreen = screenController
@@ -172,9 +172,9 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     
     // MARK: Update Recipe Screen
 
-    private weak var updateRecipeScreen: UpdateRecipeScreen?
+    private weak var updateRecipeScreen: UpdateRecipeScreenController?
     
-    func updateRecipeScreenBack(_ updateRecipeScreen: UpdateRecipeScreen) {
+    func updateRecipeScreenBack(_ updateRecipeScreen: UpdateRecipeScreenController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

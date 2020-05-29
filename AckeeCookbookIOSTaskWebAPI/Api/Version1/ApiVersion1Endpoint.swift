@@ -9,21 +9,6 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-struct ApiVersion1Error: Error, LocalizedError {
-    let code: Int
-    let status: Int
-    let name: String
-    let message: String
-    
-    var errorDescription: String? {
-        return message
-    }
-    
-    var localizedDescription: String {
-        return message
-    }
-}
-
 class ApiVersion1Endpoint {
     
     let scheme: String
@@ -59,4 +44,17 @@ class ApiVersion1Endpoint {
         return recipe
     }
     
+}
+
+struct ApiVersion1Error: Error, LocalizedError {
+    
+    let code: Int
+    let status: Int
+    let name: String
+    let message: String
+    
+    var errorDescription: String? {
+        return message
+    }
+
 }

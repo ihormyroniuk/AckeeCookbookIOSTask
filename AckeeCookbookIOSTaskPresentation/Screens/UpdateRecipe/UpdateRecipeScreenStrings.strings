@@ -1,13 +1,13 @@
 /* 
-  AddRecipeScreenStrings.strings
+  UpdateRecipeScreenStrings.strings
   AckeeCookbookIOSTask
 
-  Created by Ihor Myroniuk on 3/31/20.
+  Created by Ihor Myroniuk on 28.05.2020.
   Copyright © 2020 Ihor Myroniuk. All rights reserved.
 */
 
-"title" = "Add Recipe";
-"add" = "Add";
+"title" = "Update Recipe";
+"update" = "Update";
 "back" = "Back";
 "recipeName" = "Name";
 "recipeInfo" = "Info";

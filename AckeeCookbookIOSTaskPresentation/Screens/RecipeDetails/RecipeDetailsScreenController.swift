@@ -27,6 +27,7 @@ class RecipeDetailsScreenController: AUIDefaultScreenController, UIScrollViewDel
     func updateRecipe(_ recipe: RecipeInDetails) {
         guard recipeInList.id == recipe.id else { return }
         recipeInList = recipe.recipeInList
+        recipeInDetails = recipe
         setRecipeInDetailsContent(recipe)
         recipeInDetailsScreenView.setNeedsLayout()
         recipeInDetailsScreenView.layoutIfNeeded()
