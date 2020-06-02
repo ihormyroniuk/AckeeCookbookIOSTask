@@ -11,15 +11,15 @@ import Foundation
 public enum ApiPerformerFactory {
     
     public static var mockServerApiPerformer: ApiPerformer {
-        return ApiPerformerUrlSessionShared(version1Scheme: ApiVersion1.Scheme.https, version1Host: ApiVersion1.Host.mockServer)
+        return ApiPerformerUrlSessionShared(version1Scheme: Api.Scheme.https, version1Host: Api.Host.mockServer)
     }
     
     public static var debuggingProxyApiPerformer: ApiPerformer {
-        return ApiPerformerUrlSessionShared(version1Scheme: ApiVersion1.Scheme.https, version1Host: ApiVersion1.Host.debuggingProxy)
+        return ApiPerformerUrlSessionShared(version1Scheme: Api.Scheme.https, version1Host: Api.Host.debuggingProxy)
     }
     
     public static var productionApiPerformer: ApiPerformer {
-        return ApiPerformerUrlSessionShared(version1Scheme: ApiVersion1.Scheme.https, version1Host: ApiVersion1.Host.production)
+        return ApiPerformerUrlSessionShared(version1Scheme: Api.Scheme.https, version1Host: Api.Host.production)
     }
     
 }

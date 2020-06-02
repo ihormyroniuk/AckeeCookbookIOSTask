@@ -13,9 +13,6 @@ class ApiVersion1Endpoint {
     
     let scheme: String
     let host: String
-    let basePath: String = "/api/v1"
-    let contentTypeHeaderKey = "Content-Type"
-    let contentTypeHeaderValueJson = "application/json"
     
     init(scheme: String, host: String) {
         self.scheme = scheme

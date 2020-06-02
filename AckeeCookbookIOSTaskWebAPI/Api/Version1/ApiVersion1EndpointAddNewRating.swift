@@ -15,17 +15,17 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = basePath + "/recipes/\(id)/ratings"
+        let path = ApiVersion1.basePath + "/recipes/\(id)/ratings"
         urlComponents.path = path
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = ApiVersion1.Method.post
+        request.httpMethod = Api.Method.post
         var bodyJSON: [String: Any] = [:]
         bodyJSON["score"] = score
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
         request.httpBody = body
         var headers: [String: String] = [:]
-        headers[contentTypeHeaderKey] = contentTypeHeaderValueJson
+        headers[Api.Header.contentType] = Api.Header.contentTypeJson
         request.allHTTPHeaderFields = headers
         return request
     }
@@ -33,7 +33,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     func response(response: HTTPURLResponse, data: Data) throws -> Result<AddedNewRating, ApiVersion1Error> {
         let jsonObject = try JSONSerialization.object(with: data, options: [])
         let statusCode = response.statusCode
-        if statusCode == ApiVersion1.StatusCode.ok {
+        if statusCode == Api.StatusCode.ok {
             let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
             return .success(addedNewRating)
         } else {

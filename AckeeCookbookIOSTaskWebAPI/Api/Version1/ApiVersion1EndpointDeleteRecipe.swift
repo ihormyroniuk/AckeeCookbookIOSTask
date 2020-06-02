@@ -15,16 +15,16 @@ class ApiVersion1EndpointDeleteRecipe: ApiVersion1Endpoint {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = basePath + "/recipes/\(id)"
+        urlComponents.path = ApiVersion1.basePath + "/recipes/\(id)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = ApiVersion1.Method.delete
+        request.httpMethod = Api.Method.delete
         return request
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> ApiVersion1Error? {
         let statusCode = response.statusCode
-        if statusCode == ApiVersion1.StatusCode.noContent {
+        if statusCode == Api.StatusCode.noContent {
             return nil
         } else {
             let jsonObject = try JSONSerialization.object(with: data, options: [])

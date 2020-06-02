@@ -24,15 +24,17 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     
     public override func setup() {
         super.setup()
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
     }
     
+    // MARK: Keyboard
+    
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-//        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
-//        print(height)
-//        self.window.frame.size.height = height
-//        self.window.setNeedsLayout()
-//        self.window.layoutIfNeeded()
+        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
+        guard let view = mainNavigationController?.viewControllers.last?.view else { return }
+        view.frame.size.height = height
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
 
     // MARK: Presentation
@@ -126,7 +128,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     }
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
-        let alertController = UIAlertController(title: "Alert", message: "This is an alert.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "This is an alert.", preferredStyle: .alert)
         let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
             self.delegate?.iPhonePresentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
                 DispatchQueue.main.async { [weak self] in

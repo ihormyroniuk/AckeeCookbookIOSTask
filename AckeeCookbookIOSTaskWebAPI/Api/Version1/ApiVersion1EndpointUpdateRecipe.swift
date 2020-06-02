@@ -16,10 +16,10 @@ class ApiVersion1EndpointUpdateRecipe: ApiVersion1Endpoint {
         urlComponents.scheme = scheme
         urlComponents.host = host
         let recipeId = id
-        urlComponents.path = basePath + "/recipes/\(recipeId)"
+        urlComponents.path = ApiVersion1.basePath + "/recipes/\(recipeId)"
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = ApiVersion1.Method.put
+        request.httpMethod = Api.Method.put
         var bodyJSON: [String: Any] = [:]
         bodyJSON["name"] = name
         bodyJSON["description"] = description
@@ -29,7 +29,7 @@ class ApiVersion1EndpointUpdateRecipe: ApiVersion1Endpoint {
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
         request.httpBody = body
         var headers: [String: String] = [:]
-        headers[contentTypeHeaderKey] = contentTypeHeaderValueJson
+        headers[Api.Header.contentType] = Api.Header.contentTypeJson
         request.allHTTPHeaderFields = headers
         return request
     }
@@ -37,7 +37,7 @@ class ApiVersion1EndpointUpdateRecipe: ApiVersion1Endpoint {
     func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
         let jsonObject = try JSONSerialization.object(with: data, options: [])
         let statusCode = response.statusCode
-        if statusCode == ApiVersion1.StatusCode.ok {
+        if statusCode == Api.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
         } else {

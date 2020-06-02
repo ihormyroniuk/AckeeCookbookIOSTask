@@ -15,20 +15,20 @@ class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = basePath + "/recipes"
+        urlComponents.path = ApiVersion1.basePath + "/recipes"
         let offsetQueryItem = URLQueryItem(name: "offset", value: "\(offset)")
         let limitQueryItem = URLQueryItem(name: "limit", value: "\(limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = ApiVersion1.Method.get
+        request.httpMethod = Api.Method.get
         return request
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> Result<[RecipeInList], ApiVersion1Error> {
         let statusCode = response.statusCode
-        if statusCode == ApiVersion1.StatusCode.ok {
+        if statusCode == Api.StatusCode.ok {
             let jsonArray = try JSONSerialization.objectsArray(with: data, options: [])
             var recipes: [RecipeInList] = []
             for jsonObject in jsonArray {
