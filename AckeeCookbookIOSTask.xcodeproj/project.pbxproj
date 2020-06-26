@@ -270,6 +270,7 @@
 				33114EC4242B900800B246BB /* RecipesList */,
 				331A5E562432A026008AFDE0 /* AddRecipe */,
 				33E6B619243A3043006200F1 /* RecipeDetails */,
+				C55CFDB124A6129D00F38C0B /* ConfirmDeletion */,
 				C529FF8A2455DC280087B2A7 /* UpdateRecipe */,
 			);
 			path = Screens;
@@ -411,6 +412,13 @@
 				C5551499247DB2F600B29C18 /* RatingScale.swift */,
 			);
 			path = Rating;
+			sourceTree = "<group>";
+		};
+		C55CFDB124A6129D00F38C0B /* ConfirmDeletion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ConfirmDeletion;
 			sourceTree = "<group>";
 		};
 		C55D816C247C70500082346B /* Api */ = {

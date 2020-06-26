@@ -102,10 +102,8 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                     self.recipesListScreen?.knowRecipeWasAdded(recipe.recipeInList)
                     break
                 case .failure(let error):
-                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
-                    alert.addAction(okAction)
-                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                    let alertController = self.createInternalErrorAlertController(error)
+                    self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                 }
             }
         })
@@ -162,11 +160,8 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                     completionHandler(result)
                     self.recipesListScreen?.knowRecipeScoreWasChanged(recipe.recipeInList, score: score)
                 case .failure(let error):
-                    completionHandler(result)
-                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
-                    alert.addAction(okAction)
-                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                    let alertController = self.createInternalErrorAlertController(error)
+                    self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                 }
             }
         })
@@ -190,13 +185,20 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                     self.recipesListScreen?.knowRecipeWasUpdated(recipe.recipeInList)
                     self.mainNavigationController?.popViewController(animated: true)
                 case .failure(let error):
-                    let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok", style: .destructive)
-                    alert.addAction(okAction)
-                    self.mainNavigationController?.present(alert, animated: true, completion: nil)
+                    let alertController = self.createInternalErrorAlertController(error)
+                    self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                 }
             }
         })
+    }
+    
+    // MARK: Error Alert
+    
+    private func createInternalErrorAlertController(_ error: Error) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        let okAlertAction = UIAlertAction(title: "Ok", style: .destructive)
+        alertController.addAction(okAlertAction)
+        return alertController
     }
     
 }

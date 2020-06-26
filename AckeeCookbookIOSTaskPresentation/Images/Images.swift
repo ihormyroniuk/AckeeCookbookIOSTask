@@ -16,7 +16,7 @@ enum Images {
     private static let emptyImage = UIImage()
     private static func image(named name: String) -> UIImage {
         guard let image = UIImage(named: name, in: bundle, compatibleWith: nil) else {
-            os_log("Image %@ is not found", type: .info, name)
+            os_log("Image named \"%@\" is not found", type: .info, name)
             return emptyImage
         }
         return image
