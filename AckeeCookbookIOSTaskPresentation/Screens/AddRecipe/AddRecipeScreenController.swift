@@ -15,7 +15,7 @@ protocol AddRecipeScreenControllerDelegate: class {
     func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe)
 }
 
-class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
+class AddRecipeScreenController: AUIStatusBarScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
 
     // MARK: AddRecipeScreen
 
@@ -44,7 +44,7 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
     private var ingredientInputViewControllers: [AUIResponsiveTextViewTextInputViewController] = []
     private let descriptionTextViewController = AUIEmptyTextViewController()
     private let durationTextViewController = AUIEmptyTextViewController()
-    private let durationDatePickerControler = AUIDefaultDatePickerController()
+    private let durationDatePickerControler = AUIEmptyCountDownDurationDatePickerController()
     private let tapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: Setup
@@ -66,7 +66,6 @@ class AddRecipeScreenController: AUIDefaultScreenController, AUITextViewControll
         durationTextViewController.inputViewController = durationDatePickerControler
         durationTextViewController.addDidChangeTextObserver(self)
         durationDatePickerControler.addDidValueChangedObserver(self)
-        durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.minuteInterval = Recipe.durationPickerStep
         durationDatePickerControler.countDownDuration = TimeInterval(Recipe.defaultDuration * 60)
         setContent()

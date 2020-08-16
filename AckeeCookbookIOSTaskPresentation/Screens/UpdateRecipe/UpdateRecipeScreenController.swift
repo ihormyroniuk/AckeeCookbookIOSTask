@@ -15,7 +15,7 @@ protocol UpdateRecipeScreenDelegate: class {
     func updateRecipeScreenUpdateRecipe(_ recipe: UpdatingRecipe)
 }
 
-class UpdateRecipeScreenController: AUIDefaultScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
+class UpdateRecipeScreenController: AUIStatusBarScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
     
     // MARK: Data
     
@@ -55,7 +55,7 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, AUITextViewContr
     private var ingredientInputViewControllers: [AUIResponsiveTextViewTextInputViewController] = []
     private let descriptionTextViewController = AUIEmptyTextViewController()
     private let durationTextViewController = AUIEmptyTextViewController()
-    private let durationDatePickerControler = AUIDefaultDatePickerController()
+    private let durationDatePickerControler = AUIEmptyCountDownDurationDatePickerController()
 
     // MARK: Setup
 
@@ -75,7 +75,6 @@ class UpdateRecipeScreenController: AUIDefaultScreenController, AUITextViewContr
         durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.countDownDuration = 50
         durationDatePickerControler.minuteInterval = 10
-        durationDatePickerControler.mode = .countDownTimer
         durationDatePickerControler.addDidValueChangedObserver(self)
         for ingredient in recipe.ingredients {
             let ingredientInputView = updateRecipeScreenView.addIngredientInputView()

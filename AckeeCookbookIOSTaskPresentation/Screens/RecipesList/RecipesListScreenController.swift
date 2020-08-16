@@ -16,7 +16,7 @@ protocol RecipesListScreenDelegate: class {
     func recipesListScreenShowRecipeDetails(_ recipesListScreen: RecipesListScreenController, recipeInList: RecipeInList)
 }
 
-class RecipesListScreenController: AUIDefaultScreenController, UICollectionViewDataSource, UICollectionViewDelegate, RecipesListScreenRepeatLoadCollectionViewCellDelegate {
+class RecipesListScreenController: AUIStatusBarScreenController, UICollectionViewDataSource, UICollectionViewDelegate, RecipesListScreenRepeatLoadCollectionViewCellDelegate {
 
     // MARK: RecipesListScreen
 

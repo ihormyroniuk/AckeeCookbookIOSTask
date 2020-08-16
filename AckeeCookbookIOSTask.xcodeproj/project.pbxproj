@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
 		33114E79242B7BF400B246BB /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114E78242B7BF400B246BB /* Application.swift */; };
 		33114E7B242B7C5B00B246BB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114E7A242B7C5B00B246BB /* main.swift */; };
 		33114EAF242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114EAD242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,7 +35,6 @@
 		334EE48A24326CDB00833180 /* ApiPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* ApiPerformer.swift */; };
 		334EE48C24326D5B00833180 /* ApiPerformerUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* ApiPerformerUrlSessionShared.swift */; };
 		335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
-		335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */ = {isa = PBXBuildFile; fileRef = 335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */; };
 		335246DD2431082700E4B6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335246DC2431082700E4B6C8 /* Assets.xcassets */; };
 		3356139D2433AB2A008337AA /* RecipeInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356139C2433AB2A008337AA /* RecipeInDetails.swift */; };
@@ -62,6 +60,7 @@
 		C55D8169247C5FAB0082346B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D8168247C5FAB0082346B /* Api.swift */; };
 		C55D816B247C6C880082346B /* ApiPerformerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiPerformerFactory.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */; };
+		C584851424E9BADE00AA8EA0 /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
 		C590396F2481334A007A6D74 /* ApiVersion1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C590396E2481334A007A6D74 /* ApiVersion1.swift */; };
 		C5E01379247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */; };
 		C5E0137B247BD11700A09B7D /* ApiVersion1Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */; };
@@ -113,7 +112,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */,
-				335246D92430C8F700E4B6C8 /* AFoundation.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
 				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
@@ -231,7 +229,7 @@
 				335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */,
 				33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 				33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
-				33114E75242B7ABD00B246BB /* AUIKit.framework in Frameworks */,
+				C584851424E9BADE00AA8EA0 /* AUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,7 +565,6 @@
 				3367D6DD242836930053A509 /* Frameworks */,
 				3367D6DE242836930053A509 /* Resources */,
 				3364DF032429095300BF1C1E /* Run Script Carthage */,
-				3364DF04242909BD00BF1C1E /* Run Script Carthage Outdated */,
 				33114EB4242B84AB00B246BB /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -671,7 +668,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3364DF032429095300BF1C1E /* Run Script Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -688,24 +685,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		3364DF04242909BD00BF1C1E /* Run Script Carthage Outdated */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script Carthage Outdated";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings 2>/dev/null\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -40,7 +40,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     // MARK: Presentation
     
     public func showRecipesList() {
-        let navigationController = AUIHiddenBarInteractiveNavigationController()
+        let navigationController = AUINavigationController()
         let screenView = RecipesListScreenView()
         let screenController = RecipesListScreenController(view: screenView)
         screenController.delegate = self

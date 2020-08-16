@@ -18,7 +18,7 @@ protocol RecipesDetailsScreenControllerDelegate: class {
     func recipeInDetailsScreenSetScore(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ())
 }
 
-class RecipeDetailsScreenController: AUIDefaultScreenController, UIScrollViewDelegate {
+class RecipeDetailsScreenController: AUIStatusBarScreenController, UIScrollViewDelegate {
     
     // MARK: RecipeInDetailsScreen
     

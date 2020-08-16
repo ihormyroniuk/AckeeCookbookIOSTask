@@ -8,23 +8,6 @@
 import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {
- 
-    // MAKR: Initializer
-  
-    public override init() {
-        super.init()
-        setup()
-    }
-  
-    // MARK: Setup
-  
-    open func setup() {
-        
-    }
-  
-    // MARK: Window
-  
-    open var window: UIWindow?
   
     // MARK: Launching
   
@@ -32,17 +15,16 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             willFinishLaunchingLocation()
             return true
-        }
-        if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+        } else if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             willFinishLaunchingNotification(payload: payload)
             return true
-        }
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        } else if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             willFinishLaunchingShortcutItem(shortcutItem)
             return true
+        } else {
+            willFinishLaunching()
+            return true
         }
-        willFinishLaunching()
-        return true
     }
   
     open func willFinishLaunching() {
@@ -65,17 +47,16 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             didFinishLaunchingLocation()
             return true
-        }
-        if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+        } else if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             didFinishLaunchingNotification(payload: payload)
             return true
-        }
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        } else if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             didFinishLaunchingShortcutItem(shortcutItem)
             return true
+        } else {
+            didFinishLaunching()
+            return true
         }
-        didFinishLaunching()
-        return true
     }
   
     open func didFinishLaunching() {
@@ -191,5 +172,9 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     open func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return false
     }
+    
+    // MARK: Window
+    
+    open var window: UIWindow?
     
 }

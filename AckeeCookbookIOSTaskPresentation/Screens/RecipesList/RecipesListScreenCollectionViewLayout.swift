@@ -8,13 +8,21 @@
 
 import AUIKit
 
-final class RecipesListScreenCollectionViewLayout: AUICollectionViewLayout {
+final class RecipesListScreenCollectionViewLayout: UICollectionViewLayout {
 
     // MARK: Setup
-
+    
+    override init() {
+        super.init()
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let separatorCollectionReusableViewIdentifier = "separatorCollectionReusableViewIdentifier"
-    override func setup() {
-        super.setup()
+    func setup() {
         self.register(SeparatorCollectionReusableView.self, forDecorationViewOfKind: separatorCollectionReusableViewIdentifier)
     }
     

@@ -1,1 +1,2 @@
 $(SRCROOT)/Carthage/Build/iOS/AUIKit.framework
+$(SRCROOT)/Carthage/Build/iOS/AFoundation.framework
