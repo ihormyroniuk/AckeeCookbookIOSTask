@@ -20,23 +20,23 @@ class ApiVersion1Endpoint {
     }
     
     func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
-        let message = try jsonObject.stringForKey("message")
-        let errorObject = try jsonObject.objectForKey("err")
-        let code = try errorObject.numberForKey("errorCode").intValue
-        let status = try errorObject.numberForKey("status").intValue
-        let name = try errorObject.stringForKey("name")
+        let message = try jsonObject.string("message")
+        let errorObject = try jsonObject.object("err")
+        let code = try errorObject.number("errorCode").intValue
+        let status = try errorObject.number("status").intValue
+        let name = try errorObject.string("name")
         let error = ApiVersion1Error(code: code, status: status, name: name, message: message)
         return error
     }
     
     func recipeInDetails(jsonObject: JsonObject) throws -> RecipeInDetails {
-        let id = try jsonObject.stringForKey("id")
-        let name = try jsonObject.stringForKey("name")
-        let description = try jsonObject.stringForKey("description")
-        let info = try jsonObject.stringForKey("info")
-        let ingredients = try jsonObject.stringsArrayForKey("ingredients")
-        let duration = try jsonObject.numberForKey("duration").intValue
-        let score = try jsonObject.numberForKey("score").floatValue
+        let id = try jsonObject.string("id")
+        let name = try jsonObject.string("name")
+        let description = try jsonObject.string("description")
+        let info = try jsonObject.string("info")
+        let ingredients = try jsonObject.array("ingredients").arrayStrings()
+        let duration = try jsonObject.number("duration").intValue
+        let score = try jsonObject.number("score").floatValue
         let recipe = RecipeInDetails(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
         return recipe
     }

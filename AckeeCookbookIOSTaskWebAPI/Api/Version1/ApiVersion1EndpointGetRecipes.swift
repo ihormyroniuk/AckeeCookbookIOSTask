@@ -29,7 +29,7 @@ class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
     func response(response: HTTPURLResponse, data: Data) throws -> Result<[RecipeInList], ApiVersion1Error> {
         let statusCode = response.statusCode
         if statusCode == Api.StatusCode.ok {
-            let jsonArray = try JSONSerialization.objectsArray(with: data, options: [])
+            let jsonArray = try JsonSerialization.jsonArrayObjects(data)
             var recipes: [RecipeInList] = []
             for jsonObject in jsonArray {
                 let recipe = try recipeInList(jsonObject: jsonObject)
@@ -37,17 +37,17 @@ class ApiVersion1EndpointGetRecipes: ApiVersion1Endpoint {
             }
             return .success(recipes)
         } else {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
+            let jsonObject = try JsonSerialization.jsonObject(data)
             let error = try self.error(jsonObject: jsonObject)
             return .failure(error)
         }
     }
     
     func recipeInList(jsonObject: JsonObject) throws -> RecipeInList {
-        let id = try jsonObject.stringForKey("id")
-        let name = try jsonObject.stringForKey("name")
-        let duration = try jsonObject.numberForKey("duration").intValue
-        let score = try jsonObject.numberForKey("score").floatValue
+        let id = try jsonObject.string("id")
+        let name = try jsonObject.string("name")
+        let duration = try jsonObject.number("duration").intValue
+        let score = try jsonObject.number("score").floatValue
         let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
         return recipe
     }

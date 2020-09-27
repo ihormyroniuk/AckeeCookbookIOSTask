@@ -40,7 +40,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(.failure(error))
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(.failure(error))
             }
         }
@@ -66,7 +66,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(.failure(error))
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(.failure(error))
             }
         }
@@ -92,7 +92,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(.failure(error))
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(.failure(error))
             }
         }
@@ -118,7 +118,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(.failure(error))
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(.failure(error))
             }
         }
@@ -143,7 +143,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(error)
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(error)
             }
         }
@@ -169,7 +169,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
                     completionHandler(.failure(error))
                 }
             } else {
-                let error = InternalError()
+                let error = UnexpectedError()
                 completionHandler(.failure(error))
             }
         }

@@ -27,7 +27,7 @@ class ApiVersion1EndpointDeleteRecipe: ApiVersion1Endpoint {
         if statusCode == Api.StatusCode.noContent {
             return nil
         } else {
-            let jsonObject = try JSONSerialization.object(with: data, options: [])
+            let jsonObject = try JsonSerialization.jsonObject(data)
             let error = try self.error(jsonObject: jsonObject)
             return error
         }

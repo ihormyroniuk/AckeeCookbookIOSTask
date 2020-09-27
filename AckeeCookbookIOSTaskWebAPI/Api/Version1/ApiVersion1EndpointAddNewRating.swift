@@ -31,7 +31,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> Result<AddedNewRating, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let jsonObject = try JsonSerialization.jsonObject(data)
         let statusCode = response.statusCode
         if statusCode == Api.StatusCode.ok {
             let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
@@ -43,9 +43,9 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     }
     
     private func addedNewRating(jsonObject: JsonObject) throws -> AddedNewRating {
-        let id = try jsonObject.stringForKey("id")
-        let recipeId = try jsonObject.stringForKey("recipe")
-        let score = try jsonObject.numberForKey("score").floatValue
+        let id = try jsonObject.string("id")
+        let recipeId = try jsonObject.string("recipe")
+        let score = try jsonObject.number("score").floatValue
         let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
         return addedNewRating
     }

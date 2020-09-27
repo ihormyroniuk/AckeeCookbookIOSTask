@@ -23,11 +23,11 @@ class AddRecipeScreenController: AUIStatusBarScreenController, AUITextViewContro
 
     // MARK: Localization
 
-    private let localizer: ALocalizer = {
+    private let localizer: Localizer = {
         let bundle = Bundle(for: RecipesListScreenController.self)
         let tableName = "AddRecipeScreenStrings"
-        let textLocalizer = ATableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
-        let localizator = ACompositeLocalizer(textLocalization: textLocalizer)
+        let textLocalizer = TableNameBundleTextLocalizer(tableName: tableName, bundle: bundle)
+        let localizator = CompositeLocalizer(textLocalization: textLocalizer)
         return localizator
     }()
 

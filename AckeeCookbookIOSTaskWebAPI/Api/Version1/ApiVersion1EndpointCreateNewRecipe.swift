@@ -34,7 +34,7 @@ class ApiVersion1EndpointCreateNewRecipe: ApiVersion1Endpoint {
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.object(with: data, options: [])
+        let jsonObject = try JsonSerialization.jsonObject(data)
         let statusCode = response.statusCode
         if statusCode == Api.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
