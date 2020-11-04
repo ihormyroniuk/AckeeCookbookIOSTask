@@ -18,7 +18,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<Rec
     private let duration: Int?
     private let info: String?
     
-    init(scheme: String, host: String, name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) {
+    init(scheme: String, host: String, name: String, description: String, ingredients: [String]? = nil, duration: Int? = nil, info: String? = nil) {
         self.name = name
         self.description = description
         self.ingredients = ingredients

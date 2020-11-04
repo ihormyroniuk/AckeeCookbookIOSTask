@@ -11,32 +11,48 @@ import AckeeCookbookIOSTaskBusiness
 
 class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<RecipeInDetails, ApiVersion1Error>> {
     
-    func request(id: String, name: String? = nil, description: String? = nil, ingredients: [String]? = nil, duration: Int?, info: String? = nil) -> URLRequest {
+    private let id: String
+    private let name: String?
+    private let description: String?
+    private let ingredients: [String]?
+    private let duration: Int?
+    private let info: String?
+    
+    init(scheme: String, host: String, id: String, name: String? = nil, description: String? = nil, ingredients: [String]? = nil, duration: Int? = nil, info: String? = nil) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.ingredients = ingredients
+        self.duration = duration
+        self.info = info
+        super.init(scheme: scheme, host: host)
+    }
+    
+    override func constructHttpRequest() -> HttpRequest {
+        let method = Http.Method.put
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         let recipeId = id
         urlComponents.path = basePath + "/recipes/\(recipeId)"
-        let url = urlComponents.url!
-        var request = URLRequest(url: url)
-        request.httpMethod = Http.Method.put
-        var bodyJSON: [String: Any] = [:]
-        bodyJSON["name"] = name
-        bodyJSON["description"] = description
-        bodyJSON["ingredients"] = ingredients
-        bodyJSON["duration"] = duration
-        bodyJSON["info"] = info
-        let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
-        request.httpBody = body
-        var headers: [String: String] = [:]
-        headers[Http.HeaderField.contentType] = MediaType.json()
-        request.allHTTPHeaderFields = headers
-        return request
+        let requestUri = urlComponents.url!
+        var headerFields: [String: String] = [:]
+        headerFields[Http.HeaderField.contentType] = MediaType.json()
+        var jsonValue: JsonObject = JsonObject()
+        jsonValue["name"] = name
+        jsonValue["description"] = description
+        jsonValue["ingredients"] = ingredients
+        jsonValue["duration"] = duration
+        jsonValue["info"] = info
+        let messageBody = try! JSONSerialization.data(jsonValue: jsonValue)
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, messageBody: messageBody)
+        return httpRequest
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.json(data: data).object()
-        let statusCode = response.statusCode
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<RecipeInDetails, ApiVersion1Error> {
+        let statusCode = httpResponse.statusCode
+        let messageBody = httpResponse.messageBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
