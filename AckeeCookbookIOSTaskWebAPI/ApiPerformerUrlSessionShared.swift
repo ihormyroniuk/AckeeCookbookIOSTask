@@ -13,16 +13,16 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     
     private let session = URLSession.shared
     
-    private let version1Scheme: String
-    private let version1Host: String
+    private let scheme: String
+    private let host: String
     
     public init(version1Scheme: String, version1Host: String) {
-        self.version1Scheme = version1Scheme
-        self.version1Host = version1Host
+        self.scheme = version1Scheme
+        self.host = version1Host
     }
     
     public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
-        let httpExchange = GetRecipesApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, limit: limit, offset: offset)
+        let httpExchange = GetRecipesApiVersion1HttpExchange(scheme: scheme, host: host, limit: limit, offset: offset)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -50,7 +50,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: scheme, host: host, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -78,7 +78,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId)
+        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: recipeId)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -106,7 +106,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
    
     public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -134,7 +134,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (Error?) -> ()) {
-        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId)
+        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: recipeId)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -161,7 +161,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId, score: score)
+        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, id: recipeId, score: score)
         let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
