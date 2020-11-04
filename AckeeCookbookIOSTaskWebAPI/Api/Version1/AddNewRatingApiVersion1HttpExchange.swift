@@ -9,17 +9,17 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
+class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<AddedNewRating, ApiVersion1Error>> {
     
     func request(id: String, score: Float) -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = ApiVersion1.basePath + "/recipes/\(id)/ratings"
+        let path = basePath + "/recipes/\(id)/ratings"
         urlComponents.path = path
         let url = urlComponents.url!
         var request = URLRequest(url: url)
-        request.httpMethod = Api.Method.post
+        request.httpMethod = Http.Method.post
         var bodyJSON: [String: Any] = [:]
         bodyJSON["score"] = score
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
@@ -31,7 +31,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> Result<AddedNewRating, ApiVersion1Error> {
-        let jsonObject = try JsonSerialization.jsonObject(data)
+        let jsonObject = try JSONSerialization.json(data).object()
         let statusCode = response.statusCode
         if statusCode == Api.StatusCode.ok {
             let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
@@ -45,7 +45,7 @@ class ApiVersion1EndpointAddNewRating: ApiVersion1Endpoint {
     private func addedNewRating(jsonObject: JsonObject) throws -> AddedNewRating {
         let id = try jsonObject.string("id")
         let recipeId = try jsonObject.string("recipe")
-        let score = try jsonObject.number("score").floatValue
+        let score = try jsonObject.number("score").float
         let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
         return addedNewRating
     }

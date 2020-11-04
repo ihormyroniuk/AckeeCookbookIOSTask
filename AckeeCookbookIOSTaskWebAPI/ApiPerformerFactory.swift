@@ -6,12 +6,12 @@
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 
-import Foundation
+import AFoundation
 
 public enum ApiPerformerFactory {
     
     public static var productionApiPerformer: ApiPerformer {
-        return ApiPerformerUrlSessionShared(version1Scheme: Api.Scheme.https, version1Host: Api.Host.production)
+        return ApiPerformerUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.production)
     }
     
 }

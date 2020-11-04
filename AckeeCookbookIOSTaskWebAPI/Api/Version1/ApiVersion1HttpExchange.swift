@@ -9,21 +9,15 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class ApiVersion1Endpoint {
+class ApiVersion1HttpExchange<ParsedHttpResponse>: SchemeHostHttpExchange<ParsedHttpResponse> {
     
-    let scheme: String
-    let host: String
-    
-    init(scheme: String, host: String) {
-        self.scheme = scheme
-        self.host = host
-    }
+    let basePath: String = "/api/v1"
     
     func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
         let message = try jsonObject.string("message")
         let errorObject = try jsonObject.object("err")
-        let code = try errorObject.number("errorCode").intValue
-        let status = try errorObject.number("status").intValue
+        let code = try errorObject.number("errorCode").int
+        let status = try errorObject.number("status").int
         let name = try errorObject.string("name")
         let error = ApiVersion1Error(code: code, status: status, name: name, message: message)
         return error
@@ -35,8 +29,8 @@ class ApiVersion1Endpoint {
         let description = try jsonObject.string("description")
         let info = try jsonObject.string("info")
         let ingredients = try jsonObject.array("ingredients").arrayStrings()
-        let duration = try jsonObject.number("duration").intValue
-        let score = try jsonObject.number("score").floatValue
+        let duration = try jsonObject.number("duration").int
+        let score = try jsonObject.number("score").float
         let recipe = RecipeInDetails(id: id, name: name, duration: duration, description: description, info: info, ingredients: ingredients, score: score)
         return recipe
     }

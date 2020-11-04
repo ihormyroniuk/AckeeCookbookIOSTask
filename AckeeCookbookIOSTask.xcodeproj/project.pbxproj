@@ -13,7 +13,6 @@
 		33114EAF242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 33114EAD242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */; };
 		33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		33114EBA242B860F00B246BB /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
 		33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EBE242B8A6C00B246BB /* IPhonePresentation.swift */; };
 		33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EC0242B8AFE00B246BB /* RecipesListScreenView.swift */; };
 		33114EC3242B8B3000B246BB /* RecipesListScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114EC2242B8B3000B246BB /* RecipesListScreenController.swift */; };
@@ -35,7 +34,6 @@
 		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
 		334EE48A24326CDB00833180 /* ApiPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* ApiPerformer.swift */; };
 		334EE48C24326D5B00833180 /* ApiPerformerUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* ApiPerformerUrlSessionShared.swift */; };
-		335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
 		335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */ = {isa = PBXBuildFile; fileRef = 335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */; };
 		335246DD2431082700E4B6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335246DC2431082700E4B6C8 /* Assets.xcassets */; };
 		3356139D2433AB2A008337AA /* RecipeInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356139C2433AB2A008337AA /* RecipeInDetails.swift */; };
@@ -57,22 +55,18 @@
 		C54F39232480557D002BBE64 /* UpdateRecipeScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C54F39222480557D002BBE64 /* UpdateRecipeScreenStrings.strings */; };
 		C54F3925248058D9002BBE64 /* UpdateRecipeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F3924248058D9002BBE64 /* UpdateRecipeScreenView.swift */; };
 		C54F392724806188002BBE64 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F392624806188002BBE64 /* Recipe.swift */; };
-		C552E404246153E80031D531 /* AFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; };
-		C552E405246153E80031D531 /* AFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 335246D72430C8F700E4B6C8 /* AFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C555149A247DB2F600B29C18 /* RatingScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5551499247DB2F600B29C18 /* RatingScale.swift */; };
 		C55640D42477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */; };
 		C55D8169247C5FAB0082346B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D8168247C5FAB0082346B /* Api.swift */; };
 		C55D816B247C6C880082346B /* ApiPerformerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiPerformerFactory.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */; };
-		C584851424E9BADE00AA8EA0 /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33114E74242B7ABD00B246BB /* AUIKit.framework */; };
-		C590396F2481334A007A6D74 /* ApiVersion1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C590396E2481334A007A6D74 /* ApiVersion1.swift */; };
-		C5E01379247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */; };
-		C5E0137B247BD11700A09B7D /* ApiVersion1Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */; };
-		C5E0137D247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */; };
-		C5E0137F247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */; };
-		C5E01381247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */; };
-		C5E01383247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */; };
-		C5E01385247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */; };
+		C5E01379247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */; };
+		C5E0137B247BD11700A09B7D /* ApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */; };
+		C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */; };
+		C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137E247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift */; };
+		C5E01381247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01380247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift */; };
+		C5E01383247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01382247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift */; };
+		C5E01385247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */; };
 		C5FEB19A244DF74F00BA3753 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB199244DF74F00BA3753 /* Images.swift */; };
 		C5FEB19D244E07CC00BA3753 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB19C244E07CC00BA3753 /* Colors.swift */; };
 /* End PBXBuildFile section */
@@ -129,7 +123,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
-				C552E405246153E80031D531 /* AFoundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,14 +192,13 @@
 		C55D8168247C5FAB0082346B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		C55D816A247C6C880082346B /* ApiPerformerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPerformerFactory.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeDetailsScreenStrings.strings; sourceTree = "<group>"; };
-		C590396E2481334A007A6D74 /* ApiVersion1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1.swift; sourceTree = "<group>"; };
-		C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointGetRecipes.swift; sourceTree = "<group>"; };
-		C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1Endpoint.swift; sourceTree = "<group>"; };
-		C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointCreateNewRecipe.swift; sourceTree = "<group>"; };
-		C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointGetRecipe.swift; sourceTree = "<group>"; };
-		C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointUpdateRecipe.swift; sourceTree = "<group>"; };
-		C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointDeleteRecipe.swift; sourceTree = "<group>"; };
-		C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1EndpointAddNewRating.swift; sourceTree = "<group>"; };
+		C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipesApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewRecipeApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E0137E247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipeApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E01380247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E01382247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRecipeApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
+		C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRatingApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
 		C5FEB199244DF74F00BA3753 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C5FEB19C244E07CC00BA3753 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D94E177D9214311353D5E562 /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig"; path = "Target Support Files/Pods-AckeeCookbookIOSTaskPresentation/Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -217,7 +209,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33114EBA242B860F00B246BB /* AUIKit.framework in Frameworks */,
 				239501BD40FCAF0427D2341A /* Pods_AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
-				C552E404246153E80031D531 /* AFoundation.framework in Frameworks */,
 				A3D1E6A5DD27E2DD2504C495 /* Pods_AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,10 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
-				335246D82430C8F700E4B6C8 /* AFoundation.framework in Frameworks */,
 				33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 				33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
-				C584851424E9BADE00AA8EA0 /* AUIKit.framework in Frameworks */,
 				4817E2C013F2129ED5F1308A /* Pods_AckeeCookbookIOSTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +409,6 @@
 				7AF236A35743BB1265C30F3F /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */,
 				2F8723EC9650FAC57EB39936 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -484,14 +471,13 @@
 		C5C08D46246044E200B320BD /* Version1 */ = {
 			isa = PBXGroup;
 			children = (
-				C590396E2481334A007A6D74 /* ApiVersion1.swift */,
-				C5E0137A247BD11700A09B7D /* ApiVersion1Endpoint.swift */,
-				C5E01378247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift */,
-				C5E0137C247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift */,
-				C5E0137E247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift */,
-				C5E01380247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift */,
-				C5E01382247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift */,
-				C5E01384247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift */,
+				C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */,
+				C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */,
+				C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */,
+				C5E0137E247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift */,
+				C5E01380247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift */,
+				C5E01382247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift */,
+				C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -718,13 +704,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"$(SRCROOT)/input.xcfilelist",
 			);
 			inputPaths = (
 			);
 			name = "Run Script Carthage";
 			outputFileListPaths = (
-				"$(SRCROOT)/output.xcfilelist",
 			);
 			outputPaths = (
 			);
@@ -871,16 +855,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5E0137B247BD11700A09B7D /* ApiVersion1Endpoint.swift in Sources */,
-				C590396F2481334A007A6D74 /* ApiVersion1.swift in Sources */,
-				C5E01381247BD7A500A09B7D /* ApiVersion1EndpointUpdateRecipe.swift in Sources */,
-				C5E01379247BD09900A09B7D /* ApiVersion1EndpointGetRecipes.swift in Sources */,
+				C5E0137B247BD11700A09B7D /* ApiVersion1HttpExchange.swift in Sources */,
+				C5E01381247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift in Sources */,
+				C5E01379247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift in Sources */,
 				C55D816B247C6C880082346B /* ApiPerformerFactory.swift in Sources */,
-				C5E01385247BD94800A09B7D /* ApiVersion1EndpointAddNewRating.swift in Sources */,
-				C5E01383247BD85E00A09B7D /* ApiVersion1EndpointDeleteRecipe.swift in Sources */,
+				C5E01385247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift in Sources */,
+				C5E01383247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48A24326CDB00833180 /* ApiPerformer.swift in Sources */,
-				C5E0137D247BD45800A09B7D /* ApiVersion1EndpointCreateNewRecipe.swift in Sources */,
-				C5E0137F247BD65D00A09B7D /* ApiVersion1EndpointGetRecipe.swift in Sources */,
+				C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */,
+				C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48C24326D5B00833180 /* ApiPerformerUrlSessionShared.swift in Sources */,
 				C55D8169247C5FAB0082346B /* Api.swift in Sources */,
 			);
