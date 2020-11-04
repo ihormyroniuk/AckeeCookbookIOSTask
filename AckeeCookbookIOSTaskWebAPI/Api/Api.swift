@@ -16,14 +16,4 @@ enum Api {
         static let production = "cookbook.ack.ee"
     }
     
-    enum StatusCode {
-        static let ok = 200
-        static let noContent = 204
-    }
-    
-    enum Header {
-        static let contentType = "Content-Type"
-        static let contentTypeJson = "application/json"
-    }
-    
 }

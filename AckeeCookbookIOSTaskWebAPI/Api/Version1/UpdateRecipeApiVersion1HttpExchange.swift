@@ -29,15 +29,15 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<Recipe
         let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
         request.httpBody = body
         var headers: [String: String] = [:]
-        headers[Api.Header.contentType] = Api.Header.contentTypeJson
+        headers[Http.HeaderField.contentType] = MediaType.json()
         request.allHTTPHeaderFields = headers
         return request
     }
     
     func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.json(data).object()
+        let jsonObject = try JSONSerialization.json(data: data).object()
         let statusCode = response.statusCode
-        if statusCode == Api.StatusCode.ok {
+        if statusCode == Http.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
         } else {

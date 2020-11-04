@@ -19,8 +19,8 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<[RecipeI
         self.offset = offset
         super.init(scheme: scheme, host: host)
     }
-    
-    func request() -> HttpRequest {
+
+    override func constructHttpRequest() -> HttpRequest {
         let method = Http.Method.get
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -31,15 +31,15 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<[RecipeI
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
         let requestUri = urlComponents.url!
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: "")
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
         return httpRequest
     }
-    
-    func response(httpResponse: HttpResponse) throws -> Result<[RecipeInList], ApiVersion1Error> {
+
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<[RecipeInList], ApiVersion1Error> {
         let statusCode = httpResponse.statusCode
-        let data = httpResponse.messageBody ?? Data()
-        if statusCode == Api.StatusCode.ok {
-            let jsonArray = try JSONSerialization.json(data).array().arrayObjects()
+        let messageBody = httpResponse.messageBody ?? Data()
+        if statusCode == Http.StatusCode.ok {
+            let jsonArray = try JSONSerialization.json(data: messageBody).array().arrayObjects()
             var recipes: [RecipeInList] = []
             for jsonObject in jsonArray {
                 let recipe = try recipeInList(jsonObject: jsonObject)
@@ -47,7 +47,7 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<[RecipeI
             }
             return .success(recipes)
         } else {
-            let jsonObject = try JSONSerialization.json(data).object()
+            let jsonObject = try JSONSerialization.json(data: messageBody).object()
             let error = try self.error(jsonObject: jsonObject)
             return .failure(error)
         }

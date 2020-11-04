@@ -23,7 +23,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     
     public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
         let httpExchange = GetRecipesApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, limit: limit, offset: offset)
-        let httpRequest = httpExchange.request()
+        let httpRequest = httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -31,7 +31,7 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
                     let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.response(httpResponse: httpResponse)
+                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
                     switch response {
                     case .success(let recipes):
                         completionHandler(.success(recipes))
@@ -50,15 +50,17 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func createRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let endpoint = CreateNewRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
-        let request = endpoint.request()
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let httpRequest = httpExchange.constructHttpRequest()
+        let urlRequest = URLRequest(httpRequest: httpRequest)
+        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try endpoint.response(response: response, data: data)
-                    switch version1Response {
+                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                    switch response {
                     case .success(let recipe):
                         completionHandler(.success(recipe))
                     case .failure(let error):
@@ -76,15 +78,17 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let endpoint = GetRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host)
-        let request = endpoint.request(id: recipeId)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId)
+        let httpRequest = httpExchange.constructHttpRequest()
+        let urlRequest = URLRequest(httpRequest: httpRequest)
+        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try endpoint.response(response: response, data: data)
-                    switch version1Response {
+                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                    switch response {
                     case .success(let recipe):
                         completionHandler(.success(recipe))
                     case .failure(let error):
@@ -128,15 +132,17 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (Error?) -> ()) {
-        let endpoint = DeleteRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host)
-        let request = endpoint.request(id: recipeId)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId)
+        let httpRequest = httpExchange.constructHttpRequest()
+        let urlRequest = URLRequest(httpRequest: httpRequest)
+        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completionHandler(error)
             } else if let data = data, let response  = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try endpoint.response(response: response, data: data)
-                    if let error = version1Response {
+                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                    if let error = response {
                         completionHandler(error)
                     } else {
                         completionHandler(nil)
@@ -153,15 +159,17 @@ class ApiPerformerUrlSessionShared: ApiPerformer {
     }
     
     public func scoreRecipe(_ recipeId: String, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        let endpoint = AddNewRatingApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host)
-        let request = endpoint.request(id: recipeId, score: score)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
+        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: version1Scheme, host: version1Host, id: recipeId, score: score)
+        let httpRequest = httpExchange.constructHttpRequest()
+        let urlRequest = URLRequest(httpRequest: httpRequest)
+        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
                 do {
-                    let version1Response = try endpoint.response(response: response, data: data)
-                    switch version1Response {
+                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                    switch response {
                     case .success(let rating):
                         completionHandler(.success(rating.score))
                     case .failure(let error):

@@ -27,32 +27,31 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<Rec
         super.init(scheme: scheme, host: host)
     }
     
-    func request() -> URLRequest {
+    override func constructHttpRequest() -> HttpRequest {
+        let method = Http.Method.post
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes"
-        let url = urlComponents.url!
-        var request = URLRequest(url: url)
-        request.httpMethod = Http.Method.post
-        var bodyJson: [String: Any] = [:]
-        bodyJson["name"] = name
-        bodyJson["description"] = description
-        bodyJson["ingredients"] = ingredients
-        bodyJson["duration"] = duration
-        bodyJson["info"] = info
-        var headers: [String: String] = [:]
-        headers[Api.Header.contentType] = Api.Header.contentTypeJson
-        let body = try! JSONSerialization.data(withJSONObject: bodyJson, options: [])
-        request.httpBody = body
-        request.allHTTPHeaderFields = headers
-        return request
+        let requestUri = urlComponents.url!
+        var headerFields: [String: String] = [:]
+        headerFields[Http.HeaderField.contentType] = MediaType.json()
+        var jsonValue: JsonObject = JsonObject()
+        jsonValue["name"] = name
+        jsonValue["description"] = description
+        jsonValue["ingredients"] = ingredients
+        jsonValue["duration"] = duration
+        jsonValue["info"] = info
+        let messageBody = try! JSONSerialization.data(jsonValue: jsonValue)
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, messageBody: messageBody)
+        return httpRequest
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.json(data).object()
-        let statusCode = response.statusCode
-        if statusCode == Api.StatusCode.ok {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<RecipeInDetails, ApiVersion1Error> {
+        let statusCode = httpResponse.statusCode
+        let messageBody = httpResponse.messageBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
+        if statusCode == Http.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
         } else {

@@ -11,29 +11,37 @@ import AckeeCookbookIOSTaskBusiness
 
 class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<AddedNewRating, ApiVersion1Error>> {
     
-    func request(id: String, score: Float) -> URLRequest {
+    private let id: String
+    private let score: Float
+    
+    init(scheme: String, host: String, id: String, score: Float) {
+        self.id = id
+        self.score = score
+        super.init(scheme: scheme, host: host)
+    }
+    
+    override func constructHttpRequest() -> HttpRequest {
+        let method = Http.Method.post
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         let path = basePath + "/recipes/\(id)/ratings"
         urlComponents.path = path
-        let url = urlComponents.url!
-        var request = URLRequest(url: url)
-        request.httpMethod = Http.Method.post
-        var bodyJSON: [String: Any] = [:]
-        bodyJSON["score"] = score
-        let body = try! JSONSerialization.data(withJSONObject: bodyJSON, options: [])
-        request.httpBody = body
-        var headers: [String: String] = [:]
-        headers[Api.Header.contentType] = Api.Header.contentTypeJson
-        request.allHTTPHeaderFields = headers
-        return request
+        let requestUri = urlComponents.url!
+        var headerFields: [String: String] = [:]
+        headerFields[Http.HeaderField.contentType] = MediaType.json()
+        var jsonValue: JsonObject = JsonObject()
+        jsonValue["score"] = score
+        let messageBody = try! JSONSerialization.data(jsonValue: jsonValue)
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, messageBody: messageBody)
+        return httpRequest
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> Result<AddedNewRating, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.json(data).object()
-        let statusCode = response.statusCode
-        if statusCode == Api.StatusCode.ok {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<AddedNewRating, ApiVersion1Error> {
+        let statusCode = httpResponse.statusCode
+        let messageBody = httpResponse.messageBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
+        if statusCode == Http.StatusCode.ok {
             let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
             return .success(addedNewRating)
         } else {

@@ -36,16 +36,3 @@ class ApiVersion1HttpExchange<ParsedHttpResponse>: SchemeHostHttpExchange<Parsed
     }
     
 }
-
-struct ApiVersion1Error: Error, LocalizedError {
-    
-    let code: Int
-    let status: Int
-    let name: String
-    let message: String
-    
-    var errorDescription: String? {
-        return message
-    }
-
-}

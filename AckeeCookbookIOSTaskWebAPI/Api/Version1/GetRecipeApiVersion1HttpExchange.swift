@@ -11,21 +11,29 @@ import AckeeCookbookIOSTaskBusiness
 
 class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<RecipeInDetails, ApiVersion1Error>> {
     
-    func request(id: String) -> URLRequest {
+    private let id: String
+    
+    init(scheme: String, host: String, id: String) {
+        self.id = id
+        super.init(scheme: scheme, host: host)
+    }
+    
+    override func constructHttpRequest() -> HttpRequest {
+        let method = Http.Method.get
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(id)"
-        let url = urlComponents.url!
-        var request = URLRequest(url: url)
-        request.httpMethod = Http.Method.get
-        return request
+        let requestUri = urlComponents.url!
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
+        return httpRequest
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> Result<RecipeInDetails, ApiVersion1Error> {
-        let jsonObject = try JSONSerialization.json(data).object()
-        let statusCode = response.statusCode
-        if statusCode == Api.StatusCode.ok {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<RecipeInDetails, ApiVersion1Error> {
+        let statusCode = httpResponse.statusCode
+        let messageBody = httpResponse.messageBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
+        if statusCode == Http.StatusCode.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
         } else {

@@ -11,23 +11,31 @@ import AckeeCookbookIOSTaskBusiness
 
 class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<ApiVersion1Error?> {
     
-    func request(id: String) -> URLRequest {
+    private let id: String
+    
+    init(scheme: String, host: String, id: String) {
+        self.id = id
+        super.init(scheme: scheme, host: host)
+    }
+    
+    override func constructHttpRequest() -> HttpRequest {
+        let method = Http.Method.delete
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(id)"
-        let url = urlComponents.url!
-        var request = URLRequest(url: url)
-        request.httpMethod = Http.Method.delete
-        return request
+        let requestUri = urlComponents.url!
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
+        return httpRequest
     }
     
-    func response(response: HTTPURLResponse, data: Data) throws -> ApiVersion1Error? {
-        let statusCode = response.statusCode
-        if statusCode == Api.StatusCode.noContent {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> ApiVersion1Error? {
+        let statusCode = httpResponse.statusCode
+        let messageBody = httpResponse.messageBody ?? Data()
+        if statusCode == Http.StatusCode.noContent {
             return nil
         } else {
-            let jsonObject = try JSONSerialization.json(data).object()
+            let jsonObject = try JSONSerialization.json(data: messageBody).object()
             let error = try self.error(jsonObject: jsonObject)
             return error
         }
