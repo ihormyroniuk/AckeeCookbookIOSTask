@@ -32,8 +32,8 @@
 		333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		333F23FB242D426100728DA8 /* RecipeInList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F23FA242D426100728DA8 /* RecipeInList.swift */; };
 		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
-		334EE48A24326CDB00833180 /* ApiPerformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* ApiPerformer.swift */; };
-		334EE48C24326D5B00833180 /* ApiPerformerUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* ApiPerformerUrlSessionShared.swift */; };
+		334EE48A24326CDB00833180 /* ApiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* ApiInteractor.swift */; };
+		334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */; };
 		335246DB2430C96B00E4B6C8 /* RecipesListScreenStrins.strings in Resources */ = {isa = PBXBuildFile; fileRef = 335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */; };
 		335246DD2431082700E4B6C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335246DC2431082700E4B6C8 /* Assets.xcassets */; };
 		3356139D2433AB2A008337AA /* RecipeInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3356139C2433AB2A008337AA /* RecipeInDetails.swift */; };
@@ -59,7 +59,7 @@
 		C555149A247DB2F600B29C18 /* RatingScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5551499247DB2F600B29C18 /* RatingScale.swift */; };
 		C55640D42477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */; };
 		C55D8169247C5FAB0082346B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D8168247C5FAB0082346B /* Api.swift */; };
-		C55D816B247C6C880082346B /* ApiPerformerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiPerformerFactory.swift */; };
+		C55D816B247C6C880082346B /* ApiInteractors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiInteractors.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */; };
 		C57C6C1C2552E7DC005ACBFA /* ApiVersion1Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C6C1B2552E7DC005ACBFA /* ApiVersion1Error.swift */; };
 		C5E01379247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */; };
@@ -160,8 +160,8 @@
 		333F23EB242D155C00728DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333F23FA242D426100728DA8 /* RecipeInList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInList.swift; sourceTree = "<group>"; };
 		334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewWithNavigationBar.swift; sourceTree = "<group>"; };
-		334EE48924326CDB00833180 /* ApiPerformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPerformer.swift; sourceTree = "<group>"; };
-		334EE48B24326D5B00833180 /* ApiPerformerUrlSessionShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPerformerUrlSessionShared.swift; sourceTree = "<group>"; };
+		334EE48924326CDB00833180 /* ApiInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractor.swift; sourceTree = "<group>"; };
+		334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractorUrlSessionShared.swift; sourceTree = "<group>"; };
 		335246D72430C8F700E4B6C8 /* AFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFoundation.framework; path = Carthage/Build/iOS/AFoundation.framework; sourceTree = "<group>"; };
 		335246DA2430C96B00E4B6C8 /* RecipesListScreenStrins.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipesListScreenStrins.strings; sourceTree = "<group>"; };
 		335246DC2431082700E4B6C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		C5551499247DB2F600B29C18 /* RatingScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingScale.swift; sourceTree = "<group>"; };
 		C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenRepeatLoadCollectionViewCell.swift; sourceTree = "<group>"; };
 		C55D8168247C5FAB0082346B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		C55D816A247C6C880082346B /* ApiPerformerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPerformerFactory.swift; sourceTree = "<group>"; };
+		C55D816A247C6C880082346B /* ApiInteractors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractors.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeDetailsScreenStrings.strings; sourceTree = "<group>"; };
 		C57C6C1B2552E7DC005ACBFA /* ApiVersion1Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1Error.swift; sourceTree = "<group>"; };
 		C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipesApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
@@ -307,9 +307,9 @@
 		33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */ = {
 			isa = PBXGroup;
 			children = (
-				334EE48924326CDB00833180 /* ApiPerformer.swift */,
-				C55D816A247C6C880082346B /* ApiPerformerFactory.swift */,
-				334EE48B24326D5B00833180 /* ApiPerformerUrlSessionShared.swift */,
+				334EE48924326CDB00833180 /* ApiInteractor.swift */,
+				C55D816A247C6C880082346B /* ApiInteractors.swift */,
+				334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */,
 				C55D816C247C70500082346B /* Api */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
 				33114ECD242BD06700B246BB /* Info.plist */,
@@ -872,14 +872,14 @@
 				C5E0137B247BD11700A09B7D /* ApiVersion1HttpExchange.swift in Sources */,
 				C5E01381247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift in Sources */,
 				C5E01379247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift in Sources */,
-				C55D816B247C6C880082346B /* ApiPerformerFactory.swift in Sources */,
+				C55D816B247C6C880082346B /* ApiInteractors.swift in Sources */,
 				C5E01385247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift in Sources */,
 				C5E01383247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift in Sources */,
-				334EE48A24326CDB00833180 /* ApiPerformer.swift in Sources */,
+				334EE48A24326CDB00833180 /* ApiInteractor.swift in Sources */,
 				C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */,
 				C57C6C1C2552E7DC005ACBFA /* ApiVersion1Error.swift in Sources */,
 				C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */,
-				334EE48C24326D5B00833180 /* ApiPerformerUrlSessionShared.swift in Sources */,
+				334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */,
 				C54ADD292553336300132564 /* ApiVersion1.swift in Sources */,
 				C55D8169247C5FAB0082346B /* Api.swift in Sources */,
 			);

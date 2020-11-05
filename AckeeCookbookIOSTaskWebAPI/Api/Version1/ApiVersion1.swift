@@ -10,10 +10,10 @@ import Foundation
 
 class ApiVersion1 {
     
-    let scheme: String
-    let host: String
+    private let scheme: String
+    private let host: String
     
-    public init(scheme: String, host: String) {
+    init(scheme: String, host: String) {
         self.scheme = scheme
         self.host = host
     }
@@ -28,7 +28,7 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func getRecipesHttpExchange(id: String) -> GetRecipeApiVersion1HttpExchange {
+    func getRecipeHttpExchange(id: String) -> GetRecipeApiVersion1HttpExchange {
         let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: id)
         return httpExchange
     }

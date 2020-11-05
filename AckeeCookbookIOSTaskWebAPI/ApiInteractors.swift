@@ -8,10 +8,10 @@
 
 import AFoundation
 
-public enum ApiPerformerFactory {
+public enum ApiInteractors {
     
-    public static var productionApiPerformer: ApiPerformer {
-        return ApiPerformerUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.production)
+    public static var production: ApiInteractor {
+        return ApiInteractorUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.production)
     }
     
 }

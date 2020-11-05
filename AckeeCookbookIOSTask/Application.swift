@@ -47,7 +47,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
 
     func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: CreatingRecipe,  completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        api.createRecipe(recipe) { (result) in
+        api.createNewRecipe(recipe) { (result) in
             let presentationResult: Result<RecipeInDetails, Error>
             switch result {
             case .success(let recipe):
@@ -83,7 +83,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationScoreRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        api.scoreRecipe(recipe.id, score: score) { (result) in
+        api.addNewRating(recipe.id, score: score) { (result) in
             let presentationResult: Result<Float, Error>
             switch result {
             case let .success(score):
@@ -110,8 +110,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
 
     // MARK: WebAPI
 
-    private lazy var api: ApiPerformer = {
-        let webApi = ApiPerformerFactory.productionApiPerformer
+    private lazy var api: ApiInteractor = {
+        let webApi = ApiInteractors.production
         return webApi
     }()
     
