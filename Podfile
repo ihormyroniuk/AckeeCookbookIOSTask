@@ -6,7 +6,7 @@ target 'AckeeCookbookIOSTask' do
   use_frameworks!
 
   # Pods for AckeeCookbookIOSTask
-  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => 'e735560ad589970ad6330333eeee4c6fe902c136'
+  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => '9add21edd22d576e6eb96d08bb8ff5af9d802fb6'
   pod 'AUIKit', :git => 'https://github.com/ihormyroniuk/AUIKit', :commit => '8d86107474ef16ee366c017ebe573c9938a1bd32'
 end
 
@@ -23,7 +23,7 @@ target 'AckeeCookbookIOSTaskPresentation' do
   use_frameworks!
 
   # Pods for AckeeCookbookIOSTaskPresentation
-  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => 'e735560ad589970ad6330333eeee4c6fe902c136'
+  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => '9add21edd22d576e6eb96d08bb8ff5af9d802fb6'
   pod 'AUIKit', :git => 'https://github.com/ihormyroniuk/AUIKit', :commit => '8d86107474ef16ee366c017ebe573c9938a1bd32'
 end
 
@@ -32,5 +32,5 @@ target 'AckeeCookbookIOSTaskWebAPI' do
   use_frameworks!
 
   # Pods for AckeeCookbookIOSTaskWebAPI
-  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => 'e735560ad589970ad6330333eeee4c6fe902c136'
+  pod 'AFoundation', :git => 'https://github.com/ihormyroniuk/AFoundation', :commit => '9add21edd22d576e6eb96d08bb8ff5af9d802fb6'
 end

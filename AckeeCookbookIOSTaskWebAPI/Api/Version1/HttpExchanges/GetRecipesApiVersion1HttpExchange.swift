@@ -9,7 +9,7 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<[RecipeInList], ApiVersion1Error>> {
+class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]> {
     
     private let limit: Int
     private let offset: Int
@@ -31,35 +31,35 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<[RecipeI
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
         let requestUri = urlComponents.url!
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
+        let httpVersion = Http.Version.http1dot1
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: httpVersion)
         return httpRequest
     }
 
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<[RecipeInList], ApiVersion1Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<[RecipeInList], Error> {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.messageBody ?? Data()
         if statusCode == Http.StatusCode.ok {
-            let jsonArray = try JSONSerialization.json(data: messageBody).array().arrayObjects()
             var recipes: [RecipeInList] = []
-            for jsonObject in jsonArray {
-                let recipe = try recipeInList(jsonObject: jsonObject)
-                recipes.append(recipe)
+            do {
+                let jsonArray = try JSONSerialization.json(data: messageBody).array().arrayObjects()
+                for jsonObject in jsonArray {
+                    let id = try jsonObject.string("id")
+                    let name = try jsonObject.string("name")
+                    let duration = try jsonObject.number("duration").int
+                    let score = try jsonObject.number("score").float
+                    let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
+                    recipes.append(recipe)
+                }
+            } catch {
+                
             }
             return .success(recipes)
         } else {
-            let jsonObject = try JSONSerialization.json(data: messageBody).object()
-            let error = try self.error(jsonObject: jsonObject)
+            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             return .failure(error)
         }
     }
-    
-    private func recipeInList(jsonObject: JsonObject) throws -> RecipeInList {
-        let id = try jsonObject.string("id")
-        let name = try jsonObject.string("name")
-        let duration = try jsonObject.number("duration").int
-        let score = try jsonObject.number("score").float
-        let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
-        return recipe
-    }
+
     
 }

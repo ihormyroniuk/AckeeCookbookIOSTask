@@ -29,15 +29,15 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<ApiVersion1Er
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> ApiVersion1Error? {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<ApiVersion1Error?, Error> {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.messageBody ?? Data()
         if statusCode == Http.StatusCode.noContent {
-            return nil
+            return .success(nil)
         } else {
-            let jsonObject = try JSONSerialization.json(data: messageBody).object()
-            let error = try self.error(jsonObject: jsonObject)
-            return error
+            let jsonObject = try! JSONSerialization.json(data: messageBody).object()
+            let error = try! self.error(jsonObject: jsonObject)
+            return .failure(error)
         }
     }
     

@@ -9,7 +9,7 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<RecipeInDetails, ApiVersion1Error>> {
+class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     
     private let id: String
     private let name: String?
@@ -49,15 +49,15 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<Recipe
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<RecipeInDetails, ApiVersion1Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<RecipeInDetails, Error> {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.messageBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: messageBody).object()
+        let jsonObject = try! JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
-            let recipe = try recipeInDetails(jsonObject: jsonObject)
+            let recipe = try! recipeInDetails(jsonObject: jsonObject)
             return .success(recipe)
         } else {
-            let error = try self.error(jsonObject: jsonObject)
+            let error = try! self.error(jsonObject: jsonObject)
             return .failure(error)
         }
     }

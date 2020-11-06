@@ -9,7 +9,7 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<AddedNewRating, ApiVersion1Error>> {
+class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRating> {
     
     private let id: String
     private let score: Float
@@ -37,15 +37,15 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<Result<AddedN
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Result<AddedNewRating, ApiVersion1Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<AddedNewRating, Error> {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.messageBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: messageBody).object()
+        let jsonObject = try! JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
-            let addedNewRating = try self.addedNewRating(jsonObject: jsonObject)
+            let addedNewRating = try! self.addedNewRating(jsonObject: jsonObject)
             return .success(addedNewRating)
         } else {
-            let error = try self.error(jsonObject: jsonObject)
+            let error = try! self.error(jsonObject: jsonObject)
             return .failure(error)
         }
     }

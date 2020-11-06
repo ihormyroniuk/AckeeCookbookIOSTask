@@ -34,16 +34,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
                 }
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    switch response {
-                    case .success(let recipes):
-                        completionHandler(.success(recipes))
-                    case .failure(let error):
-                        completionHandler(.failure(error))
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let parsedHttpResponse = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch parsedHttpResponse {
+                case .success(let recipe):
+                    completionHandler(.success(recipe))
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } else {
@@ -62,16 +58,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    switch response {
-                    case .success(let recipe):
-                        completionHandler(.success(recipe))
-                    case .failure(let error):
-                        completionHandler(.failure(error))
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch response {
+                case .success(let recipe):
+                    completionHandler(.success(recipe))
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } else {
@@ -90,16 +82,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    switch response {
-                    case .success(let recipe):
-                        completionHandler(.success(recipe))
-                    case .failure(let error):
-                        completionHandler(.failure(error))
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch response {
+                case .success(let recipe):
+                    completionHandler(.success(recipe))
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } else {
@@ -118,16 +106,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    switch response {
-                    case .success(let recipe):
-                        completionHandler(.success(recipe))
-                    case .failure(let error):
-                        completionHandler(.failure(error))
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch response {
+                case .success(let recipe):
+                    completionHandler(.success(recipe))
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } else {
@@ -146,15 +130,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             if let error = error {
                 completionHandler(error)
             } else if let data = data, let response  = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    if let error = response {
-                        completionHandler(error)
-                    } else {
-                        completionHandler(nil)
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch response {
+                case .success(let recipe):
+                    completionHandler(nil)
+                case .failure(let error):
                     completionHandler(error)
                 }
             } else {
@@ -173,16 +154,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             if let error = error {
                 completionHandler(.failure(error))
             } else if let data = data, let response = response as? HTTPURLResponse {
-                do {
-                    let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
-                    let response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                    switch response {
-                    case .success(let rating):
-                        completionHandler(.success(rating.score))
-                    case .failure(let error):
-                        completionHandler(.failure(error))
-                    }
-                } catch {
+                let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: response, data: data)
+                let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
+                switch response {
+                case .success(let rating):
+                    completionHandler(.success(rating.score))
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } else {

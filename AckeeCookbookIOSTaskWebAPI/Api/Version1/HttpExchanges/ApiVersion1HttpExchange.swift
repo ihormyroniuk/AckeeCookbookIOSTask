@@ -17,7 +17,7 @@ class ApiVersion1HttpExchange<ParsedHttpResponse>: SchemeHostHttpExchange<Parsed
         fatalError()
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> ParsedHttpResponse {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<ParsedHttpResponse, Error> {
         fatalError()
     }
     
