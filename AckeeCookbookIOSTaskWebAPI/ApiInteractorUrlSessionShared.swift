@@ -134,7 +134,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
                 let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
                 switch response {
                 case .success(let recipe):
-                    completionHandler(nil)
+                    completionHandler(recipe)
                 case .failure(let error):
                     completionHandler(error)
                 }
