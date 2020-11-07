@@ -20,7 +20,7 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
         super.init(scheme: scheme, host: host)
     }
 
-    override func constructHttpRequest() -> HttpRequest {
+    override func constructHttpRequest() -> Result<HttpRequest, Error> {
         let method = Http.Method.get
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -32,13 +32,13 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
         urlComponents.queryItems = queryItems
         let requestUri = urlComponents.url!
         let httpVersion = Http.Version.http1dot1
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: httpVersion)
-        return httpRequest
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: httpVersion, headerFields: nil, entityBody: nil)
+        return .success(httpRequest)
     }
 
     override func parseHttpResponse(httpResponse: HttpResponse) -> Result<[RecipeInList], Error> {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.messageBody ?? Data()
+        let messageBody = httpResponse.entityBody ?? Data()
         if statusCode == Http.StatusCode.ok {
             var recipes: [RecipeInList] = []
             do {

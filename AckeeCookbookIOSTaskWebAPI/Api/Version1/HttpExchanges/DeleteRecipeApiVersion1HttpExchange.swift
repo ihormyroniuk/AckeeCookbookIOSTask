@@ -9,7 +9,7 @@
 import AFoundation
 import AckeeCookbookIOSTaskBusiness
 
-class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<ApiVersion1Error?> {
+class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
     
     private let id: String
     
@@ -18,22 +18,22 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<ApiVersion1Er
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> HttpRequest {
+    override func constructHttpRequest() -> Result<HttpRequest, Error> {
         let method = Http.Method.delete
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(id)"
         let requestUri = urlComponents.url!
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
-        return httpRequest
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
+        return .success(httpRequest)
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<ApiVersion1Error?, Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<Nothing, Error> {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.messageBody ?? Data()
+        let messageBody = httpResponse.entityBody ?? Data()
         if statusCode == Http.StatusCode.noContent {
-            return .success(nil)
+            return .success(Nothing())
         } else {
             let jsonObject = try! JSONSerialization.json(data: messageBody).object()
             let error = try! self.error(jsonObject: jsonObject)

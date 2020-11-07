@@ -18,7 +18,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
     private let duration: Int?
     private let info: String?
     
-    init(scheme: String, host: String, name: String, description: String, ingredients: [String]? = nil, duration: Int? = nil, info: String? = nil) {
+    init(scheme: String, host: String, name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) {
         self.name = name
         self.description = description
         self.ingredients = ingredients
@@ -27,7 +27,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> HttpRequest {
+    override func constructHttpRequest() -> Result<HttpRequest, Error> {
         let method = Http.Method.post
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -42,14 +42,14 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         jsonValue["ingredients"] = ingredients
         jsonValue["duration"] = duration
         jsonValue["info"] = info
-        let messageBody = try! JSONSerialization.data(jsonValue: jsonValue)
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, messageBody: messageBody)
-        return httpRequest
+        let entityBody = try! JSONSerialization.data(jsonValue: jsonValue)
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
+        return .success(httpRequest)
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) -> Result<RecipeInDetails, Error> {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.messageBody ?? Data()
+        let messageBody = httpResponse.entityBody ?? Data()
         let jsonObject = try! JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
             let recipe = try! recipeInDetails(jsonObject: jsonObject)

@@ -11,19 +11,17 @@ import Foundation
 public enum Http {
     
     public enum Version {
-        public static let http1dot0 = "HTTP/1.0"
         public static let http1dot1 = "HTTP/1.1"
     }
     
+    /**
+        Implemented based on https://tools.ietf.org/html/rfc2616#section-9
+     */
     public enum Method {
-        public static let options = "OPTIONS"
         public static let get = "GET"
-        public static let head = "HEAD"
         public static let post = "POST"
         public static let put = "PUT"
         public static let delete = "DELETE"
-        public static let trace = "TRACE"
-        public static let connect = "CONNECT"
     }
     
     public enum StatusCode {

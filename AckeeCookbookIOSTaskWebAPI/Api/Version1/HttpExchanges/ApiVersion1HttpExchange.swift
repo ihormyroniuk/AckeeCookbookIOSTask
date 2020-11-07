@@ -13,14 +13,6 @@ class ApiVersion1HttpExchange<ParsedHttpResponse>: SchemeHostHttpExchange<Parsed
     
     let basePath: String = "/api/v1"
     
-    override func constructHttpRequest() -> HttpRequest {
-        fatalError()
-    }
-    
-    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<ParsedHttpResponse, Error> {
-        fatalError()
-    }
-    
     func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
         let message = try jsonObject.string("message")
         let errorObject = try jsonObject.object("err")

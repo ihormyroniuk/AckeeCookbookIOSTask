@@ -10,6 +10,14 @@ import AFoundation
 
 public enum ApiInteractors {
     
+    public static var debuggingProxy: ApiInteractor {
+        return ApiInteractorUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.debuggingProxy)
+    }
+    
+    public static var mockServer: ApiInteractor {
+        return ApiInteractorUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.mockServer)
+    }
+    
     public static var production: ApiInteractor {
         return ApiInteractorUrlSessionShared(version1Scheme: Uri.Scheme.https, version1Host: Api.Host.production)
     }

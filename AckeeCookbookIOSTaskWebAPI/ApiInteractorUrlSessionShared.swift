@@ -25,7 +25,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     
     public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ()) {
         let httpExchange = api.version1.getRecipesHttpExchange(limit: limit, offset: offset)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -52,7 +52,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     
     public func createNewRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
         let httpExchange = api.version1.createNewRecipeHttpExchange(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -76,7 +76,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     
     public func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
         let httpExchange = api.version1.getRecipeHttpExchange(id: recipeId)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -100,7 +100,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
    
     public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
         let httpExchange = api.version1.updateRecipeHttpExchange(id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -124,7 +124,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (Error?) -> ()) {
         let httpExchange = api.version1.deleteRecipeHttpExchange(id: recipeId)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
@@ -134,7 +134,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
                 let response = httpExchange.parseHttpResponse(httpResponse: httpResponse)
                 switch response {
                 case .success(let recipe):
-                    completionHandler(recipe)
+                    completionHandler(nil)
                 case .failure(let error):
                     completionHandler(error)
                 }
@@ -148,7 +148,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     
     public func addNewRating(_ recipeId: String, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
         let httpExchange = api.version1.addNewRatingHttpExchange(id: recipeId, score: score)
-        let httpRequest = httpExchange.constructHttpRequest()
+        let httpRequest = try! httpExchange.constructHttpRequest().get()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {

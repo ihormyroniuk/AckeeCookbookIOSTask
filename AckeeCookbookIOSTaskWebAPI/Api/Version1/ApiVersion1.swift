@@ -23,7 +23,7 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func createNewRecipeHttpExchange(name: String, description: String, ingredients: [String]? = nil, duration: Int? = nil, info: String? = nil) -> CreateNewRecipeApiVersion1HttpExchange {
+    func createNewRecipeHttpExchange(name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) -> CreateNewRecipeApiVersion1HttpExchange {
         let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: scheme, host: host, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         return httpExchange
     }
@@ -33,7 +33,7 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func updateRecipeHttpExchange(id: String, name: String? = nil, description: String? = nil, ingredients: [String]? = nil, duration: Int? = nil, info: String? = nil) -> UpdateRecipeApiVersion1HttpExchange {
+    func updateRecipeHttpExchange(id: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> UpdateRecipeApiVersion1HttpExchange {
         let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: id, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         return httpExchange
     }

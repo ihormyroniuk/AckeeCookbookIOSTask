@@ -18,20 +18,20 @@ class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails>
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> HttpRequest {
+    override func constructHttpRequest() -> Result<HttpRequest, Error> {
         let method = Http.Method.get
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(id)"
         let requestUri = urlComponents.url!
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1)
-        return httpRequest
+        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
+        return .success(httpRequest)
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) -> Result<RecipeInDetails, Error> {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.messageBody ?? Data()
+        let messageBody = httpResponse.entityBody ?? Data()
         let jsonObject = try! JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
             let recipe = try! recipeInDetails(jsonObject: jsonObject)
