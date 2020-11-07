@@ -27,7 +27,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> Result<HttpRequest, Error> {
+    override func constructHttpRequest() throws -> HttpRequest {
         let method = Http.Method.post
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -44,19 +44,19 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         jsonValue["info"] = info
         let entityBody = try! JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
-        return .success(httpRequest)
+        return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<RecipeInDetails, Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.entityBody ?? Data()
         let jsonObject = try! JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
             let recipe = try! recipeInDetails(jsonObject: jsonObject)
-            return .success(recipe)
+            return recipe
         } else {
             let error = try! self.error(jsonObject: jsonObject)
-            return .failure(error)
+            throw error
         }
     }
     

@@ -18,7 +18,7 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> Result<HttpRequest, Error> {
+    override func constructHttpRequest() throws -> HttpRequest {
         let method = Http.Method.delete
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -26,18 +26,18 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         urlComponents.path = basePath + "/recipes/\(id)"
         let requestUri = urlComponents.url!
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
-        return .success(httpRequest)
+        return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<Nothing, Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Nothing {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.entityBody ?? Data()
         if statusCode == Http.StatusCode.noContent {
-            return .success(Nothing())
+            return Nothing()
         } else {
             let jsonObject = try! JSONSerialization.json(data: messageBody).object()
             let error = try! self.error(jsonObject: jsonObject)
-            return .failure(error)
+            throw error
         }
     }
     

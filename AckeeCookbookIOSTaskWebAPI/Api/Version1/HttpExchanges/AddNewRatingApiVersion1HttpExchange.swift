@@ -20,7 +20,7 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
         super.init(scheme: scheme, host: host)
     }
     
-    override func constructHttpRequest() -> Result<HttpRequest, Error> {
+    override func constructHttpRequest() throws -> HttpRequest {
         let method = Http.Method.post
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
@@ -34,10 +34,10 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
         jsonValue["score"] = score
         let entityBody = try! JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
-        return .success(httpRequest)
+        return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) -> Result<AddedNewRating, Error> {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> AddedNewRating {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.entityBody ?? Data()
         let jsonObject = try! JSONSerialization.json(data: messageBody).object()
@@ -46,10 +46,10 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
             let recipeId = try! jsonObject.string("recipe")
             let score = try! jsonObject.number("score").float
             let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
-            return .success(addedNewRating)
+            return addedNewRating
         } else {
             let error = try! self.error(jsonObject: jsonObject)
-            return .failure(error)
+            throw error
         }
     }
     
