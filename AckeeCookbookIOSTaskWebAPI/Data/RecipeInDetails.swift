@@ -9,6 +9,7 @@
 import Foundation
 
 public struct RecipeInDetails {
+    
     public let id: String
     public let name: String
     public let duration: Int
@@ -17,7 +18,7 @@ public struct RecipeInDetails {
     public let ingredients: [String]
     public var score: Float
 
-    public init(id: String, name: String, duration: Int, description: String, info: String, ingredients: [String], score: Float) {
+    init(id: String, name: String, duration: Int, description: String, info: String, ingredients: [String], score: Float) {
         self.id = id
         self.name = name
         self.duration = duration
@@ -26,9 +27,5 @@ public struct RecipeInDetails {
         self.ingredients = ingredients
         self.score = score
     }
-    
-    public var recipeInList: RecipeInList {
-        let recipeInList = RecipeInList.init(id: id, name: name, duration: duration, score: score)
-        return recipeInList
-    }
+
 }

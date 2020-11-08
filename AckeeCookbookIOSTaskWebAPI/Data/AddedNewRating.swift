@@ -9,6 +9,7 @@
 import Foundation
 
 public struct AddedNewRating {
+    
     public let id: String
     public let recipeId: String
     public let score: Float

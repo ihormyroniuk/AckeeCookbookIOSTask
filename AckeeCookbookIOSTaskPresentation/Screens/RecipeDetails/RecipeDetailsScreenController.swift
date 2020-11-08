@@ -26,7 +26,8 @@ class RecipeDetailsScreenController: AUIStatusBarScreenController, UIScrollViewD
     
     func updateRecipe(_ recipe: RecipeInDetails) {
         guard recipeInList.id == recipe.id else { return }
-        recipeInList = recipe.recipeInList
+        let recipeInList = RecipeInList(id: recipe.id, name: recipe.name, duration: recipe.duration, score: recipe.score)
+        self.recipeInList = recipeInList
         recipeInDetails = recipe
         setRecipeInDetailsContent(recipe)
         recipeInDetailsScreenView.setNeedsLayout()
