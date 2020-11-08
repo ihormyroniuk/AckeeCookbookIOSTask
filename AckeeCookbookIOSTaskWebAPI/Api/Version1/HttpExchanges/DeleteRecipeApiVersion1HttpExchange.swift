@@ -24,7 +24,7 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(recipeId)"
-        let requestUri = urlComponents.url!
+        let requestUri = try urlComponents.constructUrl()
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
         return httpRequest
     }

@@ -33,7 +33,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes"
-        let requestUri = urlComponents.url!
+        let requestUri = try urlComponents.constructUrl()
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()

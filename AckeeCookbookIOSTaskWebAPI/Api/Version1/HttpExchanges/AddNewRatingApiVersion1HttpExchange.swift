@@ -27,7 +27,7 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
         urlComponents.host = host
         let path = basePath + "/recipes/\(recipeId)/ratings"
         urlComponents.path = path
-        let requestUri = urlComponents.url!
+        let requestUri = try urlComponents.constructUrl()
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()
@@ -48,7 +48,7 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
             let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
             return addedNewRating
         } else {
-            let error = try! self.error(jsonObject: jsonObject)
+            let error = try self.error(jsonObject: jsonObject)
             throw error
         }
     }

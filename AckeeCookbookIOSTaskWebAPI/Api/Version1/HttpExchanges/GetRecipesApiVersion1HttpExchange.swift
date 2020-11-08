@@ -30,7 +30,7 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
         let limitQueryItem = URLQueryItem(name: "limit", value: "\(limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
-        let requestUri = urlComponents.url!
+        let requestUri = try urlComponents.constructUrl()
         let httpVersion = Http.Version.http1dot1
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: httpVersion, headerFields: nil, entityBody: nil)
         return httpRequest

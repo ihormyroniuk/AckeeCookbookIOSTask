@@ -34,7 +34,7 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetai
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(recipeId)"
-        let requestUri = urlComponents.url!
+        let requestUri = try urlComponents.constructUrl()
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()
