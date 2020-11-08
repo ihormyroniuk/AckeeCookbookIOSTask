@@ -7,7 +7,6 @@
 //
 
 import AUIKit
-import AckeeCookbookIOSTaskBusiness
 
 class RecipeDetailsScreenView: ScreenViewWithNavigationBar, UIScrollViewDelegate {
     

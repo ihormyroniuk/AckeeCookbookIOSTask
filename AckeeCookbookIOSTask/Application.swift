@@ -15,7 +15,6 @@ typealias PresentationUpdatingRecipe = AckeeCookbookIOSTaskPresentation.Updating
 import AckeeCookbookIOSTaskWebAPI
 typealias WebApiCreatingRecipe = AckeeCookbookIOSTaskWebAPI.CreatingRecipe
 typealias WebApiUpdatingRecipe = AckeeCookbookIOSTaskWebAPI.UpdatingRecipe
-import AckeeCookbookIOSTaskBusiness
 
 class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     

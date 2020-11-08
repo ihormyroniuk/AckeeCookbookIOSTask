@@ -1,6 +1,6 @@
 //
 //  UpdatingRecipe.swift
-//  AckeeCookbookIOSTaskBusiness
+//  AckeeCookbookIOSTaskWebApi
 //
 //  Created by Ihor Myroniuk on 26.04.2020.
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
@@ -9,6 +9,7 @@
 import Foundation
 
 public struct UpdatingRecipe {
+    
     public let id: String
     public let name: String
     public let duration: Int

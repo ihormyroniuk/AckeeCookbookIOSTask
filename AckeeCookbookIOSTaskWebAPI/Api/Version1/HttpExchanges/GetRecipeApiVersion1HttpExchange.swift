@@ -7,7 +7,6 @@
 //
 
 import AFoundation
-import AckeeCookbookIOSTaskBusiness
 
 class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     

@@ -7,7 +7,6 @@
 //
 
 import AFoundation
-import AckeeCookbookIOSTaskBusiness
 
 class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRating> {
     

@@ -26,9 +26,6 @@
 		331A5E5E2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 331A5E5D2432A0BF008AFDE0 /* AddRecipeScreenStrings.strings */; };
 		333A4204243649E500170AA2 /* RecipesListScreenRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333A4203243649E500170AA2 /* RecipesListScreenRecipeCollectionViewCell.swift */; };
 		333A42062436501900170AA2 /* TextViewInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333A42052436501900170AA2 /* TextViewInputView.swift */; };
-		333F23EC242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h in Headers */ = {isa = PBXBuildFile; fileRef = 333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; };
-		333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */; };
 		334EE48A24326CDB00833180 /* ApiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48924326CDB00833180 /* ApiInteractor.swift */; };
 		334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */; };
@@ -38,7 +35,6 @@
 		3367D6ED242836940053A509 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EC242836940053A509 /* Assets.xcassets */; };
 		3367D6F0242836940053A509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3367D6EE242836940053A509 /* LaunchScreen.storyboard */; };
 		4817E2C013F2129ED5F1308A /* Pods_AckeeCookbookIOSTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6827C91369BFF23092F349 /* Pods_AckeeCookbookIOSTask.framework */; };
-		5A3D4314EC1A2E3081589996 /* Pods_AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADA6FA0B7B784940CD0543C /* Pods_AckeeCookbookIOSTaskBusiness.framework */; };
 		A3D1E6A5DD27E2DD2504C495 /* Pods_AckeeCookbookIOSTaskWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505014463F0481E35574139A /* Pods_AckeeCookbookIOSTaskWebAPI.framework */; };
 		C53E4A59245D59DC0026D427 /* DarkenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E4A58245D59DC0026D427 /* DarkenImageView.swift */; };
 		C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */; };
@@ -88,13 +84,6 @@
 			remoteGlobalIDString = 33114EC9242BD06700B246BB;
 			remoteInfo = AckeeCookbookIOSTaskWebAPI;
 		};
-		333F23ED242D155C00728DA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3367D6D8242836930053A509 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 333F23E7242D155C00728DA8;
-			remoteInfo = AckeeCookbookIOSTaskBusiness;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -106,7 +95,6 @@
 			files = (
 				33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
-				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,9 +125,6 @@
 		331E368D24337E640085B08D /* CreatingRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRecipe.swift; sourceTree = "<group>"; };
 		333A4203243649E500170AA2 /* RecipesListScreenRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		333A42052436501900170AA2 /* TextViewInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInputView.swift; sourceTree = "<group>"; };
-		333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AckeeCookbookIOSTaskBusiness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AckeeCookbookIOSTaskBusiness.h; sourceTree = "<group>"; };
-		333F23EB242D155C00728DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		333F23FA242D426100728DA8 /* RecipeInList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInList.swift; sourceTree = "<group>"; };
 		334D9D39242EA9B900B92997 /* ScreenViewWithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewWithNavigationBar.swift; sourceTree = "<group>"; };
 		334EE48924326CDB00833180 /* ApiInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractor.swift; sourceTree = "<group>"; };
@@ -209,19 +194,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		333F23E5242D155C00728DA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5A3D4314EC1A2E3081589996 /* Pods_AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3367D6DD242836930053A509 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333F23EF242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
 				33114ED1242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 				33114EB2242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Frameworks */,
 				4817E2C013F2129ED5F1308A /* Pods_AckeeCookbookIOSTask.framework in Frameworks */,
@@ -310,15 +286,6 @@
 			path = AddRecipe;
 			sourceTree = "<group>";
 		};
-		333F23E9242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */ = {
-			isa = PBXGroup;
-			children = (
-				333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */,
-				333F23EB242D155C00728DA8 /* Info.plist */,
-			);
-			path = AckeeCookbookIOSTaskBusiness;
-			sourceTree = "<group>";
-		};
 		335D14D22438F90800BAB922 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				3367D6E2242836930053A509 /* AckeeCookbookIOSTask */,
-				333F23E9242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */,
 				33114EAC242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation */,
 				33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */,
 				3367D6E1242836930053A509 /* Products */,
@@ -355,7 +321,6 @@
 				3367D6E0242836930053A509 /* AckeeCookbookIOSTask.app */,
 				33114EAB242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework */,
 				33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */,
-				333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,14 +489,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		333F23E3242D155C00728DA8 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				333F23EC242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -573,25 +530,6 @@
 			productReference = 33114ECA242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 333F23F3242D155C00728DA8 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTaskBusiness" */;
-			buildPhases = (
-				A5B8B5933D41A35944D9A49E /* [CP] Check Pods Manifest.lock */,
-				333F23E3242D155C00728DA8 /* Headers */,
-				333F23E4242D155C00728DA8 /* Sources */,
-				333F23E5242D155C00728DA8 /* Frameworks */,
-				333F23E6242D155C00728DA8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AckeeCookbookIOSTaskBusiness;
-			productName = AckeeCookbookIOSTaskBusiness;
-			productReference = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		3367D6DF242836930053A509 /* AckeeCookbookIOSTask */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3367D6F4242836940053A509 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTask" */;
@@ -609,7 +547,6 @@
 			dependencies = (
 				33114EB1242B84AB00B246BB /* PBXTargetDependency */,
 				33114ED0242BD06700B246BB /* PBXTargetDependency */,
-				333F23EE242D155C00728DA8 /* PBXTargetDependency */,
 			);
 			name = AckeeCookbookIOSTask;
 			productName = AckeeCookbookIOSTask;
@@ -634,10 +571,6 @@
 						CreatedOnToolsVersion = 11.2.1;
 						LastSwiftMigration = 1120;
 					};
-					333F23E7242D155C00728DA8 = {
-						CreatedOnToolsVersion = 11.2.1;
-						LastSwiftMigration = 1120;
-					};
 					3367D6DF242836930053A509 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -657,7 +590,6 @@
 			projectRoot = "";
 			targets = (
 				3367D6DF242836930053A509 /* AckeeCookbookIOSTask */,
-				333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */,
 				33114EAA242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation */,
 				33114EC9242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */,
 			);
@@ -678,13 +610,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		33114EC8242BD06700B246BB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		333F23E6242D155C00728DA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -782,28 +707,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AckeeCookbookIOSTask/Pods-AckeeCookbookIOSTask-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5B8B5933D41A35944D9A49E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AckeeCookbookIOSTaskBusiness-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D83B28852D9AA5FE6D14999C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -885,13 +788,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		333F23E4242D155C00728DA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3367D6DC242836930053A509 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -913,11 +809,6 @@
 			isa = PBXTargetDependency;
 			target = 33114EC9242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */;
 			targetProxy = 33114ECF242BD06700B246BB /* PBXContainerItemProxy */;
-		};
-		333F23EE242D155C00728DA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
-			targetProxy = 333F23ED242D155C00728DA8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1050,67 +941,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskWebAPI;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		333F23F1242D155C00728DA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF6DDA551F53AD51FC5CF84F /* Pods-AckeeCookbookIOSTaskBusiness.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = M4U9YFW795;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AckeeCookbookIOSTaskBusiness/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskBusiness;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		333F23F2242D155C00728DA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AE78162CE9C1BD0A02969CD /* Pods-AckeeCookbookIOSTaskBusiness.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = M4U9YFW795;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AckeeCookbookIOSTaskBusiness/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.ihormyroniuk.AckeeCookbookIOSTaskBusiness;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1301,15 +1131,6 @@
 			buildConfigurations = (
 				33114ED4242BD06700B246BB /* Debug */,
 				33114ED5242BD06700B246BB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		333F23F3242D155C00728DA8 /* Build configuration list for PBXNativeTarget "AckeeCookbookIOSTaskBusiness" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				333F23F1242D155C00728DA8 /* Debug */,
-				333F23F2242D155C00728DA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

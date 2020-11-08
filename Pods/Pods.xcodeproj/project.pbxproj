@@ -18,7 +18,7 @@
 		104E415636E86222E2EBB7C2913EB65B /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60341D47C6DB24553FD8E2A3C822A5E1 /* Locale.swift */; };
 		107678F17C0078137D98E8C28334C603 /* URLRequestInitHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFB4ACB7BD11E9C121B0E781FA0A00 /* URLRequestInitHttpRequest.swift */; };
 		1121B5099CE0982129859619C557A999 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD62BB330EE6FE5B8F27F48CA5A71097 /* AUIApplication.swift */; };
-		113CC36BD9DE18EC7C0B083C3ABF2601 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F2E2C8212CA89F1A717608C151CC7066 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		113CC36BD9DE18EC7C0B083C3ABF2601 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 77107B699A167BCB8167587A964A78B2 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14046D4E76D70288641AE417C29F9137 /* AUIKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D2D7EADAACC180BE40EC3041B5574 /* AUIKit-dummy.m */; };
 		15834DCC968E653B643DBFB05764DF05 /* JsonObjectArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DD6221337BDE8B88B696491E84045D /* JsonObjectArray.swift */; };
 		1745DCF920B253F44EC86A5EA5FBD872 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B487DCD2B35451FFFAD0B551E122C9 /* Localizer.swift */; };
@@ -59,7 +59,7 @@
 		4EA4D25A7F0AF35D18DB4228BE73FC7D /* AFoundation-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 533C61594EE4E4F588279416A1CBB6FF /* AFoundation-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EDD8127BA1883AC30A6E17607EC90F5 /* AUIDefaultBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C604FD51AF8A359C6130D64BD015EDE0 /* AUIDefaultBarButtonItemController.swift */; };
 		4F7725FD42D50E52F7BC2D5C17691711 /* HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7EAC3A198B98A814F241344E3C2BF /* HttpExchange.swift */; };
-		4FF9257DA6BEB2EB4A04DAB58DA6C80C /* Pods-AckeeCookbookIOSTask-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA9A0B465F5230ED83BF36AF307B051 /* Pods-AckeeCookbookIOSTask-dummy.m */; };
+		4FF9257DA6BEB2EB4A04DAB58DA6C80C /* Pods-AckeeCookbookIOSTask-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD8FDACACA754BD0BB3F7B23FB5B75B /* Pods-AckeeCookbookIOSTask-dummy.m */; };
 		50F3321D7818E825EDD6B811534FE04E /* AUIAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE6E79BF8814274A0330E68953781DB /* AUIAllowedCharactersTextInputValidator.swift */; };
 		5318C6D84E1C7C1E7598DC81CC6FB19E /* AUITextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C040399859DCC7D49FF1C4742E2EB5E /* AUITextViewController.swift */; };
 		59A4302B195AC6EDACAD9EC4C06B10EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
@@ -67,10 +67,9 @@
 		5AE5A913C9DEA09346C78D853AEA3529 /* AUIConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AC1D946218240F863D0480C843A2CC /* AUIConfigurableView.swift */; };
 		5B21402C2520480B84AE360F4FD48881 /* AUIDynamicSizeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F917A8C52B74E3B8B6ED92DC6B089D /* AUIDynamicSizeCollectionCell.swift */; };
 		5BFA13A8005404FC733679A7FA69042F /* Uri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814EE34F984C7368B14551EEFED10343 /* Uri.swift */; };
-		5CF84520B8BB3FD5413B8D9A7123CCEB /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9196E4651E8F2EAFEDA150E855E103 /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */; };
+		5CF84520B8BB3FD5413B8D9A7123CCEB /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E7B41E318FD38A157F7B0C1A21714C /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */; };
 		5F6A6B10DBDF1C79F339D9339053E59B /* AUIMaximumLenghtTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D29317F4588F5ACBD1C706C59F3FBA7 /* AUIMaximumLenghtTextInputValidator.swift */; };
 		64880A2B7A8526C90F52DF9212C9DB6F /* AUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6781D22B49618D98FCF12D99D7461 /* AUIToolbar.swift */; };
-		67799059BFF1E24CD4E3BE0C45192830 /* Pods-AckeeCookbookIOSTaskBusiness-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17FDB55DA4135E7871E156738485C10A /* Pods-AckeeCookbookIOSTaskBusiness-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6AF85A1C356634568377D50E2F3EBC90 /* AUIResponsiveTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E34B1F8508D46C0F33E4F0EC01A080E /* AUIResponsiveTextInputView.swift */; };
 		6CB02B1C1A69D8D5C4C1792BF2792337 /* AUIDefaultTitlePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162E8D029A7842D2C609C3CAC5D5058 /* AUIDefaultTitlePickerController.swift */; };
 		6DB167840292922C60D2B81B5734ADB8 /* AUICollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB0AD903FD154F6AB1768AD4200314 /* AUICollectionViewCellController.swift */; };
@@ -90,7 +89,6 @@
 		780F51B9A5B995707FFFA3A32100A95E /* AUIButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6090728898018512602B8C387FF48 /* AUIButtonController.swift */; };
 		7878F6453427A39D50BFD3D729BAD342 /* UIFont+CGFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F169BF389EE39909F50FA6CA2CC0AEC4 /* UIFont+CGFont.swift */; };
 		78B281A40F0405E5CEF215F41E6FEED8 /* AUIBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED00D11E183C80643DD5512D6F3C0CD /* AUIBarItemController.swift */; };
-		7A786C8B193E0D5EE2E41FCC883FB5BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		7C76876F9DF0509BACE2AC2E7893841B /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C353DE0EEDDC996CDAE5A357E58B8D /* AUIControl.swift */; };
 		7CCA995F5C9C5BACFA1FD824A20D40E9 /* AUIElementTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA18A3BA76312E9BE2F1F674049044C /* AUIElementTableViewCellController.swift */; };
 		7DD1E1882E7B93D3BD0FD8F40DA74DDA /* AUIRefreshControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A244825F3309B9E57BB66AE2E6D55B01 /* AUIRefreshControlController.swift */; };
@@ -108,12 +106,11 @@
 		87D336C05FE7CCBF2CD6C0B3B9E25AFA /* AUIDefaultPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C51CE8799105802776C0500D3B32AF /* AUIDefaultPageController.swift */; };
 		884A180821280732FC721C518ABB434D /* CurrenciesCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93102183308EEFA6ECC40F549CF8283 /* CurrenciesCodes.swift */; };
 		88D59CBEF62A5256017C1C8158F46516 /* AUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D202C3FC8FA3A65E47768430BAEFF35 /* AUITextView.swift */; };
-		89293800E5D876D05EA2C8DDA395307D /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AF2796B68EF93159C4B3F34FB560C247 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89293800E5D876D05EA2C8DDA395307D /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 426FC8E6D2274AE6F6E68DE2F6320B29 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AB8FE8EBCF51E5EFE2287486CD31CE0 /* AUIResponsiveTextFieldTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6D0476054B3D5BDFBF745EBD95B03C /* AUIResponsiveTextFieldTextInputViewController.swift */; };
 		8D1F842DA79CEA92EC7B2A204AF6F60F /* AUIDefaultSegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFC0EA84A232F47F409963B15FBDCCE /* AUIDefaultSegmentedControlItemController.swift */; };
 		8D3E02BF82DAD162EC7FD147D7293365 /* AUIKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32357A083546CCD6C827B6120666DA33 /* AUIKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DB9D8A9DC313AC10CCC0E3E650C84BE /* AUITableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456FFE9612FACD2E43665E0424DB56EE /* AUITableViewHeaderFooterController.swift */; };
-		8DDEFF46691717BC3D0A3ABC07946D60 /* Pods-AckeeCookbookIOSTaskBusiness-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBFAF4182D807CFB7D7452C5F4FAEE5 /* Pods-AckeeCookbookIOSTaskBusiness-dummy.m */; };
 		8E5ACCB407322981D6CA1C5587EB648E /* MultipleTextLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24796D503DC8774C1DC0304FA6D93D1D /* MultipleTextLocalizer.swift */; };
 		8EE402EC3AD79A5D094B5BB0D7403815 /* AUIDefaultTableViewSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6615BD30A7236638F571AEB318B08 /* AUIDefaultTableViewSectionController.swift */; };
 		8FD6203C8BB0B89FE082AB826204247F /* AUIDefaultTitlePickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803A1E4DDD69419CF8ADAA3CA2E4243 /* AUIDefaultTitlePickerComponentController.swift */; };
@@ -151,7 +148,7 @@
 		AE9B8760D26CD6D8782B8DCF98DEA4FD /* AUIViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A496B7B9A5975DB94B6D68BDBFFE53 /* AUIViewPickerComponentController.swift */; };
 		AE9CC4DEFE6E12499BFBBDC054BC034D /* AUITitlePickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56433B58C23D7EA2658C9BD6C796F47 /* AUITitlePickerItemController.swift */; };
 		B31AC3A2F255D3262D5CFFFFEC8B226C /* AUIDefaultViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D8103A8AACC73549AF5AB7AB6FE60 /* AUIDefaultViewPickerComponentController.swift */; };
-		B3796263A4A12035974B1252AD68B2E3 /* Pods-AckeeCookbookIOSTask-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F97D45B23EE947A8F57343A63C07B8 /* Pods-AckeeCookbookIOSTask-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3796263A4A12035974B1252AD68B2E3 /* Pods-AckeeCookbookIOSTask-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C4045AE03BFB0B20BA6F512430F6DC46 /* Pods-AckeeCookbookIOSTask-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5395D8469A5288A70BCA6E8F3F2CB3D /* AUIAttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C96C4AA5D6DA137DAD813D1BA11A496 /* AUIAttributedLabel.swift */; };
 		B962D7449B09A0ACE80E153A2639DF68 /* JsonArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82296E26C03425CA1EFDAF9AB872A01C /* JsonArray.swift */; };
 		BB7ED653267AF4A54D92EEFA44E3C578 /* AUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1963FA2D6890A3D95C739D81BFC9092 /* AUITableView.swift */; };
@@ -196,7 +193,7 @@
 		E646F38D3F7F42524849A7A0DF3CABEE /* AUITableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F143697FFB7DF43526E3F23A70669DC /* AUITableViewCellController.swift */; };
 		E6981FCBC3FEBA3A4257E78EC646455E /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60150332D8332FDBA9DCF6419073E268 /* UIColor+RGB.swift */; };
 		E9B5E7125C53E379ADB035911D4693DB /* JsonString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C975F3D34164235D4FF710CBC0A96E /* JsonString.swift */; };
-		EA16DE54AFE62DA1509E583B0FEA10B3 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E82D30DA7AE7B359F1E84DA332D251AC /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */; };
+		EA16DE54AFE62DA1509E583B0FEA10B3 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1713CA71DE030B9551D45B50CCA8A4 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */; };
 		EA9DF5C4E9C72EF8F32BA9CB78404FB8 /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40106847C58C378DB7FD2B5C2B543735 /* AUITabBarController.swift */; };
 		EB2527BA5D66DE72FF705D1478A17F76 /* AUIImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E179D92A4F97A81938A4BD7E0DA7D /* AUIImageViewController.swift */; };
 		EB6F56F968B2C714AAEB30F5B49CA71D /* UnexpectedHttpResponseStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A509943BB8810ED62BA2CA103678A /* UnexpectedHttpResponseStatusCode.swift */; };
@@ -260,6 +257,7 @@
 		03C353DE0EEDDC996CDAE5A357E58B8D /* AUIControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIControl.swift; path = AUIKit/Elements/Control/AUIControl.swift; sourceTree = "<group>"; };
 		05294566DCB697B087152DF3CCCD62A7 /* AUITextInputFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextInputFormatter.swift; path = AUIKit/TextInput/Formatter/AUITextInputFormatter.swift; sourceTree = "<group>"; };
 		05510B3C69428C0A0787CCECAE419764 /* AUIDefaultBarItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultBarItemController.swift; path = AUIKit/Elements/BarItem/AUIDefaultBarItemController.swift; sourceTree = "<group>"; };
+		079145CC53D07E21492DD1256EA6765A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig"; sourceTree = "<group>"; };
 		07E6BAE0D78324D1862D25B2AB5FA974 /* AUIInteractiveLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIInteractiveLabel.swift; path = AUIKit/Elements/InteractiveLabel/AUIInteractiveLabel.swift; sourceTree = "<group>"; };
 		0D69E02954B33E02A4175A83354C93D1 /* JsonObjectBoolean.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonObjectBoolean.swift; path = AFoundation/Json/Object/JsonObjectBoolean.swift; sourceTree = "<group>"; };
 		0F1F0993BBF00232A900335855BEE5E7 /* AUITitlePickerComponentController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITitlePickerComponentController.swift; path = AUIKit/Elements/Picker/Title/AUITitlePickerComponentController.swift; sourceTree = "<group>"; };
@@ -268,29 +266,25 @@
 		1199ADFE100B8D83AB55E2EA35E0F817 /* Region.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Region.swift; path = AFoundation/Locale/Regions/Region.swift; sourceTree = "<group>"; };
 		11B846C2F77969CA370282A133360199 /* AUILabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUILabel.swift; path = AUIKit/Elements/Label/AUILabel.swift; sourceTree = "<group>"; };
 		130187FB8E326AB0A6723E2DFBB77D3A /* AUIEmptyViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyViewController.swift; path = AUIKit/Elements/View/AUIEmptyViewController.swift; sourceTree = "<group>"; };
-		1587C4476608F922A958617E2F76C94A /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist"; sourceTree = "<group>"; };
-		15B4F2B93E338360481BFA3FF1412049 /* Pods-AckeeCookbookIOSTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTask.release.xcconfig"; sourceTree = "<group>"; };
 		16EC7E27DAB1EE47850F12A9DD470E7F /* AUITableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITableViewController.swift; path = AUIKit/Elements/TableView/AUITableViewController.swift; sourceTree = "<group>"; };
-		17173E9D0CF25A0854C8C659B3E6401D /* Pods_AckeeCookbookIOSTaskBusiness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckeeCookbookIOSTaskBusiness.framework; path = "Pods-AckeeCookbookIOSTaskBusiness.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		17FDB55DA4135E7871E156738485C10A /* Pods-AckeeCookbookIOSTaskBusiness-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTaskBusiness-umbrella.h"; sourceTree = "<group>"; };
+		1A23286F7E3B4A055ACAB4B645783228 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTask.debug.xcconfig"; sourceTree = "<group>"; };
 		1B4E1EFE2DC324E8D1F7AAE2CF7B6609 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIAutoLayoutTopAlignedContentViewScrollView.swift; path = AUIKit/Elements/ScrollView/AutoLayoutAlignedContentView/AUIAutoLayoutTopAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
-		1C88C5917F6193E545FBE18DD74E9C59 /* Pods-AckeeCookbookIOSTask.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTask.modulemap"; sourceTree = "<group>"; };
 		1C96C4AA5D6DA137DAD813D1BA11A496 /* AUIAttributedLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIAttributedLabel.swift; path = AUIKit/Elements/Label/AUIAttributedLabel.swift; sourceTree = "<group>"; };
 		1E3A50DBA8CB19D9050C588080497607 /* AUIViewPickerItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIViewPickerItemController.swift; path = AUIKit/Elements/Picker/View/AUIViewPickerItemController.swift; sourceTree = "<group>"; };
+		1E4BD21E214EDFF00C33C200B838A0DC /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1F143697FFB7DF43526E3F23A70669DC /* AUITableViewCellController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITableViewCellController.swift; path = AUIKit/Elements/TableView/Cell/AUITableViewCellController.swift; sourceTree = "<group>"; };
 		208CC8DFB490592BC5F5DDCE69AB10F0 /* MediaType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MediaType.swift; path = AFoundation/MediaType/MediaType.swift; sourceTree = "<group>"; };
 		213C211AAB9660687AC91F05E533F53D /* JsonObjectString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonObjectString.swift; path = AFoundation/Json/Object/JsonObjectString.swift; sourceTree = "<group>"; };
+		22793DB9E04A53683B0F3040043CC5B3 /* Pods-AckeeCookbookIOSTaskWebAPI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTaskWebAPI.modulemap"; sourceTree = "<group>"; };
 		231629E0792E9531DBE911713DEE63D3 /* AUITextInputValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextInputValidator.swift; path = AUIKit/TextInput/Validator/AUITextInputValidator.swift; sourceTree = "<group>"; };
 		2474AB035D860A16EE8C5207149EB3BC /* UIColor+RGBA.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+RGBA.swift"; path = "AUIKit/Colors/RGBA/UIColor+RGBA.swift"; sourceTree = "<group>"; };
 		24796D503DC8774C1DC0304FA6D93D1D /* MultipleTextLocalizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleTextLocalizer.swift; path = AFoundation/Localizer/TextLocalizer/MultipleTextLocalizer.swift; sourceTree = "<group>"; };
-		26A2BCD3F7D6A7C4190F43D61A216224 /* Pods-AckeeCookbookIOSTaskBusiness-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskBusiness-Info.plist"; sourceTree = "<group>"; };
-		28437E1EA930B2072433CA7F9694E67D /* Pods-AckeeCookbookIOSTask-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTask-Info.plist"; sourceTree = "<group>"; };
+		274A667F9382E65F610093197148DA87 /* Pods-AckeeCookbookIOSTask-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTask-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2974EF035FB5131BF4C6E1F0DA362E3F /* AUITitlePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITitlePickerController.swift; path = AUIKit/Elements/Picker/Title/AUITitlePickerController.swift; sourceTree = "<group>"; };
 		2B6D8E9D008E22AFEF2E089941B60719 /* HttpRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpRequest.swift; path = AFoundation/Http/Request/HttpRequest.swift; sourceTree = "<group>"; };
 		2B97831F18E41E6A9E1A8B9DD476C978 /* AUIContainerTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIContainerTableViewHeaderFooterView.swift; path = AUIKit/Elements/TableView/HeaderFooter/AUIContainerTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		2C537A4662F52FEB664396BC0957F3BA /* AUIEmptyTextFieldController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyTextFieldController.swift; path = AUIKit/Elements/TextField/AUIEmptyTextFieldController.swift; sourceTree = "<group>"; };
 		2D202C3FC8FA3A65E47768430BAEFF35 /* AUITextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextView.swift; path = AUIKit/Elements/TextView/AUITextView.swift; sourceTree = "<group>"; };
-		2D4EB59DBBD7AF06D934DBA15AEA1464 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2DE7EAC3A198B98A814F241344E3C2BF /* HttpExchange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpExchange.swift; path = AFoundation/Http/Exchange/HttpExchange.swift; sourceTree = "<group>"; };
 		2E1B01033318FF4953A1821A697547AB /* Pods_AckeeCookbookIOSTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckeeCookbookIOSTask.framework; path = "Pods-AckeeCookbookIOSTask.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EA3C80DDF5CFAD0C375A161D693D605 /* UnexpectedHttpResponseError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnexpectedHttpResponseError.swift; path = AFoundation/Http/Response/UnexpectedHttpResponseError.swift; sourceTree = "<group>"; };
@@ -298,7 +292,6 @@
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		32357A083546CCD6C827B6120666DA33 /* AUIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AUIKit-umbrella.h"; sourceTree = "<group>"; };
 		3323421F0838236A6554F74A57856D42 /* AUITextViewInputTextViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextViewInputTextViewController.swift; path = AUIKit/Components/TextInputView/TextView/AUITextViewInputTextViewController.swift; sourceTree = "<group>"; };
-		354F8880C896A8A09BCB0C814BFF695A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig"; sourceTree = "<group>"; };
 		358C3E6095EB2A397FA0E63CF8CFEC17 /* AUIDefaultTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultTableViewController.swift; path = AUIKit/Elements/TableView/AUIDefaultTableViewController.swift; sourceTree = "<group>"; };
 		35B297A73D740139020E3F106F3036E4 /* LanguagesCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LanguagesCodes.swift; path = AFoundation/Locale/Languages/LanguagesCodes.swift; sourceTree = "<group>"; };
 		37AC7E2637059CCC440B0EA0FCFA0CB9 /* AUICollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionReusableView.swift; path = AUIKit/Elements/CollectionView/AUICollectionReusableView.swift; sourceTree = "<group>"; };
@@ -311,6 +304,7 @@
 		3FCA7D630B1D4714BCAA023D62599B7A /* AUIKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AUIKit-prefix.pch"; sourceTree = "<group>"; };
 		40106847C58C378DB7FD2B5C2B543735 /* AUITabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITabBarController.swift; path = AUIKit/Stories/TabBarController/AUITabBarController.swift; sourceTree = "<group>"; };
 		4162E8D029A7842D2C609C3CAC5D5058 /* AUIDefaultTitlePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultTitlePickerController.swift; path = AUIKit/Elements/Picker/Title/AUIDefaultTitlePickerController.swift; sourceTree = "<group>"; };
+		426FC8E6D2274AE6F6E68DE2F6320B29 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h"; sourceTree = "<group>"; };
 		447AE15176C5E6F50B730B12F60D104E /* UIPageControl+PreferredSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIPageControl+PreferredSize.swift"; path = "AUIKit/Elements/PageControl/UIPageControl+PreferredSize.swift"; sourceTree = "<group>"; };
 		450719AE1C2EBECB0652FA0A04F403CE /* UITableView+Scroll.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Scroll.swift"; path = "AUIKit/Elements/TableView/UITableView+Scroll.swift"; sourceTree = "<group>"; };
 		451B74FC1C14A04038C5A531C8C3F1C7 /* AUIEmptyButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyButtonController.swift; path = AUIKit/Elements/Button/AUIEmptyButtonController.swift; sourceTree = "<group>"; };
@@ -325,7 +319,6 @@
 		4B8B01B3483FDA577FF67D8F4A6254ED /* AUISwitchController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUISwitchController.swift; path = AUIKit/Elements/Switch/AUISwitchController.swift; sourceTree = "<group>"; };
 		4D2E179D92A4F97A81938A4BD7E0DA7D /* AUIImageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIImageViewController.swift; path = AUIKit/Elements/ImageView/AUIImageViewController.swift; sourceTree = "<group>"; };
 		4E005CFAD96C9F92EC72580DC3559AB5 /* AUINavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUINavigationController.swift; path = AUIKit/Stories/NavigationController/AUINavigationController.swift; sourceTree = "<group>"; };
-		4E4C0DEC99EB141314010464817C0E12 /* Pods-AckeeCookbookIOSTaskBusiness.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTaskBusiness.modulemap"; sourceTree = "<group>"; };
 		4E763F257AF99019DE5AFA12E143E589 /* AUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AUIKit.release.xcconfig; sourceTree = "<group>"; };
 		4FFC0EA84A232F47F409963B15FBDCCE /* AUIDefaultSegmentedControlItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultSegmentedControlItemController.swift; path = AUIKit/Elements/SegmentControl/AUIDefaultSegmentedControlItemController.swift; sourceTree = "<group>"; };
 		50351612E1A103279297C2B1A6E4FD26 /* AUIScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIScrollView.swift; path = AUIKit/Elements/ScrollView/AUIScrollView.swift; sourceTree = "<group>"; };
@@ -338,12 +331,13 @@
 		5673B85AA948ACBF68022B8184768D69 /* AUIPickerItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIPickerItemController.swift; path = AUIKit/Elements/Picker/AUIPickerItemController.swift; sourceTree = "<group>"; };
 		57335FEE95F9D9B750C2254E98027D00 /* HardcodedCurrenciesCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HardcodedCurrenciesCodes.swift; path = AFoundation/Locale/Currencies/HardcodedCurrenciesCodes.swift; sourceTree = "<group>"; };
 		5803A1E4DDD69419CF8ADAA3CA2E4243 /* AUIDefaultTitlePickerComponentController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultTitlePickerComponentController.swift; path = AUIKit/Elements/Picker/Title/AUIDefaultTitlePickerComponentController.swift; sourceTree = "<group>"; };
+		591B2F9A8F5F3E8CA9A7611FB64F137C /* Pods-AckeeCookbookIOSTaskPresentation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskPresentation-Info.plist"; sourceTree = "<group>"; };
 		5BC9BFD33357B3E228E83B9236A5CEB2 /* JsonJSONSerrialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonJSONSerrialization.swift; path = AFoundation/Json/JsonJSONSerrialization.swift; sourceTree = "<group>"; };
 		5FF061FB93967EBFDB7BE2BEAB766F4C /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIStackView+ArrangedSubviews.swift"; path = "AUIKit/Elements/StackView/UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		5FF8C27E0A9A696526D36ADDCCE107A4 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionViewCell.swift; path = AUIKit/Elements/CollectionView/AUICollectionViewCell.swift; sourceTree = "<group>"; };
 		60150332D8332FDBA9DCF6419073E268 /* UIColor+RGB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+RGB.swift"; path = "AUIKit/Colors/RGB/UIColor+RGB.swift"; sourceTree = "<group>"; };
 		60341D47C6DB24553FD8E2A3C822A5E1 /* Locale.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Locale.swift; path = AFoundation/Locale/Locale.swift; sourceTree = "<group>"; };
-		6057291C8C3CAA2ABD2CCDFEAA09BA2E /* Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.markdown"; sourceTree = "<group>"; };
+		620B130330A9A512808BECB02C4D2AB7 /* Pods-AckeeCookbookIOSTaskWebAPI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskWebAPI-Info.plist"; sourceTree = "<group>"; };
 		65DEE6F515681635B7769AEEDB9906E3 /* URLComponentsConstructURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLComponentsConstructURL.swift; path = AFoundation/URLComponents/URLComponentsConstructURL.swift; sourceTree = "<group>"; };
 		66A496B7B9A5975DB94B6D68BDBFFE53 /* AUIViewPickerComponentController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIViewPickerComponentController.swift; path = AUIKit/Elements/Picker/View/AUIViewPickerComponentController.swift; sourceTree = "<group>"; };
 		67B30E71C9E3884670DB7FF0F06145A0 /* AUIView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIView.swift; path = AUIKit/Elements/View/AUIView.swift; sourceTree = "<group>"; };
@@ -354,15 +348,12 @@
 		6BBA13DF995013146F32ABDAE24BFCE9 /* AUIDateTimePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDateTimePickerController.swift; path = AUIKit/Elements/DatePicker/Date/AUIDateTimePickerController.swift; sourceTree = "<group>"; };
 		6CADC930A0FA05399CA19EADCAFB713B /* AUIEmptyControlController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyControlController.swift; path = AUIKit/Elements/Control/AUIEmptyControlController.swift; sourceTree = "<group>"; };
 		6DD8942D6EC15405CB474FB1E06B5359 /* UnexpectedError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnexpectedError.swift; path = AFoundation/Error/UnexpectedError.swift; sourceTree = "<group>"; };
-		6FD8ADC94CBD4F1B8BEE3868C9201BF9 /* Pods-AckeeCookbookIOSTaskPresentation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskPresentation-Info.plist"; sourceTree = "<group>"; };
 		71E850CB4D07EEA81F4E9532A756587A /* AUITextFieldTextInputViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextFieldTextInputViewController.swift; path = AUIKit/Components/TextInputView/TextField/AUITextFieldTextInputViewController.swift; sourceTree = "<group>"; };
 		72B6781D22B49618D98FCF12D99D7461 /* AUIToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIToolbar.swift; path = AUIKit/Elements/Toolbar/AUIToolbar.swift; sourceTree = "<group>"; };
 		741F70F6AD13900342D84FDA0CE26554 /* AUIReusableTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIReusableTableViewCell.swift; path = AUIKit/Elements/TableView/Cell/AUIReusableTableViewCell.swift; sourceTree = "<group>"; };
-		745691412A511C0C27751818F8915392 /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig"; sourceTree = "<group>"; };
-		74ED24FF7DB04AA7CFD7555D5E1AB9BB /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist"; sourceTree = "<group>"; };
 		769CBE405ACE6A2DFBE36AE08BEFCD87 /* JsonObjectNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonObjectNumber.swift; path = AFoundation/Json/Object/JsonObjectNumber.swift; sourceTree = "<group>"; };
-		773CDE1F514A51F9C623F7F1FE21D68E /* Pods-AckeeCookbookIOSTask-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTask-acknowledgements.plist"; sourceTree = "<group>"; };
-		7775F5FE68D5BF580C413C572FCB82FD /* Pods-AckeeCookbookIOSTask-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AckeeCookbookIOSTask-frameworks.sh"; sourceTree = "<group>"; };
+		77107B699A167BCB8167587A964A78B2 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTaskPresentation-umbrella.h"; sourceTree = "<group>"; };
+		77E7B41E318FD38A157F7B0C1A21714C /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTaskPresentation-dummy.m"; sourceTree = "<group>"; };
 		78163818915BC7C6E2D2267FB287ED1F /* AUIDefaultRefreshControlController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultRefreshControlController.swift; path = AUIKit/Elements/RefreshControl/AUIDefaultRefreshControlController.swift; sourceTree = "<group>"; };
 		7848A3E951AC9BCE228D54D8B2ACF90F /* AUIInteractiveLabelEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIInteractiveLabelEvent.swift; path = AUIKit/Elements/InteractiveLabel/AUIInteractiveLabelEvent.swift; sourceTree = "<group>"; };
 		78CEAEB47411734208FF829562FBA5CB /* AUITableViewCellView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITableViewCellView.swift; path = AUIKit/Elements/TableView/Cell/AUITableViewCellView.swift; sourceTree = "<group>"; };
@@ -371,21 +362,20 @@
 		7AFBC1171BFAC6994D19D96023735D68 /* DecimalFloat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecimalFloat.swift; path = AFoundation/Decimal/DecimalFloat.swift; sourceTree = "<group>"; };
 		7B2007CF68CF25DBF639F2DDA06C54D9 /* JsonObjectObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonObjectObject.swift; path = AFoundation/Json/Object/JsonObjectObject.swift; sourceTree = "<group>"; };
 		7BE6E79BF8814274A0330E68953781DB /* AUIAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIAllowedCharactersTextInputValidator.swift; path = AUIKit/TextInput/Validator/AUIAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
+		7C6D4A540C9644181767791B859FBE51 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7CB09F0BAD515298F8C7495E41432DE7 /* AUIDeletingCellControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDeletingCellControllers.swift; path = AUIKit/Elements/CollectionView/DynamicSizeCollection/AUIDeletingCellControllers.swift; sourceTree = "<group>"; };
 		7D29317F4588F5ACBD1C706C59F3FBA7 /* AUIMaximumLenghtTextInputValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIMaximumLenghtTextInputValidator.swift; path = AUIKit/TextInput/Validator/AUIMaximumLenghtTextInputValidator.swift; sourceTree = "<group>"; };
 		7D7D2D7EADAACC180BE40EC3041B5574 /* AUIKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AUIKit-dummy.m"; sourceTree = "<group>"; };
 		7E6D0476054B3D5BDFBF745EBD95B03C /* AUIResponsiveTextFieldTextInputViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIResponsiveTextFieldTextInputViewController.swift; path = AUIKit/Components/TextInputView/Responsive/AUIResponsiveTextFieldTextInputViewController.swift; sourceTree = "<group>"; };
+		811E495D2BB2C01E9FF11501EC2EA2B8 /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist"; sourceTree = "<group>"; };
 		814EE34F984C7368B14551EEFED10343 /* Uri.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Uri.swift; path = AFoundation/Uri/Uri.swift; sourceTree = "<group>"; };
 		81BA42C630393F1FDE6983213F67CCAF /* AUIPageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIPageViewController.swift; path = AUIKit/Elements/Pages/Page/AUIPageViewController.swift; sourceTree = "<group>"; };
 		81CB73924D202DA837C532EE64BB522D /* AUIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AUIKit-Info.plist"; sourceTree = "<group>"; };
 		81E0CB770BA54F35EC8388BA18471882 /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextFieldTextInputView.swift; path = AUIKit/Components/TextInputView/TextField/AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
 		82296E26C03425CA1EFDAF9AB872A01C /* JsonArray.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonArray.swift; path = AFoundation/Json/Array/JsonArray.swift; sourceTree = "<group>"; };
-		8373AD5DF3BAE6C814D5B486CAFE9CBB /* Pods-AckeeCookbookIOSTaskWebAPI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTaskWebAPI.modulemap"; sourceTree = "<group>"; };
 		84D58861AE003A2D641FBE907C13C57F /* AUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AUIKit.debug.xcconfig; sourceTree = "<group>"; };
 		858BA2B5CD4F8AEA64913232EBB9E536 /* AUIEmptyScrollViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyScrollViewController.swift; path = AUIKit/Elements/ScrollView/AUIEmptyScrollViewController.swift; sourceTree = "<group>"; };
-		85C930B480DF4AC5FF9C64C1538A5375 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTask.debug.xcconfig"; sourceTree = "<group>"; };
 		860191E642546F66CD83CD080789D747 /* AUIDefaultViewPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultViewPickerController.swift; path = AUIKit/Elements/Picker/View/AUIDefaultViewPickerController.swift; sourceTree = "<group>"; };
-		87897463A060A727D69518FD05D551C5 /* Pods-AckeeCookbookIOSTaskPresentation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTaskPresentation.modulemap"; sourceTree = "<group>"; };
 		8792C7F65B2ED55FF76F759121C10E87 /* AUISegmentedControlItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUISegmentedControlItemController.swift; path = AUIKit/Elements/SegmentControl/AUISegmentedControlItemController.swift; sourceTree = "<group>"; };
 		8849F16C3B61FB2236DE27FC2BB4D254 /* AFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFoundation.framework; path = AFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C975F3D34164235D4FF710CBC0A96E /* JsonString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonString.swift; path = AFoundation/Json/String/JsonString.swift; sourceTree = "<group>"; };
@@ -404,50 +394,51 @@
 		99FB708C881C68C8AAC33029F2F1C3B1 /* AUIInsertingCellControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIInsertingCellControllers.swift; path = AUIKit/Elements/CollectionView/DynamicSizeCollection/AUIInsertingCellControllers.swift; sourceTree = "<group>"; };
 		9A3C2CBC45D1B95A38413C5BCBEFFE70 /* AUICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionViewDelegateProxy.swift; path = AUIKit/Elements/CollectionView/Proxies/AUICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		9BAFB4ACB7BD11E9C121B0E781FA0A00 /* URLRequestInitHttpRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLRequestInitHttpRequest.swift; path = AFoundation/Http/Request/URLRequestInitHttpRequest.swift; sourceTree = "<group>"; };
+		9D1713CA71DE030B9551D45B50CCA8A4 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTaskWebAPI-dummy.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D9627E9E3E455C6339306EE8B1B85EE /* Pods-AckeeCookbookIOSTaskWebAPI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskWebAPI-Info.plist"; sourceTree = "<group>"; };
 		9E17C39CA8969BFC5B60ED517A29B5EF /* SchemeHostHttpExchange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchemeHostHttpExchange.swift; path = AFoundation/Http/Exchange/SchemeHostHttpExchange.swift; sourceTree = "<group>"; };
 		9E34B1F8508D46C0F33E4F0EC01A080E /* AUIResponsiveTextInputView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIResponsiveTextInputView.swift; path = AUIKit/Components/TextInputView/Responsive/AUIResponsiveTextInputView.swift; sourceTree = "<group>"; };
 		9ED00D11E183C80643DD5512D6F3C0CD /* AUIBarItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIBarItemController.swift; path = AUIKit/Elements/BarItem/AUIBarItemController.swift; sourceTree = "<group>"; };
 		A244825F3309B9E57BB66AE2E6D55B01 /* AUIRefreshControlController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIRefreshControlController.swift; path = AUIKit/Elements/RefreshControl/AUIRefreshControlController.swift; sourceTree = "<group>"; };
 		A45A509943BB8810ED62BA2CA103678A /* UnexpectedHttpResponseStatusCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnexpectedHttpResponseStatusCode.swift; path = AFoundation/Http/Response/UnexpectedHttpResponseStatusCode.swift; sourceTree = "<group>"; };
+		A4A5DEDEF7A5CF39E7BCD8C9F2819492 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig"; sourceTree = "<group>"; };
 		A68F1F76D22C043DB54AB61A308FA77E /* AFoundation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFoundation-dummy.m"; sourceTree = "<group>"; };
+		A73A48F03EB907F357B7B1CA33BA97D6 /* Pods-AckeeCookbookIOSTask-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTask-Info.plist"; sourceTree = "<group>"; };
 		A79FC9BFF8B0EBCD2FB561B162B4C19D /* AUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AUIKit.framework; path = AUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D6F671F35731F01D5F8B92699448BA /* AFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFoundation.debug.xcconfig; sourceTree = "<group>"; };
 		A867A099E5229CCABF5F1C48F358FAC3 /* AUIGenericContainerTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIGenericContainerTableViewCell.swift; path = AUIKit/Elements/TableView/Cell/AUIGenericContainerTableViewCell.swift; sourceTree = "<group>"; };
 		A8D6615BD30A7236638F571AEB318B08 /* AUIDefaultTableViewSectionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultTableViewSectionController.swift; path = AUIKit/Elements/TableView/Section/AUIDefaultTableViewSectionController.swift; sourceTree = "<group>"; };
 		A9F6090728898018512602B8C387FF48 /* AUIButtonController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIButtonController.swift; path = AUIKit/Elements/Button/AUIButtonController.swift; sourceTree = "<group>"; };
+		AA0BB174FBF7A646E2E1E2C53703816C /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		AA2871B3F52609FA86F219CFA42B818A /* AUIGenericContainerTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIGenericContainerTableViewHeaderFooterView.swift; path = AUIKit/Elements/TableView/HeaderFooter/AUIGenericContainerTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
-		AC127FC7B1BB5B8042C3FACCB0DAB7A0 /* Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.plist"; sourceTree = "<group>"; };
 		AD62BB330EE6FE5B8F27F48CA5A71097 /* AUIApplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIApplication.swift; path = AUIKit/Application/AUIApplication.swift; sourceTree = "<group>"; };
 		AE09FC67A8F5D69918E8E75CE733B299 /* AFoundation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFoundation.release.xcconfig; sourceTree = "<group>"; };
-		AE1268F1511B589B6953A8D9C1F6E23B /* Pods-AckeeCookbookIOSTask-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTask-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AE331C9BC032A80D03B51DB5858A34A2 /* AUITextViewTextInputView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextViewTextInputView.swift; path = AUIKit/Components/TextInputView/TextView/AUITextViewTextInputView.swift; sourceTree = "<group>"; };
-		AE9196E4651E8F2EAFEDA150E855E103 /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTaskPresentation-dummy.m"; sourceTree = "<group>"; };
 		AEE9653F94C7FE666DCF7308DAFBE019 /* AUIEmptyTextViewTextInputViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyTextViewTextInputViewController.swift; path = AUIKit/Components/TextInputView/TextView/AUIEmptyTextViewTextInputViewController.swift; sourceTree = "<group>"; };
-		AF2796B68EF93159C4B3F34FB560C247 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h"; sourceTree = "<group>"; };
-		AFBFAF4182D807CFB7D7452C5F4FAEE5 /* Pods-AckeeCookbookIOSTaskBusiness-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTaskBusiness-dummy.m"; sourceTree = "<group>"; };
 		B01C2D20C48BFE3CFB720031827062A4 /* CompositeLocalizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompositeLocalizer.swift; path = AFoundation/Localizer/Localizer/CompositeLocalizer.swift; sourceTree = "<group>"; };
 		B12CE557B647456B44D5800F48C7E104 /* Json.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Json.swift; path = AFoundation/Json/Json.swift; sourceTree = "<group>"; };
 		B1963FA2D6890A3D95C739D81BFC9092 /* AUITableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITableView.swift; path = AUIKit/Elements/TableView/AUITableView.swift; sourceTree = "<group>"; };
 		B25F62F7E288B80B4FC92F39C05953D0 /* JsonNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonNumber.swift; path = AFoundation/Json/Number/JsonNumber.swift; sourceTree = "<group>"; };
+		B4FAA69F19B86244D2FD1CDDD10C944D /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig"; sourceTree = "<group>"; };
 		B52C6B5BC7807F086779DD57D4F99FA6 /* AUIControlController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIControlController.swift; path = AUIKit/Elements/Control/AUIControlController.swift; sourceTree = "<group>"; };
 		B66009D66D9151750D09A42758F3901B /* AUIEmptyCountDownDurationDatePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyCountDownDurationDatePickerController.swift; path = AUIKit/Elements/DatePicker/CountDownDuration/AUIEmptyCountDownDurationDatePickerController.swift; sourceTree = "<group>"; };
-		B6856CF8CC9B80770A17721AE7A354E9 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig"; sourceTree = "<group>"; };
 		B6A6550608810A7B50AE4047EAC32EC6 /* AUIResponsiveTextViewTextInputViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIResponsiveTextViewTextInputViewController.swift; path = AUIKit/Components/TextInputView/Responsive/AUIResponsiveTextViewTextInputViewController.swift; sourceTree = "<group>"; };
+		B7B1C4D3F0C410AE41024FCEC7A7DD98 /* Pods-AckeeCookbookIOSTaskPresentation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTaskPresentation.modulemap"; sourceTree = "<group>"; };
 		B8133A837097E3E1B56A497E4A00B9A6 /* JsonNull.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonNull.swift; path = AFoundation/Json/Null/JsonNull.swift; sourceTree = "<group>"; };
 		B96D8103A8AACC73549AF5AB7AB6FE60 /* AUIDefaultViewPickerComponentController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultViewPickerComponentController.swift; path = AUIKit/Elements/Picker/View/AUIDefaultViewPickerComponentController.swift; sourceTree = "<group>"; };
+		BA35F50D4F9B5C4B7CAE4F7B873D128B /* Pods-AckeeCookbookIOSTask.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AckeeCookbookIOSTask.modulemap"; sourceTree = "<group>"; };
 		BAEA128EE0D9EC83F02E3BDE2C77D451 /* AUIApplicationMain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIApplicationMain.swift; path = AUIKit/ApplicationMain/AUIApplicationMain.swift; sourceTree = "<group>"; };
 		BCCBAACE26C1AC43C667391173000D12 /* AUIStatusBarScreenController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIStatusBarScreenController.swift; path = AUIKit/Screens/AUIStatusBarScreenController.swift; sourceTree = "<group>"; };
 		BDDA0D63F1E3E6B464E9976EB3B32081 /* AUIReusableCollectionCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIReusableCollectionCell.swift; path = AUIKit/Elements/CollectionView/Cells/AUIReusableCollectionCell.swift; sourceTree = "<group>"; };
 		BDFEAD4E227044B2F1C70DF45843AA18 /* AUIImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIImageView.swift; path = AUIKit/Elements/ImageView/AUIImageView.swift; sourceTree = "<group>"; };
 		C0BC8F691F7ED6AD3DA8D857EF3EE70F /* Currency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Currency.swift; path = AFoundation/Locale/Currencies/Currency.swift; sourceTree = "<group>"; };
+		C4045AE03BFB0B20BA6F512430F6DC46 /* Pods-AckeeCookbookIOSTask-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTask-umbrella.h"; sourceTree = "<group>"; };
 		C56433B58C23D7EA2658C9BD6C796F47 /* AUITitlePickerItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITitlePickerItemController.swift; path = AUIKit/Elements/Picker/Title/AUITitlePickerItemController.swift; sourceTree = "<group>"; };
 		C604FD51AF8A359C6130D64BD015EDE0 /* AUIDefaultBarButtonItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultBarButtonItemController.swift; path = AUIKit/Elements/BarButtonItem/AUIDefaultBarButtonItemController.swift; sourceTree = "<group>"; };
+		C66167B8BDB665C1A6ED422A7BC9B42D /* Pods-AckeeCookbookIOSTask-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTask-acknowledgements.plist"; sourceTree = "<group>"; };
 		C7E5B8FDC235D676791742C0B303BEBE /* AUICollectionViewCellAutoLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionViewCellAutoLayout.swift; path = AUIKit/Elements/CollectionView/Cells/AUICollectionViewCellAutoLayout.swift; sourceTree = "<group>"; };
 		C9A5A85153FE3BE32BF8C88EDC5D3D02 /* RegionsCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegionsCodes.swift; path = AFoundation/Locale/Regions/RegionsCodes.swift; sourceTree = "<group>"; };
 		CB392A3C6EEFBCE394D7F25999BFAEB2 /* DecimalInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecimalInt.swift; path = AFoundation/Decimal/DecimalInt.swift; sourceTree = "<group>"; };
-		CD1970905C3B20584851F4697D0DE828 /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CE795914404EDC9018745D5631AA5A56 /* AUIUpdatableCollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIUpdatableCollectionViewController.swift; path = AUIKit/Elements/CollectionView/DynamicSizeCollection/AUIUpdatableCollectionViewController.swift; sourceTree = "<group>"; };
 		CF205BB8EBEABCD52B676CEB1A3ED490 /* HardcodedLanguagesCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HardcodedLanguagesCodes.swift; path = AFoundation/Locale/Languages/HardcodedLanguagesCodes.swift; sourceTree = "<group>"; };
 		CF8225A2539B768FF50ECC2DF181D8D8 /* AUIViewPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIViewPickerController.swift; path = AUIKit/Elements/Picker/View/AUIViewPickerController.swift; sourceTree = "<group>"; };
@@ -468,39 +459,36 @@
 		D93102183308EEFA6ECC40F549CF8283 /* CurrenciesCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurrenciesCodes.swift; path = AFoundation/Locale/Currencies/CurrenciesCodes.swift; sourceTree = "<group>"; };
 		D9AD807BB5C52AAED8FF22D6BE8755EC /* AUICountDownDurationDatePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICountDownDurationDatePickerController.swift; path = AUIKit/Elements/DatePicker/CountDownDuration/AUICountDownDurationDatePickerController.swift; sourceTree = "<group>"; };
 		D9BD0D36C408203CA924C3F2FA432C59 /* AUIWindowPresentation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIWindowPresentation.swift; path = AUIKit/Presentation/AUIWindowPresentation.swift; sourceTree = "<group>"; };
-		DBA9A0B465F5230ED83BF36AF307B051 /* Pods-AckeeCookbookIOSTask-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTask-dummy.m"; sourceTree = "<group>"; };
 		DBBBD970F6DF6BC9D6DB8852DE66C247 /* HTTPURLResponseDataHttpResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPURLResponseDataHttpResponse.swift; path = AFoundation/Http/Response/HTTPURLResponseDataHttpResponse.swift; sourceTree = "<group>"; };
 		DBD09FE480433484C154CBA1EE4304BA /* AUIViewContainerable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIViewContainerable.swift; path = AUIKit/Elements/TableView/Cell/AUIViewContainerable.swift; sourceTree = "<group>"; };
 		DE5FA45598692989D4F35113912A72E2 /* Pods_AckeeCookbookIOSTaskWebAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AckeeCookbookIOSTaskWebAPI.framework; path = "Pods-AckeeCookbookIOSTaskWebAPI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEBC8980BC7C551BE0A4A8134C66B499 /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		E092A56830C397BE477D843481CA87E5 /* JsonObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonObject.swift; path = AFoundation/Json/Object/JsonObject.swift; sourceTree = "<group>"; };
 		E3FE247CEC31A5468F4F6A3ED099731C /* AUICollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionViewController.swift; path = AUIKit/Elements/CollectionView/AUICollectionViewController.swift; sourceTree = "<group>"; };
 		E3FE80B508FA1A832468B6B317FA54CC /* AUIScrollViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIScrollViewController.swift; path = AUIKit/Elements/ScrollView/AUIScrollViewController.swift; sourceTree = "<group>"; };
-		E5F97D45B23EE947A8F57343A63C07B8 /* Pods-AckeeCookbookIOSTask-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTask-umbrella.h"; sourceTree = "<group>"; };
 		E69D2FFBF80F1BCAAD31AA1ACC87444C /* AFoundation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFoundation-prefix.pch"; sourceTree = "<group>"; };
-		E6B35A08B8DFBF2676AA9CA7ED5FC9C7 /* Pods-AckeeCookbookIOSTaskBusiness.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskBusiness.debug.xcconfig"; sourceTree = "<group>"; };
 		E79B119D63A9CF6B32983932AA1AAD4C /* AUICompositeTextInputValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICompositeTextInputValidator.swift; path = AUIKit/TextInput/Validator/AUICompositeTextInputValidator.swift; sourceTree = "<group>"; };
-		E82D30DA7AE7B359F1E84DA332D251AC /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTaskWebAPI-dummy.m"; sourceTree = "<group>"; };
 		E878B086F6A98C153BB4CFC1D3A72F5F /* UIImage+TintColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+TintColor.swift"; path = "AUIKit/Images/UIImage+TintColor.swift"; sourceTree = "<group>"; };
 		EA7A61B98CB3149640EA036C18C884F8 /* AUIEmptyImageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyImageViewController.swift; path = AUIKit/Elements/ImageView/AUIEmptyImageViewController.swift; sourceTree = "<group>"; };
 		EB4DE4BA705201AC0C92DFCDF7FEC4E2 /* AUIUpdatingCellControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIUpdatingCellControllers.swift; path = AUIKit/Elements/CollectionView/DynamicSizeCollection/AUIUpdatingCellControllers.swift; sourceTree = "<group>"; };
 		EBCE246A18BCB635743EB17AAFE347B2 /* AUIDefaultTitlePickerItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultTitlePickerItemController.swift; path = AUIKit/Elements/Picker/Title/AUIDefaultTitlePickerItemController.swift; sourceTree = "<group>"; };
 		EC0B6EB6FDA624C773FF0E795CFF5F0A /* AUIUpdatableWideCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIUpdatableWideCollectionViewLayout.swift; path = AUIKit/Elements/CollectionView/DynamicSizeCollection/AUIUpdatableWideCollectionViewLayout.swift; sourceTree = "<group>"; };
 		EDED711F0433163F1E18AB9EA30B8211 /* AFoundation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFoundation.modulemap; sourceTree = "<group>"; };
+		EEB8B02EA4AFE38E87B104F40412C0E6 /* Pods-AckeeCookbookIOSTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTask.release.xcconfig"; sourceTree = "<group>"; };
+		EF48F531C4599C46AD28290B15620E46 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist"; sourceTree = "<group>"; };
 		EFC946FECB4132871A7FAE3781547293 /* HttpResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HttpResponse.swift; path = AFoundation/Http/Response/HttpResponse.swift; sourceTree = "<group>"; };
 		F169BF389EE39909F50FA6CA2CC0AEC4 /* UIFont+CGFont.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIFont+CGFont.swift"; path = "AUIKit/Fonts/UIFont+CGFont.swift"; sourceTree = "<group>"; };
 		F2259685421BF8909A5DC574BB272944 /* AUIEmptyTextFieldTextInputViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIEmptyTextFieldTextInputViewController.swift; path = AUIKit/Components/TextInputView/TextField/AUIEmptyTextFieldTextInputViewController.swift; sourceTree = "<group>"; };
 		F26F0D2D53F3B1D278A7D03A529BA633 /* AUITextInputFilterValidatorFormatterTextFieldController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUITextInputFilterValidatorFormatterTextFieldController.swift; path = AUIKit/Elements/TextField/AUITextInputFilterValidatorFormatterTextFieldController.swift; sourceTree = "<group>"; };
-		F2E2C8212CA89F1A717608C151CC7066 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AckeeCookbookIOSTaskPresentation-umbrella.h"; sourceTree = "<group>"; };
 		F5361A1DC4405412EBD5BEC23EA437ED /* ArrayChunks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrayChunks.swift; path = AFoundation/Array/ArrayChunks.swift; sourceTree = "<group>"; };
 		F573017D01EB1FCD90EFA1CF67383B83 /* AUIContainerTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIContainerTableViewCell.swift; path = AUIKit/Elements/TableView/Cell/AUIContainerTableViewCell.swift; sourceTree = "<group>"; };
 		F59EA916D0BD1625D28D767A35B1FB55 /* Language.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Language.swift; path = AFoundation/Locale/Languages/Language.swift; sourceTree = "<group>"; };
-		F6A9A4C7BA60004F97BF59E44523682B /* Pods-AckeeCookbookIOSTaskBusiness.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AckeeCookbookIOSTaskBusiness.release.xcconfig"; sourceTree = "<group>"; };
+		F5E335A9BFB433AFF37AF5CB28743B83 /* Pods-AckeeCookbookIOSTask-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AckeeCookbookIOSTask-frameworks.sh"; sourceTree = "<group>"; };
 		F86317ACB71F19AE9722EB8ADA2BA193 /* AUIBarButtonItemController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIBarButtonItemController.swift; path = AUIKit/Elements/BarButtonItem/AUIBarButtonItemController.swift; sourceTree = "<group>"; };
 		F98A15749DDF7F914313AAFDEE7B3E6E /* AUIDefaultSegmentedControlController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIDefaultSegmentedControlController.swift; path = AUIKit/Elements/SegmentControl/AUIDefaultSegmentedControlController.swift; sourceTree = "<group>"; };
 		F9CCF3DC71172DC230F3A1E0FC3CC605 /* AUIToolbarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIToolbarController.swift; path = AUIKit/Elements/Toolbar/AUIToolbarController.swift; sourceTree = "<group>"; };
 		FB7B541B437195FD79E08E33D27788DD /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUICollectionViewDataSourceProxy.swift; path = AUIKit/Elements/CollectionView/Proxies/AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		FC27773196D5A6680CD2FC5A85FD78F2 /* AUIViewControllerPageController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AUIViewControllerPageController.swift; path = AUIKit/Elements/Pages/Page/AUIViewControllerPageController.swift; sourceTree = "<group>"; };
+		FDD8FDACACA754BD0BB3F7B23FB5B75B /* Pods-AckeeCookbookIOSTask-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AckeeCookbookIOSTask-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,14 +497,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A4302B195AC6EDACAD9EC4C06B10EA /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		373C96D50CB03021B7A898208B5FDD58 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7A786C8B193E0D5EE2E41FCC883FB5BC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +535,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CD4322EA0E91B7C0ADB444F17A321E0 /* Pods-AckeeCookbookIOSTaskWebAPI */ = {
+			isa = PBXGroup;
+			children = (
+				22793DB9E04A53683B0F3040043CC5B3 /* Pods-AckeeCookbookIOSTaskWebAPI.modulemap */,
+				7C6D4A540C9644181767791B859FBE51 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown */,
+				EF48F531C4599C46AD28290B15620E46 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist */,
+				9D1713CA71DE030B9551D45B50CCA8A4 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */,
+				620B130330A9A512808BECB02C4D2AB7 /* Pods-AckeeCookbookIOSTaskWebAPI-Info.plist */,
+				426FC8E6D2274AE6F6E68DE2F6320B29 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */,
+				AA0BB174FBF7A646E2E1E2C53703816C /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */,
+				A4A5DEDEF7A5CF39E7BCD8C9F2819492 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */,
+			);
+			name = "Pods-AckeeCookbookIOSTaskWebAPI";
+			path = "Target Support Files/Pods-AckeeCookbookIOSTaskWebAPI";
+			sourceTree = "<group>";
+		};
+		2802EF6279886A1ABE77D6BD3CD8E439 /* Pods-AckeeCookbookIOSTaskPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				B7B1C4D3F0C410AE41024FCEC7A7DD98 /* Pods-AckeeCookbookIOSTaskPresentation.modulemap */,
+				1E4BD21E214EDFF00C33C200B838A0DC /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown */,
+				811E495D2BB2C01E9FF11501EC2EA2B8 /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist */,
+				77E7B41E318FD38A157F7B0C1A21714C /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */,
+				591B2F9A8F5F3E8CA9A7611FB64F137C /* Pods-AckeeCookbookIOSTaskPresentation-Info.plist */,
+				77107B699A167BCB8167587A964A78B2 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */,
+				B4FAA69F19B86244D2FD1CDDD10C944D /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */,
+				079145CC53D07E21492DD1256EA6765A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */,
+			);
+			name = "Pods-AckeeCookbookIOSTaskPresentation";
+			path = "Target Support Files/Pods-AckeeCookbookIOSTaskPresentation";
+			sourceTree = "<group>";
+		};
 		2E049DF272DF80E2A91C5FB280A124CD /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,29 +582,12 @@
 			path = "../Target Support Files/AFoundation";
 			sourceTree = "<group>";
 		};
-		30C830BCC0C7A4F5BA230BA1D2D24322 /* Pods-AckeeCookbookIOSTaskBusiness */ = {
-			isa = PBXGroup;
-			children = (
-				4E4C0DEC99EB141314010464817C0E12 /* Pods-AckeeCookbookIOSTaskBusiness.modulemap */,
-				6057291C8C3CAA2ABD2CCDFEAA09BA2E /* Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.markdown */,
-				AC127FC7B1BB5B8042C3FACCB0DAB7A0 /* Pods-AckeeCookbookIOSTaskBusiness-acknowledgements.plist */,
-				AFBFAF4182D807CFB7D7452C5F4FAEE5 /* Pods-AckeeCookbookIOSTaskBusiness-dummy.m */,
-				26A2BCD3F7D6A7C4190F43D61A216224 /* Pods-AckeeCookbookIOSTaskBusiness-Info.plist */,
-				17FDB55DA4135E7871E156738485C10A /* Pods-AckeeCookbookIOSTaskBusiness-umbrella.h */,
-				E6B35A08B8DFBF2676AA9CA7ED5FC9C7 /* Pods-AckeeCookbookIOSTaskBusiness.debug.xcconfig */,
-				F6A9A4C7BA60004F97BF59E44523682B /* Pods-AckeeCookbookIOSTaskBusiness.release.xcconfig */,
-			);
-			name = "Pods-AckeeCookbookIOSTaskBusiness";
-			path = "Target Support Files/Pods-AckeeCookbookIOSTaskBusiness";
-			sourceTree = "<group>";
-		};
-		47019EB4129026CC613C27A955BBAA4F /* Products */ = {
+		3259D088FD032A26EB78F179789414A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				8849F16C3B61FB2236DE27FC2BB4D254 /* AFoundation.framework */,
 				A79FC9BFF8B0EBCD2FB561B162B4C19D /* AUIKit.framework */,
 				2E1B01033318FF4953A1821A697547AB /* Pods_AckeeCookbookIOSTask.framework */,
-				17173E9D0CF25A0854C8C659B3E6401D /* Pods_AckeeCookbookIOSTaskBusiness.framework */,
 				4B549A34C2E154E30A4989F4550C23E6 /* Pods_AckeeCookbookIOSTaskPresentation.framework */,
 				DE5FA45598692989D4F35113912A72E2 /* Pods_AckeeCookbookIOSTaskWebAPI.framework */,
 			);
@@ -608,15 +603,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		47B4329334C45315462EE12559D6313E /* Targets Support Files */ = {
+		6D269298851135E9F7CD524435CD3785 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E6CD5197921E6ADBF6F7ED6E1811A1D4 /* Pods-AckeeCookbookIOSTask */,
-				30C830BCC0C7A4F5BA230BA1D2D24322 /* Pods-AckeeCookbookIOSTaskBusiness */,
-				C944AEA5D74D303CEBD2364477ED5FA3 /* Pods-AckeeCookbookIOSTaskPresentation */,
-				BC40848A22CA4F8B6FDA6C5FD3173D9B /* Pods-AckeeCookbookIOSTaskWebAPI */,
+				9B515AD452C5FEF473ED993D6D0069E5 /* Pods-AckeeCookbookIOSTask */,
+				2802EF6279886A1ABE77D6BD3CD8E439 /* Pods-AckeeCookbookIOSTaskPresentation */,
+				1CD4322EA0E91B7C0ADB444F17A321E0 /* Pods-AckeeCookbookIOSTaskWebAPI */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9B515AD452C5FEF473ED993D6D0069E5 /* Pods-AckeeCookbookIOSTask */ = {
+			isa = PBXGroup;
+			children = (
+				BA35F50D4F9B5C4B7CAE4F7B873D128B /* Pods-AckeeCookbookIOSTask.modulemap */,
+				274A667F9382E65F610093197148DA87 /* Pods-AckeeCookbookIOSTask-acknowledgements.markdown */,
+				C66167B8BDB665C1A6ED422A7BC9B42D /* Pods-AckeeCookbookIOSTask-acknowledgements.plist */,
+				FDD8FDACACA754BD0BB3F7B23FB5B75B /* Pods-AckeeCookbookIOSTask-dummy.m */,
+				F5E335A9BFB433AFF37AF5CB28743B83 /* Pods-AckeeCookbookIOSTask-frameworks.sh */,
+				A73A48F03EB907F357B7B1CA33BA97D6 /* Pods-AckeeCookbookIOSTask-Info.plist */,
+				C4045AE03BFB0B20BA6F512430F6DC46 /* Pods-AckeeCookbookIOSTask-umbrella.h */,
+				1A23286F7E3B4A055ACAB4B645783228 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */,
+				EEB8B02EA4AFE38E87B104F40412C0E6 /* Pods-AckeeCookbookIOSTask.release.xcconfig */,
+			);
+			name = "Pods-AckeeCookbookIOSTask";
+			path = "Target Support Files/Pods-AckeeCookbookIOSTask";
 			sourceTree = "<group>";
 		};
 		9C46FA375D24D9FE9E94633121F03A5F /* AUIKit */ = {
@@ -827,22 +838,6 @@
 			path = AFoundation;
 			sourceTree = "<group>";
 		};
-		BC40848A22CA4F8B6FDA6C5FD3173D9B /* Pods-AckeeCookbookIOSTaskWebAPI */ = {
-			isa = PBXGroup;
-			children = (
-				8373AD5DF3BAE6C814D5B486CAFE9CBB /* Pods-AckeeCookbookIOSTaskWebAPI.modulemap */,
-				2D4EB59DBBD7AF06D934DBA15AEA1464 /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.markdown */,
-				74ED24FF7DB04AA7CFD7555D5E1AB9BB /* Pods-AckeeCookbookIOSTaskWebAPI-acknowledgements.plist */,
-				E82D30DA7AE7B359F1E84DA332D251AC /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m */,
-				9D9627E9E3E455C6339306EE8B1B85EE /* Pods-AckeeCookbookIOSTaskWebAPI-Info.plist */,
-				AF2796B68EF93159C4B3F34FB560C247 /* Pods-AckeeCookbookIOSTaskWebAPI-umbrella.h */,
-				DEBC8980BC7C551BE0A4A8134C66B499 /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */,
-				B6856CF8CC9B80770A17721AE7A354E9 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */,
-			);
-			name = "Pods-AckeeCookbookIOSTaskWebAPI";
-			path = "Target Support Files/Pods-AckeeCookbookIOSTaskWebAPI";
-			sourceTree = "<group>";
-		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,30 +846,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C944AEA5D74D303CEBD2364477ED5FA3 /* Pods-AckeeCookbookIOSTaskPresentation */ = {
-			isa = PBXGroup;
-			children = (
-				87897463A060A727D69518FD05D551C5 /* Pods-AckeeCookbookIOSTaskPresentation.modulemap */,
-				CD1970905C3B20584851F4697D0DE828 /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.markdown */,
-				1587C4476608F922A958617E2F76C94A /* Pods-AckeeCookbookIOSTaskPresentation-acknowledgements.plist */,
-				AE9196E4651E8F2EAFEDA150E855E103 /* Pods-AckeeCookbookIOSTaskPresentation-dummy.m */,
-				6FD8ADC94CBD4F1B8BEE3868C9201BF9 /* Pods-AckeeCookbookIOSTaskPresentation-Info.plist */,
-				F2E2C8212CA89F1A717608C151CC7066 /* Pods-AckeeCookbookIOSTaskPresentation-umbrella.h */,
-				745691412A511C0C27751818F8915392 /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */,
-				354F8880C896A8A09BCB0C814BFF695A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */,
-			);
-			name = "Pods-AckeeCookbookIOSTaskPresentation";
-			path = "Target Support Files/Pods-AckeeCookbookIOSTaskPresentation";
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				47B4012989D8DE34B8D6EA4C0D5FC586 /* Pods */,
-				47019EB4129026CC613C27A955BBAA4F /* Products */,
-				47B4329334C45315462EE12559D6313E /* Targets Support Files */,
+				3259D088FD032A26EB78F179789414A3 /* Products */,
+				6D269298851135E9F7CD524435CD3785 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -899,23 +878,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/AUIKit";
-			sourceTree = "<group>";
-		};
-		E6CD5197921E6ADBF6F7ED6E1811A1D4 /* Pods-AckeeCookbookIOSTask */ = {
-			isa = PBXGroup;
-			children = (
-				1C88C5917F6193E545FBE18DD74E9C59 /* Pods-AckeeCookbookIOSTask.modulemap */,
-				AE1268F1511B589B6953A8D9C1F6E23B /* Pods-AckeeCookbookIOSTask-acknowledgements.markdown */,
-				773CDE1F514A51F9C623F7F1FE21D68E /* Pods-AckeeCookbookIOSTask-acknowledgements.plist */,
-				DBA9A0B465F5230ED83BF36AF307B051 /* Pods-AckeeCookbookIOSTask-dummy.m */,
-				7775F5FE68D5BF580C413C572FCB82FD /* Pods-AckeeCookbookIOSTask-frameworks.sh */,
-				28437E1EA930B2072433CA7F9694E67D /* Pods-AckeeCookbookIOSTask-Info.plist */,
-				E5F97D45B23EE947A8F57343A63C07B8 /* Pods-AckeeCookbookIOSTask-umbrella.h */,
-				85C930B480DF4AC5FF9C64C1538A5375 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */,
-				15B4F2B93E338360481BFA3FF1412049 /* Pods-AckeeCookbookIOSTask.release.xcconfig */,
-			);
-			name = "Pods-AckeeCookbookIOSTask";
-			path = "Target Support Files/Pods-AckeeCookbookIOSTask";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -953,14 +915,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5E6F017D9EA6C3A63DC46C6DB75476D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				67799059BFF1E24CD4E3BE0C45192830 /* Pods-AckeeCookbookIOSTaskBusiness-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FB7F1B830AEB1436C109E3ED51E08B2A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -972,24 +926,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		155E76A05CA8E38553B8652C33F57574 /* Pods-AckeeCookbookIOSTaskBusiness */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D85C61DF352D9B0D5A6FBE05FEC73B8 /* Build configuration list for PBXNativeTarget "Pods-AckeeCookbookIOSTaskBusiness" */;
-			buildPhases = (
-				B5E6F017D9EA6C3A63DC46C6DB75476D /* Headers */,
-				801BA2BA680CA57837F56992C170758A /* Sources */,
-				373C96D50CB03021B7A898208B5FDD58 /* Frameworks */,
-				9D4DE584D9ED8DEE9ED8D0C1A0D8781E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-AckeeCookbookIOSTaskBusiness";
-			productName = "Pods-AckeeCookbookIOSTaskBusiness";
-			productReference = 17173E9D0CF25A0854C8C659B3E6401D /* Pods_AckeeCookbookIOSTaskBusiness.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		15B5DE80A695E064E835D1BFBB17A70D /* AFoundation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32DAC7A059D5181EC30BCC21DAD770F4 /* Build configuration list for PBXNativeTarget "AFoundation" */;
@@ -1103,14 +1039,13 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 47019EB4129026CC613C27A955BBAA4F /* Products */;
+			productRefGroup = 3259D088FD032A26EB78F179789414A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				15B5DE80A695E064E835D1BFBB17A70D /* AFoundation */,
 				485B2710710275A609113C16D2265279 /* AUIKit */,
 				42F42CD6F0F48846CB36452F1A1DB764 /* Pods-AckeeCookbookIOSTask */,
-				155E76A05CA8E38553B8652C33F57574 /* Pods-AckeeCookbookIOSTaskBusiness */,
 				2C9A6D6728C369B93207DAD9D4930E99 /* Pods-AckeeCookbookIOSTaskPresentation */,
 				BBE7D3F19133851B4FCAB1A56D1D58CA /* Pods-AckeeCookbookIOSTaskWebAPI */,
 			);
@@ -1147,13 +1082,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80055180FA31BEC28AEC900B12499214 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9D4DE584D9ED8DEE9ED8D0C1A0D8781E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1225,14 +1153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA16DE54AFE62DA1509E583B0FEA10B3 /* Pods-AckeeCookbookIOSTaskWebAPI-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		801BA2BA680CA57837F56992C170758A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8DDEFF46691717BC3D0A3ABC07946D60 /* Pods-AckeeCookbookIOSTaskBusiness-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1574,48 +1494,9 @@
 			};
 			name = Release;
 		};
-		4EE19384794D6BF77937B146F4CEDE7B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6A9A4C7BA60004F97BF59E44523682B /* Pods-AckeeCookbookIOSTaskBusiness.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AckeeCookbookIOSTaskBusiness/Pods-AckeeCookbookIOSTaskBusiness-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AckeeCookbookIOSTaskBusiness/Pods-AckeeCookbookIOSTaskBusiness.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		50F8FBD1058FA1CE35E299FE4E67DD94 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6856CF8CC9B80770A17721AE7A354E9 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */;
+			baseConfigurationReference = A4A5DEDEF7A5CF39E7BCD8C9F2819492 /* Pods-AckeeCookbookIOSTaskWebAPI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1652,47 +1533,9 @@
 			};
 			name = Release;
 		};
-		6A127E9AF23BE71BB734EA4E7D5B2596 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6B35A08B8DFBF2676AA9CA7ED5FC9C7 /* Pods-AckeeCookbookIOSTaskBusiness.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AckeeCookbookIOSTaskBusiness/Pods-AckeeCookbookIOSTaskBusiness-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AckeeCookbookIOSTaskBusiness/Pods-AckeeCookbookIOSTaskBusiness.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		7D6A79FA411B5A4BFAA99E7100931AB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEBC8980BC7C551BE0A4A8134C66B499 /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */;
+			baseConfigurationReference = AA0BB174FBF7A646E2E1E2C53703816C /* Pods-AckeeCookbookIOSTaskWebAPI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1730,7 +1573,7 @@
 		};
 		845A6DAA6BAEC626C745254F76B23487 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 354F8880C896A8A09BCB0C814BFF695A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */;
+			baseConfigurationReference = 079145CC53D07E21492DD1256EA6765A /* Pods-AckeeCookbookIOSTaskPresentation.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1769,7 +1612,7 @@
 		};
 		89F0EEBDED65ACDDB1325CE74F73F70A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85C930B480DF4AC5FF9C64C1538A5375 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */;
+			baseConfigurationReference = 1A23286F7E3B4A055ACAB4B645783228 /* Pods-AckeeCookbookIOSTask.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1807,7 +1650,7 @@
 		};
 		A8031BFAB0F683996AAF412E90718F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 745691412A511C0C27751818F8915392 /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */;
+			baseConfigurationReference = B4FAA69F19B86244D2FD1CDDD10C944D /* Pods-AckeeCookbookIOSTaskPresentation.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1941,7 +1784,7 @@
 		};
 		C54BF035573A02D84D390EB747488CF0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15B4F2B93E338360481BFA3FF1412049 /* Pods-AckeeCookbookIOSTask.release.xcconfig */;
+			baseConfigurationReference = EEB8B02EA4AFE38E87B104F40412C0E6 /* Pods-AckeeCookbookIOSTask.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2018,15 +1861,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D85C61DF352D9B0D5A6FBE05FEC73B8 /* Build configuration list for PBXNativeTarget "Pods-AckeeCookbookIOSTaskBusiness" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6A127E9AF23BE71BB734EA4E7D5B2596 /* Debug */,
-				4EE19384794D6BF77937B146F4CEDE7B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		32DAC7A059D5181EC30BCC21DAD770F4 /* Build configuration list for PBXNativeTarget "AFoundation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

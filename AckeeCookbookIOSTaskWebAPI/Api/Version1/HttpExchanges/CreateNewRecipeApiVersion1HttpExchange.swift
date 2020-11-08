@@ -8,7 +8,6 @@
 
 import Foundation
 import AFoundation
-import AckeeCookbookIOSTaskBusiness
 
 class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     
