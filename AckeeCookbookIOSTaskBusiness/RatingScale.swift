@@ -9,8 +9,10 @@
 import Foundation
 
 public enum RatingScale {
+    
     public enum Star {
         public static let from = 1
         public static let to = 5
     }
+    
 }

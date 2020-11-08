@@ -13,7 +13,7 @@ public struct AddedNewRating {
     public let recipeId: String
     public let score: Float
     
-    public init(id: String, recipeId: String, score: Float) {
+    init(id: String, recipeId: String, score: Float) {
         self.id = id
         self.recipeId = recipeId
         self.score = score

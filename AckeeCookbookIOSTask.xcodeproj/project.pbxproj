@@ -307,7 +307,7 @@
 		33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C54A0ACF25584568009DC94E /* AddedNewRating.swift */,
+				C5532B732558569700B8F283 /* Data */,
 				C54A0AC9255835EC009DC94E /* Interaction */,
 				C55D816C247C70500082346B /* Api */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
@@ -458,6 +458,14 @@
 				C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */,
 			);
 			path = HttpExchanges;
+			sourceTree = "<group>";
+		};
+		C5532B732558569700B8F283 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C54A0ACF25584568009DC94E /* AddedNewRating.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C55CFDB124A6129D00F38C0B /* ConfirmDeletion */ = {
