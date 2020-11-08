@@ -39,18 +39,17 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> AddedNewRating {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: messageBody).object()
-        if statusCode == Http.StatusCode.ok {
-            let id = try jsonObject.string("id")
-            let recipeId = try jsonObject.string("recipe")
-            let score = try jsonObject.number("score").float
-            let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
-            return addedNewRating
-        } else {
-            let error = try self.error(jsonObject: jsonObject)
+        guard statusCode == Http.StatusCode.ok else {
+            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             throw error
         }
+        let entityBody = httpResponse.entityBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: entityBody).object()
+        let id = try jsonObject.string("id")
+        let recipeId = try jsonObject.string("recipe")
+        let score = try jsonObject.number("score").float
+        let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
+        return addedNewRating
     }
     
 }

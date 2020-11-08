@@ -61,7 +61,6 @@
 		C55D8169247C5FAB0082346B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D8168247C5FAB0082346B /* Api.swift */; };
 		C55D816B247C6C880082346B /* ApiInteractors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiInteractors.swift */; };
 		C568F9322448A26D000F7A90 /* RecipeDetailsScreenStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */; };
-		C57C6C1C2552E7DC005ACBFA /* ApiVersion1Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C6C1B2552E7DC005ACBFA /* ApiVersion1Error.swift */; };
 		C5E01379247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */; };
 		C5E0137B247BD11700A09B7D /* ApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */; };
 		C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */; };
@@ -195,7 +194,6 @@
 		C55D8168247C5FAB0082346B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		C55D816A247C6C880082346B /* ApiInteractors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractors.swift; sourceTree = "<group>"; };
 		C568F9312448A26D000F7A90 /* RecipeDetailsScreenStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = RecipeDetailsScreenStrings.strings; sourceTree = "<group>"; };
-		C57C6C1B2552E7DC005ACBFA /* ApiVersion1Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1Error.swift; sourceTree = "<group>"; };
 		C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecipesApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
 		C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
 		C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewRecipeApiVersion1HttpExchange.swift; sourceTree = "<group>"; };
@@ -491,7 +489,6 @@
 			children = (
 				C54ADD282553336300132564 /* ApiVersion1.swift */,
 				C54ADD2E2553533700132564 /* HttpExchanges */,
-				C57C6C1B2552E7DC005ACBFA /* ApiVersion1Error.swift */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -877,7 +874,6 @@
 				C5E01383247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48A24326CDB00833180 /* ApiInteractor.swift in Sources */,
 				C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */,
-				C57C6C1C2552E7DC005ACBFA /* ApiVersion1Error.swift in Sources */,
 				C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */,
 				C54ADD292553336300132564 /* ApiVersion1.swift in Sources */,

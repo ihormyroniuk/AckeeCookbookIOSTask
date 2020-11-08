@@ -38,23 +38,22 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
 
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> [RecipeInList] {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.entityBody ?? Data()
-        if statusCode == Http.StatusCode.ok {
-            var recipes: [RecipeInList] = []
-            let jsonArray = try JSONSerialization.json(data: messageBody).array().arrayObjects()
-            for jsonObject in jsonArray {
-                let id = try jsonObject.string("id")
-                let name = try jsonObject.string("name")
-                let duration = try jsonObject.number("duration").int
-                let score = try jsonObject.number("score").float
-                let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
-                recipes.append(recipe)
-            }
-            return recipes
-        } else {
+        guard statusCode == Http.StatusCode.ok else {
             let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             throw error
         }
+        let entityBody = httpResponse.entityBody ?? Data()
+        let jsonArray = try JSONSerialization.json(data: entityBody).array().arrayObjects()
+        var recipes: [RecipeInList] = []
+        for jsonObject in jsonArray {
+            let id = try jsonObject.string("id")
+            let name = try jsonObject.string("name")
+            let duration = try jsonObject.number("duration").int
+            let score = try jsonObject.number("score").float
+            let recipe = RecipeInList(id: id, name: name, duration: duration, score: score)
+            recipes.append(recipe)
+        }
+        return recipes
     }
 
     

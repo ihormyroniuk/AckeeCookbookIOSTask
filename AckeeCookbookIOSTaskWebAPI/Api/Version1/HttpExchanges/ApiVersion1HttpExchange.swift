@@ -13,16 +13,6 @@ class ApiVersion1HttpExchange<ParsedHttpResponse>: SchemeHostHttpExchange<Parsed
     
     let basePath: String = "/api/v1"
     
-    func error(jsonObject: JsonObject) throws -> ApiVersion1Error {
-        let message = try jsonObject.string("message")
-        let errorObject = try jsonObject.object("err")
-        let code = try errorObject.number("errorCode").int
-        let status = try errorObject.number("status").int
-        let name = try errorObject.string("name")
-        let error = ApiVersion1Error(code: code, status: status, name: name, message: message)
-        return error
-    }
-    
     func recipeInDetails(jsonObject: JsonObject) throws -> RecipeInDetails {
         let id = try jsonObject.string("id")
         let name = try jsonObject.string("name")

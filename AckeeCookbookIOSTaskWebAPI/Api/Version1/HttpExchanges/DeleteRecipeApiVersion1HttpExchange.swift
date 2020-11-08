@@ -31,14 +31,11 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> Nothing {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.entityBody ?? Data()
-        if statusCode == Http.StatusCode.noContent {
-            return Nothing()
-        } else {
-            let jsonObject = try JSONSerialization.json(data: messageBody).object()
-            let error = try self.error(jsonObject: jsonObject)
+        guard statusCode == Http.StatusCode.noContent else {
+            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             throw error
         }
+        return Nothing()
     }
     
 }

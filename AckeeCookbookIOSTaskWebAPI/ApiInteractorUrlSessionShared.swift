@@ -65,7 +65,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     }
     
     public func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let httpExchange = api.version1.getRecipeHttpExchange(id: recipeId)
+        let httpExchange = api.version1.getRecipeHttpExchange(recipeId: recipeId)
         let httpRequest = try! httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -84,7 +84,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     }
    
     public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ()) {
-        let httpExchange = api.version1.updateRecipeHttpExchange(id: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+        let httpExchange = api.version1.updateRecipeHttpExchange(recipeId: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         let httpRequest = try! httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -103,7 +103,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     }
     
     public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (Error?) -> ()) {
-        let httpExchange = api.version1.deleteRecipeHttpExchange(id: recipeId)
+        let httpExchange = api.version1.deleteRecipeHttpExchange(recipeId: recipeId)
         let httpRequest = try! httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -122,7 +122,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
     }
     
     public func addNewRating(_ recipeId: String, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        let httpExchange = api.version1.addNewRatingHttpExchange(id: recipeId, score: score)
+        let httpExchange = api.version1.addNewRatingHttpExchange(recipeId: recipeId, score: score)
         let httpRequest = try! httpExchange.constructHttpRequest()
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in

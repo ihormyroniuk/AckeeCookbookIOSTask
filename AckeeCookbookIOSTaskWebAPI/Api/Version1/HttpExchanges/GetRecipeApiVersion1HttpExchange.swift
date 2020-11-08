@@ -31,15 +31,14 @@ class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails>
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
         let statusCode = httpResponse.statusCode
-        let messageBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: messageBody).object()
-        if statusCode == Http.StatusCode.ok {
-            let recipe = try recipeInDetails(jsonObject: jsonObject)
-            return recipe
-        } else {
-            let error = try self.error(jsonObject: jsonObject)
+        guard statusCode == Http.StatusCode.ok else {
+            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             throw error
         }
+        let entityBody = httpResponse.entityBody ?? Data()
+        let jsonObject = try JSONSerialization.json(data: entityBody).object()
+        let recipe = try recipeInDetails(jsonObject: jsonObject)
+        return recipe
     }
     
 }

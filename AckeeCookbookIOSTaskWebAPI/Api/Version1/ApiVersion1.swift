@@ -28,23 +28,23 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func getRecipeHttpExchange(id: String) -> GetRecipeApiVersion1HttpExchange {
-        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id)
+    func getRecipeHttpExchange(recipeId: String) -> GetRecipeApiVersion1HttpExchange {
+        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId)
         return httpExchange
     }
     
-    func updateRecipeHttpExchange(id: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> UpdateRecipeApiVersion1HttpExchange {
-        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+    func updateRecipeHttpExchange(recipeId: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> UpdateRecipeApiVersion1HttpExchange {
+        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         return httpExchange
     }
     
-    func deleteRecipeHttpExchange(id: String) -> DeleteRecipeApiVersion1HttpExchange {
-        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id)
+    func deleteRecipeHttpExchange(recipeId: String) -> DeleteRecipeApiVersion1HttpExchange {
+        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId)
         return httpExchange
     }
     
-    func addNewRatingHttpExchange(id: String, score: Float) -> AddNewRatingApiVersion1HttpExchange {
-        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id, score: score)
+    func addNewRatingHttpExchange(recipeId: String, score: Float) -> AddNewRatingApiVersion1HttpExchange {
+        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId, score: score)
         return httpExchange
     }
     
