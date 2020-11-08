@@ -21,4 +21,5 @@ public struct RecipeInList {
         self.duration = duration
         self.score = score
     }
+    
 }

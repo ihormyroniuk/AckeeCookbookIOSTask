@@ -19,4 +19,5 @@ public struct AddedNewRating {
         self.recipeId = recipeId
         self.score = score
     }
+    
 }

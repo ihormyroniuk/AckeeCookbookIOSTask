@@ -24,4 +24,5 @@ public struct UpdatingRecipe {
         self.info = info
         self.ingredients = ingredients
     }
+    
 }
