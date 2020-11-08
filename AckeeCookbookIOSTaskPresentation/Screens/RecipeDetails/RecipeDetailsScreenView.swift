@@ -641,7 +641,7 @@ private class InteractiveScoreFiveStarsView: AUIView {
     
     override func setup() {
         super.setup()
-        for _ in RatingScale.Star.from...RatingScale.Star.to {
+        for _ in 1...5 {
             let button = starButton
             addSubview(button)
             starButtons.append(button)

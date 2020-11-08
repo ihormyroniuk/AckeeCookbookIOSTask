@@ -40,9 +40,6 @@
 		4817E2C013F2129ED5F1308A /* Pods_AckeeCookbookIOSTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6827C91369BFF23092F349 /* Pods_AckeeCookbookIOSTask.framework */; };
 		5A3D4314EC1A2E3081589996 /* Pods_AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADA6FA0B7B784940CD0543C /* Pods_AckeeCookbookIOSTaskBusiness.framework */; };
 		A3D1E6A5DD27E2DD2504C495 /* Pods_AckeeCookbookIOSTaskWebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505014463F0481E35574139A /* Pods_AckeeCookbookIOSTaskWebAPI.framework */; };
-		C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; };
-		C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 333F23E8242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C529FF872455D8410087B2A7 /* UpdatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */; };
 		C53E4A59245D59DC0026D427 /* DarkenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E4A58245D59DC0026D427 /* DarkenImageView.swift */; };
 		C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */; };
 		C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */; };
@@ -60,7 +57,8 @@
 		C5532B882558584A00B8F283 /* RecipeInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5532B872558584A00B8F283 /* RecipeInDetails.swift */; };
 		C5532B902558632200B8F283 /* CreatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331E368D24337E640085B08D /* CreatingRecipe.swift */; };
 		C5532B942558633400B8F283 /* CreatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5532B932558633400B8F283 /* CreatingRecipe.swift */; };
-		C555149A247DB2F600B29C18 /* RatingScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5551499247DB2F600B29C18 /* RatingScale.swift */; };
+		C5532B972558647F00B8F283 /* UpdatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */; };
+		C5532B9B2558648D00B8F283 /* UpdatingRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5532B9A2558648D00B8F283 /* UpdatingRecipe.swift */; };
 		C55640D42477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */; };
 		C55D8169247C5FAB0082346B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D8168247C5FAB0082346B /* Api.swift */; };
 		C55D816B247C6C880082346B /* ApiInteractors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D816A247C6C880082346B /* ApiInteractors.swift */; };
@@ -98,13 +96,6 @@
 			remoteGlobalIDString = 333F23E7242D155C00728DA8;
 			remoteInfo = AckeeCookbookIOSTaskBusiness;
 		};
-		C5145B2424450055007968D3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3367D6D8242836930053A509 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 333F23E7242D155C00728DA8;
-			remoteInfo = AckeeCookbookIOSTaskBusiness;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,17 +108,6 @@
 				33114ED2242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.framework in Embed Frameworks */,
 				33114EB3242B84AB00B246BB /* AckeeCookbookIOSTaskPresentation.framework in Embed Frameworks */,
 				333F23F0242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5145B2624450055007968D3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C5145B2324450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +177,7 @@
 		C5532B7A255857E900B8F283 /* RecipeInList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInList.swift; sourceTree = "<group>"; };
 		C5532B872558584A00B8F283 /* RecipeInDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInDetails.swift; sourceTree = "<group>"; };
 		C5532B932558633400B8F283 /* CreatingRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRecipe.swift; sourceTree = "<group>"; };
-		C5551499247DB2F600B29C18 /* RatingScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingScale.swift; sourceTree = "<group>"; };
+		C5532B9A2558648D00B8F283 /* UpdatingRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingRecipe.swift; sourceTree = "<group>"; };
 		C55640D32477FE5A00BA9FE9 /* RecipesListScreenRepeatLoadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenRepeatLoadCollectionViewCell.swift; sourceTree = "<group>"; };
 		C55D8168247C5FAB0082346B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		C55D816A247C6C880082346B /* ApiInteractors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractors.swift; sourceTree = "<group>"; };
@@ -227,7 +207,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5145B2224450055007968D3 /* AckeeCookbookIOSTaskBusiness.framework in Frameworks */,
 				A3D1E6A5DD27E2DD2504C495 /* Pods_AckeeCookbookIOSTaskWebAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +315,7 @@
 		333F23E9242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */ = {
 			isa = PBXGroup;
 			children = (
-				C5551499247DB2F600B29C18 /* RatingScale.swift */,
 				C54F392624806188002BBE64 /* Recipe.swift */,
-				C586D09E2449A2DB00D04601 /* Recipe */,
 				333F23EA242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness.h */,
 				333F23EB242D155C00728DA8 /* Info.plist */,
 			);
@@ -474,6 +451,7 @@
 				3356139C2433AB2A008337AA /* RecipeInDetails.swift */,
 				C54A0ACF25584568009DC94E /* AddedNewRating.swift */,
 				331E368D24337E640085B08D /* CreatingRecipe.swift */,
+				C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -484,6 +462,7 @@
 				C5532B7A255857E900B8F283 /* RecipeInList.swift */,
 				C5532B872558584A00B8F283 /* RecipeInDetails.swift */,
 				C5532B932558633400B8F283 /* CreatingRecipe.swift */,
+				C5532B9A2558648D00B8F283 /* UpdatingRecipe.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -502,14 +481,6 @@
 				C5C08D46246044E200B320BD /* Version1 */,
 			);
 			path = Api;
-			sourceTree = "<group>";
-		};
-		C586D09E2449A2DB00D04601 /* Recipe */ = {
-			isa = PBXGroup;
-			children = (
-				C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */,
-			);
-			path = Recipe;
 			sourceTree = "<group>";
 		};
 		C5C08D46246044E200B320BD /* Version1 */ = {
@@ -595,12 +566,10 @@
 				33114EC6242BD06700B246BB /* Sources */,
 				33114EC7242BD06700B246BB /* Frameworks */,
 				33114EC8242BD06700B246BB /* Resources */,
-				C5145B2624450055007968D3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C5145B2524450055007968D3 /* PBXTargetDependency */,
 			);
 			name = AckeeCookbookIOSTaskWebAPI;
 			productName = AckeeCookbookIOSTaskWebAPI;
@@ -878,6 +847,7 @@
 				33114EBF242B8A6C00B246BB /* IPhonePresentation.swift in Sources */,
 				C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */,
 				33114EC1242B8AFE00B246BB /* RecipesListScreenView.swift in Sources */,
+				C5532B9B2558648D00B8F283 /* UpdatingRecipe.swift in Sources */,
 				335D14D52438F98000BAB922 /* ScoreStarsView.swift in Sources */,
 				3318F118243B2D6300F86FA1 /* RecipeDetailsScreenController.swift in Sources */,
 				334D9D3A242EA9B900B92997 /* ScreenViewWithNavigationBar.swift in Sources */,
@@ -908,6 +878,7 @@
 				C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */,
 				C5532B902558632200B8F283 /* CreatingRecipe.swift in Sources */,
 				C5532B76255857CA00B8F283 /* RecipeInList.swift in Sources */,
+				C5532B972558647F00B8F283 /* UpdatingRecipe.swift in Sources */,
 				C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */,
 				C54A0AC425582FBA009DC94E /* ApiInteractionError.swift in Sources */,
@@ -921,9 +892,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C555149A247DB2F600B29C18 /* RatingScale.swift in Sources */,
 				C54F392724806188002BBE64 /* Recipe.swift in Sources */,
-				C529FF872455D8410087B2A7 /* UpdatingRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,11 +922,6 @@
 			isa = PBXTargetDependency;
 			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
 			targetProxy = 333F23ED242D155C00728DA8 /* PBXContainerItemProxy */;
-		};
-		C5145B2524450055007968D3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 333F23E7242D155C00728DA8 /* AckeeCookbookIOSTaskBusiness */;
-			targetProxy = C5145B2424450055007968D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

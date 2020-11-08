@@ -11,8 +11,10 @@ import AckeeCookbookIOSTaskPresentation
 typealias PresentationRecipeInList = AckeeCookbookIOSTaskPresentation.RecipeInList
 typealias PresentationRecipeInDetails = AckeeCookbookIOSTaskPresentation.RecipeInDetails
 typealias PresentationCreatingRecipe = AckeeCookbookIOSTaskPresentation.CreatingRecipe
+typealias PresentationUpdatingRecipe = AckeeCookbookIOSTaskPresentation.UpdatingRecipe
 import AckeeCookbookIOSTaskWebAPI
 typealias WebApiCreatingRecipe = AckeeCookbookIOSTaskWebAPI.CreatingRecipe
+typealias WebApiUpdatingRecipe = AckeeCookbookIOSTaskWebAPI.UpdatingRecipe
 import AckeeCookbookIOSTaskBusiness
 
 class Application: AUIEmptyApplication, IPhonePresentationDelegate {
@@ -104,8 +106,9 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
         }
     }
     
-    func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: UpdatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
-        apiInteractor.updateRecipe(recipe) { (result) in
+    func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationUpdatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
+        let webApiUpdatingRecipe = WebApiUpdatingRecipe(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients)
+        apiInteractor.updateRecipe(webApiUpdatingRecipe) { (result) in
             let presentationResult: Result<PresentationRecipeInDetails, Error>
             switch result {
             case .success(let recipe):
