@@ -50,6 +50,7 @@
 		C53EB84B245F5DE400F2F24F /* AlphaHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */; };
 		C53F88D3245F0AAA006D0594 /* UpdateRecipeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */; };
 		C540B6772471DA6800918899 /* RecipesListScreenCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540B6762471DA6800918899 /* RecipesListScreenCollectionViewLayout.swift */; };
+		C54A0AC425582FBA009DC94E /* ApiInteractionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A0AC325582FBA009DC94E /* ApiInteractionError.swift */; };
 		C54ADD292553336300132564 /* ApiVersion1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54ADD282553336300132564 /* ApiVersion1.swift */; };
 		C54D50442462999200AE05CF /* AddedNewRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D50432462999200AE05CF /* AddedNewRating.swift */; };
 		C54EFDA22465644A0012050D /* RecipesListScreenLoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EFDA12465644A0012050D /* RecipesListScreenLoadingCollectionViewCell.swift */; };
@@ -183,6 +184,7 @@
 		C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaHighlightButton.swift; sourceTree = "<group>"; };
 		C53F88D2245F0AAA006D0594 /* UpdateRecipeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecipeScreenController.swift; sourceTree = "<group>"; };
 		C540B6762471DA6800918899 /* RecipesListScreenCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenCollectionViewLayout.swift; sourceTree = "<group>"; };
+		C54A0AC325582FBA009DC94E /* ApiInteractionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractionError.swift; sourceTree = "<group>"; };
 		C54ADD282553336300132564 /* ApiVersion1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVersion1.swift; sourceTree = "<group>"; };
 		C54D50432462999200AE05CF /* AddedNewRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedNewRating.swift; sourceTree = "<group>"; };
 		C54EFDA12465644A0012050D /* RecipesListScreenLoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListScreenLoadingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -305,9 +307,7 @@
 		33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */ = {
 			isa = PBXGroup;
 			children = (
-				334EE48924326CDB00833180 /* ApiInteractor.swift */,
-				C55D816A247C6C880082346B /* ApiInteractors.swift */,
-				334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */,
+				C54A0AC9255835EC009DC94E /* Interaction */,
 				C55D816C247C70500082346B /* Api */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
 				33114ECD242BD06700B246BB /* Info.plist */,
@@ -431,6 +431,17 @@
 				C53EB84A245F5DE300F2F24F /* AlphaHighlightButton.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		C54A0AC9255835EC009DC94E /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				334EE48924326CDB00833180 /* ApiInteractor.swift */,
+				C55D816A247C6C880082346B /* ApiInteractors.swift */,
+				334EE48B24326D5B00833180 /* ApiInteractorUrlSessionShared.swift */,
+				C54A0AC325582FBA009DC94E /* ApiInteractionError.swift */,
+			);
+			path = Interaction;
 			sourceTree = "<group>";
 		};
 		C54ADD2E2553533700132564 /* HttpExchanges */ = {
@@ -876,6 +887,7 @@
 				C5E0137D247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift in Sources */,
 				C5E0137F247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift in Sources */,
 				334EE48C24326D5B00833180 /* ApiInteractorUrlSessionShared.swift in Sources */,
+				C54A0AC425582FBA009DC94E /* ApiInteractionError.swift in Sources */,
 				C54ADD292553336300132564 /* ApiVersion1.swift in Sources */,
 				C55D8169247C5FAB0082346B /* Api.swift in Sources */,
 			);

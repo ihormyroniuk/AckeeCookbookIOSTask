@@ -86,7 +86,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
         apiInteractor.addNewRating(recipe.id, score: score) { (result) in
             let presentationResult: Result<Float, Error>
             switch result {
-            case let .success(score):
+            case let .success(addedNewRating):
+                let score = addedNewRating.score
                 presentationResult = .success(score)
             case let .failure(error):
                 presentationResult = .failure(error)

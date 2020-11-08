@@ -30,7 +30,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     // MARK: Keyboard
     
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
+        guard let height = ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]) as? NSValue)?.cgRectValue.origin.y else { return }
         guard let view = mainNavigationController?.viewControllers.last?.view else { return }
         view.frame.size.height = height
         view.setNeedsLayout()
