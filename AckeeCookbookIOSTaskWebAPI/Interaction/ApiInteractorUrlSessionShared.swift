@@ -55,8 +55,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func createNewRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
-        let httpExchange = api.version1.createNewRecipeHttpExchange(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+    public func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+        let httpExchange = api.version1.createNewRecipeHttpExchange(name: creatingRecipe.name, description: creatingRecipe.description, ingredients: creatingRecipe.ingredients, duration: creatingRecipe.duration, info: creatingRecipe.info)
         let httpRequest: HttpRequest
         do {
             httpRequest = try httpExchange.constructHttpRequest()
@@ -88,7 +88,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+    public func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
         let httpExchange = api.version1.getRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
         do {
@@ -121,8 +121,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
    
-    public func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
-        let httpExchange = api.version1.updateRecipeHttpExchange(recipeId: recipe.id, name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
+    public func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+        let httpExchange = api.version1.updateRecipeHttpExchange(recipeId: updatingRecipe.recipeId, name: updatingRecipe.name, description: updatingRecipe.description, ingredients: updatingRecipe.ingredients, duration: updatingRecipe.duration, info: updatingRecipe.info)
         let httpRequest: HttpRequest
         do {
             httpRequest = try httpExchange.constructHttpRequest()
@@ -154,7 +154,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func deleteRecipe(_ recipeId: String, completionHandler: @escaping (ApiInteractionError?) -> ()) {
+    public func deleteRecipe(recipeId: String, completionHandler: @escaping (ApiInteractionError?) -> ()) {
         let httpExchange = api.version1.deleteRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
         do {
@@ -186,8 +186,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func addNewRating(_ recipeId: String, score: Float, completionHandler: @escaping (Result<AddedNewRating, ApiInteractionError>) -> ()) {
-        let httpExchange = api.version1.addNewRatingHttpExchange(recipeId: recipeId, score: score)
+    public func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, ApiInteractionError>) -> ()) {
+        let httpExchange = api.version1.addNewRatingHttpExchange(recipeId: addingRating.recipeId, score: addingRating.score)
         let httpRequest: HttpRequest
         do {
             httpRequest = try httpExchange.constructHttpRequest()

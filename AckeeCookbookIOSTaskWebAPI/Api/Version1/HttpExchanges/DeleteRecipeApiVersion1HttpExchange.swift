@@ -8,7 +8,7 @@
 
 import AFoundation
 
-class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
+class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Void> {
     
     private let recipeId: String
     
@@ -28,13 +28,13 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Nothing {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> Void {
         let statusCode = httpResponse.statusCode
         guard statusCode == Http.StatusCode.noContent else {
             let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
             throw error
         }
-        return Nothing()
+        return ()
     }
     
 }

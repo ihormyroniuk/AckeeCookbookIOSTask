@@ -54,7 +54,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
 
     func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationCreatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
         let webApiCreatingRecipe = WebApiCreatingRecipe(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
-        apiInteractor.createNewRecipe(webApiCreatingRecipe) { (result) in
+        apiInteractor.createNewRecipe(creatingRecipe: webApiCreatingRecipe) { (result) in
             let presentationResult: Result<PresentationRecipeInDetails, Error>
             switch result {
             case .success(let recipe):
@@ -68,7 +68,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationGetRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationRecipeInList, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
-        apiInteractor.getRecipe(recipe.id) { (result) in
+        apiInteractor.getRecipe(recipeId: recipe.id) { (result) in
             let presentationResult: Result<PresentationRecipeInDetails, Error>
             switch result {
             case .success(let recipe):
@@ -82,7 +82,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationDeleteRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationRecipeInDetails, completionHandler: @escaping (Error?) -> ()) {
-        apiInteractor.deleteRecipe(recipe.id) { (error) in
+        apiInteractor.deleteRecipe(recipeId: recipe.id) { (error) in
             if let error = error {
                 completionHandler(error)
             } else {
@@ -92,7 +92,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationScoreRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationRecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ()) {
-        apiInteractor.addNewRating(recipe.id, score: score) { (result) in
+        let addingRating = AddingRating(recipeId: recipe.id, score: score)
+        apiInteractor.addNewRating(addingRating: addingRating) { (result) in
             let presentationResult: Result<Float, Error>
             switch result {
             case let .success(addedNewRating):
@@ -106,8 +107,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }
     
     func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationUpdatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
-        let webApiUpdatingRecipe = WebApiUpdatingRecipe(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients)
-        apiInteractor.updateRecipe(webApiUpdatingRecipe) { (result) in
+        let webApiUpdatingRecipe = WebApiUpdatingRecipe(recipeId: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients)
+        apiInteractor.updateRecipe(updatingRecipe: webApiUpdatingRecipe) { (result) in
             let presentationResult: Result<PresentationRecipeInDetails, Error>
             switch result {
             case .success(let recipe):

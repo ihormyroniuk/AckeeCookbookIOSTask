@@ -10,15 +10,15 @@ import Foundation
 
 public struct UpdatingRecipe {
     
-    public let id: String
+    public let recipeId: String
     public let name: String
     public let duration: Int
     public let description: String
     public let info: String
     public let ingredients: [String]
 
-    public init(id: String, name: String, duration: Int, description: String, info: String, ingredients: [String]) {
-        self.id = id
+    public init(recipeId: String, name: String, duration: Int, description: String, info: String, ingredients: [String]) {
+        self.recipeId = recipeId
         self.name = name
         self.duration = duration
         self.description = description

@@ -11,10 +11,10 @@ import Foundation
 public protocol ApiInteractor {
     
     func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ())
-    func createNewRecipe(_ recipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
-    func getRecipe(_ recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
-    func updateRecipe(_ recipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
-    func deleteRecipe(_ recipeId: String, completionHandler: @escaping (ApiInteractionError?) -> ())
-    func addNewRating(_ recipeId: String, score: Float, completionHandler: @escaping (Result<AddedNewRating, ApiInteractionError>) -> ())
+    func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
+    func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
+    func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
+    func deleteRecipe(recipeId: String, completionHandler: @escaping (ApiInteractionError?) -> ())
+    func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, ApiInteractionError>) -> ())
     
 }
