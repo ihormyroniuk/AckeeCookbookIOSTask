@@ -29,22 +29,22 @@ class ApiVersion1 {
     }
     
     func getRecipeHttpExchange(id: String) -> GetRecipeApiVersion1HttpExchange {
-        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: id)
+        let httpExchange = GetRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id)
         return httpExchange
     }
     
     func updateRecipeHttpExchange(id: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> UpdateRecipeApiVersion1HttpExchange {
-        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: id, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         return httpExchange
     }
     
     func deleteRecipeHttpExchange(id: String) -> DeleteRecipeApiVersion1HttpExchange {
-        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: scheme, host: host, id: id)
+        let httpExchange = DeleteRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id)
         return httpExchange
     }
     
     func addNewRatingHttpExchange(id: String, score: Float) -> AddNewRatingApiVersion1HttpExchange {
-        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, id: id, score: score)
+        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: id, score: score)
         return httpExchange
     }
     

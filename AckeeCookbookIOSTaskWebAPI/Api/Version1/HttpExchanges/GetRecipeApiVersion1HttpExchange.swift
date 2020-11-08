@@ -11,10 +11,10 @@ import AckeeCookbookIOSTaskBusiness
 
 class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     
-    private let id: String
+    private let recipeId: String
     
-    init(scheme: String, host: String, id: String) {
-        self.id = id
+    init(scheme: String, host: String, recipeId: String) {
+        self.recipeId = recipeId
         super.init(scheme: scheme, host: host)
     }
     
@@ -23,7 +23,7 @@ class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails>
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = basePath + "/recipes/\(id)"
+        urlComponents.path = basePath + "/recipes/\(recipeId)"
         let requestUri = urlComponents.url!
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
         return httpRequest
@@ -32,12 +32,12 @@ class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails>
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try! JSONSerialization.json(data: messageBody).object()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
-            let recipe = try! recipeInDetails(jsonObject: jsonObject)
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
             return recipe
         } else {
-            let error = try! self.error(jsonObject: jsonObject)
+            let error = try self.error(jsonObject: jsonObject)
             throw error
         }
     }

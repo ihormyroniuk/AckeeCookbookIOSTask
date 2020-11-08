@@ -11,10 +11,10 @@ import AckeeCookbookIOSTaskBusiness
 
 class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
     
-    private let id: String
+    private let recipeId: String
     
-    init(scheme: String, host: String, id: String) {
-        self.id = id
+    init(scheme: String, host: String, recipeId: String) {
+        self.recipeId = recipeId
         super.init(scheme: scheme, host: host)
     }
     
@@ -23,7 +23,7 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = basePath + "/recipes/\(id)"
+        urlComponents.path = basePath + "/recipes/\(recipeId)"
         let requestUri = urlComponents.url!
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
         return httpRequest
@@ -35,8 +35,8 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Nothing> {
         if statusCode == Http.StatusCode.noContent {
             return Nothing()
         } else {
-            let jsonObject = try! JSONSerialization.json(data: messageBody).object()
-            let error = try! self.error(jsonObject: jsonObject)
+            let jsonObject = try JSONSerialization.json(data: messageBody).object()
+            let error = try self.error(jsonObject: jsonObject)
             throw error
         }
     }

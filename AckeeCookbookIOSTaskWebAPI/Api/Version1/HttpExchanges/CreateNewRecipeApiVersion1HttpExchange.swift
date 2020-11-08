@@ -42,7 +42,7 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         jsonValue["ingredients"] = ingredients
         jsonValue["duration"] = duration
         jsonValue["info"] = info
-        let entityBody = try! JSONSerialization.data(jsonValue: jsonValue)
+        let entityBody = try JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
         return httpRequest
     }
@@ -50,12 +50,12 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
         let statusCode = httpResponse.statusCode
         let messageBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try! JSONSerialization.json(data: messageBody).object()
+        let jsonObject = try JSONSerialization.json(data: messageBody).object()
         if statusCode == Http.StatusCode.ok {
-            let recipe = try! recipeInDetails(jsonObject: jsonObject)
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
             return recipe
         } else {
-            let error = try! self.error(jsonObject: jsonObject)
+            let error = try self.error(jsonObject: jsonObject)
             throw error
         }
     }
