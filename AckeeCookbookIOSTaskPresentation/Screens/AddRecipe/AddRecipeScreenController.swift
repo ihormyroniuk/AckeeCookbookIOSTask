@@ -66,7 +66,7 @@ class AddRecipeScreenController: AUIStatusBarScreenController, AUITextViewContro
         durationTextViewController.inputViewController = durationDatePickerControler
         durationTextViewController.addDidChangeTextObserver(self)
         durationDatePickerControler.addDidValueChangedObserver(self)
-        durationDatePickerControler.minuteInterval = Recipe.durationPickerStep
+        durationDatePickerControler.minuteInterval = Recipe.durationStep
         durationDatePickerControler.countDownDuration = TimeInterval(Recipe.defaultDuration * 60)
         setContent()
     }

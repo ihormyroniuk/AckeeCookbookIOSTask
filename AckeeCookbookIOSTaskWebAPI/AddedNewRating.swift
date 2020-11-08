@@ -1,8 +1,8 @@
 //
 //  AddedNewRating.swift
-//  AckeeCookbookIOSTaskBusiness
+//  AckeeCookbookIOSTaskWebAPI
 //
-//  Created by Ihor Myroniuk on 06.05.2020.
+//  Created by Ihor Myroniuk on 08.11.2020.
 //  Copyright © 2020 Ihor Myroniuk. All rights reserved.
 //
 

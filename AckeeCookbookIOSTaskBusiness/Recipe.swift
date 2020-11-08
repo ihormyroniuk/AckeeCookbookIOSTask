@@ -10,5 +10,5 @@ import Foundation
 
 public enum Recipe {
     public static let defaultDuration = 30
-    public static let durationPickerStep = 5
+    public static let durationStep = 5
 }
