@@ -269,7 +269,6 @@
 		33114ECB242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C5532B732558569700B8F283 /* Data */,
 				C54A0AC9255835EC009DC94E /* Interaction */,
 				C55D816C247C70500082346B /* Api */,
 				33114ECC242BD06700B246BB /* AckeeCookbookIOSTaskWebAPI.h */,
@@ -398,27 +397,14 @@
 			isa = PBXGroup;
 			children = (
 				C5E0137A247BD11700A09B7D /* ApiVersion1HttpExchange.swift */,
-				C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */,
-				C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */,
-				C5E0137E247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift */,
-				C5E01380247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift */,
+				C566CDF9255B090600C8A65C /* GetRecipes */,
+				C566CDFB255B094400C8A65C /* CreateNewRecipe */,
+				C566CDFD255B097D00C8A65C /* GetRecipe */,
+				C566CDFA255B092900C8A65C /* UpdateRecipe */,
 				C5E01382247BD85E00A09B7D /* DeleteRecipeApiVersion1HttpExchange.swift */,
-				C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */,
+				C566CDFC255B096400C8A65C /* AddNewRating */,
 			);
 			path = HttpExchanges;
-			sourceTree = "<group>";
-		};
-		C5532B732558569700B8F283 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				333F23FA242D426100728DA8 /* RecipeInList.swift */,
-				331E368D24337E640085B08D /* CreatingRecipe.swift */,
-				3356139C2433AB2A008337AA /* RecipeInDetails.swift */,
-				C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */,
-				C5532BD025589FB600B8F283 /* AddingRating.swift */,
-				C54A0ACF25584568009DC94E /* AddedNewRating.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		C5532B79255857DE00B8F283 /* Data */ = {
@@ -446,6 +432,52 @@
 				C5C08D46246044E200B320BD /* Version1 */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		C566CDF9255B090600C8A65C /* GetRecipes */ = {
+			isa = PBXGroup;
+			children = (
+				C5E01378247BD09900A09B7D /* GetRecipesApiVersion1HttpExchange.swift */,
+				333F23FA242D426100728DA8 /* RecipeInList.swift */,
+			);
+			path = GetRecipes;
+			sourceTree = "<group>";
+		};
+		C566CDFA255B092900C8A65C /* UpdateRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				C5E01380247BD7A500A09B7D /* UpdateRecipeApiVersion1HttpExchange.swift */,
+				C529FF862455D8410087B2A7 /* UpdatingRecipe.swift */,
+			);
+			path = UpdateRecipe;
+			sourceTree = "<group>";
+		};
+		C566CDFB255B094400C8A65C /* CreateNewRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				331E368D24337E640085B08D /* CreatingRecipe.swift */,
+				C5E0137C247BD45800A09B7D /* CreateNewRecipeApiVersion1HttpExchange.swift */,
+			);
+			path = CreateNewRecipe;
+			sourceTree = "<group>";
+		};
+		C566CDFC255B096400C8A65C /* AddNewRating */ = {
+			isa = PBXGroup;
+			children = (
+				C5E01384247BD94800A09B7D /* AddNewRatingApiVersion1HttpExchange.swift */,
+				C5532BD025589FB600B8F283 /* AddingRating.swift */,
+				C54A0ACF25584568009DC94E /* AddedNewRating.swift */,
+			);
+			path = AddNewRating;
+			sourceTree = "<group>";
+		};
+		C566CDFD255B097D00C8A65C /* GetRecipe */ = {
+			isa = PBXGroup;
+			children = (
+				C5E0137E247BD65D00A09B7D /* GetRecipeApiVersion1HttpExchange.swift */,
+				3356139C2433AB2A008337AA /* RecipeInDetails.swift */,
+			);
+			path = GetRecipe;
 			sourceTree = "<group>";
 		};
 		C5C08D46246044E200B320BD /* Version1 */ = {
