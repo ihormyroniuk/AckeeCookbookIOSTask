@@ -10,20 +10,10 @@ import AFoundation
 
 class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     
-    private let recipeId: String
-    private let name: String?
-    private let description: String?
-    private let ingredients: [String]?
-    private let duration: Int?
-    private let info: String?
+    private let updatingRecipe: UpdatingRecipe
     
-    init(scheme: String, host: String, recipeId: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) {
-        self.recipeId = recipeId
-        self.name = name
-        self.description = description
-        self.ingredients = ingredients
-        self.duration = duration
-        self.info = info
+    init(scheme: String, host: String, updatingRecipe: UpdatingRecipe) {
+        self.updatingRecipe = updatingRecipe
         super.init(scheme: scheme, host: host)
     }
     
@@ -32,16 +22,16 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetai
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = basePath + "/recipes/\(recipeId)"
+        urlComponents.path = basePath + "/recipes/\(updatingRecipe.recipeId)"
         let requestUri = try urlComponents.constructUrl()
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()
-        jsonValue["name"] = name
-        jsonValue["description"] = description
-        jsonValue["ingredients"] = ingredients
-        jsonValue["duration"] = duration
-        jsonValue["info"] = info
+        jsonValue["name"] = updatingRecipe.name
+        jsonValue["description"] = updatingRecipe.description
+        jsonValue["ingredients"] = updatingRecipe.ingredients
+        jsonValue["duration"] = updatingRecipe.duration
+        jsonValue["info"] = updatingRecipe.info
         let entityBody = try JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
         return httpRequest

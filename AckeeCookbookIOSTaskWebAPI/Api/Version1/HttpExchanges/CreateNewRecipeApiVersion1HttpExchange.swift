@@ -11,18 +11,10 @@ import AFoundation
 
 class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
     
-    private let name: String
-    private let description: String
-    private let ingredients: [String]?
-    private let duration: Int?
-    private let info: String?
+    private let creatingRecipe: CreatingRecipe
     
-    init(scheme: String, host: String, name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) {
-        self.name = name
-        self.description = description
-        self.ingredients = ingredients
-        self.duration = duration
-        self.info = info
+    init(scheme: String, host: String, creatingRecipe: CreatingRecipe) {
+        self.creatingRecipe = creatingRecipe
         super.init(scheme: scheme, host: host)
     }
     
@@ -36,11 +28,11 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDe
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()
-        jsonValue["name"] = name
-        jsonValue["description"] = description
-        jsonValue["ingredients"] = ingredients
-        jsonValue["duration"] = duration
-        jsonValue["info"] = info
+        jsonValue["name"] = creatingRecipe.name
+        jsonValue["description"] = creatingRecipe.description
+        jsonValue["ingredients"] = creatingRecipe.ingredients
+        jsonValue["duration"] = creatingRecipe.duration
+        jsonValue["info"] = creatingRecipe.info
         let entityBody = try JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
         return httpRequest

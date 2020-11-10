@@ -10,12 +10,10 @@ import AFoundation
 
 class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRating> {
     
-    private let recipeId: String
-    private let score: Float
+    private let addingRating: AddingRating
     
-    init(scheme: String, host: String, recipeId: String, score: Float) {
-        self.recipeId = recipeId
-        self.score = score
+    init(scheme: String, host: String, addingRating: AddingRating) {
+        self.addingRating = addingRating
         super.init(scheme: scheme, host: host)
     }
     
@@ -24,13 +22,13 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        let path = basePath + "/recipes/\(recipeId)/ratings"
+        let path = basePath + "/recipes/\(addingRating.recipeId)/ratings"
         urlComponents.path = path
         let requestUri = try urlComponents.constructUrl()
         var headerFields: [String: String] = [:]
         headerFields[Http.HeaderField.contentType] = MediaType.json()
         var jsonValue: JsonObject = JsonObject()
-        jsonValue["score"] = score
+        jsonValue["score"] = addingRating.score
         let entityBody = try JSONSerialization.data(jsonValue: jsonValue)
         let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
         return httpRequest

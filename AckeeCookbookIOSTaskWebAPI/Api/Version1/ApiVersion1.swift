@@ -23,8 +23,8 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func createNewRecipeHttpExchange(name: String, description: String, ingredients: [String]?, duration: Int?, info: String?) -> CreateNewRecipeApiVersion1HttpExchange {
-        let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: scheme, host: host, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+    func createNewRecipeHttpExchange(creatingRecipe: CreatingRecipe) -> CreateNewRecipeApiVersion1HttpExchange {
+        let httpExchange = CreateNewRecipeApiVersion1HttpExchange(scheme: scheme, host: host, creatingRecipe: creatingRecipe)
         return httpExchange
     }
     
@@ -33,8 +33,8 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func updateRecipeHttpExchange(recipeId: String, name: String?, description: String?, ingredients: [String]?, duration: Int?, info: String?) -> UpdateRecipeApiVersion1HttpExchange {
-        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId, name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+    func updateRecipeHttpExchange(updatingRecipe: UpdatingRecipe) -> UpdateRecipeApiVersion1HttpExchange {
+        let httpExchange = UpdateRecipeApiVersion1HttpExchange(scheme: scheme, host: host, updatingRecipe: updatingRecipe)
         return httpExchange
     }
     
@@ -43,8 +43,8 @@ class ApiVersion1 {
         return httpExchange
     }
     
-    func addNewRatingHttpExchange(recipeId: String, score: Float) -> AddNewRatingApiVersion1HttpExchange {
-        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, recipeId: recipeId, score: score)
+    func addNewRatingHttpExchange(addingRating: AddingRating) -> AddNewRatingApiVersion1HttpExchange {
+        let httpExchange = AddNewRatingApiVersion1HttpExchange(scheme: scheme, host: host, addingRating: addingRating)
         return httpExchange
     }
     
