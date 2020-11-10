@@ -10,12 +10,10 @@ import AFoundation
 
 class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]> {
     
-    private let limit: Int
-    private let offset: Int
+    private let portion: Portion
     
-    init(scheme: String, host: String, limit: Int, offset: Int) {
-        self.limit = limit
-        self.offset = offset
+    init(scheme: String, host: String, portion: Portion) {
+        self.portion = portion
         super.init(scheme: scheme, host: host)
     }
 
@@ -25,8 +23,8 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes"
-        let offsetQueryItem = URLQueryItem(name: "offset", value: "\(offset)")
-        let limitQueryItem = URLQueryItem(name: "limit", value: "\(limit)")
+        let offsetQueryItem = URLQueryItem(name: "offset", value: "\(portion.offset)")
+        let limitQueryItem = URLQueryItem(name: "limit", value: "\(portion.limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
         let requestUri = try urlComponents.constructUrl()

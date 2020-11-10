@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ApiInteractor {
     
-    func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ())
+    func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ())
     func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
     func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())
     func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ())

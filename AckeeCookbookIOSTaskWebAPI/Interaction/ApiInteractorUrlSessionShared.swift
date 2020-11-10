@@ -22,8 +22,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         self.api = api
     }
     
-    public func getRecipes(offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ()) {
-        let httpExchange = api.version1.getRecipesHttpExchange(limit: limit, offset: offset)
+    public func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ()) {
+        let httpExchange = api.version1.getRecipesHttpExchange(portion: portion)
         let httpRequest: HttpRequest
         do {
             httpRequest = try httpExchange.constructHttpRequest()
