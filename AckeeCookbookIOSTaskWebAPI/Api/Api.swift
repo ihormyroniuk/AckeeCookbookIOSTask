@@ -14,7 +14,7 @@ class Api {
     private let host: String
     let version1: ApiVersion1
     
-    public init(scheme: String, host: String) {
+    init(scheme: String, host: String) {
         self.scheme = scheme
         self.host = host
         let version1 = ApiVersion1(scheme: scheme, host: host)

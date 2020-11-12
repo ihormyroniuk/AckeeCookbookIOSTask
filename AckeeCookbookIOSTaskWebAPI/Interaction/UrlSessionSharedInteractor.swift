@@ -8,7 +8,7 @@
 
 import AFoundation
 
-class ApiInteractorUrlSessionShared: ApiInteractor {
+class UrlSessionSharedInteractor: Interactor {
     
     private let scheme: String
     private let host: String
@@ -22,20 +22,18 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         self.api = api
     }
     
-    public func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], ApiInteractionError>) -> ()) {
-        let httpExchange = api.version1.getRecipesHttpExchange(portion: portion)
+    public func getRecipes(part: Part, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ()) {
+        let httpExchange = api.version1.getRecipesHttpExchange(part: part)
         let httpRequest: HttpRequest
-        do {
-            httpRequest = try httpExchange.constructHttpRequest()
-        } catch {
+        do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.failure(.unexpectedError(error: error)))
             return
         }
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(.failure(apiInteractionError))
+                let interactionError = InteractionError(error: error)
+                completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: [RecipeInList]
@@ -55,20 +53,18 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+    public func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
         let httpExchange = api.version1.createNewRecipeHttpExchange(creatingRecipe: creatingRecipe)
         let httpRequest: HttpRequest
-        do {
-            httpRequest = try httpExchange.constructHttpRequest()
-        } catch {
+        do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.failure(.unexpectedError(error: error)))
             return
         }
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(.failure(apiInteractionError))
+                let interactionError = InteractionError(error: error)
+                completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: RecipeInDetails
@@ -88,7 +84,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+    public func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
         let httpExchange = api.version1.getRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
         do {
@@ -100,14 +96,12 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(.failure(apiInteractionError))
+                let interactionError = InteractionError(error: error)
+                completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: RecipeInDetails
-                do {
-                    response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
@@ -121,7 +115,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
    
-    public func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, ApiInteractionError>) -> ()) {
+    public func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
         let httpExchange = api.version1.updateRecipeHttpExchange(updatingRecipe: updatingRecipe)
         let httpRequest: HttpRequest
         do {
@@ -133,8 +127,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(.failure(apiInteractionError))
+                let interactionError = InteractionError(error: error)
+                completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: RecipeInDetails
@@ -154,7 +148,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func deleteRecipe(recipeId: String, completionHandler: @escaping (ApiInteractionError?) -> ()) {
+    public func deleteRecipe(recipeId: String, completionHandler: @escaping (InteractionError?) -> ()) {
         let httpExchange = api.version1.deleteRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
         do {
@@ -166,8 +160,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(apiInteractionError)
+                let interactionError = InteractionError(error: error)
+                completionHandler(interactionError)
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 do {
@@ -186,7 +180,7 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         dataTask.resume()
     }
     
-    public func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, ApiInteractionError>) -> ()) {
+    public func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, InteractionError>) -> ()) {
         let httpExchange = api.version1.addNewRatingHttpExchange(addingRating: addingRating)
         let httpRequest: HttpRequest
         do {
@@ -198,8 +192,8 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
         let urlRequest = URLRequest(httpRequest: httpRequest)
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
-                let apiInteractionError = ApiInteractorUrlSessionShared.constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: error)
-                completionHandler(.failure(apiInteractionError))
+                let interactionError = InteractionError(error: error)
+                completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: AddedNewRating
@@ -217,16 +211,6 @@ class ApiInteractorUrlSessionShared: ApiInteractor {
             }
         }
         dataTask.resume()
-    }
-    
-    private static func constructApiInteractionErrorFromURLSessionDataTaskResumeError(error: Error) -> ApiInteractionError {
-        let apiInteractionError: ApiInteractionError
-        if (error as NSError).code == NSURLErrorNotConnectedToInternet {
-            apiInteractionError = .notConnectedToInternet
-        } else {
-            apiInteractionError = .unexpectedError(error: error)
-        }
-        return apiInteractionError
     }
 
 }
