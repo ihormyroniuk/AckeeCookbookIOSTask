@@ -15,6 +15,6 @@ public protocol Interactor {
     func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
     func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
     func deleteRecipe(recipeId: String, completionHandler: @escaping (InteractionError?) -> ())
-    func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, InteractionError>) -> ())
+    func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedRating, InteractionError>) -> ())
     
 }

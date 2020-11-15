@@ -23,19 +23,19 @@ class GetRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails>
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(recipeId)"
-        let requestUri = try urlComponents.constructUrl()
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
+        let url = try urlComponents.constructUrl()
+        let httpRequest = PlainHttpRequest(method: method, uri: url, version: Http.Version.http1dot1, headers: nil, body: nil)
         return httpRequest
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
-        let statusCode = httpResponse.statusCode
-        guard statusCode == Http.StatusCode.ok else {
-            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
+        let code = httpResponse.code
+        guard code == Http.code.ok else {
+            let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let entityBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: entityBody).object()
+        let body = httpResponse.body ?? Data()
+        let jsonObject = try JSONSerialization.json(data: body).object()
         let recipe = try recipeInDetails(jsonObject: jsonObject)
         return recipe
     }

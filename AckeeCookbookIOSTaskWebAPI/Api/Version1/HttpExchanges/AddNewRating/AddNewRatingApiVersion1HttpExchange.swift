@@ -8,7 +8,7 @@
 
 import AFoundation
 
-class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRating> {
+class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedRating> {
     
     private let addingRating: AddingRating
     
@@ -24,28 +24,28 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedNewRatin
         urlComponents.host = host
         let path = basePath + "/recipes/\(addingRating.recipeId)/ratings"
         urlComponents.path = path
-        let requestUri = try urlComponents.constructUrl()
-        var headerFields: [String: String] = [:]
-        headerFields[Http.HeaderField.contentType] = MediaType.json()
+        let url = try urlComponents.constructUrl()
+        var headers: [String: String] = [:]
+        headers[Http.HeaderField.contentType] = MediaType.json
         var jsonValue: JsonObject = JsonObject()
         jsonValue["score"] = addingRating.score
-        let entityBody = try JSONSerialization.data(jsonValue: jsonValue)
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: headerFields, entityBody: entityBody)
+        let body = try JSONSerialization.data(jsonValue: jsonValue)
+        let httpRequest = PlainHttpRequest(method: method, uri: url, version: Http.Version.http1dot1, headers: headers, body: body)
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> AddedNewRating {
-        let statusCode = httpResponse.statusCode
-        guard statusCode == Http.StatusCode.ok else {
-            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> AddedRating {
+        let code = httpResponse.code
+        guard code == Http.code.ok else {
+            let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let entityBody = httpResponse.entityBody ?? Data()
-        let jsonObject = try JSONSerialization.json(data: entityBody).object()
+        let body = httpResponse.body ?? Data()
+        let jsonObject = try JSONSerialization.json(data: body).object()
         let id = try jsonObject.string("id")
         let recipeId = try jsonObject.string("recipe")
         let score = try jsonObject.number("score").float
-        let addedNewRating = AddedNewRating(id: id, recipeId: recipeId, score: score)
+        let addedNewRating = AddedRating(id: id, recipeId: recipeId, score: score)
         return addedNewRating
     }
     

@@ -27,20 +27,20 @@ class GetRecipesApiVersion1HttpExchange: ApiVersion1HttpExchange<[RecipeInList]>
         let limitQueryItem = URLQueryItem(name: "limit", value: "\(part.limit)")
         let queryItems = [offsetQueryItem, limitQueryItem]
         urlComponents.queryItems = queryItems
-        let requestUri = try urlComponents.constructUrl()
-        let httpVersion = Http.Version.http1dot1
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: httpVersion, headerFields: nil, entityBody: nil)
+        let url = try urlComponents.constructUrl()
+        let version = Http.Version.http1dot1
+        let httpRequest = PlainHttpRequest(method: method, uri: url, version: version, headers: nil, body: nil)
         return httpRequest
     }
 
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> [RecipeInList] {
-        let statusCode = httpResponse.statusCode
-        guard statusCode == Http.StatusCode.ok else {
-            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
+        let code = httpResponse.code
+        guard code == Http.code.ok else {
+            let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let entityBody = httpResponse.entityBody ?? Data()
-        let jsonArray = try JSONSerialization.json(data: entityBody).array().arrayObjects()
+        let body = httpResponse.body ?? Data()
+        let jsonArray = try JSONSerialization.json(data: body).array().arrayObjects()
         var recipes: [RecipeInList] = []
         for jsonObject in jsonArray {
             let id = try jsonObject.string("id")

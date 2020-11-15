@@ -126,7 +126,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
     }
 
     func recipeInDetailsScreenDeleteRecipeInDetails(_ recipeInDetailsScreen: RecipeDetailsScreenController, recipeInDetails: RecipeInDetails) {
-        let alertController = UIAlertController(title: nil, message: "This is an alert.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "Confirm deletion.", preferredStyle: .alert)
         let deleteAlertAction = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
             self.delegate?.iPhonePresentationDeleteRecipe(self, recipe: recipeInDetails, completionHandler: { (error) in
                 DispatchQueue.main.async { [weak self] in
@@ -138,8 +138,8 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                 }
             })
         }
-        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(deleteAlertAction)
+        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAlertAction)
         mainNavigationController?.present(alertController, animated: true, completion: nil)
     }

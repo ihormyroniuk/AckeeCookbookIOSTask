@@ -23,15 +23,15 @@ class DeleteRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<Void> {
         urlComponents.scheme = scheme
         urlComponents.host = host
         urlComponents.path = basePath + "/recipes/\(recipeId)"
-        let requestUri = try urlComponents.constructUrl()
-        let httpRequest = PlainHttpRequest(method: method, requestUri: requestUri, httpVersion: Http.Version.http1dot1, headerFields: nil, entityBody: nil)
+        let url = try urlComponents.constructUrl()
+        let httpRequest = PlainHttpRequest(method: method, uri: url, version: Http.Version.http1dot1, headers: nil, body: nil)
         return httpRequest
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> Void {
-        let statusCode = httpResponse.statusCode
-        guard statusCode == Http.StatusCode.noContent else {
-            let error = UnexpectedHttpResponseStatusCode(statusCode: statusCode)
+        let code = httpResponse.code
+        guard code == Http.code.noContent else {
+            let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
         return ()

@@ -37,9 +37,7 @@ class UrlSessionSharedInteractor: Interactor {
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: [RecipeInList]
-                do {
-                    response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
@@ -68,9 +66,7 @@ class UrlSessionSharedInteractor: Interactor {
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: RecipeInDetails
-                do {
-                    response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
@@ -87,9 +83,7 @@ class UrlSessionSharedInteractor: Interactor {
     public func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
         let httpExchange = api.version1.getRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
-        do {
-            httpRequest = try httpExchange.constructHttpRequest()
-        } catch {
+        do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.failure(.unexpectedError(error: error)))
             return
         }
@@ -132,9 +126,7 @@ class UrlSessionSharedInteractor: Interactor {
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
                 let response: RecipeInDetails
-                do {
-                    response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
@@ -151,9 +143,7 @@ class UrlSessionSharedInteractor: Interactor {
     public func deleteRecipe(recipeId: String, completionHandler: @escaping (InteractionError?) -> ()) {
         let httpExchange = api.version1.deleteRecipeHttpExchange(recipeId: recipeId)
         let httpRequest: HttpRequest
-        do {
-            httpRequest = try httpExchange.constructHttpRequest()
-        } catch {
+        do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.unexpectedError(error: error))
             return
         }
@@ -164,9 +154,7 @@ class UrlSessionSharedInteractor: Interactor {
                 completionHandler(interactionError)
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
-                do {
-                    _ = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                do { _ = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.unexpectedError(error: error))
                     return
@@ -180,12 +168,10 @@ class UrlSessionSharedInteractor: Interactor {
         dataTask.resume()
     }
     
-    public func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedNewRating, InteractionError>) -> ()) {
+    public func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedRating, InteractionError>) -> ()) {
         let httpExchange = api.version1.addNewRatingHttpExchange(addingRating: addingRating)
         let httpRequest: HttpRequest
-        do {
-            httpRequest = try httpExchange.constructHttpRequest()
-        } catch {
+        do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.failure(.unexpectedError(error: error)))
             return
         }
@@ -196,10 +182,8 @@ class UrlSessionSharedInteractor: Interactor {
                 completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
-                let response: AddedNewRating
-                do {
-                    response = try httpExchange.parseHttpResponse(httpResponse: httpResponse)
-                } catch {
+                let response: AddedRating
+                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
