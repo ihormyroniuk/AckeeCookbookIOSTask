@@ -19,28 +19,23 @@ class AddNewRatingApiVersion1HttpExchange: ApiVersion1HttpExchange<AddedRating> 
     
     override func constructHttpRequest() throws -> HttpRequest {
         let method = Http.Method.post
-        var urlComponents = URLComponents()
-        urlComponents.scheme = scheme
-        urlComponents.host = host
-        let path = basePath + "/recipes/\(addingRating.recipeId)/ratings"
-        urlComponents.path = path
-        let url = try urlComponents.constructUrl()
+        let uri = "\(scheme)://\(host)\(basePath)/recipes/\(addingRating.recipeId)/ratings"
         var headers: [String: String] = [:]
         headers[Http.HeaderField.contentType] = MediaType.json
         var jsonValue: JsonObject = JsonObject()
         jsonValue["score"] = addingRating.score
-        let body = try JSONSerialization.data(jsonValue: jsonValue)
-        let httpRequest = PlainHttpRequest(method: method, uri: url, version: Http.Version.http1dot1, headers: headers, body: body)
+        let body = Array(try JSONSerialization.data(jsonValue: jsonValue))
+        let httpRequest = PlainHttpRequest(method: method, uri: uri, version: Http.Version.http1dot1, headers: headers, body: body)
         return httpRequest
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> AddedRating {
         let code = httpResponse.code
-        guard code == Http.code.ok else {
+        guard code == Http.Code.ok else {
             let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let body = httpResponse.body ?? Data()
+        let body = Data(httpResponse.body ?? [])
         let jsonObject = try JSONSerialization.json(data: body).object()
         let id = try jsonObject.string("id")
         let recipeId = try jsonObject.string("recipe")

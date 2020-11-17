@@ -10,7 +10,7 @@ import Foundation
 
 public protocol Interactor {
     
-    func getRecipes(part: Part, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ())
+    func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ())
     func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
     func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
     func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())

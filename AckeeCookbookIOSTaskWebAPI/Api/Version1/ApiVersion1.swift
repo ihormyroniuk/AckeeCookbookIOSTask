@@ -18,8 +18,8 @@ class ApiVersion1 {
         self.host = host
     }
     
-    func getRecipesHttpExchange(part: Part) -> GetRecipesApiVersion1HttpExchange {
-        let httpExchange = GetRecipesApiVersion1HttpExchange(scheme: scheme, host: host, part: part)
+    func getRecipesHttpExchange(portion: Portion) -> GetRecipesApiVersion1HttpExchange {
+        let httpExchange = GetRecipesApiVersion1HttpExchange(scheme: scheme, host: host, portion: portion)
         return httpExchange
     }
     

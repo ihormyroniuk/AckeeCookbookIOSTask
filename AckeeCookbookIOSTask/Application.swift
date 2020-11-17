@@ -39,8 +39,8 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     }()
 
     func iPhonePresentationGetRecipes(_ iPhonePresentation: IPhonePresentation, offset: Int, limit: Int, completionHandler: @escaping (Result<[PresentationRecipeInList], Error>) -> ()) {
-        let part = Part(limit: limit, offset: offset)
-        apiInteractor.getRecipes(part: part) { (result) in
+        let portion = Portion(limit: limit, offset: offset)
+        apiInteractor.getRecipes(portion: portion) { (result) in
             let presentationResult: Result<[PresentationRecipeInList], Error>
             switch result {
             case .success(let recipes):

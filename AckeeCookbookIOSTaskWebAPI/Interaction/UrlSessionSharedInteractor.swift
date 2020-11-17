@@ -22,8 +22,8 @@ class UrlSessionSharedInteractor: Interactor {
         self.api = api
     }
     
-    public func getRecipes(part: Part, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ()) {
-        let httpExchange = api.version1.getRecipesHttpExchange(part: part)
+    public func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ()) {
+        let httpExchange = api.version1.getRecipesHttpExchange(portion: portion)
         let httpRequest: HttpRequest
         do { httpRequest = try httpExchange.constructHttpRequest() } catch {
             completionHandler(.failure(.unexpectedError(error: error)))

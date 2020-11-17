@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Part {
+public struct Portion {
     
     public let limit: Int
     public let offset: Int

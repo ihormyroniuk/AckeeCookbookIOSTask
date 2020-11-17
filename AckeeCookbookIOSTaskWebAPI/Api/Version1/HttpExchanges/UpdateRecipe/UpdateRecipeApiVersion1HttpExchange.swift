@@ -19,11 +19,7 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetai
     
     override func constructHttpRequest() throws -> HttpRequest {
         let method = Http.Method.put
-        var urlComponents = URLComponents()
-        urlComponents.scheme = scheme
-        urlComponents.host = host
-        urlComponents.path = basePath + "/recipes/\(updatingRecipe.recipeId)"
-        let url = try urlComponents.constructUrl()
+        let uri = "\(scheme)://\(host)\(basePath)/recipes/\(updatingRecipe.recipeId)"
         var headers: [String: String] = [:]
         headers[Http.HeaderField.contentType] = MediaType.json
         var jsonValue: JsonObject = JsonObject()
@@ -32,18 +28,18 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetai
         jsonValue["ingredients"] = updatingRecipe.ingredients
         jsonValue["duration"] = updatingRecipe.duration
         jsonValue["info"] = updatingRecipe.info
-        let body = try JSONSerialization.data(jsonValue: jsonValue)
-        let httpRequest = PlainHttpRequest(method: method, uri: url, version: Http.Version.http1dot1, headers: headers, body: body)
+        let body = Array(try JSONSerialization.data(jsonValue: jsonValue))
+        let httpRequest = PlainHttpRequest(method: method, uri: uri, version: Http.Version.http1dot1, headers: headers, body: body)
         return httpRequest
     }
     
     override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
         let code = httpResponse.code
-        guard code == Http.code.ok else {
+        guard code == Http.Code.ok else {
             let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let body = httpResponse.body ?? Data()
+        let body = Data(httpResponse.body ?? [])
         let jsonObject = try JSONSerialization.json(data: body).object()
         let recipe = try recipeInDetails(jsonObject: jsonObject)
         return recipe
