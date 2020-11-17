@@ -19,4 +19,5 @@ public enum InteractionError: Error {
             self = .unexpectedError(error: error)
         }
     }
+    
 }

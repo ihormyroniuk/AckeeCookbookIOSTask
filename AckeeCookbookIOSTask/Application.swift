@@ -11,7 +11,9 @@ import AckeeCookbookIOSTaskPresentation
 typealias PresentationRecipeInList = AckeeCookbookIOSTaskPresentation.RecipeInList
 typealias PresentationRecipeInDetails = AckeeCookbookIOSTaskPresentation.RecipeInDetails
 typealias PresentationCreatingRecipe = AckeeCookbookIOSTaskPresentation.CreatingRecipe
+typealias PresentationAddRecipeResult = AckeeCookbookIOSTaskPresentation.AddRecipeResult
 typealias PresentationUpdatingRecipe = AckeeCookbookIOSTaskPresentation.UpdatingRecipe
+typealias PresentationUpdateRecipeResult = AckeeCookbookIOSTaskPresentation.UpdateRecipeResult
 import AckeeCookbookIOSTaskWebAPI
 typealias WebApiCreatingRecipe = AckeeCookbookIOSTaskWebAPI.CreatingRecipe
 typealias WebApiUpdatingRecipe = AckeeCookbookIOSTaskWebAPI.UpdatingRecipe
@@ -53,14 +55,25 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
         }
     }
 
-    func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationCreatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
+    func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationCreatingRecipe, completionHandler: @escaping (Result<PresentationAddRecipeResult, Error>) -> ()) {
         let webApiCreatingRecipe = WebApiCreatingRecipe(name: recipe.name, description: recipe.description, ingredients: recipe.ingredients, duration: recipe.duration, info: recipe.info)
         apiInteractor.createNewRecipe(creatingRecipe: webApiCreatingRecipe) { (result) in
-            let presentationResult: Result<PresentationRecipeInDetails, Error>
+            let presentationResult: Result<PresentationAddRecipeResult, Error>
             switch result {
-            case .success(let recipe):
-                let presentationRecipeInDetails = PresentationRecipeInDetails(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients, score: recipe.score)
-                presentationResult = .success(presentationRecipeInDetails)
+            case .success(let result):
+                switch result {
+                case let .recipeInDetails(recipe):
+                    let presentationRecipeInDetails = PresentationRecipeInDetails(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients, score: recipe.score)
+                    presentationResult = .success(.addedRecipe(presentationRecipeInDetails))
+                case .infoRequired:
+                    presentationResult = .success(.infoIsNeeded)
+                case .descriptionRequired:
+                    presentationResult = .success(.descriptionIsNeeded)
+                case .nameMustContainAckee:
+                    presentationResult = .success(.nameMustContainsAckee)
+                case .nameRequired:
+                    presentationResult = .success(.nameIsNeeded)
+                }
             case .failure(let error):
                 presentationResult = .failure(error)
             }
@@ -107,14 +120,25 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
         }
     }
     
-    func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationUpdatingRecipe, completionHandler: @escaping (Result<PresentationRecipeInDetails, Error>) -> ()) {
+    func iPhonePresentationUpdateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: PresentationUpdatingRecipe, completionHandler: @escaping (Result<PresentationUpdateRecipeResult, Error>) -> ()) {
         let webApiUpdatingRecipe = WebApiUpdatingRecipe(recipeId: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients)
         apiInteractor.updateRecipe(updatingRecipe: webApiUpdatingRecipe) { (result) in
-            let presentationResult: Result<PresentationRecipeInDetails, Error>
+            let presentationResult: Result<PresentationUpdateRecipeResult, Error>
             switch result {
-            case .success(let recipe):
-                let presentationRecipeInDetails = PresentationRecipeInDetails(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients, score: recipe.score)
-                presentationResult = .success(presentationRecipeInDetails)
+            case .success(let result):
+                switch result {
+                case let .recipe(recipe):
+                    let presentationRecipeInDetails = PresentationRecipeInDetails(id: recipe.id, name: recipe.name, duration: recipe.duration, description: recipe.description, info: recipe.info, ingredients: recipe.ingredients, score: recipe.score)
+                    presentationResult = .success(.updatedRecipe(presentationRecipeInDetails))
+                case .infoRequired:
+                    presentationResult = .success(.infoIsNeeded)
+                case .descriptionRequired:
+                    presentationResult = .success(.descriptionIsNeeded)
+                case .nameMustContainAckee:
+                    presentationResult = .success(.nameMustContainsAckee)
+                case .nameRequired:
+                    presentationResult = .success(.nameIsNeeded)
+                }
             case .failure(let error):
                 presentationResult = .failure(error)
             }

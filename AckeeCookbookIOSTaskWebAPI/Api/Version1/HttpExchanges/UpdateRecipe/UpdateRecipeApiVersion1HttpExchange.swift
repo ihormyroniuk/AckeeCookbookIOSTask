@@ -8,7 +8,7 @@
 
 import AFoundation
 
-class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetails> {
+class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<UpdateRecipeResult> {
     
     private let updatingRecipe: UpdatingRecipe
     
@@ -33,16 +33,31 @@ class UpdateRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<RecipeInDetai
         return httpRequest
     }
     
-    override func parseHttpResponse(httpResponse: HttpResponse) throws -> RecipeInDetails {
+    override func parseHttpResponse(httpResponse: HttpResponse) throws -> UpdateRecipeResult {
         let code = httpResponse.code
-        guard code == Http.Code.ok else {
+        let body = Data(httpResponse.body ?? [])
+        let jsonObject = try JSONSerialization.json(data: body).object()
+        if code == Http.Code.ok {
+            let recipe = try recipeInDetails(jsonObject: jsonObject)
+            return .recipe(recipe)
+        } else if code == Http.Code.badRequest {
+            let message = try jsonObject.string("message")
+            if message == ApiVersion1.ErrorMessage.recipeInfoRequired {
+                return .infoRequired
+            } else if message == ApiVersion1.ErrorMessage.recipeDescriptionRequired {
+                return .descriptionRequired
+            } else if message == ApiVersion1.ErrorMessage.recipeNameMustContainAckee {
+                return .nameMustContainAckee
+            } else if message == ApiVersion1.ErrorMessage.recipeNameRequired {
+                return .nameRequired
+            } else {
+                let error = UnexpectedHttpResponseCode(code: code)
+                throw error
+            }
+        } else {
             let error = UnexpectedHttpResponseCode(code: code)
             throw error
         }
-        let body = Data(httpResponse.body ?? [])
-        let jsonObject = try JSONSerialization.json(data: body).object()
-        let recipe = try recipeInDetails(jsonObject: jsonObject)
-        return recipe
     }
     
 }

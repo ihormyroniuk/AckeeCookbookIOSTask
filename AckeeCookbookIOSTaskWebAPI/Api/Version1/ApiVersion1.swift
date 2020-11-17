@@ -10,6 +10,13 @@ import Foundation
 
 class ApiVersion1 {
     
+    enum ErrorMessage {
+        static let recipeNameRequired = "Field name is mandatory in body"
+        static let recipeNameMustContainAckee = "Name must obtain Ackee at least once! This is Ackee cookbook GOD DAMN IT."
+        static let recipeInfoRequired = "Field info is mandatory in body"
+        static let recipeDescriptionRequired = "Field description is mandatory in body"
+    }
+    
     private let scheme: String
     private let host: String
     

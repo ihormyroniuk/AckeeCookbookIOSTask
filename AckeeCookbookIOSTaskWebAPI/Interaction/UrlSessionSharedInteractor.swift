@@ -51,7 +51,7 @@ class UrlSessionSharedInteractor: Interactor {
         dataTask.resume()
     }
     
-    public func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
+    public func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<CreateNewRecipeResult, InteractionError>) -> ()) {
         let httpExchange = api.version1.createNewRecipeHttpExchange(creatingRecipe: creatingRecipe)
         let httpRequest: HttpRequest
         do { httpRequest = try httpExchange.constructHttpRequest() } catch {
@@ -65,13 +65,13 @@ class UrlSessionSharedInteractor: Interactor {
                 completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
-                let response: RecipeInDetails
-                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
+                let result: CreateNewRecipeResult
+                do { result = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
                 }
-                completionHandler(.success(response))
+                completionHandler(.success(result))
             } else {
                 let error = UnexpectedError()
                 completionHandler(.failure(.unexpectedError(error: error)))
@@ -109,7 +109,7 @@ class UrlSessionSharedInteractor: Interactor {
         dataTask.resume()
     }
    
-    public func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ()) {
+    public func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<UpdateRecipeResult, InteractionError>) -> ()) {
         let httpExchange = api.version1.updateRecipeHttpExchange(updatingRecipe: updatingRecipe)
         let httpRequest: HttpRequest
         do {
@@ -125,13 +125,13 @@ class UrlSessionSharedInteractor: Interactor {
                 completionHandler(.failure(interactionError))
             } else if let httpUrlResponse = response as? HTTPURLResponse {
                 let httpResponse = HTTPURLResponseDataHttpResponse(httpUrlResponse: httpUrlResponse, data: data)
-                let response: RecipeInDetails
-                do { response = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
+                let result: UpdateRecipeResult
+                do { result = try httpExchange.parseHttpResponse(httpResponse: httpResponse) } catch {
                     let error = UnexpectedHttpResponseError(httpRequest: httpRequest, httpResponse: httpResponse, error: error)
                     completionHandler(.failure(.unexpectedError(error: error)))
                     return
                 }
-                completionHandler(.success(response))
+                completionHandler(.success(result))
             } else {
                 let error = UnexpectedError()
                 completionHandler(.failure(.unexpectedError(error: error)))

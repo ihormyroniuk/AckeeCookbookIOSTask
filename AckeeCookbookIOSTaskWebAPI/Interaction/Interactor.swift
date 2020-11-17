@@ -11,9 +11,9 @@ import Foundation
 public protocol Interactor {
     
     func getRecipes(portion: Portion, completionHandler: @escaping (Result<[RecipeInList], InteractionError>) -> ())
-    func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
+    func createNewRecipe(creatingRecipe: CreatingRecipe, completionHandler: @escaping (Result<CreateNewRecipeResult, InteractionError>) -> ())
     func getRecipe(recipeId: String, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
-    func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<RecipeInDetails, InteractionError>) -> ())
+    func updateRecipe(updatingRecipe: UpdatingRecipe, completionHandler: @escaping (Result<UpdateRecipeResult, InteractionError>) -> ())
     func deleteRecipe(recipeId: String, completionHandler: @escaping (InteractionError?) -> ())
     func addNewRating(addingRating: AddingRating, completionHandler: @escaping (Result<AddedRating, InteractionError>) -> ())
     
