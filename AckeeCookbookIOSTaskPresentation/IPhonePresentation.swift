@@ -10,7 +10,7 @@ import AUIKit
 
 public protocol IPhonePresentationDelegate: class {
     func iPhonePresentationGetRecipes(_ iPhonePresentation: IPhonePresentation, offset: Int, limit: Int, completionHandler: @escaping (Result<[RecipeInList], Error>) -> ())
-    func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: CreatingRecipe, completionHandler: @escaping (Result<AddRecipeResult, Error>) -> ())
+    func iPhonePresentationCreateRecipe(_ iPhonePresentation: IPhonePresentation, recipe: AddingRecipe, completionHandler: @escaping (Result<AddRecipeResult, Error>) -> ())
     func iPhonePresentationGetRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInList, completionHandler: @escaping (Result<RecipeInDetails, Error>) -> ())
     func iPhonePresentationDeleteRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, completionHandler: @escaping (Error?) -> ())
     func iPhonePresentationScoreRecipe(_ iPhonePresentation: IPhonePresentation, recipe: RecipeInDetails, score: Float, completionHandler: @escaping (Result<Float, Error>) -> ())
@@ -91,7 +91,7 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
         mainNavigationController?.popViewController(animated: true)
     }
 
-    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe) {
+    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: AddingRecipe) {
         delegate?.iPhonePresentationCreateRecipe(self, recipe: recipe, completionHandler: { (result) in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -102,17 +102,17 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                         let recipeInList = RecipeInList(id: recipe.id, name: recipe.name, duration: recipe.duration, score: recipe.score)
                         self.recipesListScreen?.knowRecipeWasAdded(recipeInList)
                         self.mainNavigationController?.popViewController(animated: true)
-                    case .infoIsNeeded:
+                    case .infoIsRequired:
                         let alertController = self.createMessageAlertController("\"Info\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                         break
-                    case .descriptionIsNeeded:
+                    case .descriptionIsRequired:
                         let alertController = self.createMessageAlertController("\"Description\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
-                    case .nameMustContainsAckee:
+                    case .nameMustContainAckee:
                         let alertController = self.createMessageAlertController("\"Name\" MUST contain \"ackee\" string!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
-                    case .nameIsNeeded:
+                    case .nameIsRequired:
                         let alertController = self.createMessageAlertController("\"Name\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                     }
@@ -204,17 +204,17 @@ public class IPhonePresentation: AUIWindowPresentation, RecipesListScreenDelegat
                         let recipeInList = RecipeInList(id: recipe.id, name: recipe.name, duration: recipe.duration, score: recipe.score)
                         self.recipesListScreen?.knowRecipeWasUpdated(recipeInList)
                         self.mainNavigationController?.popViewController(animated: true)
-                    case .infoIsNeeded:
+                    case .infoIsRequired:
                         let alertController = self.createMessageAlertController("\"Info\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                         break
-                    case .descriptionIsNeeded:
+                    case .descriptionIsRequired:
                         let alertController = self.createMessageAlertController("\"Description\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
-                    case .nameMustContainsAckee:
+                    case .nameMustContainAckee:
                         let alertController = self.createMessageAlertController("\"Name\" MUST contain \"ackee\" string!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
-                    case .nameIsNeeded:
+                    case .nameIsRequired:
                         let alertController = self.createMessageAlertController("\"Name\" MUST be filled!")
                         self.mainNavigationController?.present(alertController, animated: true, completion: nil)
                     }

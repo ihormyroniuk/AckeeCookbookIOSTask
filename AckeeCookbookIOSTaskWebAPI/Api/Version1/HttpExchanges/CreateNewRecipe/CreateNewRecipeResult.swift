@@ -9,9 +9,9 @@
 import Foundation
 
 public enum CreateNewRecipeResult {
-    case recipeInDetails(RecipeInDetails)
-    case infoRequired
-    case descriptionRequired
-    case nameRequired
+    case createdNewRecipe(RecipeInDetails)
+    case infoIsRequired
+    case descriptionIsRequired
+    case nameIsRequired
     case nameMustContainAckee
 }

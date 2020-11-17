@@ -10,8 +10,8 @@ import Foundation
 
 public enum AddRecipeResult {
     case addedRecipe(RecipeInDetails)
-    case infoIsNeeded
-    case descriptionIsNeeded
-    case nameIsNeeded
-    case nameMustContainsAckee
+    case infoIsRequired
+    case descriptionIsRequired
+    case nameIsRequired
+    case nameMustContainAckee
 }

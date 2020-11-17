@@ -11,7 +11,7 @@ import AFoundation
 
 protocol AddRecipeScreenControllerDelegate: class {
     func addRecipeScreenBack(_ addRecipeScreen: AddRecipeScreenController)
-    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: CreatingRecipe)
+    func addRecipeScreenAddRecipe(_ addRecipeScreen: AddRecipeScreenController, _ recipe: AddingRecipe)
 }
 
 class AddRecipeScreenController: AUIStatusBarScreenController, AUITextViewControllerDidChangeTextObserver, AUIControlControllerDidValueChangedObserver {
@@ -99,7 +99,7 @@ class AddRecipeScreenController: AUIStatusBarScreenController, AUITextViewContro
         let ingredients = ingredientInputViewControllers.map({ $0.textViewController?.text }).compactMap({ $0 })
         let info = infoTextViewController.text ?? ""
         let duration = Int(durationDatePickerControler.countDownDuration)
-        let recipe = CreatingRecipe(name: name, description: description, ingredients: ingredients, duration: duration, info: info)
+        let recipe = AddingRecipe(name: name, description: description, ingredients: ingredients, duration: duration, info: info)
         delegate?.addRecipeScreenAddRecipe(self, recipe)
     }
 

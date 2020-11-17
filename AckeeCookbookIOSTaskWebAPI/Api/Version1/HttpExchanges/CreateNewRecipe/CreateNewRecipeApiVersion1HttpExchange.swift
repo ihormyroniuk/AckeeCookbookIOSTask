@@ -40,17 +40,17 @@ class CreateNewRecipeApiVersion1HttpExchange: ApiVersion1HttpExchange<CreateNewR
         let jsonObject = try JSONSerialization.json(data: body).object()
         if code == Http.Code.ok {
             let recipe = try recipeInDetails(jsonObject: jsonObject)
-            return .recipeInDetails(recipe)
+            return .createdNewRecipe(recipe)
         } else if code == Http.Code.badRequest {
             let message = try jsonObject.string("message")
-            if message == ApiVersion1.ErrorMessage.recipeInfoRequired {
-                return .infoRequired
-            } else if message == ApiVersion1.ErrorMessage.recipeDescriptionRequired {
-                return .descriptionRequired
+            if message == ApiVersion1.ErrorMessage.recipeInfoIsRequired {
+                return .infoIsRequired
+            } else if message == ApiVersion1.ErrorMessage.recipeDescriptionIsRequired {
+                return .descriptionIsRequired
             } else if message == ApiVersion1.ErrorMessage.recipeNameMustContainAckee {
                 return .nameMustContainAckee
-            } else if message == ApiVersion1.ErrorMessage.recipeNameRequired {
-                return .nameRequired
+            } else if message == ApiVersion1.ErrorMessage.recipeNameIsRequired {
+                return .nameIsRequired
             } else {
                 let error = UnexpectedHttpResponseCode(code: code)
                 throw error

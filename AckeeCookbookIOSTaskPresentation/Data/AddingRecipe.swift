@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CreatingRecipe {
+public struct AddingRecipe {
     
     public let name: String
     public let description: String
