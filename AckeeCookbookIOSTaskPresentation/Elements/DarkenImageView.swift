@@ -15,17 +15,22 @@ class DarkenImageView: AUIImageView {
     
     let darkenLayer = CALayer()
     
-    override func setup() {
-        super.setup()
-        layer.addSublayer(darkenLayer)
-        setupDarkenLayer()
-    }
+    // MARK: Settings
     
     var darkenAmount: CGFloat = 0 {
         didSet {
             darkenLayer.backgroundColor = UIColor.black.withAlphaComponent(darkenAmount).cgColor
         }
     }
+    
+    // MARK: Setup
+    
+    override func setup() {
+        super.setup()
+        layer.addSublayer(darkenLayer)
+        setupDarkenLayer()
+    }
+    
     private func setupDarkenLayer() {
         darkenLayer.backgroundColor = UIColor.black.withAlphaComponent(darkenAmount).cgColor
     }

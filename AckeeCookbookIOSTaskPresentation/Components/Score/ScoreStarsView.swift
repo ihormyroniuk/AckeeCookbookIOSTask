@@ -65,9 +65,7 @@ class ScoreStarsView: UIView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let height = starImageViewsWidthHeight
         var width = ((starImageViewsWidthHeight + starImageViewsSpace) * CGFloat(starImageViews.count)) - starImageViewsSpace
-        if width < 0 {
-            width = 0
-        }
+        if width < 0 { width = 0 }
         let sizeThatFits = CGSize(width: width, height: height)
         return sizeThatFits
     }

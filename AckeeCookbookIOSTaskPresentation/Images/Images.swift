@@ -13,37 +13,21 @@ enum Images {
     
     private class Class { }
     private static let bundle = Bundle(for: Class.self)
-    private static let emptyImage = UIImage()
-    private static func image(named name: String) -> UIImage {
-        guard let image = UIImage(named: name, in: bundle, compatibleWith: nil) else {
-            os_log("Image named \"%@\" is not found", type: .info, name)
-            return emptyImage
-        }
+    private static func image(named name: String) -> UIImage? {
+        let image = UIImage(named: name, in: bundle, compatibleWith: nil)
         return image
     }
     
-    static var clock: UIImage {
-        return image(named: "Clock")
-    }
+    static var clock: UIImage { return image(named: "Clock")! }
     
-    static var back: UIImage {
-        return image(named: "Back")
-    }
+    static var back: UIImage { return image(named: "Back")! }
     
-    static var plus: UIImage {
-        return image(named: "Plus")
-    }
+    static var plus: UIImage { return image(named: "Plus")! }
     
-    static var plusInCircle: UIImage {
-        return image(named: "PlusInCircle")
-    }
+    static var plusInCircle: UIImage { return image(named: "PlusInCircle")! }
     
-    static var star: UIImage {
-        return image(named: "Star")
-    }
+    static var star: UIImage { return image(named: "Star")! }
     
-    static var ackeeRecipe: UIImage {
-        return image(named: "AckeeRecipe")
-    }
+    static var ackeeRecipe: UIImage { return image(named: "AckeeRecipe")! }
     
 }

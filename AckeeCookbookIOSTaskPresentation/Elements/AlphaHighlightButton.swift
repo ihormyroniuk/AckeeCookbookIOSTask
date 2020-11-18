@@ -11,6 +11,8 @@ import AUIKit
 
 class AlphaHighlightButton: AUIButton {
     
+    // MARK: Settings
+    
     override var isHighlighted: Bool {
         willSet {
             if newValue {
