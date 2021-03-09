@@ -149,7 +149,7 @@ class Application: AUIEmptyApplication, IPhonePresentationDelegate {
     // MARK: WebAPI
 
     private lazy var apiInteractor: Interactor = {
-        let apiInteractor = Interactors.production
+        let apiInteractor = Interactors.mockServer
         return apiInteractor
     }()
     
